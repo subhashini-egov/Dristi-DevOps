@@ -509,7 +509,7 @@ controller:
       https: https
     # -- Declare the app protocol of the external HTTP and HTTPS listeners or not. Supersedes provider-specific annotations for declaring the backend protocol.
     # Ref: https://kubernetes.io/docs/concepts/services-networking/service/#application-protocol
-    appProtocol: true
+    appProtocol: false
     nodePorts:
       # -- Node port allocated for the external HTTP listener. If left empty, the service controller allocates one from the configured node port range.
       http: ""
