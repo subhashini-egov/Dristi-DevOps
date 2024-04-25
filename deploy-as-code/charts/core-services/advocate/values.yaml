@@ -16,12 +16,12 @@ initContainers:
     schemaTable: "advocate_service_schema"
     image:
       repository: "pucardev.azurecr.io/pucar_advocate_db"
-      tag: latest
+      tag: v1.0.0-487fc4563f30a841c597b9d197e0c15d40a7f30e
 
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_advocate"
-  tag: latest
+  tag: v1.0.0-487fc4563f30a841c597b9d197e0c15d40a7f30e
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
@@ -70,11 +70,6 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-idgen
-  - name: EGOV_MDMS_HOST
-    valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: egov-mdms-service
   - name: EGOV_USER_HOST
     valueFrom:
       configMapKeyRef:
@@ -112,14 +107,19 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-idgen
-  - name: EGOV_MDMS_HOST
-    valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: egov-mdms-service
   - name: EGOV_WORKFLOW_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
         key: egov-workflow-v2
+  - name: KAFKA_CONFIG_BOOTSTRAP_SERVER_CONFIG
+          valueFrom:
+            configMapKeyRef:
+              key: kafka-brokers
+              name: egov-config
+  - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+    valueFrom:
+      configMapKeyRef:
+        key: kafka-brokers
+        name: egov-config
 
