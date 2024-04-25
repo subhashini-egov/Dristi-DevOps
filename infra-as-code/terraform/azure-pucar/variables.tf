@@ -1,44 +1,44 @@
-variable "subscription_id" {
+variable "ARM_SUBSCRIPTION_ID" {
     type = string
 }
 
-variable "tenant_id" {
+variable "ARM_TENANT_ID" {
     type = string
 }
 
-variable "client_id" {
+variable "ARM_CLIENT_ID" {
     type = string
 }
 
-variable "client_secret" {
+variable "ARM_CLIENT_SECRET" {
     type = string
 }
 
-variable "kafka_storage_account" {
-    type = object({
-        name                     = string
-        account_tier             = string
-        account_replication_type = string
-    })
-}
-
-variable "kafka_storage_container" {
-    type = object({
-        container_access_type = string
-    })
-}
-
-variable "kafka_cluster" {
-    type = object({
-        cluster_version = number
-        tier            = string
-        tls_min_version = number
-    })
-}
-
-variable "kafka_component_version" {
-    type = number
-}
+# variable "kafka_storage_account" {
+#     type = object({
+#         name                     = string
+#         account_tier             = string
+#         account_replication_type = string
+#     })
+# }
+#
+# variable "kafka_storage_container" {
+#     type = object({
+#         container_access_type = string
+#     })
+# }
+#
+# variable "kafka_cluster" {
+#     type = object({
+#         cluster_version = number
+#         tier            = string
+#         tls_min_version = number
+#     })
+# }
+#
+# variable "kafka_component_version" {
+#     type = number
+# }
 
 variable "address_space" {
     type = list(string)
@@ -57,7 +57,7 @@ variable "resource_group" {
 }
 
 variable "location" {
-    default = "Central India"
+    type = string
 }
 
 variable "db_version" {
@@ -70,6 +70,10 @@ variable "db_username" {
 
 variable "db_password" {
     type = string
+}
+
+variable "zone" {
+    type = number
 }
 
 variable "address_prefixes_postgres" {
@@ -91,7 +95,9 @@ variable "min_count" {
 variable "max_count" {
     type = number
 }
-
+variable "max_pod" {
+    type = number
+}
 variable "aks_service_cidr" {
     type = string
 }

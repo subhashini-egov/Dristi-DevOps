@@ -9,3 +9,4 @@ variable "subnet_id"{}
 variable "network_security_group_id"{}
 variable "virtual_network_id"{}
 variable "db_version" {}
+variable "zone" {}

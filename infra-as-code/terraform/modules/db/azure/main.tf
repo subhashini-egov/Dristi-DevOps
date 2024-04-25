@@ -27,7 +27,7 @@ resource "azurerm_postgresql_flexible_server" "pucar_postgres" {
   storage_mb             = "${var.storage_mb}"
   sku_name               = "${var.sku_tier}"
   backup_retention_days  = 7
-  zone                   = "2"
+  zone                   = var.zone
 }
 
 resource "azurerm_postgresql_flexible_server_database" "pucar_postgres_db" {

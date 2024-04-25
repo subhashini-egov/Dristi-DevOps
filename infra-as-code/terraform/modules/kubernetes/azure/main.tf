@@ -13,6 +13,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     vnet_subnet_id      = var.subnet_id
     min_count           = var.min_count
     max_count           = var.max_count
+    max_pods            = var.max_pod
   }
 
   service_principal {
