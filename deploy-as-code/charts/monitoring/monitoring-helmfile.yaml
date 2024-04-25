@@ -8,8 +8,8 @@ repositories:
 
 values:
   - namespace: monitoring
-  - ../environments/env.yaml
-  - ../environments/env-secrets.yaml
+  - ../environments/{{(requiredEnv "HELMFILE_ENV")}}-env.yaml
+  - ../environments/{{(requiredEnv "HELMFILE_ENV")}}-env-secrets.yaml
 
 
 
