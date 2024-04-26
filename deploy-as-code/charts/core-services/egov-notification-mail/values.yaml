@@ -15,7 +15,7 @@ appType: "java-spring"
 tracing-enabled: true
 username: "egov-testing@egovernments.org"
 heap: "-Xmx192m -Xms192m"
-
+memory_requests: 256Mi
 # Additional Container Envs
 env: |
   - name: KAFKA_TOPICS_NOTIFICATION_MAIL_NAME

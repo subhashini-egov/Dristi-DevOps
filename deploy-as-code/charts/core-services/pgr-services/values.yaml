@@ -38,6 +38,7 @@ comment-by-employee-notif-enabled: "false"
 notification-allowed-status: "open,assigned,rejected,resolved"
 heap: "-Xmx192m -Xms192m"
 java-args: "-Dspring.profiles.active=monitoring"
+memory_requests: 384Mi
 
 # Additional Container Envs
 env: |

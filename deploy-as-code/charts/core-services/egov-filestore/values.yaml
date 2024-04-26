@@ -35,7 +35,7 @@ file-storage-mount-path: "/filestore"
 is-nfs-enabled: false
 is-azure-storage-enabled: true
 is-container-fixed: "true"
-
+memory_requests: 384Mi
 persistence:
   enabled: false
 

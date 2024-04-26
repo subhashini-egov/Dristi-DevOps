@@ -16,15 +16,19 @@ initContainers:
     schemaTable: "advocate_service_schema"
     image:
       repository: "pucardev.azurecr.io/pucar_advocate_db"
-      tag: v1.0.0-487fc4563f30a841c597b9d197e0c15d40a7f30e
+      tag: v1.0.0-3bedb925e26286af59b8a1348280be34b95759b8
 
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_advocate"
-  tag: v1.0.0-487fc4563f30a841c597b9d197e0c15d40a7f30e
+  tag: v1.0.0-3bedb925e26286af59b8a1348280be34b95759b8
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
+appType: "java-spring"
+heap: "-Xmx64m -Xms64m"
+java-args: "-Dspring.profiles.active=monitoring"
+memory_requests: 256Mi
 
 
 #healthChecks:
@@ -35,14 +39,14 @@ httpPort: 8080
 env: |
   - name: SPRING_FLYWAY_URL
     valueFrom:
-      secretKeyRef:
-        name: db
-        key: password
+      configMapKeyRef:
+        key: db-url
+        name: egov-config
   - name: SPRING_FLYWAY_USER
     valueFrom:
       secretKeyRef:
-        name: db
         key: username
+        name: db
   - name: SPRING_FLYWAY_PASSWORD
     valueFrom:
       secretKeyRef:
@@ -50,9 +54,9 @@ env: |
         key: password
   - name: SPRING_DATASOURCE_URL
     valueFrom:
-      secretKeyRef:
-        name: db
-        key: password
+      configMapKeyRef:
+        name: egov-config
+        key: db-url
   - name: SPRING_DATASOURCE_USERNAME
     valueFrom:
       secretKeyRef:
@@ -102,22 +106,17 @@ env: |
     value: save-advocate-clerk
   - name: EGOV_IDGEN_PATH
     value: "egov-idgen/id/_generate"
-  - name: EGOV_IDGEN_HOST
+  - name: EGOV_INDIVIDUAL_HOST
     valueFrom:
       configMapKeyRef:
+        key: individual
         name: egov-service-host
-        key: egov-idgen
   - name: EGOV_WORKFLOW_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
         key: egov-workflow-v2
   - name: KAFKA_CONFIG_BOOTSTRAP_SERVER_CONFIG
-          valueFrom:
-            configMapKeyRef:
-              key: kafka-brokers
-              name: egov-config
-  - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
     valueFrom:
       configMapKeyRef:
         key: kafka-brokers

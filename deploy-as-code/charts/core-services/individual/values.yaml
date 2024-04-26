@@ -31,6 +31,7 @@ appType: "java-spring"
 tracing-enabled: true
 heap: "-Xmx192m -Xms192m"
 memory_limits: "1Gi"
+memory_requests: 512Mi
 java-args: "-Dspring.profiles.active=monitoring"
 persist-yml-path: "file:///work-dir/digit-configs.git/egov-persister/individual-persister.yml"
 indexer-yml-path: "file:///work-dir/digit-configs.git/egov-indexer/individual-indexer.yml"

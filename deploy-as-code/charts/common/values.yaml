@@ -113,7 +113,7 @@ memory_limits: "512Mi"
 resources: |
   {{- if eq .Values.appType "java-spring" -}}
   requests:
-    memory: {{ .Values.memory_limits | quote }}
+    memory: {{ if .Values.memory_requests }}{{ .Values.memory_requests | quote }}{{ else }}{{ .Values.memory_limits | quote }}{{ end }}
   limits:
     memory: {{ .Values.memory_limits | quote }}
   {{- end -}}
