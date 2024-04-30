@@ -3,7 +3,7 @@ name: Pucar-Install Workflow Dev
 on:
   push:
     branches:
-      - main
+      - Dev-0
   pull_request:
     branches:
       - main
@@ -28,48 +28,8 @@ jobs:
           files: |
             deploy-as-code/**
 
-  Input_validation:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Build project
-        run: echo "Github Actions Workflow has started"
-      - name: Displaying the input parameters provided
-        run: cat input.yaml
-        working-directory: infra-as-code/terraform/azure-pucar
-      - name: Convert YAML to ENV
-        uses: dcarbone/yaml-to-env-action@main
-        with:
-          yaml-file: infra-as-code/terraform/azure-pucar/input.yaml
-          debug: true # Optional: set to true to output some debug information
-      # Now, use the env vars in subsequent steps
-      - name: Display environment variables
-        run: |
-          echo "environment: $environment"
-      - name: Change working directory
-        run: echo "This command is run in the current directory"
-        working-directory: infra-as-code/terraform/azure-pucar/remote-state
-      - name: Updating different files based on parameters provided in input.yaml
-        run: go run init.go
-        working-directory: infra-as-code/terraform/scripts
-      - name: Archive infra-as-code folder
-        run: tar -czf infra-as-code.tar.gz infra-as-code/
-      - name: Archive deploy-as-code folder
-        run: tar -czf deploy-as-code.tar.gz deploy-as-code/
-      - name: Upload infra-as-code folder as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: infra-as-code-artifact
-          path: infra-as-code.tar.gz
-      - name: Upload deploy-as-code folder as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: deploy-as-code-artifact
-          path: deploy-as-code.tar.gz
-
   Terraform_Infra_Creation:
-    needs: Input_validation
+    needs: check-changed-files
     runs-on: ubuntu-latest
     env:
       TF_IN_AUTOMATION: "true"
@@ -81,20 +41,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Download infra-as-code folder from artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: infra-as-code-artifact
-          path: .
-      - name: Download deploy-as-code folder from artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: deploy-as-code-artifact
-          path: .
-      - name: Extract infra-as-code folder
-        run: tar -xzf infra-as-code.tar.gz
-      - name: Extract deploy-as-code folder
-        run: tar -xzf deploy-as-code.tar.gz
       - name: Convert YAML to ENV
         uses: dcarbone/yaml-to-env-action@main
         with:
@@ -171,48 +117,15 @@ jobs:
       # - name: Updating the terraform output data in environment.yaml files for deployment
       #   run: terraform output -json | go run ../scripts/envYAMLUpdater.go
       #   working-directory: infra-as-code/terraform/azure-pucar
-      - name: Archive infra-as-code folder
-        run: tar -czf infra-as-code.tar.gz infra-as-code/
-      - name: Archive deploy-as-code folder
-        run: tar -czf deploy-as-code.tar.gz deploy-as-code/
-      - name: Upload infra-as-code folder as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: infra-as-code-artifact
-          path: infra-as-code.tar.gz
-      - name: Upload deploy-as-code folder as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: deploy-as-code-artifact
-          path: deploy-as-code.tar.gz
 
   DIGIT-deployment:
     if: ${{ github.event_name == 'push' }}
     needs: Terraform_Infra_Creation
     runs-on: ubuntu-latest
-    env:
-      TF_IN_AUTOMATION: "true"
-      ARM_CLIENT_ID:  ${{ secrets.AZURE_CLIENT_ID }}
-      ARM_CLIENT_SECRET:  ${{ secrets.AZURE_CLIENT_SECRET }}
-      ARM_TENANT_ID:  ${{ secrets.AZURE_TENANT_ID }}
-      ARM_SUBSCRIPTION_ID:  ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Download infra-as-code folder from artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: infra-as-code-artifact
-          path: .
-      - name: Download deploy-as-code folder from artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: deploy-as-code-artifact
-          path: .
-      - name: Extract infra-as-code folder
-        run: tar -xzf infra-as-code.tar.gz
-      - name: Extract deploy-as-code folder
-        run: tar -xzf deploy-as-code.tar.gz
       - name: Convert YAML to ENV
         uses: dcarbone/yaml-to-env-action@main
         with:
@@ -279,14 +192,6 @@ jobs:
       #   run: helmfile -f digit-helmfile.yaml apply --include-needs=true
       #   working-directory: deploy-as-code
 
-  delete-artifacts:
-    needs: DIGIT-deployment
-    runs-on: ubuntu-latest
-    steps:
-      - uses: kolpav/purge-artifacts-action@v1
-        with:
-          token: ${{ secrets.GHUB_TOKEN }}
-          expire-in: 0 # Setting this to 0 will delete all artifacts
 #  terraform_infra_destruction:
 #    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.destroyCommand == 'destroy' }}
 #    runs-on: ubuntu-latest
