@@ -174,9 +174,9 @@ jobs:
           sudo mv sops-v3.7.1.linux /usr/local/bin/sops
       - name: sops decryption
         run: |
-          sudo sops --decrypt --age ${{ secrets.PUBLIC_AGE_KEY }} $HOME/work/pucar-DevOps/pucar-DevOps/deploy-as-code/charts/environments/dev-env-secrets.yaml > dev-env-secrets1.yaml
-          cp dev-env-secrets1.yaml dev-env-secrets.yaml
-        working-directory: deploy-as-code/charts/environments
+          sudo sops --decrypt --age ${{ secrets.PUBLIC_AGE_KEY }} $HOME/work/pucar-DevOps/pucar-DevOps/deploy-as-code/charts/environments/dev-env-secrets.yaml > env-secrets1.yaml
+          cp env-secrets1.yaml $HOME/work/pucar-DevOps/pucar-DevOps/deploy-as-code/charts/environments/dev-env-secrets.yaml
+      #        working-directory: deploy-as-code/charts/environments
 
       - name: Set up Helm
         uses: azure/setup-helm@v1
