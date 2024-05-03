@@ -205,7 +205,7 @@ jobs:
 
       - name: Digit deployment
         run: |
-           echo $DIGIT_UI_COMMIT_ID
+           echo "$DIGIT_UI_COMMIT_ID"
           # helmfile -f digit-helmfile.yaml apply --include-needs=true \
           #    --set advocate.image.tag=v1.0.0-${ADVOCATE_COMMIT_ID} \
           #    --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${ADVOCATE_COMMIT_ID} \
