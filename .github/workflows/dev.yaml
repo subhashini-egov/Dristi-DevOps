@@ -188,6 +188,11 @@ jobs:
           helmfile-version: 'v0.150.0'
           helm-plugins: >
             https://github.com/databus23/helm-diff
+      - name: Get tag value for advocate,case and digit-ui
+        run: |
+          git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_advocate_bis
+          git ls-remote https://github.com/pucardotorg/dristi.git case_update_dev_backend
+          git ls-remote https://github.com/pucardotorg/dristi.git user-registration-flow
       # - name: digit deployment
       #   run: helmfile -f digit-helmfile.yaml apply --include-needs=true
       #   working-directory: deploy-as-code
