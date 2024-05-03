@@ -194,7 +194,7 @@ jobs:
           echo "Advocate Commit ID: $advocate_commitId"
           case_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git Case_update_dev_backend | awk '{print $1}')
           echo "Case Commit ID: $case_commitId"
-          advocate_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git user-registration-flow | awk '{print $1}')
+          digit_ui_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git user-registration-flow | awk '{print $1}')
           echo "DIGIT-UI Commit ID: $digit_ui_commitId"
           
       - name: Digit deployment
