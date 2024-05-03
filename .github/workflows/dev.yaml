@@ -192,16 +192,18 @@ jobs:
         run: |
           advocate_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_advocate_bis | awk '{print $1}')
           echo "Advocate Commit ID: $advocate_commitId"
-          echo "::set-env name=ADVOCATE_COMMIT_ID::$advocate_commitId"
           case_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git Case_update_dev_backend | awk '{print $1}')
           echo "Case Commit ID: $case_commitId"
-          echo "::set-env name=CASE_COMMIT_ID::$case_commitId"
           advocate_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git user-registration-flow | awk '{print $1}')
           echo "DIGIT-UI Commit ID: $digit_ui_commitId"
-          echo "::set-env name=DIGIT_UI_COMMIT_ID::$digit_ui_commitId"
           
-      - name: digit deployment
-        run: helmfile -f digit-helmfile.yaml apply --include-needs=true --set advocate.image.tag=v1.0.0-${ADVOCATE_COMMIT_ID} --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${ADVOCATE_COMMIT_ID} --set case.image.tag=v1.0.0-${CASE_COMMIT_ID} --set case.initContainers.dbMigration.image.tag=v1.0.0-${CASE_COMMIT_ID} --set digit-ui.image.tag=v1.0.0-${DIGIT_UI_COMMIT_ID}
+      - name: Digit deployment
+        run: helmfile -f digit-helmfile.yaml apply --include-needs=true \
+           --set advocate.image.tag=v1.0.0-${advocate_commitId} \
+           --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${advocate_commitId} \
+           --set case.image.tag=v1.0.0-${case_commitId} \
+           --set case.initContainers.dbMigration.image.tag=v1.0.0-${case_commitId} \
+           --set digit-ui.image.tag=v1.0.0-${digit_ui_commitId}
         working-directory: deploy-as-code
 
 #  terraform_infra_destruction:
