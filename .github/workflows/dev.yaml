@@ -204,6 +204,8 @@ jobs:
            --set case.image.tag=v1.0.0-${case_commitId} \
            --set case.initContainers.dbMigration.image.tag=v1.0.0-${case_commitId} \
            --set digit-ui.image.tag=v1.0.0-${digit_ui_commitId}
+        env:
+          HELMFILE_ENV: dev
         working-directory: deploy-as-code
 
 #  terraform_infra_destruction:
