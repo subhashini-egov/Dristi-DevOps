@@ -120,7 +120,6 @@ jobs:
       #   working-directory: infra-as-code/terraform/azure-pucar
 
   DIGIT-deployment:
-    if: ${{ github.event_name == 'push' }}
     needs: Terraform_Infra_Creation
     runs-on: ubuntu-latest
       
