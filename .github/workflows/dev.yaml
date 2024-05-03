@@ -201,15 +201,17 @@ jobs:
           digit_ui_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git user-registration-flow | awk '{print $1}')
           echo "DIGIT-UI Commit ID: $digit_ui_commitId"
           export DIGIT_UI_COMMIT_ID=$digit_ui_commitId
+          echo $DIGIT_UI_COMMIT_ID
 
       - name: Digit deployment
         run: |
-          helmfile -f digit-helmfile.yaml apply --include-needs=true \
-             --set advocate.image.tag=v1.0.0-${ADVOCATE_COMMIT_ID} \
-             --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${ADVOCATE_COMMIT_ID} \
-             --set case.image.tag=v1.0.0-${CASE_COMMIT_ID} \
-             --set case.initContainers.dbMigration.image.tag=v1.0.0-${CASE_COMMIT_ID} \
-             --set digit-ui.image.tag=v1.0.0-${DIGIT_UI_COMMIT_ID}
+           echo $DIGIT_UI_COMMIT_ID
+          # helmfile -f digit-helmfile.yaml apply --include-needs=true \
+          #    --set advocate.image.tag=v1.0.0-${ADVOCATE_COMMIT_ID} \
+          #    --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${ADVOCATE_COMMIT_ID} \
+          #    --set case.image.tag=v1.0.0-${CASE_COMMIT_ID} \
+          #    --set case.initContainers.dbMigration.image.tag=v1.0.0-${CASE_COMMIT_ID} \
+          #    --set digit-ui.image.tag=v1.0.0-${DIGIT_UI_COMMIT_ID}
         env:
           HELMFILE_ENV: dev
         working-directory: deploy-as-code
