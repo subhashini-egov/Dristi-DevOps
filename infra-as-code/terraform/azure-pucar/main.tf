@@ -121,7 +121,7 @@ module "postgres-db" {
   source                    = "../modules/db/azure"
   resource_group            = var.resource_group
   location                  = var.location
-  sku_tier                  = "Standard_B1ms"
+  sku_tier                  = "B_Standard_B1ms"
   storage_mb                = "65536"
   backup_retention_days     = "7"
   administrator_login       = var.db_username

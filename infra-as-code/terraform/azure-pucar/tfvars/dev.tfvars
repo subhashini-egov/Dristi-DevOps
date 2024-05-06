@@ -10,7 +10,7 @@ address_prefixes_postgres = ["10.7.2.0/24"]
 
 # kubernetes variables
 private_cluster_enabled  = false
-vm_size                  = "Standard_D4_v4"
+vm_size                  = "Standard_E2as_v4"
 node_count               = "2"
 min_count                = "2"
 max_count                = "4"
