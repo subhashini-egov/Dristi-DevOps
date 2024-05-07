@@ -132,49 +132,49 @@ module "postgres-db" {
   virtual_network_id        = azurerm_virtual_network.vnet.id
 }
 
-module "zookeeper" {
-  source = "../modules/storage/azure"
-  environment = "${var.environment}"
-  itemCount = "3"
-  disk_prefix = "zookeeper"
-  location = var.location
-  resource_group = "${module.kubernetes.node_resource_group}"
-  storage_sku = "Premium_LRS"
-  disk_size_gb = "5"
-}
+# module "zookeeper" {
+#   source = "../modules/storage/azure"
+#   environment = "${var.environment}"
+#   itemCount = "3"
+#   disk_prefix = "zookeeper"
+#   location = var.location
+#   resource_group = "${module.kubernetes.node_resource_group}"
+#   storage_sku = "Premium_LRS"
+#   disk_size_gb = "5"
+# }
 
-module "kafka" {
-  source = "../modules/storage/azure"
-  environment = "${var.environment}"
-  itemCount = "3"
-  disk_prefix = "kafka"
-  location = var.location
-  resource_group = "${module.kubernetes.node_resource_group}"
-  storage_sku = "Standard_LRS"
-  disk_size_gb = "50"
-}
+# module "kafka" {
+#   source = "../modules/storage/azure"
+#   environment = "${var.environment}"
+#   itemCount = "3"
+#   disk_prefix = "kafka"
+#   location = var.location
+#   resource_group = "${module.kubernetes.node_resource_group}"
+#   storage_sku = "Standard_LRS"
+#   disk_size_gb = "50"
+# }
 
-module "es-master" {
-  source = "../modules/storage/azure"
-  environment = "${var.environment}"
-  itemCount = "3"
-  disk_prefix = "es-master"
-  location = var.location
-  resource_group = "${module.kubernetes.node_resource_group}"
-  storage_sku = "Premium_LRS"
-  disk_size_gb = "2"
-}
+# module "es-master" {
+#   source = "../modules/storage/azure"
+#   environment = "${var.environment}"
+#   itemCount = "3"
+#   disk_prefix = "es-master"
+#   location = var.location
+#   resource_group = "${module.kubernetes.node_resource_group}"
+#   storage_sku = "Premium_LRS"
+#   disk_size_gb = "2"
+# }
 
-module "es-data-v1" {
-  source = "../modules/storage/azure"
-  environment = "${var.environment}"
-  itemCount = "2"
-  disk_prefix = "es-data-v1"
-  location = var.location
-  resource_group = "${module.kubernetes.node_resource_group}"
-  storage_sku = "Premium_LRS"
-  disk_size_gb = "50"
-}
+# module "es-data-v1" {
+#   source = "../modules/storage/azure"
+#   environment = "${var.environment}"
+#   itemCount = "2"
+#   disk_prefix = "es-data-v1"
+#   location = var.location
+#   resource_group = "${module.kubernetes.node_resource_group}"
+#   storage_sku = "Premium_LRS"
+#   disk_size_gb = "50"
+# }
 
 
 #module "kafka" {
