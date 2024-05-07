@@ -2,7 +2,7 @@ name: Pucar-Install Workflow Solutins-QA
 on:
   push:
     branches:
-      - Solutions-QA-*
+      - main
   pull_request:
     branches:
       - main
