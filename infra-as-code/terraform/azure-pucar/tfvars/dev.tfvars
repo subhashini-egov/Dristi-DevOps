@@ -5,7 +5,7 @@ environment    = "dev"
 address_space = ["10.7.0.0/16"]
 
 # postgres
-db_version                = "11"
+db_version                = "14"
 address_prefixes_postgres = ["10.7.2.0/24"]
 
 # kubernetes variables
