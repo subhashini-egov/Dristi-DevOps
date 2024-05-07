@@ -1,4 +1,4 @@
-name: Pucar-Install Workflow Dev
+name: Pucar-Install Workflow Qa
 # Workflow branch creating cluster against the input.yaml file
 on:
   push:
@@ -60,11 +60,11 @@ jobs:
         working-directory: infra-as-code/terraform/azure-pucar
       - name: Terraform Plan - Infra creation
         id: plan-Infra
-        run: terraform plan -no-color -input=false -var-file="tfvars/pucar/dev.tfvars" -var "db_password=${{ secrets.TF_VAR_QA_DB_PASSWORD }}" -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" -var "tenant_id=${{ secrets.AZURE_TENANT_ID }}" -var "client_id=${{ secrets.AZURE_CLIENT_ID }}" -var "client_secret=${{ secrets.AZURE_CLIENT_SECRET }}"
+        run: terraform plan -no-color -input=false -var-file="tfvars/pucar/qa.tfvars" -var "db_password=${{ secrets.TF_VAR_QA_DB_PASSWORD }}" -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" -var "tenant_id=${{ secrets.AZURE_TENANT_ID }}" -var "client_id=${{ secrets.AZURE_CLIENT_ID }}" -var "client_secret=${{ secrets.AZURE_CLIENT_SECRET }}"
         working-directory: infra-as-code/terraform/azure-pucar
       # - name: Terraform Apply - Infra creation
       #   id: apply-Infra
-      #   run: terraform apply -no-color -input=false -auto-approve -var-file="tfvars/pucar/dev.tfvars" -var "db_password=${{ secrets.TF_VAR_QA_DB_PASSWORD }}" -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" -var "tenant_id=${{ secrets.AZURE_TENANT_ID }}" -var "client_id=${{ secrets.AZURE_CLIENT_ID }}" -var "client_secret=${{ secrets.AZURE_CLIENT_SECRET }}"
+      #   run: terraform apply -no-color -input=false -auto-approve -var-file="tfvars/pucar/qa.tfvars" -var "db_password=${{ secrets.TF_VAR_QA_DB_PASSWORD }}" -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" -var "tenant_id=${{ secrets.AZURE_TENANT_ID }}" -var "client_id=${{ secrets.AZURE_CLIENT_ID }}" -var "client_secret=${{ secrets.AZURE_CLIENT_SECRET }}"
       #   working-directory: infra-as-code/terraform/azure-pucar
       - name: Generate kubeconfig
         run: |
