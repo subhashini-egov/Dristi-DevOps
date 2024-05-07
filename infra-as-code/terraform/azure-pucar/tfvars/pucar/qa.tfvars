@@ -22,32 +22,32 @@ aks_dns_service_ip       = "10.6.4.10"
 aks_service_cidr         = "10.6.4.0/24"
 
 # storage account kafka
-#kafka_storage_account = {
-#  name                     = "pucarhdinsightkafka"
-#  account_tier             = "Standard"
-#  account_replication_type = "LRS"
-#}
-## storage container kafka
-#kafka_storage_container = {
-#  container_access_type = "private"
-#}
+kafka_storage_account = {
+ name                     = "pucarhdinsightkafka"
+ account_tier             = "Standard"
+ account_replication_type = "LRS"
+}
+# storage container kafka
+kafka_storage_container = {
+ container_access_type = "private"
+}
 # kafka cluster
-#kafka_cluster = {
-#  cluster_version = 5.1
-#  tier            = "Standard"
-#  tls_min_version = 1.2
-#}
-#kafka_component_version = 3.2
-## kafka variables
-#address_prefixes_kafka = ["10.6.9.0/24"]
-## head node
-#head_node_vm_size = "Standard_E2_V3"
-## worker node
-#worker_node_number_of_disks_per_node = 1
-#worker_node_target_instance_count    = 1
-#worker_node_vm_size                  = "Standard_E2_V3"
-## zookeeper node
-#zookeeper_node_vm_size = "Standard_A1_V2"
+kafka_cluster = {
+ cluster_version = 5.1
+ tier            = "Standard"
+ tls_min_version = 1.2
+}
+kafka_component_version = 3.2
+# kafka variables
+address_prefixes_kafka = ["10.6.9.0/24"]
+# head node
+head_node_vm_size = "Standard_E2_V3"
+# worker node
+worker_node_number_of_disks_per_node = 1
+worker_node_target_instance_count    = 1
+worker_node_vm_size                  = "Standard_E2_V3"
+# zookeeper node
+zookeeper_node_vm_size = "Standard_A1_V2"
 
 # agw
 #agw_public_ip = {
