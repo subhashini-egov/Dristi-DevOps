@@ -9,10 +9,6 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    resource_group_name  = "pucar-dev"
-    storage_account_name = "tfstate1dkna"
-    container_name       = "pucar-dev-tfstate"
-    key                  = "infra.tfstate"
   }
 }
 
