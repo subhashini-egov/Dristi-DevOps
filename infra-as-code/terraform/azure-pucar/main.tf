@@ -1,18 +1,14 @@
 provider "azurerm" {
-  subscription_id = var.subscription_id
-  tenant_id       = var.tenant_id
-  client_id       = var.client_id
-  client_secret   = var.client_secret
+  subscription_id = var.ARM_SUBSCRIPTION_ID
+  tenant_id       = var.ARM_TENANT_ID
+  client_id       = var.ARM_CLIENT_ID
+  client_secret   = var.ARM_CLIENT_SECRET
   features {}
   skip_provider_registration = true
 }
 
 terraform {
   backend "azurerm" {
-    resource_group_name  = "pucar-dev"
-    storage_account_name = "tfstate1dkna"
-    container_name       = "pucar-dev-tfstate"
-    key                  = "infra.tfstate"
   }
 }
 
@@ -103,14 +99,15 @@ module "kubernetes" {
   name                      = var.environment
   location                  = var.location
   resource_group            = var.resource_group
-  client_id                 = var.client_id
-  client_secret             = var.client_secret
+  client_id                 = var.ARM_CLIENT_ID
+  client_secret             = var.ARM_CLIENT_SECRET
   private_cluster_enabled   = var.private_cluster_enabled
   vm_size                   = var.vm_size
   ssh_public_key            = var.environment
   node_count                = var.node_count
   min_count                 = var.min_count
   max_count                 = var.max_count
+  max_pod                   = var.max_pod
   aks_service_cidr          = var.aks_service_cidr
   aks_dns_service_ip        = var.aks_dns_service_ip
   network_security_group_id = azurerm_network_security_group.aks_nsg.id
@@ -121,7 +118,7 @@ module "postgres-db" {
   source                    = "../modules/db/azure"
   resource_group            = var.resource_group
   location                  = var.location
-  sku_tier                  = "GP_Standard_D2ds_v4"
+  sku_tier                  = "B_Standard_B1ms"
   storage_mb                = "65536"
   backup_retention_days     = "7"
   administrator_login       = var.db_username
@@ -130,51 +127,52 @@ module "postgres-db" {
   subnet_id                 = azurerm_subnet.postgres.id
   network_security_group_id = azurerm_network_security_group.db_nsg.id
   virtual_network_id        = azurerm_virtual_network.vnet.id
+  zone                      = var.zone
 }
 
-module "zookeeper" {
-  source = "../modules/storage/azure"
-  environment = "${var.environment}"
-  itemCount = "3"
-  disk_prefix = "zookeeper"
-  location = var.location
-  resource_group = "${module.kubernetes.node_resource_group}"
-  storage_sku = "Premium_LRS"
-  disk_size_gb = "5"
-}
+# module "zookeeper" {
+#   source = "../modules/storage/azure"
+#   environment = "${var.environment}"
+#   itemCount = "3"
+#   disk_prefix = "zookeeper"
+#   location = var.location
+#   resource_group = "${module.kubernetes.node_resource_group}"
+#   storage_sku = "Premium_LRS"
+#   disk_size_gb = "5"
+# }
 
-module "kafka" {
-  source = "../modules/storage/azure"
-  environment = "${var.environment}"
-  itemCount = "3"
-  disk_prefix = "kafka"
-  location = var.location
-  resource_group = "${module.kubernetes.node_resource_group}"
-  storage_sku = "Standard_LRS"
-  disk_size_gb = "50"
-}
+# module "kafka" {
+#   source = "../modules/storage/azure"
+#   environment = "${var.environment}"
+#   itemCount = "3"
+#   disk_prefix = "kafka"
+#   location = var.location
+#   resource_group = "${module.kubernetes.node_resource_group}"
+#   storage_sku = "Standard_LRS"
+#   disk_size_gb = "50"
+# }
 
-module "es-master" {
-  source = "../modules/storage/azure"
-  environment = "${var.environment}"
-  itemCount = "3"
-  disk_prefix = "es-master"
-  location = var.location
-  resource_group = "${module.kubernetes.node_resource_group}"
-  storage_sku = "Premium_LRS"
-  disk_size_gb = "2"
-}
+# module "es-master" {
+#   source = "../modules/storage/azure"
+#   environment = "${var.environment}"
+#   itemCount = "3"
+#   disk_prefix = "es-master"
+#   location = var.location
+#   resource_group = "${module.kubernetes.node_resource_group}"
+#   storage_sku = "Premium_LRS"
+#   disk_size_gb = "2"
+# }
 
-module "es-data-v1" {
-  source = "../modules/storage/azure"
-  environment = "${var.environment}"
-  itemCount = "2"
-  disk_prefix = "es-data-v1"
-  location = var.location
-  resource_group = "${module.kubernetes.node_resource_group}"
-  storage_sku = "Premium_LRS"
-  disk_size_gb = "50"
-}
+# module "es-data-v1" {
+#   source = "../modules/storage/azure"
+#   environment = "${var.environment}"
+#   itemCount = "2"
+#   disk_prefix = "es-data-v1"
+#   location = var.location
+#   resource_group = "${module.kubernetes.node_resource_group}"
+#   storage_sku = "Premium_LRS"
+#   disk_size_gb = "50"
+# }
 
 
 #module "kafka" {
@@ -257,7 +255,7 @@ module "es-data-v1" {
 #}
 
 
-#module "container_registry" {
+# module "container_registry" {
 #  source                         = "../modules/containers/azure"
 #  cr_default_environment         = var.cr_default_environment
 #  cr_resource_group              = var.cr_resource_group
@@ -268,4 +266,4 @@ module "es-data-v1" {
 #  apps_role                      = var.apps_role
 #  manual_connection_pvt_endpoint = var.manual_connection_pvt_endpoint
 #  subresource_names              = var.subresource_names
-#}
+# }

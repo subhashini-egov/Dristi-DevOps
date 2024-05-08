@@ -30,6 +30,10 @@ variable "max_count" {
   type = number
 }
 
+variable "max_pod" {
+  type = number
+}
+
 variable "client_id" {
   type = string
 }

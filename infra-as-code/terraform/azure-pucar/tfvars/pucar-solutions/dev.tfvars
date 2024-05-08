@@ -1,50 +1,53 @@
-# credentials for creating resources
-resource_group = "pucar-dev"
-environment    = "dev"
+resource_group = "pucar-solutions-dev"
+environment    = "solutions-dev"
+location       = "South India"
 # networking
 address_space = ["10.7.0.0/16"]
 
 # postgres
+db_username               = "solutions_dev"
 db_version                = "11"
 address_prefixes_postgres = ["10.7.2.0/24"]
+zone                      = null
 
 # kubernetes variables
 private_cluster_enabled  = false
-vm_size                  = "Standard_D4_v4"
-node_count               = "2"
-min_count                = "2"
-max_count                = "4"
+vm_size                  = "Standard_E2as_v5"
+node_count               = "4"
+min_count                = "4"
+max_count                = "5"
+max_pod                  = "30"
 address_prefixes_aks     = ["10.7.1.0/24"]
 aks_dns_service_ip       = "10.7.4.10"
 aks_service_cidr         = "10.7.4.0/24"
 
-# storage account kafka
-kafka_storage_account = {
-  name                     = "pucarhdinsightkafka"
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-}
-# storage container kafka
-kafka_storage_container = {
-  container_access_type = "private"
-}
-# kafka cluster
-kafka_cluster = {
-  cluster_version = 5.1
-  tier            = "Standard"
-  tls_min_version = 1.2
-}
-kafka_component_version = 3.2
-# kafka variables
-address_prefixes_kafka = ["10.7.7.0/24"]
-# head node
-head_node_vm_size = "Standard_E2_V3"
-# worker node
-worker_node_number_of_disks_per_node = 1
-worker_node_target_instance_count    = 1
-worker_node_vm_size                  = "Standard_E2_V3"
-# zookeeper node
-zookeeper_node_vm_size = "Standard_A1_V2"
+# # storage account kafka
+# kafka_storage_account = {
+#   name                     = "pucarhdinsightkafka"
+#   account_tier             = "Standard"
+#   account_replication_type = "LRS"
+# }
+# # storage container kafka
+# kafka_storage_container = {
+#   container_access_type = "private"
+# }
+# # kafka cluster
+# kafka_cluster = {
+#   cluster_version = 5.1
+#   tier            = "Standard"
+#   tls_min_version = 1.2
+# }
+# kafka_component_version = 3.2
+# # kafka variables
+# address_prefixes_kafka = ["10.7.7.0/24"]
+# # head node
+# head_node_vm_size = "Standard_E2_V3"
+# # worker node
+# worker_node_number_of_disks_per_node = 1
+# worker_node_target_instance_count    = 1
+# worker_node_vm_size                  = "Standard_E2_V3"
+# # zookeeper node
+# zookeeper_node_vm_size = "Standard_A1_V2"
 
 # agw
 #agw_public_ip = {
