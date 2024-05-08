@@ -141,7 +141,7 @@ jobs:
           advocate_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_advocate_bis | awk '{print $1}')
           echo "Advocate Commit ID: $advocate_commitId"
 
-          case_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git Case_update_dev_backend | awk '{print $1}')
+          case_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_case_bis | awk '{print $1}')
           echo "Case Commit ID: $case_commitId"
 
           digit_ui_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git user-registration-flow | awk '{print $1}')
