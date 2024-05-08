@@ -92,9 +92,9 @@ releases:
 #    installed: true
 #    <<: *default
 #
-#  - name: configmaps # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  - name: configmaps # Replace with your desired namespace
+    installed: true
+    <<: *default
 #
 #  - name: citizen # Replace with your desired namespace
 #    installed: true
