@@ -16,12 +16,12 @@ initContainers:
     schemaTable: "scheduler_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/scheduler-svc_db"
-      tag: v1.0.0-be14ebafb3ed1fa8ffbe822ccfd26c21efd3d080
+      tag: v1.0.0-269be3705c4c8c1bac29ecd2f0d82f31f34b54da
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/scheduler-svc"
-  tag: v1.0.0-be14ebafb3ed1fa8ffbe822ccfd26c21efd3d080
+  tag: v1.0.0-269be3705c4c8c1bac29ecd2f0d82f31f34b54da
 replicas: "1"
 healthChecks:
   enabled: true
