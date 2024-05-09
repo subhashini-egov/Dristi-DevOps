@@ -1,4 +1,4 @@
-name: Pucar-Install Workflow Qa
+name: Pucar-Install Workflow DPG-QA
 # Workflow branch creating cluster against the input.yaml file
 on:
 #  push:
