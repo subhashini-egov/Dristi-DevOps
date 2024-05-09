@@ -139,7 +139,7 @@ releases:
   - name: mdms-v2 # Replace with your desired namespace
     installed: true
     labels:
-      team: "dpg"
+      team: "solutions"
     <<: *default
 
   - name: individual  # Replace with your desired namespace
