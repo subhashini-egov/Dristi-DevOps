@@ -18,6 +18,7 @@ initContainers:
       repository: "pucarsolutionsdev.azurecr.io/scheduler-svc_db"
       tag: v1.0.0-845b23715d12fb1c87c4e42ae5e00067ac9ee7b0
 
+
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/scheduler-svc"
