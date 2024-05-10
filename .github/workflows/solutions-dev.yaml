@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - Solutions-Deploy
   pull_request:
     branches:
       - main
