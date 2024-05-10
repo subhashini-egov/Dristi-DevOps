@@ -2,7 +2,7 @@ name: Pucar-Install Workflow Solutins-QA
 on:
   push:
     branches:
-      - main
+      - Scheduler-dev
   pull_request:
     branches:
       - main
@@ -151,7 +151,7 @@ jobs:
             https://github.com/databus23/helm-diff
 
       - name: digit deployment
-        run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
+        run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml destroy --include-needs=true
         working-directory: deploy-as-code
         env:
           HELMFILE_ENV: "solutions-qa"
