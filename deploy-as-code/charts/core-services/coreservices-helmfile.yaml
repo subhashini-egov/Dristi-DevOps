@@ -156,5 +156,7 @@ releases:
 
   - name: advocate  # Replace with your desired namespace
     installed: true
+    labels:
+      team: "dpg"
     <<: *default
 
