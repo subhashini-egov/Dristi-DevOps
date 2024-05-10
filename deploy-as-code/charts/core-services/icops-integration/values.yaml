@@ -1,0 +1,20 @@
+# Common Labels
+labels:
+  app: "icops-integration"
+  group: "rainmaker"
+
+# Ingress Configs
+ingress:
+  enabled: true
+  zuul: true
+  context: "icops-integration"
+
+
+# Container Configs
+image:
+   repository: "pucarsolutionsdev.azurecr.io/integration"
+   tag: v1.0.0-367c913109d441ce8a4fcbcc1394313e4119e5cc
+replicas: "1"
+
+
+
