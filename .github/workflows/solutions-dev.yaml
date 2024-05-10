@@ -2,7 +2,7 @@ name: Pucar-Install Workflow Solutins-Dev
 on:
   push:
     branches:
-      - main
+      - Scheduler-dev
   pull_request:
     branches:
       - main
