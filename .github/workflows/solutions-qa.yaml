@@ -71,6 +71,7 @@ jobs:
         id: apply-Infra
         run: terraform destroy -auto-approve -var-file="tfvars/pucar-solutions/qa.tfvars" -var "db_password=${{ secrets.TF_VAR_db_password_solutions }}"  -var "ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}" -var "ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}" -var "ARM_CLIENT_ID=${{ env.ARM_CLIENT_ID }}" -var "ARM_CLIENT_SECRET=${{ env.ARM_CLIENT_SECRET }}"
         working-directory: infra-as-code/terraform/azure-pucar
+
 #
 #      - name: Generate kubeconfig
 #        run: |
