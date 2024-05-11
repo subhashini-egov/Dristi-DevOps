@@ -90,7 +90,7 @@ jobs:
 #          kubectl get nodes
 
   DIGIT-deployment:
-    if: ${{ github.event_name == 'push' }}
+#    if: ${{ github.event_name == 'push' }}
 #    needs: Terraform_Infra_Creation
     runs-on: ubuntu-latest
 
