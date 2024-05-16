@@ -8,6 +8,12 @@ replicas: 1
 httpPort: 8080
 appType: ""
 
+tolerations:
+  - key: " kubernetes.azure.com/scalesetpriority "
+    operator: "Equal"
+    value: "spot"
+    effect: "NoSchedule"
+
 ingress:
   enabled: false
   zuul: false
