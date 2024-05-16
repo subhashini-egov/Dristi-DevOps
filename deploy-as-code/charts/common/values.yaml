@@ -9,7 +9,7 @@ httpPort: 8080
 appType: ""
 
 tolerations:
-  - key: " kubernetes.azure.com/scalesetpriority "
+  - key: "kubernetes.azure.com/scalesetpriority"
     operator: "Equal"
     value: "spot"
     effect: "NoSchedule"
