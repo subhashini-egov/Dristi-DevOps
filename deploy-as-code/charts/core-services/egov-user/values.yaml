@@ -32,7 +32,7 @@ tracing-enabled: true
 egov-state-level-tenant-id: "pb"
 decryption-abac-enabled: "false"
 account-unlock-cool-down-period-minutes: "30"
-otp-validation: "true"
+otp-validation: "false"
 citizen-otp-enabled: "true"
 employee-otp-enabled: "false"
 access-token-validity: "10080"
