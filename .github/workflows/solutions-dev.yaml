@@ -2,7 +2,7 @@ name: Pucar-Install Workflow Solutins-Dev
 on:
   push:
     branches:
-      - main
+      - Scheduler-dev
   pull_request:
     branches:
       - main
@@ -152,12 +152,13 @@ jobs:
             https://github.com/databus23/helm-diff
 
       - name: digit deployment
-        run: |
-          integration_commitId=$(git ls-remote https://github.com/pucardotorg/icops_integration-kerala.git icops_testing | awk '{print $1}')
-          echo "Integration Commit ID: $integration_commitId"
-
-          helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
-            --set icops-integration.image.tag=v1.0.0-${integration_commitId} \
+        run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
+#        run: |
+#          integration_commitId=$(git ls-remote https://github.com/pucardotorg/icops_integration-kerala.git icops_testing | awk '{print $1}')
+#          echo "Integration Commit ID: $integration_commitId"
+#
+#          helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
+#            --set icops-integration.image.tag=v1.0.0-${integration_commitId} \
 
         working-directory: deploy-as-code
         env:

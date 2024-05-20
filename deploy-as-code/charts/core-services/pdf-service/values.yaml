@@ -1,0 +1,33 @@
+# Common Labels
+labels:
+  app: "pdf-service"
+  group: "rainmaker"
+
+# Ingress Configs
+ingress:
+  enabled: true
+  zuul: true
+  context: "pdf-service"
+
+# Init Containers Configs
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "pdf-service_schema"
+    image:
+      repository: "pucarsolutionsdev.azurecr.io/pdf-service-db_migration"
+      tag: v1.0.0
+
+# Container Configs
+image:
+  repository: "pucarsolutionsdev.azurecr.io/pdf-service"
+  tag: v1.0.0
+replicas: "1"
+healthChecks:
+  enabled: true
+  livenessProbePath: "/scheduler/health"
+  readinessProbePath: "/scheduler/health"
+
+
+  
+
