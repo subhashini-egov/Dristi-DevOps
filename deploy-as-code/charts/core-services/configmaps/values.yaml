@@ -143,6 +143,7 @@ configmaps:
       health-project: 'http://health-project.health:8080/'
       health-individual: 'http://health-individual.health:8080/'
       advocate: 'http://advocate.egov:8080/'
+      case: 'http://case.egov:8080/'
 
 root-ingress:
   name: root-ingress

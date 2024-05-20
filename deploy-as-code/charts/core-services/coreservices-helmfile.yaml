@@ -140,9 +140,9 @@ releases:
 #    installed: true
 #    <<: *default
 
-  - name: advocate  # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: advocate  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
   - name: case  # Replace with your desired namespace
     installed: true
@@ -151,4 +151,8 @@ releases:
 #  - name: inbox  # Replace with your desired namespace
 #    installed: true
 #    <<: *default
+
+  - name: order  # Replace with your desired namespace
+    installed: true
+    <<: *default
 
