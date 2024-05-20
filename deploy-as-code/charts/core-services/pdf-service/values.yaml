@@ -9,19 +9,16 @@ ingress:
   zuul: true
   context: "pdf-service"
 
-# Init Containers Configs
 initContainers:
   dbMigration:
     enabled: true
-    schemaTable: "pdf-service_schema"
+    schemaTable: "pdf_service_schema"
     image:
-      repository: "pucarsolutionsdev.azurecr.io/pdf-service-db_migration"
-      tag: v1.0.0
+      repository: "pdf-service-db"
 
 # Container Configs
 image:
-  repository: "pucarsolutionsdev.azurecr.io/pdf-service"
-  tag: v1.0.0
+  repository: "pdf-service"
 replicas: "1"
 appType: "java-spring"
 tracing-enabled: true
