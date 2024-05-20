@@ -27,10 +27,10 @@ appType: "java-spring"
 tracing-enabled: true
 data-config-urls: "file:///work-dir/kerala-configs/pdf-service/data-config/causelist.json"
 format-config-urls: "file:///work-dir/kerala-configs/pdf-service/format-config/causelist.json"
-healthChecks:
-  enabled: true
-  livenessProbePath: "/pdf-service/health"
-  readinessProbePath: "/pdf-service/health"
+#healthChecks:
+#  enabled: true
+#  livenessProbePath: "/pdf-service/health"
+#  readinessProbePath: "/pdf-service/health"
 
 
 # Additional Container Envs
