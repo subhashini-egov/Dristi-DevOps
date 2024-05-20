@@ -196,16 +196,7 @@ antiAffinity: "hard"
 
 # This is the node affinity settings as defined in
 # https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-affinity-beta-feature
-nodeAffinity:
-  nodeAffinity:
-    preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 100
-        preference:
-          matchExpressions:
-            - key: kubernetes.azure.com/scalesetpriority
-              operator: In
-              values:
-                - spot
+nodeAffinity: {}
 
 # The default is to deploy all pods serially. By setting this to parallel all pods are started at
 # the same time when bootstrapping the cluster
@@ -270,11 +261,7 @@ schedulerName: ""
 
 imagePullSecrets: []
 nodeSelector: {}
-tolerations:
-  - key: "kubernetes.azure.com/scalesetpriority"
-    operator: "Equal"
-    value: "spot"
-    effect: "NoSchedule"
+tolerations: []
 
 # Enabling this will publically expose your Elasticsearch instance.
 # Only enable this if you have security enabled on your cluster
