@@ -138,8 +138,8 @@ jobs:
             https://github.com/databus23/helm-diff
       - name: DIGIT Deployment with updated tag
         run: |
-          advocate_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_advocate_bis | awk '{print $1}')
-          echo "Advocate Commit ID: $advocate_commitId"
+#          advocate_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_advocate_bis | awk '{print $1}')
+#          echo "Advocate Commit ID: $advocate_commitId"
 
           case_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_case_bis | awk '{print $1}')
           echo "Case Commit ID: $case_commitId"
@@ -147,9 +147,10 @@ jobs:
           digit_ui_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git user-registration-flow | awk '{print $1}')
           echo "DIGIT-UI Commit ID: $digit_ui_commitId"
 
+#          order_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_order_bis | awk '{print $1}')
+#          echo "ORDER Commit ID: $order_commitId"
+
           helmfile -f digit-helmfile.yaml apply --include-needs=true \
-           --set advocate.image.tag=v1.0.0-${advocate_commitId} \
-           --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${advocate_commitId} \
            --set case.image.tag=v1.0.0-${case_commitId} \
            --set case.initContainers.dbMigration.image.tag=v1.0.0-${case_commitId} \
            --set digit-ui.image.tag=v1.0.0-${digit_ui_commitId}
