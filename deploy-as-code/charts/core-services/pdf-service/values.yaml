@@ -14,11 +14,13 @@ initContainers:
     enabled: true
     schemaTable: "pdf_service_schema"
     image:
-      repository: "pdf-service-db"
+      repository: "pucarsolutionsdev.azurecr.io/pdf-service-db_migration"
+      tag: v1.0.0
 
 # Container Configs
 image:
-  repository: "pdf-service"
+  repository: "pucarsolutionsdev.azurecr.io/pdf-service"
+  tag: v1.0.0
 replicas: "1"
 appType: "java-spring"
 tracing-enabled: true
