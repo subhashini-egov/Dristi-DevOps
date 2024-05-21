@@ -152,3 +152,11 @@ workbench-ui:
     sub_filter.conf: "
       sub_filter  '<head>' '<head>
       <script src=https://s3.ap-south-1.amazonaws.com/works-dev-asset/globalConfigsWorkbench.js type=text/javascript></script>';"
+
+pdf-service:
+  initContainers:
+    gitSync:
+      repo: "git@github.com:pucardotorg/kerala-configs"
+      branch: "develop"
+  data-config-urls: "file:///work-dir/kerala-configs/pdf-service/data-config/causelist.json"
+  format-config-urls: "file:///work-dir/kerala-configs/pdf-service/format-config/causelist.json"
