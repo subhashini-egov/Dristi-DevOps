@@ -156,3 +156,11 @@ releases:
     installed: true
     <<: *default
 
+  - name: application  # Replace with your desired namespace
+    installed: true
+    <<: *default
+
+  - name: evidence  # Replace with your desired namespace
+    installed: true
+    <<: *default
+
