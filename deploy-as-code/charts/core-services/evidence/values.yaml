@@ -70,7 +70,7 @@ env: |
         name: db
         key: password
   - name: "SCHEMA_TABLE"
-    value: "case_service_schema"
+    value: "evidence_service_schema"
   - name: EGOV_IDGEN_HOST
     valueFrom:
       configMapKeyRef:
@@ -101,7 +101,7 @@ env: |
   - name: SERVER_PORT
     value: "8080"
   - name: SERVER_CONTEXT_PATH
-    value: /application
+    value: /evidence
   - name: EGOV_INDIVIDUAL_HOST
     valueFrom:
       configMapKeyRef:
