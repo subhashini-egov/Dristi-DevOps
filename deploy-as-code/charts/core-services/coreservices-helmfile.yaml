@@ -164,3 +164,7 @@ releases:
     installed: true
     <<: *default
 
+  - name: hearing  # Replace with your desired namespace
+    installed: true
+    <<: *default
+

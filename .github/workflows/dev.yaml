@@ -139,7 +139,16 @@ jobs:
       - name: DIGIT Deployment with updated tag
         run: |
           order_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_order_bis | awk '{print $1}')
-          echo "Order Commit ID: $Order_commitId"
+          echo "Order Commit ID: $order_commitId"
+          
+          application_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_application | awk '{print $1}')
+          echo "Application Commit ID: $application_commitId"
+          
+          hearing_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_hearing | awk '{print $1}')
+          echo "hearing Commit ID: $hearing_commitId"
+          
+          evidence_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_evidence | awk '{print $1}')
+          echo "Evidence Commit ID: $evidence_commitId"
           
           case_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_case_bis | awk '{print $1}')
           echo "Case Commit ID: $case_commitId"
@@ -150,6 +159,12 @@ jobs:
           helmfile -f digit-helmfile.yaml apply --include-needs=true \
            --set order.image.tag=v1.0.0-${order_commitId} \
            --set order.initContainers.dbMigration.image.tag=v1.0.0-${order_commitId} \
+           --set hearing.image.tag=v1.0.0-${hearing_commitId} \
+           --set hearing.initContainers.dbMigration.image.tag=v1.0.0-${hearing_commitId} \
+           --set application.image.tag=v1.0.0-${application_commitId} \
+           --set application.initContainers.dbMigration.image.tag=v1.0.0-${application_commitId} \
+           --set evidence.image.tag=v1.0.0-${evidence_commitId} \
+           --set evidence.initContainers.dbMigration.image.tag=v1.0.0-${evidence_commitId} \
            --set case.image.tag=v1.0.0-${case_commitId} \
            --set case.initContainers.dbMigration.image.tag=v1.0.0-${case_commitId} \
            --set digit-ui.image.tag=v1.0.0-${digit_ui_commitId}
