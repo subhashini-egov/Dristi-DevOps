@@ -13,7 +13,7 @@ ingress:
 # Container Configs
 image:
    repository: "pucarsolutionsdev.azurecr.io/integration"
-   tag: v1.0.0-c91fa291f9fc913bfb946f2e29eba69746777b0d
+   tag: v1.0.0-6267275d722791cf98a50218e67883220555f0a8
 replicas: "1"
 
 
