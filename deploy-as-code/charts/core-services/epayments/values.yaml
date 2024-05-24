@@ -16,5 +16,12 @@ image:
    tag: latest
 replicas: "1"
 
+env: |
+  - name: SERVER_URL
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: egov-services-fqdn-name  
+
 
 
