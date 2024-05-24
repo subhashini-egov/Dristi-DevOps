@@ -1,0 +1,20 @@
+# Common Labels
+labels:
+  app: "ePayments"
+  group: "rainmaker"
+
+# Ingress Configs
+ingress:
+  enabled: true
+  zuul: true
+  context: "ePayments"
+
+
+# Container Configs
+image:
+   repository: "pucarsolutionsdev.azurecr.io/epayments"
+   tag: v1.0.0
+replicas: "1"
+
+
+

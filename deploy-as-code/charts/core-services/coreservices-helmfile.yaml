@@ -14,13 +14,19 @@ commonLabels:
   deployment: "pucar"
 
 releases:
-  - name: icops-integration # Replace with your desired namespace
+  - name: ePayments # Replace with your desired namespace
     installed: true # Replace with the version of your chart, if needed
+    labels:
+      team: "solutions"
     <<: *default
 
-  - name: pdf-service # Replace with your desired namespace
-    installed: true # Replace with the version of your chart, if needed
-    <<: *default
+#  - name: icops-integration # Replace with your desired namespace
+#    installed: true # Replace with the version of your chart, if needed
+#    <<: *default
+#
+#  - name: pdf-service # Replace with your desired namespace
+#    installed: true # Replace with the version of your chart, if needed
+#    <<: *default
 
 #  - name: egov-accesscontrol # Replace with your desired namespace
 #    installed: true # Replace with the version of your chart, if needed
@@ -126,9 +132,9 @@ releases:
 #    installed: true
 #    <<: *default
 #
-#  - name: gateway # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  - name: gateway # Replace with your desired namespace
+    installed: true
+    <<: *default
 #
 #  - name: egov-pg-service # Replace with your desired namespace
 #    installed: true
