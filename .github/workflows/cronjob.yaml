@@ -1,6 +1,9 @@
 name: Pucar-Install Workflow Solutions-QA
 
 on:
+  push:
+    branches:
+      - cronjob
   workflow_dispatch:
   schedule:
     # Run at 6:30 p.m. UTC (12 a.m. IST)
