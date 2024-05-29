@@ -29,7 +29,7 @@ jobs:
 
       - name: Scale Node Pool to 1
         run: |
-          az aks nodepool scale \
+          timeout 5m az aks nodepool scale \
             --resource-group pucar-solutions-qa \
             --cluster-name solutions-qa \
             --name default \
