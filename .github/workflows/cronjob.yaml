@@ -6,7 +6,7 @@ on:
       - cronjob
   workflow_dispatch:
   schedule:
-     - cron: '00 10 * * 1-5'
+     - cron: '30 10 * * 1-5'
     # Run at 6:30 p.m. UTC (12 a.m. IST)
     # - cron: '30 18 * * 1-5'
     # Run at 2:30 a.m. UTC (8 a.m. IST)
@@ -37,7 +37,7 @@ jobs:
             --node-count 1
 
   start-resources:
-    if: github.event_name == 'schedule' && github.event.schedule == '45 9 * * 1-5'
+    if: github.event_name == 'schedule' && github.event.schedule == '30 10 * * 1-5'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -53,10 +53,8 @@ jobs:
 
       - name: Scale Up Node Pool to 4
         run: |
-          az aks nodepool update \
+          az aks nodepool scale \
             --resource-group pucar-solutions-qa \
             --cluster-name solutions-qa \
             --name default \
-            --min-count 1 \
-            --max-count 4 \
-            --enable-cluster-autoscaler
+            --node-count 4
