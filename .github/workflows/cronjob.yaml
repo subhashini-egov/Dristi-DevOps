@@ -26,7 +26,6 @@ jobs:
 
       # - name: Stop PostgreSQL Instance
       #   run: az postgres flexible-server stop --name pucar-solutions-qa-server --resource-group pucar-solutions-qa
-
       - name: Scale Node Pool to 1
         run: |
           timeout 5m az aks nodepool scale \
