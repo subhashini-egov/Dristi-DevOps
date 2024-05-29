@@ -1,9 +1,6 @@
 name: Cronjob Scheduler Workflow for Db-server and Nodepool
 
 on:
-  push:
-     branches:
-      - cronjob
   schedule:
     - cron: '30 18 * * 1-5'
     - cron: '30 2 * * 1-5'
