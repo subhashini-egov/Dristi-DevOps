@@ -33,7 +33,7 @@ jobs:
           az aks nodepool update \
             --resource-group pucar-solutions-qa \
             --cluster-name solutions-qa \
-            --name spot \
+            --name default \
             --disable-cluster-autoscaler
 
       - name: Scale Node Pool to 1
@@ -41,7 +41,7 @@ jobs:
           az aks nodepool scale \
             --resource-group pucar-solutions-qa \
             --cluster-name solutions-qa \
-            --name spot \
+            --name default \
             --node-count 1
 
   start-resources:
