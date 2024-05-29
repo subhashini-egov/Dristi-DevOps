@@ -27,13 +27,13 @@ jobs:
       # - name: Stop PostgreSQL Instance
       #   run: az postgres flexible-server stop --name pucar-solutions-qa-server --resource-group pucar-solutions-qa
 
-      # - name: Scale Node Pool to 1
-      #   run: |
-      #     az aks nodepool scale \
-      #       --resource-group pucar-solutions-qa \
-      #       --cluster-name solutions-qa \
-      #       --name default \
-      #       --node-count 1
+      - name: Scale Node Pool to 1
+        run: |
+          az aks nodepool scale \
+            --resource-group pucar-solutions-qa \
+            --cluster-name solutions-qa \
+            --name default \
+            --node-count 2
 
   start-resources:
     if: github.event_name == 'schedule' && github.event.schedule == '*/5 * * * *'
