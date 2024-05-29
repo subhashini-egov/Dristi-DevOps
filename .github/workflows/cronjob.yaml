@@ -28,12 +28,20 @@ jobs:
       # - name: Stop PostgreSQL Instance
       #   run: az postgres flexible-server stop --name pucar-solutions-qa-server --resource-group pucar-solutions-qa
 
-      - name: Scale Down Node to 1
+      - name: Disable Cluster Autoscaler
         run: |
-           az aks nodepool scale \
+          az aks nodepool update \
             --resource-group pucar-solutions-qa \
             --cluster-name solutions-qa \
-            --name default \
+            --name spot \
+            --disable-cluster-autoscaler
+
+      - name: Scale Node Pool to 1
+        run: |
+          az aks nodepool scale \
+            --resource-group pucar-solutions-qa \
+            --cluster-name solutions-qa \
+            --name spot \
             --node-count 1
 
   start-resources:
