@@ -6,10 +6,11 @@ on:
       - cronjob
   workflow_dispatch:
   schedule:
+     - cron: '00 10 * * 1-5'
     # Run at 6:30 p.m. UTC (12 a.m. IST)
-    - cron: '30 18 * * 1-5'
+    # - cron: '30 18 * * 1-5'
     # Run at 2:30 a.m. UTC (8 a.m. IST)
-    - cron: '45 9 * * 1-5'
+   
 
 jobs:
   stop-resources:
