@@ -35,7 +35,7 @@ jobs:
           az aks nodepool delete --resource-group pucar-dev --cluster-name dev --name dev
           
   start-resources:
-    # if: github.event_name == 'schedule' && github.event.schedule == '30 2 * * 1-5'
+    if: github.event_name == 'schedule' && github.event.schedule == '30 2 * * 1-5'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -46,10 +46,12 @@ jobs:
         with:
           creds: ${{ secrets.SOLUTIONS_AZURE_CREDENTIALS }}
 
-      # - name: Start PostgreSQL Instance
-      #   run: az postgres flexible-server start --name pucar-solutions-qa-server --resource-group pucar-solutions-qa
+      - name: Start PostgreSQL Instance
+        run: az postgres flexible-server start --name pucar-solutions-qa-server --resource-group pucar-solutions-qa
 
       - name: Scale Up Node Pool to 4
         run: |
-          az aks nodepool add --resource-group pucar-solutions-qa --cluster-name solutions-qa --name solutionsqa --node-vm-size Standard_E2s_v4 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 4
-   
+          az aks nodepool add --resource-group pucar-solutions-qa --cluster-name solutions-qa --name solutionsqa --node-vm-size Standard_E2s_v4 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
+          az aks nodepool add --resource-group pucar-solutions-dev --cluster-name solutions-dev --name solutions-dev --node-vm-size Standard_E2s_v4 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
+          az aks nodepool add --resource-group pucar-qa --cluster-name qa --name qa --node-vm-size Standard_E2s_v4 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
+          az aks nodepool add --resource-group pucar-dev --cluster-name dev --name dev --node-vm-size Standard_E2s_v4 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
