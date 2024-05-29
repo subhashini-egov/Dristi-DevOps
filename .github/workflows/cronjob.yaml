@@ -34,8 +34,8 @@ jobs:
             --cluster-name solutions-qa \
             --name default \
             --min-count 1 \
-            --max-count 4 \
-            --enable-cluster-autoscaler
+            --max-count 2 \
+            --update-cluster-autoscaler
 
   start-resources:
     if: github.event_name == 'schedule' && github.event.schedule == '45 9 * * 1-5'
