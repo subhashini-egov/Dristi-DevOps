@@ -30,13 +30,11 @@ jobs:
 
       - name: Scale Down Node to 1
         run: |
-          timeout 5m az aks nodepool update \
+           az aks nodepool scale \
             --resource-group pucar-solutions-qa \
             --cluster-name solutions-qa \
             --name default \
-            --min-count 1 \
-            --max-count 2 \
-            --update-cluster-autoscaler
+            --node-count 1
 
   start-resources:
     if: github.event_name == 'schedule' && github.event.schedule == '45 9 * * 1-5'
