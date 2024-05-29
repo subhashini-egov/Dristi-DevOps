@@ -56,4 +56,6 @@ jobs:
             --resource-group pucar-solutions-qa \
             --cluster-name solutions-qa \
             --name spot \
-            --max-count 3
+            --min-count 1 \
+            --max-count 3 \
+            --enable-cluster-autoscaler
