@@ -16,13 +16,13 @@ initContainers:
     schemaTable: "scheduler_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/scheduler-svc_db"
-      tag: v1.0.0-b7b33cfa730978c95b22fc6ec23b0eeaaaa81bb3
+      tag: v1.0.0-3e6af37ff518a7c579b53b74a7ed3418d57b8218
 
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/scheduler-svc"
-  tag: v1.0.0-b7b33cfa730978c95b22fc6ec23b0eeaaaa81bb3
+  tag: v1.0.0-3e6af37ff518a7c579b53b74a7ed3418d57b8218
 replicas: "1"
 healthChecks:
   enabled: true
@@ -85,6 +85,11 @@ env: |
       configMapKeyRef:
         key: kafka-brokers
         name: egov-config
+  - name: EGOV_PDF_SERVICE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: pdf-service
   
   
   
