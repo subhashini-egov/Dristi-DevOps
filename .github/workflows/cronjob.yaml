@@ -52,7 +52,7 @@ jobs:
 
       - name: Scale Up Node Pool to 4
         run: |
-          az aks nodepool add --resource-group pucar-solutions-qa --cluster-name solutions-qa --name default1 --node-vm-size Standard_E2s_v4 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
-          az aks nodepool add --resource-group pucar-solutions-dev --cluster-name solutions-dev --name solutionsdev --node-vm-size Standard_E2s_v4 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
-          az aks nodepool add --resource-group pucar-qa --cluster-name qa --name qa --node-vm-size Standard_E2s_v4 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
+          az aks nodepool add --resource-group pucar-solutions-qa --cluster-name solutions-qa --name default1 --node-vm-size Standard_E2as_v4 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
+          az aks nodepool add --resource-group pucar-solutions-dev --cluster-name solutions-dev --name solutionsdev --node-vm-size Standard_E2as_v5 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
+          az aks nodepool add --resource-group pucar-qa --cluster-name qa --name qa --node-vm-size Standard_E2as_v4 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
           az aks nodepool add --resource-group pucar-dev --cluster-name dev --name dev --node-vm-size Standard_E2s_v4 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
