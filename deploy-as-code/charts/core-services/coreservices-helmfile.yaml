@@ -18,9 +18,9 @@ releases:
     installed: true # Replace with the version of your chart, if needed
     <<: *default
 
-  - name: pdf-service # Replace with your desired namespace
-    installed: true # Replace with the version of your chart, if needed
-    <<: *default
+#  - name: pdf-service # Replace with your desired namespace
+#    installed: true # Replace with the version of your chart, if needed
+#    <<: *default
 
 #  - name: egov-accesscontrol # Replace with your desired namespace
 #    installed: true # Replace with the version of your chart, if needed
