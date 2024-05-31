@@ -132,9 +132,9 @@ releases:
 #    installed: true
 #    <<: *default
 #
-  - name: gateway # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: gateway # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 #
 #  - name: egov-pg-service # Replace with your desired namespace
 #    installed: true
