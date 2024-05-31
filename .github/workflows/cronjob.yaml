@@ -1,0 +1,58 @@
+name: Cronjob Scheduler Workflow for Db-server and Nodepool
+
+on:
+  schedule:
+    - cron: '30 18 * * 1-5'
+    - cron: '30 2 * * 1-5'
+   
+jobs:
+  stop-resources:
+    if: github.event_name == 'schedule' && github.event.schedule == '30 18 * * 1-5'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.SOLUTIONS_AZURE_CREDENTIALS }}
+
+      - name: Stop PostgreSQL Instance
+        run: |
+          az postgres flexible-server stop --name pucar-solutions-qa-server --resource-group pucar-solutions-qa
+          az postgres flexible-server stop --name pucar-solutions-dev-server --resource-group pucar-solutions-dev
+          az postgres flexible-server stop --name pucar-qa-server --resource-group pucar-qa
+          az postgres flexible-server stop --name pucar-dev-server --resource-group pucar-dev
+      - name: Scale Node Pool to 1
+        run: |
+          az aks nodepool delete --resource-group pucar-solutions-qa --cluster-name solutions-qa --name default1
+          az aks nodepool delete --resource-group pucar-solutions-dev --cluster-name solutions-dev --name solutionsdev
+          az aks nodepool delete --resource-group pucar-qa --cluster-name qa --name qa
+          az aks nodepool delete --resource-group pucar-dev --cluster-name dev --name dev
+          
+  start-resources:
+    if: github.event_name == 'schedule' && github.event.schedule == '30 2 * * 1-5'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.SOLUTIONS_AZURE_CREDENTIALS }}
+
+      - name: Start PostgreSQL Instance
+        run: |
+          az postgres flexible-server start --name pucar-solutions-qa-server --resource-group pucar-solutions-qa
+          az postgres flexible-server start --name pucar-solutions-dev-server --resource-group pucar-solutions-dev
+          az postgres flexible-server start --name pucar-qa-server --resource-group pucar-qa
+          az postgres flexible-server start --name pucar-dev-server --resource-group pucar-dev
+
+      - name: Scale Up Node Pool to 4
+        run: |
+          az aks nodepool add --resource-group pucar-solutions-qa --cluster-name solutions-qa --name default1 --node-vm-size Standard_E2as_v4 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
+          az aks nodepool add --resource-group pucar-solutions-dev --cluster-name solutions-dev --name solutionsdev --node-vm-size Standard_E2as_v5 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
+          az aks nodepool add --resource-group pucar-qa --cluster-name qa --name qa --node-vm-size Standard_E2as_v4 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
+          az aks nodepool add --resource-group pucar-dev --cluster-name dev --name dev --node-vm-size Standard_E2s_v4 --mode User --enable-cluster-autoscaler --min-count 1 --max-count 3
