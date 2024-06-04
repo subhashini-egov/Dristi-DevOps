@@ -138,6 +138,9 @@ jobs:
             https://github.com/databus23/helm-diff
       - name: DIGIT Deployment with updated tag
         run: |
+          advocate_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_advocate_bis_improve_coverage | awk '{print $1}')
+          echo "advocate Commit ID: $advocate_commitId"
+          
           order_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_order_bis | awk '{print $1}')
           echo "Order Commit ID: $order_commitId"
           
@@ -157,6 +160,8 @@ jobs:
           echo "DIGIT-UI Commit ID: $digit_ui_commitId"
 
           helmfile -f digit-helmfile.yaml apply --include-needs=true \
+           --set advocate.image.tag=v1.0.0-${advocate_commitId} \
+           --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${advocate_commitId} \
            --set order.image.tag=v1.0.0-${order_commitId} \
            --set order.initContainers.dbMigration.image.tag=v1.0.0-${order_commitId} \
            --set hearing.image.tag=v1.0.0-${hearing_commitId} \
