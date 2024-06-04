@@ -168,11 +168,11 @@ releases:
     installed: true
     <<: *default
 
-  - name: billing-service  # Replace with your desired namespace
-    installed: true
-    <<: *default
+  # - name: billing-service  # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
 
-  - name: collection-services  # Replace with your desired namespace
-    installed: true
-    <<: *default
+  # - name: collection-services  # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
 
