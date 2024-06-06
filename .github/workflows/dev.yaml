@@ -156,7 +156,7 @@ jobs:
           case_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_case_bis | awk '{print $1}')
           echo "Case Commit ID: $case_commitId"
 
-          digit_ui_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git e-filing-flow | awk '{print $1}')
+          digit_ui_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git develop | awk '{print $1}')
           echo "DIGIT-UI Commit ID: $digit_ui_commitId"
 
           helmfile -f digit-helmfile.yaml apply --include-needs=true \
