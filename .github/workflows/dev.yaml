@@ -138,7 +138,7 @@ jobs:
             https://github.com/databus23/helm-diff
       - name: DIGIT Deployment with updated tag
         run: |
-          advocate_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_advocate_bis_improve_coverage | awk '{print $1}')
+          advocate_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git develop | awk '{print $1}')
           echo "advocate Commit ID: $advocate_commitId"
           
           order_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_order_bis | awk '{print $1}')
