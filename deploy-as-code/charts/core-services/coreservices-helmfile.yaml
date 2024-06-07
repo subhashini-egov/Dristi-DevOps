@@ -100,9 +100,9 @@ releases:
 #    installed: true
 #    <<: *default
 #
-  - name: digit-ui # Replace with your desired namespace
-    installed: true
-    <<: *default
+  # - name: digit-ui # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
 #
 #  - name: employee # Replace with your desired namespace
 #    installed: true
@@ -140,9 +140,9 @@ releases:
 #    installed: true
 #    <<: *default
 
-  - name: advocate  # Replace with your desired namespace
-    installed: true
-    <<: *default
+  # - name: advocate  # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
 
   - name: case  # Replace with your desired namespace
     installed: true

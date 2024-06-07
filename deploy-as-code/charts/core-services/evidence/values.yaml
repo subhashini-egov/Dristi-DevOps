@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "evidence_service_schema"
     image:
       repository: "pucardev.azurecr.io/pucar_evidence_db"
-      tag: v1.0.0-e4a3e4ce4f060a51ae261d0840ecc4a9d5ee1b67
+      tag: v1.0.0-fa1c77f8cf5522a1078fada142f0e75f99efe53a
 
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_evidence"
-  tag: v1.0.0-e4a3e4ce4f060a51ae261d0840ecc4a9d5ee1b67
+  tag: v1.0.0-fa1c77f8cf5522a1078fada142f0e75f99efe53a
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080

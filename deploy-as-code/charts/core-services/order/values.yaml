@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "order_service_schema"
     image:
       repository: "pucardev.azurecr.io/pucar_order_db"
-      tag: v1.0.0-6dfdd355089723b99af6c8b020e7e6044709a25
+      tag: v1.0.0-b6b464b2d88780977f5c30d286337412258b24b7
 
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_order"
-  tag: v1.0.0-6dfdd355089723b99af6c8b020e7e6044709a25
+  tag: v1.0.0-b6b464b2d88780977f5c30d286337412258b24b7
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
