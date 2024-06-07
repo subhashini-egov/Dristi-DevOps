@@ -105,7 +105,7 @@ jobs:
 
       - name: Generate kubeconfig
         run: |
-          az aks get-credentials --resource-group "pucar-solutions-dev" --name "solutions-dev"
+          az aks get-credentials --resource-group "solutions-pucar-dev" --name "solutions-dev"
           cat ~/.kube/config > kubeconfig
 
       - name: Kubectl setup
