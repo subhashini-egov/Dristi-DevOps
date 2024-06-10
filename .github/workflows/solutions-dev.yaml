@@ -158,10 +158,7 @@ jobs:
         run: |
           etreasury_commitId=$(curl -s -H "Authorization: token $TOKEN" \
             https://api.github.com/repos/pucardotorg/etreasury_kerala/commits/webpage | jq -r '.sha')
-
-          echo "::set-output name=commit_id::$COMMIT_ID"
-          # etreasury_commitId=$(git ls-remote https://$USER_PAT@github.com/pucardotorg/etreasury_kerala.git webpage | awk '{print $1}') \
-          # echo "Etreasury Commit ID: $etreasury_commitId" 
+          echo "Etreasury Commit ID: $etreasury_commitId" 
           #  # helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
           #  #  --set epayments.image.tag=v1.0.0-${etreasury_commitId}
 #        run: |
