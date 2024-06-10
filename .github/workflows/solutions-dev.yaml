@@ -154,9 +154,9 @@ jobs:
       - name: digit deployment
         env:
           HELMFILE_ENV: "solutions-dev"
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          USER_PAT: ${{ secrets.USER_PAT }}
         run: |
-          etreasury_commitId=$(git ls-remote https://Rkum113:$PAT_TOKEN@github.com/pucardotorg/etreasury_kerala.git webpage | awk '{print $1}') \
+          etreasury_commitId=$(git ls-remote https://$USER_PAT@github.com/pucardotorg/etreasury_kerala.git webpage | awk '{print $1}') \
           echo "Etreasury Commit ID: $etreasury_commitId" 
            # helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
            #  --set epayments.image.tag=v1.0.0-${etreasury_commitId}
