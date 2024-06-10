@@ -156,6 +156,9 @@ jobs:
           case_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git develop | awk '{print $1}')
           echo "Case Commit ID: $case_commitId"
 
+          task_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_task_bis | awk '{print $1}')
+          echo "Task Commit ID: $task_commitId"
+
           digit_ui_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev-env | awk '{print $1}')
           echo "DIGIT-UI Commit ID: $digit_ui_commitId"
 
@@ -172,6 +175,8 @@ jobs:
            --set evidence.initContainers.dbMigration.image.tag=v1.0.0-${evidence_commitId} \
            --set case.image.tag=v1.0.0-${case_commitId} \
            --set case.initContainers.dbMigration.image.tag=v1.0.0-${case_commitId} \
+           --set task.image.tag=v1.0.0-${task_commitId} \
+           --set task.initContainers.dbMigration.image.tag=v1.0.0-${task_commitId} \
            --set digit-ui.image.tag=v1.0.0-${digit_ui_commitId}
         env:
           HELMFILE_ENV: dev
