@@ -103,10 +103,6 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.SOLUTIONS_AZURE_CREDENTIALS }}
-      - name: Setup Docker
-        uses: docker/setup-buildx-action@v1
-      - name: Login to Azure Container Registry
-        run: docker login -u dpg-token -p ${{ secrets.DPG_TOKEN }} pucardev.azurecr.io
 
       - name: Generate kubeconfig
         run: |
@@ -159,7 +155,6 @@ jobs:
       - name: digit deployment
 #        run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
         run: |
-          docker pull pucardev.azurecr.io/pucar_advocate:v1.0.0-43a2f7f10ef883eee717329f172eccfdbfb1f752
           scheduler_commitId=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git develop | awk '{print $1}')
           echo "Scheduler Commit ID: $scheduler_commitId"
 
