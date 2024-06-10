@@ -152,9 +152,9 @@ jobs:
             https://github.com/databus23/helm-diff
 
       - name: digit deployment
-        run: 
+        run: |
           etreasury_commitId=$(git ls-remote https://github.com/pucardotorg/etreasury_kerala.git webpage | awk '{print $1}')
-          echo "Scheduler Commit ID: $etreasury_commitId"
+          echo "Etreasury Commit ID: $etreasury_commitId"
           
           helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
            --set epayments.image.tag=v1.0.0-${etreasury_commitId}
