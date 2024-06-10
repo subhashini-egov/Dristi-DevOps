@@ -152,10 +152,12 @@ jobs:
             https://github.com/databus23/helm-diff
 
       - name: digit deployment
+        env:
+          HELMFILE_ENV: "solutions-dev"
+          GHUB_TOKEN: ${{ secrets.GHUB_TOKEN }}
         run: |
           etreasury_commitId=$(git ls-remote https://Rkum113:${{ secrets.GHUB_TOKEN }}@github.com/pucardotorg/etreasury_kerala.git webpage | awk '{print $1}')
           echo "Etreasury Commit ID: $etreasury_commitId"
-          
           helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
            --set epayments.image.tag=v1.0.0-${etreasury_commitId}
 #        run: |
@@ -166,6 +168,3 @@ jobs:
 #            --set icops-integration.image.tag=v1.0.0-${integration_commitId} \
 
         working-directory: deploy-as-code
-        env:
-          HELMFILE_ENV: "solutions-dev"
-          GHUB_TOKEN: ${{ secrets.GHUB_TOKEN }}
