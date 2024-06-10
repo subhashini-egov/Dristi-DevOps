@@ -153,7 +153,7 @@ jobs:
 
       - name: digit deployment
         run: |
-          etreasury_commitId=$(git ls-remote https://tejasbeehyv:${{ secrets.GHUB_TOKEN }}@github.com/pucardotorg/etreasury_kerala.git webpage | awk '{print $1}')
+          etreasury_commitId=$(git ls-remote https://Rkum113:${{ secrets.GHUB_TOKEN }}@github.com/pucardotorg/etreasury_kerala.git webpage | awk '{print $1}')
           echo "Etreasury Commit ID: $etreasury_commitId"
           
           helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
