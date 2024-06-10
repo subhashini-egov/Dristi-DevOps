@@ -156,10 +156,8 @@ jobs:
           HELMFILE_ENV: "solutions-dev"
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          echo ${PAT_TOKEN}
-          echo $PAT_TOKEN
-          etreasury_commitId=$(git ls-remote https://Rkum113:$PAT_TOKEN@github.com/pucardotorg/etreasury_kerala.git webpage | awk '{print $1}')
-          echo "Etreasury Commit ID: $etreasury_commitId"
+          etreasury_commitId=$(git ls-remote https://Rkum113:$PAT_TOKEN@github.com/pucardotorg/etreasury_kerala.git webpage | awk '{print $1}') \
+          echo "Etreasury Commit ID: $etreasury_commitId" 
            # helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
            #  --set epayments.image.tag=v1.0.0-${etreasury_commitId}
 #        run: |
