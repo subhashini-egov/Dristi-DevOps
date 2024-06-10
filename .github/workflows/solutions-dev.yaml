@@ -156,6 +156,7 @@ jobs:
           HELMFILE_ENV: "solutions-dev"
           USER_PAT: ${{ secrets.USER_PAT }}
         run: |
+          git ls-remote https://$USER_PAT@github.com/pucardotorg/etreasury_kerala.git
           etreasury_commitId=$(git ls-remote https://$USER_PAT@github.com/pucardotorg/etreasury_kerala.git webpage | awk '{print $1}') \
           echo "Etreasury Commit ID: $etreasury_commitId" 
            # helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
