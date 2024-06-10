@@ -168,3 +168,4 @@ jobs:
         working-directory: deploy-as-code
         env:
           HELMFILE_ENV: "solutions-dev"
+          GHUB_TOKEN: ${{ secrets.GHUB_TOKEN }}
