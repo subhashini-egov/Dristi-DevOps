@@ -106,7 +106,7 @@ jobs:
       - name: Setup Docker
         uses: docker/setup-buildx-action@v1
       - name: Login to Azure Container Registry
-        run: docker login -u dpg-token -p ${{ secrets.DPG_TOKEN }} pucarsolutionsdev.azurecr.io
+        run: docker login -u dpg-token -p ${{ secrets.DPG_TOKEN }} pucardev.azurecr.io
 
       - name: Generate kubeconfig
         run: |
