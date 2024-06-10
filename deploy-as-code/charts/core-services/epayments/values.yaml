@@ -13,7 +13,7 @@ ingress:
 # Container Configs
 image:
    repository: "pucarsolutionsdev.azurecr.io/epayments"
-   tag: latest
+   tag: v1.0.0-d53d96f23766aeafaa669b03d8335416d50f79b3
 replicas: "1"
 
 env: |
