@@ -150,7 +150,7 @@ jobs:
           hearing_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_hearing | awk '{print $1}')
           echo "hearing Commit ID: $hearing_commitId"
           
-          evidence_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_evidence | awk '{print $1}')
+          evidence_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_evidence_bis | awk '{print $1}')
           echo "Evidence Commit ID: $evidence_commitId"
           
           case_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git develop | awk '{print $1}')
