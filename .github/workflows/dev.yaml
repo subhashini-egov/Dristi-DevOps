@@ -144,7 +144,7 @@ jobs:
           order_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git develop | awk '{print $1}')
           echo "Order Commit ID: $order_commitId"
           
-          application_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_application | awk '{print $1}')
+          application_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git case_utils_for_application | awk '{print $1}')
           echo "Application Commit ID: $application_commitId"
           
           hearing_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev_backend_hearing | awk '{print $1}')
