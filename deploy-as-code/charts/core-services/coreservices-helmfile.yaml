@@ -180,3 +180,7 @@ releases:
   #   installed: true
   #   <<: *default
 
+  - name: egov-apportion-service  # Replace with your desired namespace
+    installed: true
+    <<: *default
+
