@@ -1,0 +1,19 @@
+# Common Labels
+labels:
+  app: "qr-code-service"
+  group: "rainmaker"
+
+# Ingress Configs
+ingress:
+  enabled: true
+  context: "qr-code-service"
+
+# Init Containers Configs
+initContainers: {}
+
+# Container Configs
+image:
+  repository: "pucarsolutionsdev.azurecr.io/qr_code_service"
+  tag: v1.0.0-a020541efb24aabeae3c4f7c71f781b835f675c0
+replicas: "1"
+

@@ -14,6 +14,11 @@ commonLabels:
   deployment: "pucar"
 
 releases:
+  - name: qr-code-service # Replace with your desired namespace
+    installed: true # Replace with the version of your chart, if needed
+    labels:
+      team: "solutions"
+    <<: *default
 #  - name: egov-accesscontrol # Replace with your desired namespace
 #    installed: true # Replace with the version of your chart, if needed
 #    <<: *default
@@ -102,9 +107,9 @@ releases:
 #    installed: true
 #    <<: *default
 #
-  - name: digit-ui # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: digit-ui # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
 #  - name: employee # Replace with your desired namespace
 #    installed: true
@@ -148,15 +153,15 @@ releases:
 #      team: "dpg"
 #    <<: *default
 
-  - name: scheduler  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "solutions"
-    <<: *default
-
-  - name: advocate  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "dpg"
-    <<: *default
+#  - name: scheduler  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "solutions"
+#    <<: *default
+#
+#  - name: advocate  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "dpg"
+#    <<: *default
 
