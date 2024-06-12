@@ -144,6 +144,7 @@ configmaps:
       health-individual: 'http://health-individual.health:8080/'
       advocate: 'http://advocate.egov:8080/'
       case: 'http://case.egov:8080/'
+      application: 'http://application.egov:8080/'
 
 root-ingress:
   name: root-ingress

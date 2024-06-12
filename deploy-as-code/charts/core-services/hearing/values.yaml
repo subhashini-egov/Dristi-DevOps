@@ -100,7 +100,7 @@ env: |
   - name: SERVER_PORT
     value: "8080"
   - name: SERVER_CONTEXT_PATH
-    value: /case
+    value: /application
   - name: EGOV_IDGEN_PATH
     value: "egov-idgen/id/_generate"
   - name: EGOV_INDIVIDUAL_HOST
@@ -122,6 +122,16 @@ env: |
     valueFrom:
       configMapKeyRef:
         key: egov-url-shortening
+        name: egov-service-host
+  - name: EGOV_CASE_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: case
+        name: egov-service-host
+  - name: EGOV_application_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: application
         name: egov-service-host
 
 
