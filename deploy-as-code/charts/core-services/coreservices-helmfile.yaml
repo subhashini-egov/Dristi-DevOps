@@ -140,21 +140,21 @@ releases:
 #    installed: true
 #    <<: *default
 
-  - name: advocate  # Replace with your desired namespace
-    installed: true
-    <<: *default
+  # - name: advocate  # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
 
-  - name: case  # Replace with your desired namespace
-    installed: true
-    <<: *default
+  # - name: case  # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
 
 #  - name: inbox  # Replace with your desired namespace
 #    installed: true
 #    <<: *default
 
-  - name: order  # Replace with your desired namespace
-    installed: true
-    <<: *default
+  # - name: order  # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
 
   - name: application  # Replace with your desired namespace
     installed: true
@@ -180,7 +180,7 @@ releases:
   #   installed: true
   #   <<: *default
 
-  - name: egov-apportion-service  # Replace with your desired namespace
-    installed: true
-    <<: *default
+  # - name: egov-apportion-service  # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
 
