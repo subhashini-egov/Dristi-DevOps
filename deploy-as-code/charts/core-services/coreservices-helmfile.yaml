@@ -102,9 +102,9 @@ releases:
 #    installed: true
 #    <<: *default
 #
-  - name: digit-ui # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: digit-ui # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
 #  - name: employee # Replace with your desired namespace
 #    installed: true
@@ -154,7 +154,25 @@ releases:
       team: "solutions"
     <<: *default
 
-  - name: advocate  # Replace with your desired namespace
+#  - name: advocate  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "dpg"
+#    <<: *default
+  - name: billing-service  # Replace with your desired namespace
+    installed: true
+    labels:
+       team: "dpg"
+    <<: *default
+
+
+  - name: collection-services  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: case  # Replace with your desired namespace
     installed: true
     labels:
       team: "dpg"
