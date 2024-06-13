@@ -70,7 +70,7 @@ env: |
         key: password
   - name: "SCHEMA_TABLE"
     value: "collection_services_schema"
-  - name: EGOV_IDGEN_HOST
+  - name: EGOV_IDGEN_HOSTNAME
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
@@ -129,5 +129,10 @@ env: |
     valueFrom:
       configMapKeyRef:
         key: egov-url-shortening
+        name: egov-service-host
+  - name: EGOV_APPORTION_SERVICE_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: egov-apportion-service
         name: egov-service-host
 
