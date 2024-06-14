@@ -187,4 +187,6 @@ releases:
   # - name: egov-apportion-service  # Replace with your desired namespace
   #   installed: true
   #   <<: *default
-
+  - name: casemanagement  # Replace with your desired namespace
+    installed: true
+    <<: *default
