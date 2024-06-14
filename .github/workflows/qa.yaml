@@ -139,8 +139,7 @@ jobs:
             https://github.com/databus23/helm-diff
       - name: DIGIT Deployment with updated tag
         run: |
-#          helmfile -f digit-helmfile.yaml template
-         helmfile -f digit-helmfile.yaml apply --include-needs=true
+           helmfile -f digit-helmfile.yaml apply --include-needs=true
         env:
           HELMFILE_ENV: qa
         working-directory: deploy-as-code
