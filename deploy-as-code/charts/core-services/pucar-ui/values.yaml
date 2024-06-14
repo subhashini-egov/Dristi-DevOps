@@ -14,7 +14,7 @@ initContainers: {}
 # Container Configs
 image:
   repository: "egovio/pucar-ui"
-  tag: v1.0.0-pucar-f16d10d3d8-47 
+  tag: pucar-f16d10d3d8-47 
 replicas: "1"
 httpPort: 80
 healthChecks:
