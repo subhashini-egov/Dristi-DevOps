@@ -100,9 +100,9 @@ releases:
 #    installed: true
 #    <<: *default
 #
-  - name: digit-ui # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: digit-ui # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 #
 #  - name: employee # Replace with your desired namespace
 #    installed: true
@@ -156,21 +156,21 @@ releases:
   #   installed: true
   #   <<: *default
 
-  - name: application  # Replace with your desired namespace
-    installed: true
-    <<: *default
-
-  - name: evidence  # Replace with your desired namespace
-    installed: true
-    <<: *default
-
-  - name: hearing  # Replace with your desired namespace
-    installed: true
-    <<: *default
-
-  - name: task  # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: application  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#
+#  - name: evidence  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#
+#  - name: hearing  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#
+#  - name: task  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
   - name: pucar-ui  # Replace with your desired namespace
     installed: true
