@@ -159,20 +159,26 @@ releases:
 #    labels:
 #      team: "dpg"
 #    <<: *default
-  - name: billing-service  # Replace with your desired namespace
-    installed: true
-    labels:
-       team: "dpg"
-    <<: *default
+#  - name: billing-service  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#       team: "dpg"
+#    <<: *default
+#
+#
+#  - name: collection-services  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "dpg"
+#    <<: *default
+#
+#  - name: case  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "dpg"
+#    <<: *default
 
-
-  - name: collection-services  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "dpg"
-    <<: *default
-
-  - name: case  # Replace with your desired namespace
+  - name: inbox  # Replace with your desired namespace
     installed: true
     labels:
       team: "dpg"
