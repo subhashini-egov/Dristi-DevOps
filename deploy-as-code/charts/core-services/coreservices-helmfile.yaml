@@ -112,9 +112,9 @@ releases:
 #    installed: true
 #    <<: *default
 #
-#  - name: pgr-services # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  - name: pgr-services # Replace with your desired namespace
+    installed: true
+    <<: *default
 #
 #  - name: gateway # Replace with your desired namespace
 #    installed: true
