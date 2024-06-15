@@ -103,6 +103,10 @@ releases:
   - name: digit-ui # Replace with your desired namespace
     installed: true
     <<: *default
+
+  - name: task  # Replace with your desired namespace
+    installed: true
+    <<: *default
 #
 #  - name: employee # Replace with your desired namespace
 #    installed: true
@@ -168,9 +172,7 @@ releases:
 #    installed: true
 #    <<: *default
 #
- - name: task  # Replace with your desired namespace
-   installed: true
-   <<: *default
+
 
 #  - name: pucar-ui  # Replace with your desired namespace
 #    installed: true
