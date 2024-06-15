@@ -112,9 +112,9 @@ releases:
 #    installed: true
 #    <<: *default
 #
-  - name: pgr-services # Replace with your desired namespace
-    installed: true
-    <<: *default
+  # - name: pgr-services # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
 #
 #  - name: gateway # Replace with your desired namespace
 #    installed: true
@@ -168,9 +168,9 @@ releases:
 #    installed: true
 #    <<: *default
 #
-#  - name: task  # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+ - name: task  # Replace with your desired namespace
+   installed: true
+   <<: *default
 
 #  - name: pucar-ui  # Replace with your desired namespace
 #    installed: true
