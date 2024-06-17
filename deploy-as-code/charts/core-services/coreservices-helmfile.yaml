@@ -172,13 +172,55 @@ releases:
 #      team: "dpg"
 #    <<: *default
 #
-#  - name: case  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
+  - name: case  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
 
   - name: inbox  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: application  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: casemanagement  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: egov-apportion-service  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: evidence  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: hearing  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: order  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: task  # Replace with your desired namespace
     installed: true
     labels:
       team: "dpg"

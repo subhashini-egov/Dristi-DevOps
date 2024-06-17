@@ -1,28 +1,28 @@
 # Common Labels
 labels:
-  app: "case"
+  app: "task"
   group: "backend"
 
 # Ingress Configs
 ingress:
   zuul: true
   enabled: true
-  context: "case"
+  context: "task"
 
 
 # Init Containers Configs
 initContainers:
   dbMigration:
     enabled: true
-    schemaTable: "case_service_schema"
+    schemaTable: "task_service_schema"
     image:
-      repository: "pucarsolutionsdev.azurecr.io/pucar_case_db"
-      tag: v1.0.0-75b99ce0b5b9b03e548ee021f2c0d548a291b2d3
+      repository: "pucarsolutionsdev.azurecr.io/pucar_task_db"
+      tag: v1.0.0-1c82a35946eabe41501c3a13508bf21dff84ef41
 
 # Container Configs
 image:
-  repository: "pucarsolutionsdev.azurecr.io/pucar_case"
-  tag: v1.0.0-75b99ce0b5b9b03e548ee021f2c0d548a291b2d3
+  repository: "pucarsolutionsdev.azurecr.io/pucar_task"
+  tag: v1.0.0-1c82a35946eabe41501c3a13508bf21dff84ef41
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
@@ -35,8 +35,8 @@ memory_requests: 256Mi
 
 #healthChecks:
 #  enabled: true
-#  livenessProbePath: "/case/"
-#  readinessProbePath: "/case/"
+#  livenessProbePath: "/task/"
+#  readinessProbePath: "/task/"
 
 env: |
   - name: SPRING_FLYWAY_URL
@@ -70,7 +70,7 @@ env: |
         name: db
         key: password
   - name: "SCHEMA_TABLE"
-    value: "case_service_schema"
+    value: "task_service_schema"
   - name: EGOV_IDGEN_HOST
     valueFrom:
       configMapKeyRef:
@@ -103,7 +103,7 @@ env: |
   - name: SERVER_PORT
     value: "8080"
   - name: SERVER_CONTEXT_PATH
-    value: /case
+    value: /task
   - name: EGOV_IDGEN_PATH
     value: "egov-idgen/id/_generate"
   - name: EGOV_INDIVIDUAL_HOST
@@ -126,15 +126,16 @@ env: |
       configMapKeyRef:
         key: egov-url-shortening
         name: egov-service-host
-  - name: EGOV_FILESTORE_HOST
+  - name: EGOV_CASE_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-filestore
-  - name: EGOV_ADVOCATE_HOST
+        key: case
+  - name: EGOV_ORDER_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: advocate
-  
+        key: order
+
+
     
