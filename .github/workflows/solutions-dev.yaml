@@ -158,7 +158,7 @@ jobs:
           scheduler_commitId=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git develop | awk '{print $1}')
           echo "Scheduler Commit ID: $scheduler_commitId"
 
-          helmfile -l deployment=pucar,team=dpg -f digit-helmfile.yaml apply --include-needs=true\
+          helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
            --set scheduler.image.tag=v1.0.0-${scheduler_commitId} \
            --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${scheduler_commitId}
         working-directory: deploy-as-code
