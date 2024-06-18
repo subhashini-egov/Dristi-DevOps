@@ -3,7 +3,7 @@ name: Pucar-Install Workflow DPG-Dev
 on:
   push:
     branches:
-      - Dev-0
+      - test
   pull_request:
     branches:
       - main

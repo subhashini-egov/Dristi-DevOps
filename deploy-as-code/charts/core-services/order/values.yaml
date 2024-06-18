@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "order_service_schema"
     image:
       repository: "pucardev.azurecr.io/pucar_order_db"
-      tag: v1.0.0-b6b464b2d88780977f5c30d286337412258b24b7
+      tag: v1.0.0-0c37ad0fb3a1b69c720ecc9967b0b788cd00f773
 
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_order"
-  tag: v1.0.0-b6b464b2d88780977f5c30d286337412258b24b7
+  tag: v1.0.0-0c37ad0fb3a1b69c720ecc9967b0b788cd00f773
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
@@ -90,7 +90,9 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-service-v2
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: /mdms-v2/v1/_search
   - name: EGOV_LOCALIZATION_HOST
     valueFrom:
       configMapKeyRef:
@@ -98,8 +100,6 @@ env: |
         key: egov-localization
   - name: EGOV_LOCALIZATION_SEARCH_ENDPOINT
     value: /localization/messages/v1/_search
-  - name: EGOV_MDMS_SEARCH_ENDPOINT
-    value: /egov-mdms-service/v1/_search
   - name: SERVER_PORT
     value: "8080"
   - name: SERVER_CONTEXT_PATH
@@ -141,5 +141,8 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: case
+  - name: EGOV_CASE_PATH
+    value: case/case/v1/_exists
+
   
     

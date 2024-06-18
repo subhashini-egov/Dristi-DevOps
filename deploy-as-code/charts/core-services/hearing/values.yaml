@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "hearing_service_schema"
     image:
       repository: "pucardev.azurecr.io/pucar_hearing_db"
-      tag: v1.0.0-8aa319eb69a5b8890d4f29de3bec7512f6df394f
+      tag: v1.0.0-102cc4dd355a4ea226dc21f0d507e9f6cee1fa99
 
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_hearing"
-  tag: v1.0.0-8aa319eb69a5b8890d4f29de3bec7512f6df394f
+  tag: v1.0.0-102cc4dd355a4ea226dc21f0d507e9f6cee1fa99
 replicas: "1"
 httpPort: 8080
 appType: "java-spring"
@@ -87,7 +87,9 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-service-v2
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: /mdms-v2/v1/_search
   - name: EGOV_LOCALIZATION_HOST
     valueFrom:
       configMapKeyRef:
@@ -95,8 +97,6 @@ env: |
         key: egov-localization
   - name: EGOV_LOCALIZATION_SEARCH_ENDPOINT
     value: /localization/messages/v1/_search
-  - name: EGOV_MDMS_SEARCH_ENDPOINT
-    value: /egov-mdms-service/v1/_search
   - name: SERVER_PORT
     value: "8080"
   - name: SERVER_CONTEXT_PATH

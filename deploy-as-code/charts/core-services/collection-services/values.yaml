@@ -17,7 +17,7 @@ initContainers:
     schemaTable: "collection_services_schema"
     image:
       repository: "pucardev.azurecr.io/pucar_collection_db"
-      tag: v1.0.0-360fd4ebc4acb10a13c6b325d839c7c9c1dfebda
+      tag: v1.0.0-360f1
 
 # Container Configs
 image:
@@ -85,11 +85,18 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-hrms
+  - name: EGOV_HRMS_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-hrms
   - name: EGOV_MDMS_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-service-v2
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: /mdms-v2/v1/_search
   - name: EGOV_LOCALIZATION_HOST
     valueFrom:
       configMapKeyRef:
@@ -97,8 +104,6 @@ env: |
         key: egov-localization
   - name: EGOV_LOCALIZATION_SEARCH_ENDPOINT
     value: /localization/messages/v1/_search
-  - name: EGOV_MDMS_SEARCH_ENDPOINT
-    value: /egov-mdms-service/v1/_search
   - name: SERVER_PORT
     value: "8080"
   - name: SERVER_CONTEXT_PATH

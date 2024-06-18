@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "evidence_service_schema"
     image:
       repository: "pucardev.azurecr.io/pucar_evidence_db"
-      tag: v1.0.0-fa1c77f8cf5522a1078fada142f0e75f99efe53a
+      tag: v1.0.0-8048d6d338f50343ff5631f0852e30a8437aeef8
 
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_evidence"
-  tag: v1.0.0-fa1c77f8cf5522a1078fada142f0e75f99efe53a
+  tag: v1.0.0-8048d6d338f50343ff5631f0852e30a8437aeef8
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
@@ -90,7 +90,9 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-service-v2
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: /mdms-v2/v1/_search
   - name: EGOV_LOCALIZATION_HOST
     valueFrom:
       configMapKeyRef:

@@ -32,11 +32,18 @@ env: |
     value: "8080"
   - name: JAVA_OPTS
     value: {{ index .Values "heap" | quote }}
+  - name: EGOV_HRMS_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-hrms
   - name: EGOV_MDMS_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-service-v2
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: /mdms-v2/v1/_search
   - name: JAVA_ARGS
     value: {{ index .Values "java-args" | quote }}
   {{- if index .Values "tracing-enabled" }}
