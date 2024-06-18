@@ -47,7 +47,7 @@ env: |
     value: {{ index .Values "idformat-from-mdms" | quote }}
   - name: AUTOCREATE_NEW_SEQ
     value: {{ index .Values "autocreate-new-seq" | quote }}
-  - name: EGOV_MDMS_HOST
+  - name: MDMS_SERVICE_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
