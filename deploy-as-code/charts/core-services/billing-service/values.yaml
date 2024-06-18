@@ -124,5 +124,11 @@ env: |
       configMapKeyRef:
         key: egov-url-shortening
         name: egov-service-host
-
+  - name: EGOV_APPORTION_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: egov-apportion-service
+        name: egov-service-host
+  - name: STATELEVEL_ROLECODE_EXCLUDED_LIST
+    value: EMPLOYEE,BPAREG_DOC_VERIFIER,BPAREG_APPROVER
     
