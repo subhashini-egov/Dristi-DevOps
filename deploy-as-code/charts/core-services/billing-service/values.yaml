@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "billing_service_schema"
     image:
       repository: "pucardev.azurecr.io/pucar_billing_db"
-      tag: v1.0.0-fb41dcb1ba755fcd9c2fa4aacffdaed67e692bfe
+      tag: v1.0.0-bad4872ab874c10de33c5053bb56e67414cb9e85
 
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_billing"
-  tag: v1.0.0-fb41dcb1ba755fcd9c2fa4aacffdaed67e692bfe
+  tag: v1.0.0-bad4872ab874c10de33c5053bb56e67414cb9e85
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
@@ -79,11 +79,18 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-hrms
+  - name: EGOV_HRMS_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-hrms
   - name: EGOV_MDMS_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-service-v2
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: /mdms-v2/v1/_search
   - name: EGOV_LOCALIZATION_HOST
     valueFrom:
       configMapKeyRef:
@@ -91,8 +98,6 @@ env: |
         key: egov-localization
   - name: EGOV_LOCALIZATION_SEARCH_ENDPOINT
     value: /localization/messages/v1/_search
-  - name: EGOV_MDMS_SEARCH_ENDPOINT
-    value: /egov-mdms-service/v1/_search
   - name: SERVER_PORT
     value: "8080"
   - name: SERVER_CONTEXT_PATH

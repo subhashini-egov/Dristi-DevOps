@@ -16,12 +16,12 @@ initContainers:
     schemaTable: "advocate_service_schema"
     image:
       repository: "pucardev.azurecr.io/pucar_advocate_db"
-      tag: v1.0.0-3bedb925e26286af59b8a1348280be34b95759b8
+      tag: v1.0.0-7e753b471f07dca0f1d13c3a6b3782b67f69bfd2
 
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_advocate"
-  tag: v1.0.0-3bedb925e26286af59b8a1348280be34b95759b8
+  tag: v1.0.0-7e753b471f07dca0f1d13c3a6b3782b67f69bfd2
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
@@ -88,7 +88,7 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-service-v2
   - name: EGOV_LOCALIZATION_HOST
     valueFrom:
       configMapKeyRef:
@@ -97,7 +97,7 @@ env: |
   - name: EGOV_LOCALIZATION_SEARCH_ENDPOINT
     value: /localization/messages/v1/_search
   - name: EGOV_MDMS_SEARCH_ENDPOINT
-    value: /egov-mdms-service/v1/_search
+    value: /mdms-v2/v1/_search
   - name: SERVER_PORT
     value: "8080"
   - name: SERVER_CONTEXT_PATH

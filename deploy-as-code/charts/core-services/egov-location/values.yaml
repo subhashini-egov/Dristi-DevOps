@@ -49,9 +49,9 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: {{ .Values.mdmsHost | default "egov-mdms-service" }} 
+        key: {{ .Values.mdmsHost | default "mdms-service-v2" }} 
   - name: EGOV_SERVICES_EGOV_MDMS_SEARCHPATH
-    value: {{ .Values.mdmsSearchPath | default "egov-mdms-service/v1/_search" }}
+    value: {{ .Values.mdmsSearchPath | default "/mdms-v2/v1/_search" }}
   {{- if index .Values "gmaps" }}
   - name: GMAPS_API_KEY
     valueFrom:
