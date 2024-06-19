@@ -14,11 +14,11 @@ commonLabels:
   deployment: "pucar"
 
 releases:
-  - name: qr-code-service # Replace with your desired namespace
-    installed: true # Replace with the version of your chart, if needed
-    labels:
-      team: "solutions"
-    <<: *default
+  # - name: qr-code-service # Replace with your desired namespace
+  #   installed: true # Replace with the version of your chart, if needed
+  #   labels:
+  #     team: "solutions"
+  #   <<: *default
 #  - name: egov-accesscontrol # Replace with your desired namespace
 #    installed: true # Replace with the version of your chart, if needed
 #    <<: *default
@@ -141,11 +141,11 @@ releases:
 #      team: "dpg"
 #    <<: *default
 #
-#  - name: mdms-v2 # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
+ - name: mdms-v2 # Replace with your desired namespace
+   installed: true
+   labels:
+     team: "dpg"
+   <<: *default
 #
 #  - name: individual  # Replace with your desired namespace
 #    installed: true
