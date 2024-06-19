@@ -36,9 +36,9 @@ httpPort: 8080
 env: |
   - name: SPRING_FLYWAY_URL
     valueFrom:
-      secretKeyRef:
-        name: db
+      configMapKeyRef:
         key: db-url
+        name: egov-config
   - name: SPRING_FLYWAY_USER
     valueFrom:
       secretKeyRef:
@@ -51,9 +51,9 @@ env: |
         key: password
   - name: SPRING_DATASOURCE_URL
     valueFrom:
-      secretKeyRef:
-        name: db
+      configMapKeyRef:
         key: db-url
+        name: egov-config
   - name: SPRING_DATASOURCE_USERNAME
     valueFrom:
       secretKeyRef:
