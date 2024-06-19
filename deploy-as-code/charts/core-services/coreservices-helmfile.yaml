@@ -54,9 +54,9 @@ releases:
 #    - egov-user
 #    <<: *default
 #
-#  - name: egov-indexer # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  - name: egov-indexer # Replace with your desired namespace
+    installed: true
+    <<: *default
 #
 #  - name: egov-notification-mail # Replace with your desired namespace
 #    installed: true
@@ -76,9 +76,9 @@ releases:
 #    installed: true
 #    <<: *default
 #
-#  - name: egov-persister # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  - name: egov-persister # Replace with your desired namespace
+    installed: true
+    <<: *default
 #
 #  - name: egov-url-shortening # Replace with your desired namespace
 #    installed: true
@@ -102,9 +102,9 @@ releases:
 #    installed: true
 #    <<: *default
 #
-#  - name: digit-ui # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  - name: digit-ui # Replace with your desired namespace
+    installed: true
+    <<: *default
 
 #  - name: employee # Replace with your desired namespace
 #    installed: true
@@ -142,35 +142,35 @@ releases:
 #      team: "dpg"
 #    <<: *default
 #
-#  - name: individual  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-
+  - name: individual  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+ 
   - name: scheduler  # Replace with your desired namespace
     installed: true
     labels:
       team: "solutions"
     <<: *default
 
-#  - name: advocate  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#  - name: billing-service  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#       team: "dpg"
-#    <<: *default
+  - name: advocate  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+  - name: billing-service  # Replace with your desired namespace
+    installed: true
+    labels:
+        team: "dpg"
+    <<: *default
 #
 #
-#  - name: collection-services  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
+  - name: collection-services  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
 #
   - name: case  # Replace with your desired namespace
     installed: true

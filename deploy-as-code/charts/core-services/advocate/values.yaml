@@ -38,7 +38,7 @@ env: |
     valueFrom:
       secretKeyRef:
         name: db
-        key: password
+        key: db-url
   - name: SPRING_FLYWAY_USER
     valueFrom:
       secretKeyRef:
@@ -53,7 +53,7 @@ env: |
     valueFrom:
       secretKeyRef:
         name: db
-        key: password
+        key: db-url
   - name: SPRING_DATASOURCE_USERNAME
     valueFrom:
       secretKeyRef:

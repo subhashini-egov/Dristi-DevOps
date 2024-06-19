@@ -1,8 +1,8 @@
 name: Pucar-Install Workflow Solutins-QA
 on:
-#  push:
-#    branches:
-#      - main
+  push:
+    branches:
+      - Scheduler-Deploy
 #  pull_request:
 #    branches:
 #      - main
@@ -158,7 +158,7 @@ jobs:
           echo "Scheduler Commit ID: $scheduler_commitId"
         
         
-          helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
+          helmfile -l deployment=pucar,team=dpg -f digit-helmfile.yaml apply --include-needs=true\
            --set scheduler.image.tag=v1.0.0-${scheduler_commitId} \
            --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${scheduler_commitId}
         working-directory: deploy-as-code

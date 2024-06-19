@@ -119,3 +119,8 @@ env: |
       configMapKeyRef:
         key: egov-url-shortening
         name: egov-service-host
+  - name: EGOV_APPORTION_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: egov-apportion-service
+        name: egov-service-host
