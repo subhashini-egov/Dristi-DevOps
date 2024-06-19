@@ -19,6 +19,11 @@ releases:
    labels:
      team: "solutions"
    <<: *default
+ - name: summons # Replace with your desired namespace
+   installed: true # Replace with the version of your chart, if needed
+   labels:
+     team: "solutions"
+   <<: *default
 #  - name: egov-accesscontrol # Replace with your desired namespace
 #    installed: true # Replace with the version of your chart, if needed
 #    <<: *default
