@@ -16,5 +16,18 @@ image:
    tag: v1.0.0-6267275d722791cf98a50218e67883220555f0a8
 replicas: "1"
 
+env: |
+  - name: EGOV_MDMS_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-mdms-service
+  - name: EGOV_FILE_STORE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-filestore
+  
+
 
 
