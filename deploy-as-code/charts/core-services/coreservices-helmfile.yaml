@@ -147,9 +147,9 @@ releases:
 #      team: "dpg"
 #    <<: *default
 #
-  - name: individual  # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: individual  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
 #  - name: scheduler  # Replace with your desired namespace
 #    installed: true
@@ -163,11 +163,11 @@ releases:
 #      team: "dpg"
 #    <<: *default
 
-  - name: billing-service  # Replace with your desired namespace
-    installed: true
-    <<: *default
-
-  - name: collection-services  # Replace with your desired namespace
-    installed: true
-    <<: *default
-
+#  - name: billing-service  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#
+#  - name: collection-services  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#

@@ -14,6 +14,6 @@ initContainers: {}
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/qr_code_service"
-  tag: v1.0.0-a020541efb24aabeae3c4f7c71f781b835f675c0
+  tag: v1.0.0-ff38bbcae147c92f0434724206de380f49cdccc4
 replicas: "1"
 
