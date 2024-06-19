@@ -24,10 +24,10 @@ image:
   repository: "pucarsolutionsdev.azurecr.io/summons-svc"
   tag: v1.0.0-3e6af37ff518a7c579b53b74a7ed3418d57b8218
 replicas: "1"
-healthChecks:
-  enabled: true
-  livenessProbePath: "/summons/health"
-  readinessProbePath: "/summons/health"
+# healthChecks:
+#   enabled: true
+#   livenessProbePath: "/summons/health"
+#   readinessProbePath: "/summons/health"
 appType: "java-spring"
 tracing-enabled: true
 heap: "-Xmx64m -Xms64m"
