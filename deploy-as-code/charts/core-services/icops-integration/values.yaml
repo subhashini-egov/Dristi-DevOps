@@ -27,7 +27,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-filestore
-  
+  - name: EGOV_SUMMONS_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: summons
+        name: egov-service-host
 
 
 
