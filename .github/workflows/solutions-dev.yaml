@@ -6,8 +6,8 @@ on:
 #  pull_request:
 #    branches:
 #      - main
-  workflow_dispatch:
-  repository_dispatch:
+ workflow_dispatch:
+ repository_dispatch:
 
 permissions:
   id-token: write
