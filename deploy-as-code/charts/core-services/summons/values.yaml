@@ -95,7 +95,7 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-url-shortening
-  - name: EGOV_FILESTORE_HOST
+  - name: EGOV_FILE_STORE_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
@@ -110,6 +110,12 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: pdf-service
+  - name: EGOv_ICOPS_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: icops-integration
+        name: egov-service-host
+
   
   
   
