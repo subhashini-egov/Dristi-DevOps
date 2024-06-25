@@ -12,14 +12,14 @@ ingress:
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/e-sign"
-  tag: v1.0.0-cf173a08123e571678d40b6f98b502fed5187321
+  tag: v1.0.0-f1e2758608035ba1270d07352172459b9f063e0e
 replicas: "1"
 
 
 healthChecks:
   enabled: true
-  livenessProbePath: "/e-sign/health"
-  readinessProbePath: "/e-sign/health"
+  livenessProbePath: "/e-sign/"
+  readinessProbePath: "/e-sign/"
     
 env: |
   - name: SERVER_PORT
