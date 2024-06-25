@@ -12,7 +12,7 @@ ingress:
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/e-sign"
-  tag: v1.0.0-f1e2758608035ba1270d07352172459b9f063e0e
+  tag: v1.0.0-e4c2a1988377009d99c7bd1f8d0e2187692f3bd9
 replicas: "1"
 
 
