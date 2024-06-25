@@ -18,8 +18,8 @@ replicas: "1"
 
 healthChecks:
   enabled: true
-  livenessProbePath: "/e-sign/"
-  readinessProbePath: "/e-sign/"
+  livenessProbePath: "/e-sign/health"
+  readinessProbePath: "/e-sign/health"
     
 env: |
   - name: SERVER_PORT
