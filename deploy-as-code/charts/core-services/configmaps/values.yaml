@@ -145,6 +145,9 @@ configmaps:
       advocate: 'http://advocate.egov:8080/'
       case: 'http://case.egov:8080/'
       application: 'http://application.egov:8080/'
+      hearing: 'http://hearing.egov:8080/'
+      task: 'http://task.egov:8080/'
+      evidence: 'http://evidence.egov:8080/'
 
 root-ingress:
   name: root-ingress

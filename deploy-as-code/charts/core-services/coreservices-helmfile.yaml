@@ -104,6 +104,10 @@ releases:
     installed: true
     <<: *default
 
+  - name: analytics # Replace with your desired namespace
+    installed: true
+    <<: *default
+
   # - name: task  # Replace with your desired namespace
   #   installed: true
   #   <<: *default

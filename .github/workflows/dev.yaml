@@ -140,9 +140,12 @@ jobs:
         run: |
           digit_ui_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev-env | awk '{print $1}')
           echo "DIGIT-UI Commit ID: $digit_ui_commitId"
+          analytics_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git pending-tasks-analytics | awk '{print $1}')
+          echo "ANALYTICS Commit ID: $analytics_commitId"
 
           helmfile -f digit-helmfile.yaml apply --include-needs=true \
-           --set digit-ui.image.tag=v1.0.0-${digit_ui_commitId}
+           --set digit-ui.image.tag=v1.0.0-${digit_ui_commitId} \
+           --set analytics.image.tag=v1.0.0-${analytics_commitId}
         env:
           HELMFILE_ENV: dev
         working-directory: deploy-as-code

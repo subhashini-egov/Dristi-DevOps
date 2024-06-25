@@ -5,6 +5,7 @@ labels:
 
 # Ingress Configs
 ingress:
+  zuul: true
   enabled: true
   context: "advocate"
 
