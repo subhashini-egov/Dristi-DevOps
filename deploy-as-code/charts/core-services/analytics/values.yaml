@@ -1,0 +1,89 @@
+# Common Labels
+labels:
+  app: "analytics"
+  group: "backend"
+
+# Ingress Configs
+ingress:
+  zuul: true
+  enabled: true
+  context: "analytics"
+
+
+# Init Containers Configs
+
+
+# Container Configs
+image:
+  repository: "pucardev.azurecr.io/pucar_analytics"
+  tag: v1.0.0-c8184bc4431e4722a5a97f6e03240c4c0f908788
+  imagePullPolicy: Always
+replicas: "1"
+httpPort: 8080
+appType: "java-spring"
+heap: "-Xmx64m -Xms64m"
+java-args: "-Dspring.profiles.active=monitoring"
+memory_requests: 256Mi
+
+
+env: |
+  - name: SERVER_PORT
+    value: "8080"
+  - name: SERVER_CONTEXT_PATH
+    value: /analytics
+  - name: EGOV_IDGEN_PATH
+    value: "egov-idgen/id/_generate"
+  - name: EGOV_INDIVIDUAL_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: individual
+        name: egov-service-host
+  - name: EGOV_WORKFLOW_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-workflow-v2
+  - name: KAFKA_CONFIG_BOOTSTRAP_SERVER_CONFIG
+    valueFrom:
+      configMapKeyRef:
+        key: kafka-brokers
+        name: egov-config
+  - name: KAFKA_TOPICS_CONSUMER
+    value:save-wf-transitions
+  - name: EGOV_INDEXER_ES_HOST_NAME
+    valueFrom:
+      configMapKeyRef:
+        key: es-host
+        name: egov-config
+  - name: EGOV_INFRA_INDEXER_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: es-indexer-host
+        name: egov-config
+  - name: EGOV_HEARING_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: hearing
+        name: egov-service-host
+  - name: EGOV_CASE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: case
+  - name: EGOV_EVIDENCE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: evidence
+  - name: EGOV_TASK_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: task
+  - name: EGOV_APPLICATION_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: application
+  
+    

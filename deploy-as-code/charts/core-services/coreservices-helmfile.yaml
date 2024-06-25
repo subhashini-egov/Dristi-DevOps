@@ -100,7 +100,11 @@ releases:
 #    installed: true
 #    <<: *default
 
-  - name: digit-ui # Replace with your desired namespace
+#  - name: digit-ui # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#
+  - name: analytics # Replace with your desired namespace
     installed: true
     <<: *default
 
