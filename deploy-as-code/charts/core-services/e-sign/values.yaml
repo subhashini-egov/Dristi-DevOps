@@ -1,7 +1,7 @@
 # Common Labels
 labels:
   app: "e-sign"
-  group: "rainmaker"
+  group: "web"
 
 # Ingress Configs
 ingress:
