@@ -1,8 +1,8 @@
 name: Pucar-Install Workflow Solutins-Dev
 on:
-  push:
-    branches:
-      - Scheduler-Deploy
+#  push:
+#    branches:
+#      - Scheduler-Deploy
 #  pull_request:
 #    branches:
 #      - main
@@ -153,16 +153,16 @@ jobs:
             https://github.com/databus23/helm-diff
 
       - name: digit deployment
-        run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
-#        run: |
-#          commitId=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git develop | awk '{print $1}')
-#          echo "Commit ID: $commitId"
-#
-#          helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
-#           --set scheduler.image.tag=v1.0.0-${commitId} \
-#           --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${commitId} \
-#           --set payment-calculator.image.tag=v1.0.0-${commitId} \
-#           --set payment-calculator.initContainers.dbMigration.image.tag=v1.0.0-${commitId}
+#        run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
+        run: |
+          commitId=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git develop | awk '{print $1}')
+          echo "Commit ID: $commitId"
+
+          helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
+           --set scheduler.image.tag=v1.0.0-${commitId} \
+           --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${commitId} \
+           --set payment-calculator.image.tag=v1.0.0-${commitId} \
+           --set payment-calculator.initContainers.dbMigration.image.tag=v1.0.0-${commitId}
 
         working-directory: deploy-as-code
         env:

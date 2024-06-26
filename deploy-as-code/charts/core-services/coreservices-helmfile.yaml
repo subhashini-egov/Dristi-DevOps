@@ -147,12 +147,12 @@ releases:
   #   labels:
   #     team: "dpg"
   #   <<: *default
-#
-#  - name: scheduler  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "solutions"
-#    <<: *default
+
+  - name: scheduler  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "solutions"
+    <<: *default
 
 #   - name: advocate  # Replace with your desired namespace
 #     installed: true
