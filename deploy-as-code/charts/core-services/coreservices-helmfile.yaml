@@ -226,3 +226,8 @@ releases:
 #       team: "dpg"
 #     <<: *default
 
+  - name: payment-calculator  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "solutions"
+    <<: *default

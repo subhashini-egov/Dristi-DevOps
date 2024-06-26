@@ -155,12 +155,15 @@ jobs:
       - name: digit deployment
 #        run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
         run: |
-          scheduler_commitId=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git develop | awk '{print $1}')
-          echo "Scheduler Commit ID: $scheduler_commitId"
+          commitId=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git develop | awk '{print $1}')
+          echo "Commit ID: $commitId"
 
           helmfile -l deployment=pucar,team=!dpg -f digit-helmfile.yaml apply --include-needs=true\
-           --set scheduler.image.tag=v1.0.0-${scheduler_commitId} \
-           --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${scheduler_commitId}
+           --set scheduler.image.tag=v1.0.0-${commitId} \
+           --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${commitId} \
+           --set payment-calculator.image.tag=v1.0.0-${commitId} \
+           --set payment-calculator.initContainers.dbMigration.image.tag=v1.0.0-${commitId} 
+
         working-directory: deploy-as-code
         env:
           HELMFILE_ENV: "solutions-dev"
