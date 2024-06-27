@@ -1,8 +1,8 @@
 name: Pucar-Install Workflow Solutins-Dev
 on:
-  push:
-    branches:
-      - paymentpage-solutions
+#  push:
+#    branches:
+#      - paymentpage-solutions
 #  pull_request:
 #    branches:
 #      - main
@@ -155,19 +155,13 @@ jobs:
         env:
           HELMFILE_ENV: "solutions-dev"
           TOKEN: ${{ secrets.GHUB_TOKEN }}
-        run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
-#        run: |
-#          etreasury_commitId=$(curl -s -H "Authorization: token $TOKEN" \
-#            https://api.github.com/repos/pucardotorg/etreasury_kerala/commits/develop | jq -r '.sha')
-#          echo "Etreasury Commit ID: $etreasury_commitId"
-#          helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
-#            --set epayments.image.tag=v1.0.0-${etreasury_commitId}
-#            --set etreasury.image.tag=v1.0.0-${etreasury_commitId}
-#        run: |
-#          integration_commitId=$(git ls-remote https://github.com/pucardotorg/icops_integration-kerala.git icops_testing | awk '{print $1}')
-#          echo "Integration Commit ID: $integration_commitId"
-#
-#          helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
-#            --set icops-integration.image.tag=v1.0.0-${integration_commitId} \
+#        run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
+        run: |
+          Etreasury_commitId=$(git ls-remote https://github.com/pucardotorg/etreasury_kerala.git develop | awk '{print $1}')
+          echo "Commit ID: $etreasury_commitId"
+          
+          helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
+          --set epayments.image.tag=v1.0.0-${etreasury_commitId}
+          --set etreasury.image.tag=v1.0.0-${etreasury_commitId}
 
         working-directory: deploy-as-code
