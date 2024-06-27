@@ -155,8 +155,7 @@ jobs:
         env:
           HELMFILE_ENV: "solutions-dev"
           TOKEN: ${{ secrets.GHUB_TOKEN }}
-        run: |
-          run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
+        run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
 #        run: |
 #          etreasury_commitId=$(curl -s -H "Authorization: token $TOKEN" \
 #            https://api.github.com/repos/pucardotorg/etreasury_kerala/commits/develop | jq -r '.sha')
