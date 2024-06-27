@@ -15,11 +15,12 @@ initContainers: {}
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/etreasury"
-  tag: v1.0.0-b6b9eec235bf9a706a966af50fa5a38b4b3f8ef6
-healthChecks:
-  enabled: true
-  livenessProbePath: "/etreasury/"
-  readinessProbePath: "/etreasury/"
+  tag: v1.0.0-7119f6e223ffe5fd387956adc49d8a3d6da5d2c9
+
+#healthChecks:
+#  enabled: true
+#  livenessProbePath: "/etreasury/"
+#  readinessProbePath: "/etreasury/"
 replicas: "1"
 appType: "java-spring"
 tracing-enabled: true
