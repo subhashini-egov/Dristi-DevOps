@@ -15,7 +15,7 @@ initContainers: {}
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/etreasury"
-  tag: core-2.9-lts-mvn-check-15fe7099b6-7
+  tag: v1.0.0-b6b9eec235bf9a706a966af50fa5a38b4b3f8ef6
 healthChecks:
   enabled: true
   livenessProbePath: "/etreasury/"
