@@ -1,0 +1,38 @@
+# Common Labels
+labels:
+  app: "etreasury"
+  group: "rainmaker"
+
+# Ingress Configs
+ingress:
+  enabled: true
+  zuul: true
+  context: "etreasury"
+
+# Init Containers Configs
+initContainers: {}
+
+# Container Configs
+image:
+  repository: "pucarsolutionsdev.azurecr.io/etreasury"
+  tag: core-2.9-lts-mvn-check-15fe7099b6-7
+healthChecks:
+  enabled: true
+  livenessProbePath: "/etreasury/"
+  readinessProbePath: "/etreasury/"
+replicas: "1"
+appType: "java-spring"
+tracing-enabled: true
+heap: "-Xmx192m -Xms192m"
+java-args: ""
+
+# Additional Container Envs
+env: |
+  - name: SERVER_PORT
+    value: "8080"
+  - name: EGOV_STATE_LEVEL_TENANT_ID
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: egov-state-level-tenant-id
+

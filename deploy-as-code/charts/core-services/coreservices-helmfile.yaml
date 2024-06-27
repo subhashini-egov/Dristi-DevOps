@@ -20,6 +20,12 @@ releases:
       team: "solutions"
     <<: *default
 
+  - name: etreasury # Replace with your desired namespace
+    installed: true # Replace with the version of your chart, if needed
+    labels:
+      team: "solutions"
+    <<: *default
+
 #  - name: icops-integration # Replace with your desired namespace
 #    installed: true # Replace with the version of your chart, if needed
 #    <<: *default
