@@ -148,11 +148,11 @@ releases:
   #     team: "dpg"
   #   <<: *default
 
-  - name: scheduler  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "solutions"
-    <<: *default
+#  - name: scheduler  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "solutions"
+#    <<: *default
 
 #   - name: advocate  # Replace with your desired namespace
 #     installed: true
@@ -214,11 +214,11 @@ releases:
 #       team: "dpg"
 #     <<: *default
 
-#   - name: order  # Replace with your desired namespace
-#     installed: true
-#     labels:
-#       team: "dpg"
-#     <<: *default
+   - name: order  # Replace with your desired namespace
+     installed: true
+     labels:
+       team: "dpg"
+     <<: *default
 
 #   - name: task  # Replace with your desired namespace
 #     installed: true
@@ -226,8 +226,8 @@ releases:
 #       team: "dpg"
 #     <<: *default
 
-  - name: payment-calculator  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "solutions"
-    <<: *default
+#  - name: payment-calculator  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "solutions"
+#    <<: *default
