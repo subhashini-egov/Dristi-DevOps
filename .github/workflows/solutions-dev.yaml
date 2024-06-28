@@ -157,7 +157,7 @@ jobs:
           TOKEN: ${{ secrets.GHUB_TOKEN }}
 #        run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
         run: |
-          Etreasury_commitId=$(git ls-remote https://github.com/pucardotorg/etreasury_kerala.git develop | awk '{print $1}')
+          etreasury_commitId=$(git ls-remote https://github.com/pucardotorg/etreasury_kerala.git develop | awk '{print $1}')
           echo "Commit ID: $etreasury_commitId"
           
           helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
