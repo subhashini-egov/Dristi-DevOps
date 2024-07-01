@@ -49,18 +49,18 @@ env: |
   - name: SMS_SENDER_USERNAME
     valueFrom:
       secretKeyRef:
-        name: egov-notofication-sms
+        name: egov-notification-sms
         key: username
   - name: SMS_SENDER_PASSWORD
     valueFrom:
       secretKeyRef:
-        name: egov-notofication-sms
+        name: egov-notification-sms
         key: password
   {{- if index .Values "secure-key" }}
   - name: SMS_SENDER_SECURE_KEY
     valueFrom:
       secretKeyRef:
-        name: egov-notofication-sms
+        name: egov-notification-sms
         key: secure-key        
   {{- end }}
   - name: SMS_ENABLED
@@ -97,12 +97,12 @@ env: |
   - name: SMS_SPICEDIGITAL_SENDER_USERNAME
     valueFrom:
       secretKeyRef:
-        name: egov-notofication-sms
+        name: egov-notification-sms
         key: username
   - name: SMS_SPICEDIGITAL_SENDER_PASSWORD
     valueFrom:
       secretKeyRef:
-        name: egov-notofication-sms
+        name: egov-notification-sms
         key: password
   - name: LOGGING_LEVEL_org.egov.tracer.kafka    
     value: "DEBUG"              
@@ -117,12 +117,12 @@ env: |
   - name: SMS_PROVIDER_USERNAME    
     valueFrom:
       secretKeyRef:
-        name: egov-notofication-sms
+        name: egov-notification-sms
         key: username
   - name: SMS_PROVIDER_PASSWORD
     valueFrom:
       secretKeyRef:
-        name: egov-notofication-sms
+        name: egov-notification-sms
         key: password
   {{- if index .Values "sms.provider.class" }}
   - name: SMS_PROVIDER_CLASS
