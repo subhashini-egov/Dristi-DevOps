@@ -1,6 +1,6 @@
 # Common Labels
 labels:
-  app: "egov-notification-sms"
+  app: "kerala-sms"
   group: "core"
 
 # Init Containers Configs
@@ -8,8 +8,8 @@ initContainers: {}
 
 # Container Configs
 image:
-  repository: "egov-notification-sms"
-  tag: core-2.9-lts-mvn-check-c33cfe45ab-6
+  repository: "pucarsolutionsdev.azurecr.io/kerala-sms"
+  tag: v1.0.0-ca332e5f387adfe87af4d80749c58f1744a080df
 replicas: "1"
 appType: "java-spring"
 tracing-enabled: true
@@ -18,12 +18,14 @@ sms-sender: "egov"
 sms-sender-requesttype: "POST"
 sms-extra-req-params: "smsservicetype=unicodemsg"
 sms-gateway-to-use: "MSDG"
-sms.provider.url: "https://msdgweb.mgov.gov.in/esms/sendsmsrequest"
+sms.provider.url: "https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT"
 sms.provider.requestType: "POST"
 sms.provider.contentType: "application/json"
-sms.provider.class: "MSDG"
+sms.provider.class: "CDAC"
 sms.verify.response: true
 sms.print.response: false
+secure-key: "getfromsecret"
+sms.senderid: "CRTKER"
 sms.success.codes: "200,201,202"
 sms.verify.responseContains: "SMS message(s) sent"
 sms.error.codes: "401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418" 
