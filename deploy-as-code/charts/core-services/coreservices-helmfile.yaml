@@ -103,7 +103,8 @@ releases:
 #    <<: *default
 #
   - name: digit-ui # Replace with your desired namespace
-    installed: true
+    labels:
+      team: "dpg"
     <<: *default
 
 #  - name: employee # Replace with your desired namespace
