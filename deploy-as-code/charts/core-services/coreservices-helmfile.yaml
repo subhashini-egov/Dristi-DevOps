@@ -102,9 +102,9 @@ releases:
 #    installed: true
 #    <<: *default
 #
-  # - name: digit-ui # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
+  - name: digit-ui # Replace with your desired namespace
+    installed: true
+    <<: *default
 
 #  - name: employee # Replace with your desired namespace
 #    installed: true
@@ -136,11 +136,11 @@ releases:
 #      team: "dpg"
 #    <<: *default
 #
-#  - name: mdms-v2 # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
+  - name: mdms-v2
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
 #
   # - name: individual  # Replace with your desired namespace
   #   installed: true
