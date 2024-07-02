@@ -9,7 +9,7 @@ initContainers: {}
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/kerala-sms"
-  tag: v1.0.0-ca332e5f387adfe87af4d80749c58f1744a080df
+  tag: v1.0.0-fff8e13e94464713c3c2dbc75d7ac5235509f119
 replicas: "1"
 appType: "java-spring"
 tracing-enabled: true
@@ -25,6 +25,7 @@ sms.provider.class: "CDAC"
 sms.verify.response: true
 sms.print.response: false
 secure-key: "getfromsecret"
+sms.is.default.number: false
 sms.senderid: "CRTKER"
 sms.success.codes: "200,201,202"
 sms.verify.responseContains: "SMS message(s) sent"

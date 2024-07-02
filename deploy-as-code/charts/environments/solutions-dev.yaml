@@ -89,7 +89,7 @@ egov-localization:
   memory_limits: 512Mi
 
 kerala-sms:
-  sms-provider-url: "sms provider url" ## Add sms provider url
+  sms-provider-url: "https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT" ## Add sms provider url
   sms.provider.class: "CDAC"
   sms.provider.contentType:  "application/x-www-form-urlencoded"
   sms-config-map: "{'User':'$username', 'passwd': '$password', 'sid':'$senderid', 'mobilenumber':'$mobileno', 'message':'$message', 'mtype':'N', 'DR':'N', 'smsservicetype':'singlemsg'}"
