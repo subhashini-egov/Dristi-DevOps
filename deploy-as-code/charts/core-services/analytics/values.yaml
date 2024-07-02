@@ -85,5 +85,10 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: application
+  - name: EGOV_ORDER_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: order
   
     
