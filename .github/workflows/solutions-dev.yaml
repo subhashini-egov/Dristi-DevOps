@@ -153,7 +153,7 @@ jobs:
             https://github.com/databus23/helm-diff
 
       - name: digit deployment
-        run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
+        run: helmfile -l deployment=pucar,team=dpg -f digit-helmfile.yaml apply --include-needs=true
 #        run: |
 #          commitId=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git develop | awk '{print $1}')
 #          echo "Commit ID: $commitId"
