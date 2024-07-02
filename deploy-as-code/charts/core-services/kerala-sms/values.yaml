@@ -193,4 +193,5 @@ env: |
     value: {{ index .Values "kafka.topics.error.sms" | quote }} 
   {{- end }}       
   - name: SMS_IS_DEFAULT_NUMBER
-    value: false
+    value: "false"
+  
