@@ -167,11 +167,11 @@ releases:
 #        team: "dpg"
 #    <<: *default
 #
-#  - name: collection-services  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
+  - name: collection-services  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
 #
 #  - name: case  # Replace with your desired namespace
 #    installed: true
@@ -203,11 +203,11 @@ releases:
 #       team: "dpg"
 #     <<: *default
 
-  - name: evidence  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "dpg"
-    <<: *default
+#  - name: evidence  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "dpg"
+#    <<: *default
 
 #  - name: hearing  # Replace with your desired namespace
 #    installed: true

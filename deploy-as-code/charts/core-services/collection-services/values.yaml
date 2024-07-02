@@ -65,7 +65,7 @@ env: |
         key: password
   - name: "SCHEMA_TABLE"
     value: "collection_services_schema"
-  - name: EGOV_IDGEN_HOST
+  - name: EGOV_IDGEN_HOSTNAME
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
