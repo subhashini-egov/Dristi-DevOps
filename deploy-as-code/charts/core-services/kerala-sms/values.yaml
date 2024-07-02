@@ -25,7 +25,6 @@ sms.provider.class: "CDAC"
 sms.verify.response: true
 sms.print.response: false
 secure-key: "getfromsecret"
-sms.is.default.number: false
 sms.senderid: "CRTKER"
 sms.success.codes: "200,201,202"
 sms.verify.responseContains: "SMS message(s) sent"
@@ -193,3 +192,5 @@ env: |
   - name: KAFKA_TOPICS_ERROR_SMS
     value: {{ index .Values "kafka.topics.error.sms" | quote }} 
   {{- end }}       
+  - name: SMS_IS_DEFAULT_NUMBER
+    value: false
