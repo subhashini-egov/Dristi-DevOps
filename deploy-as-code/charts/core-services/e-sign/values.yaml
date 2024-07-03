@@ -1,0 +1,28 @@
+# Common Labels
+labels:
+  app: "e-sign"
+  group: "web"
+
+# Ingress Configs
+ingress:
+  enabled: true
+  context: "e-sign"
+
+# Init Containers Configs
+initContainers: {}
+
+# Container Configs
+image:
+  repository: "pucarsolutionsdev.azurecr.io/e-sign"
+  tag: v1.0.0-cf173a08123e571678d40b6f98b502fed5187321
+replicas: "1"
+httpPort: 80
+healthChecks:
+  enabled: true
+  livenessProbePath: "/e-sign/"
+  readinessProbePath: "/e-sign/"
+    
+env: |
+  - name: SERVER_PORT
+    value: "8080"
+
