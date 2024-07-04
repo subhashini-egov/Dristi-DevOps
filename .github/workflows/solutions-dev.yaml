@@ -1,8 +1,8 @@
 name: Pucar-Install Workflow Solutins-Dev
 on:
-#  push:
-#    branches:
-#      - Scheduler-Deploy
+  push:
+    branches:
+      - Solutions-Pipeline
 #  pull_request:
 #    branches:
 #      - main
@@ -184,34 +184,34 @@ jobs:
           individual_commit=$(git log -1 --pretty=format:%H -- backend/individual)
           echo "individual_commit=$individual_commit" >> $GITHUB_ENV
 
-      - name: digit deployment
-        run: |
-          helmfile -l deployment=pucar,team=dpg -f digit-helmfile.yaml apply --include-needs=true\
-            --set scheduler.image.tag=v1.0.0-${scheduler_commit} \
-            --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${scheduler_commit} \
-            --set payment-calculator.image.tag=v1.0.0-${payment_calculator_commit} \
-            --set payment-calculator.initContainers.dbMigration.image.tag=v1.0.0-${payment_calculator_commit} \
-            --set digit-ui.image.tag=v1.0.0-${digit_ui_commit} \
-            --set advocate.image.tag=v1.0.0-${advocate_commit} \
-            --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${advocate_commit} \
-            --set case.image.tag=v1.0.0-${case_commit} \
-            --set case.initContainers.dbMigration.image.tag=v1.0.0-${case_commit} \
-            --set casemanagement.image.tag=v1.0.0-${casemanagement_commit} \
-            --set evidence.image.tag=v1.0.0-${evidence_commit} \
-            --set evidence.initContainers.dbMigration.image.tag=v1.0.0-${evidence_commit} \
-            --set hearing.image.tag=v1.0.0-${hearing_commit} \
-            --set hearing.initContainers.dbMigration.image.tag=v1.0.0-${hearing_commit} \
-            --set order.image.tag=v1.0.0-${order_commit} \
-            --set order.initContainers.dbMigration.image.tag=v1.0.0-${order_commit} \
-            --set task.image.tag=v1.0.0-${task_commit} \
-            --set task.initContainers.dbMigration.image.tag=v1.0.0-${task_commit} \
-            --set billing-service.image.tag=v1.0.0-${billing_service_commit} \
-            --set billing-service.initContainers.dbMigration.image.tag=v1.0.0-${billing_service_commit} \
-            --set collection-services.image.tag=v1.0.0-${collection_service_commit} \
-            --set collection-services.initContainers.dbMigration.image.tag=v1.0.0-${collection_service_commit} \
-            --set individual.image.tag=v1.0.0-${individual_commit} \ 
-            --set individual.initContainers.dbMigration.image.tag=v1.0.0-${individual_commit} 
-
-        working-directory: deploy-as-code
-        env:
-          HELMFILE_ENV: "solutions-dev"
+#      - name: digit deployment
+#        run: |
+#          helmfile -l deployment=pucar,team=dpg -f digit-helmfile.yaml apply --include-needs=true\
+#            --set scheduler.image.tag=v1.0.0-${scheduler_commit} \
+#            --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${scheduler_commit} \
+#            --set payment-calculator.image.tag=v1.0.0-${payment-calculator_commit} \
+#            --set payment-calculator.initContainers.dbMigration.image.tag=v1.0.0-${payment-calculator_commit} \
+#            --set digit-ui.image.tag=v1.0.0-${digit_ui_commit} \
+#            --set advocate.image.tag=v1.0.0-${advocate_commit} \
+#            --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${advocate_commit} \
+#            --set case.image.tag=v1.0.0-${case_commit} \
+#            --set case.initContainers.dbMigration.image.tag=v1.0.0-${case_commit} \
+#            --set casemanagement.image.tag=v1.0.0-${casemanagement_commit} \
+#            --set evidence.image.tag=v1.0.0-${evidence_commit} \
+#            --set evidence.initContainers.dbMigration.image.tag=v1.0.0-${evidence_commit} \
+#            --set hearing.image.tag=v1.0.0-${hearing_commit} \
+#            --set hearing.initContainers.dbMigration.image.tag=v1.0.0-${hearing_commit} \
+#            --set order.image.tag=v1.0.0-${order_commit} \
+#            --set order.initContainers.dbMigration.image.tag=v1.0.0-${order_commit} \
+#            --set task.image.tag=v1.0.0-${task_commit} \
+#            --set task.initContainers.dbMigration.image.tag=v1.0.0-${task_commit} \
+#            --set billing-service.image.tag=v1.0.0-${billing-service_commit} \
+#            --set billing-service.initContainers.dbMigration.image.tag=v1.0.0-${billing-service_commit} \
+#            --set collection-services.image.tag=v1.0.0-${collection-service_commit} \
+#            --set collection-services.initContainers.dbMigration.image.tag=v1.0.0-${collection-service_commit} \
+#            --set individual.image.tag=v1.0.0-${individual_commit} \
+#            --set individual.initContainers.dbMigration.image.tag=v1.0.0-${individual_commit}
+#
+#        working-directory: deploy-as-code
+#        env:
+#          HELMFILE_ENV: "solutions-dev"
