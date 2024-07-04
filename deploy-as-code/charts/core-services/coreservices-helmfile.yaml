@@ -149,35 +149,35 @@ releases:
   #     team: "dpg"
   #   <<: *default
  
-  - name: scheduler  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "solutions"
-    <<: *default
-
-  - name: advocate  # Replace with your desired namespace
-    installed: true
-    labels:
-     team: "dpg"
-    <<: *default
-  - name: billing-service  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "dpg"
-    <<: *default
-
-
-  - name: collection-services  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "dpg"
-    <<: *default
- #
-  - name: case  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "dpg"
-    <<: *default
+#  - name: scheduler  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "solutions"
+#    <<: *default
+#
+#  - name: advocate  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#     team: "dpg"
+#    <<: *default
+#  - name: billing-service  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "dpg"
+#    <<: *default
+#
+#
+#  - name: collection-services  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "dpg"
+#    <<: *default
+# #
+#  - name: case  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "dpg"
+#    <<: *default
 
 #   - name: inbox  # Replace with your desired namespace
 #     installed: true
@@ -191,11 +191,11 @@ releases:
 #       team: "dpg"
 #     <<: *default
 
-  - name: casemanagement  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "dpg"
-    <<: *default
+#  - name: casemanagement  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "dpg"
+#    <<: *default
 
 #   - name: egov-apportion-service  # Replace with your desired namespace
 #     installed: true
@@ -203,29 +203,29 @@ releases:
 #       team: "dpg"
 #     <<: *default
 
-  - name: evidence  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "dpg"
-    <<: *default
-
-  - name: hearing  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "dpg"
-    <<: *default
-
-  - name: order  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "dpg"
-    <<: *default
-
-  - name: task  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "dpg"
-    <<: *default
+#  - name: evidence  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "dpg"
+#    <<: *default
+#
+#  - name: hearing  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "dpg"
+#    <<: *default
+#
+#  - name: order  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "dpg"
+#    <<: *default
+#
+#  - name: task  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "dpg"
+#    <<: *default
 
   - name: payment-calculator  # Replace with your desired namespace
     installed: true
