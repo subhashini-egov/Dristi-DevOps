@@ -1,8 +1,8 @@
 name: Pucar-Install Workflow Solutins-Dev
 on:
  push:
-  #   branches:
-  #     - main
+     branches:
+       - summons-Deploy
 #  pull_request:
 #    branches:
 #      - main
@@ -153,13 +153,14 @@ jobs:
             https://github.com/databus23/helm-diff
 
       - name: digit deployment
-        run: |
-          summons_commitId=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git summons_changes | awk '{print $1}')
-          echo "summons Commit ID: $summons_commitId"
-
-          helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
-           --set summons.image.tag=v1.0.0-${summons_commitId} \
-           --set summons.initContainers.dbMigration.image.tag=v1.0.0-${summons_commitId}
+        run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
+#        run: |
+#          summons_commitId=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git summons_changes | awk '{print $1}')
+#          echo "summons Commit ID: $summons_commitId"
+#
+#          helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
+#           --set summons.image.tag=v1.0.0-${summons_commitId} \
+#           --set summons.initContainers.dbMigration.image.tag=v1.0.0-${summons_commitId}
         working-directory: deploy-as-code
         env:
           HELMFILE_ENV: "solutions-dev"

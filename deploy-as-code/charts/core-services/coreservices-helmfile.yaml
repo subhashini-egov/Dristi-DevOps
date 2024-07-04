@@ -19,11 +19,11 @@ releases:
 #   labels:
 #     team: "solutions"
 #   <<: *default
- - name: summons # Replace with your desired namespace
-   installed: true # Replace with the version of your chart, if needed
-   labels:
-     team: "solutions"
-   <<: *default
+  - name: summons # Replace with your desired namespace
+    installed: true # Replace with the version of your chart, if needed
+    labels:
+      team: "solutions"
+    <<: *default
 #  - name: egov-accesscontrol # Replace with your desired namespace
 #    installed: true # Replace with the version of your chart, if needed
 #    <<: *default
@@ -104,9 +104,9 @@ releases:
 #    installed: true
 #    <<: *default
 #
-#  - name: configmaps # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  - name: configmaps # Replace with your desired namespace
+    installed: true
+    <<: *default
 #
 #  - name: citizen # Replace with your desired namespace
 #    installed: true
