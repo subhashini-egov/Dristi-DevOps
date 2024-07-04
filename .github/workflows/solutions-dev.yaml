@@ -159,8 +159,8 @@ jobs:
           git checkout develop
           scheduler_commit=$(git log -1 --pretty=format:%H -- backend/scheduler-svc)
           echo "scheduler_commit=$scheduler_commit" >> $GITHUB_ENV
-          payment-calculator_commit=$(git log -1 --pretty=format:%H -- backend/payment-calculator-svc)
-          echo "payment-calculator_commit=$payment-calculator_commit" >> $GITHUB_ENV
+          payment_calculator_commit=$(git log -1 --pretty=format:%H -- backend/payment-calculator-svc)
+          echo "payment_calculator_commit=$payment_calculator_commit" >> $GITHUB_ENV
           advocate_commit=$(git log -1 --pretty=format:%H -- backend/advocate)
           echo "advocate_commit=$advocate_commit" >> $GITHUB_ENV
           case_commit=$(git log -1 --pretty=format:%H -- backend/case)
@@ -177,10 +177,10 @@ jobs:
           echo "task_commit=$task_commit" >> $GITHUB_ENV
           digit_ui_commit=$(git log -1 --pretty=format:%H -- frontend/micro-ui)
           echo "digit_ui_commit=$digit_ui_commit" >> $GITHUB_ENV
-          billing-service_commit=$(git log -1 --pretty=format:%H -- backend/billing-service)
-          echo "billing-service_commit=$billing-service_commit" >> $GITHUB_ENV
-          collection-service_commit=$(git log -1 --pretty=format:%H -- backend/collection-services)
-          echo "collection-service_commit=$collection-service_commit" >> $GITHUB_ENV
+          billing_service_commit=$(git log -1 --pretty=format:%H -- backend/billing-service)
+          echo "billing_service_commit=$billing_service_commit" >> $GITHUB_ENV
+          collection_service_commit=$(git log -1 --pretty=format:%H -- backend/collection-services)
+          echo "collection_service_commit=$collection_service_commit" >> $GITHUB_ENV
           individual_commit=$(git log -1 --pretty=format:%H -- backend/individual)
           echo "individual_commit=$individual_commit" >> $GITHUB_ENV
 
@@ -189,8 +189,8 @@ jobs:
           helmfile -l deployment=pucar,team=dpg -f digit-helmfile.yaml apply --include-needs=true\
             --set scheduler.image.tag=v1.0.0-${scheduler_commit} \
             --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${scheduler_commit} \
-            --set payment-calculator.image.tag=v1.0.0-${payment-calculator_commit} \
-            --set payment-calculator.initContainers.dbMigration.image.tag=v1.0.0-${payment-calculator_commit} \
+            --set payment-calculator.image.tag=v1.0.0-${payment_calculator_commit} \
+            --set payment-calculator.initContainers.dbMigration.image.tag=v1.0.0-${payment_calculator_commit} \
             --set digit-ui.image.tag=v1.0.0-${digit_ui_commit} \
             --set advocate.image.tag=v1.0.0-${advocate_commit} \
             --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${advocate_commit} \
@@ -205,10 +205,10 @@ jobs:
             --set order.initContainers.dbMigration.image.tag=v1.0.0-${order_commit} \
             --set task.image.tag=v1.0.0-${task_commit} \
             --set task.initContainers.dbMigration.image.tag=v1.0.0-${task_commit} \
-            --set billing-service.image.tag=v1.0.0-${billing-service_commit} \
-            --set billing-service.initContainers.dbMigration.image.tag=v1.0.0-${billing-service_commit} \
-            --set collection-services.image.tag=v1.0.0-${collection-service_commit} \
-            --set collection-services.initContainers.dbMigration.image.tag=v1.0.0-${collection-service_commit} \
+            --set billing-service.image.tag=v1.0.0-${billing_service_commit} \
+            --set billing-service.initContainers.dbMigration.image.tag=v1.0.0-${billing_service_commit} \
+            --set collection-services.image.tag=v1.0.0-${collection_service_commit} \
+            --set collection-services.initContainers.dbMigration.image.tag=v1.0.0-${collection_service_commit} \
             --set individual.image.tag=v1.0.0-${individual_commit} \ 
             --set individual.initContainers.dbMigration.image.tag=v1.0.0-${individual_commit} 
 
