@@ -124,4 +124,24 @@ env: |
       configMapKeyRef:
         key: egov-url-shortening
         name: egov-service-host
-    
+  - name: EGOV_CASE_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: case
+        name: egov-service-host
+  - name: EGOV_ORDER_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: order
+        name: egov-service-host
+  - name: EGOV_APPLICATION_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: application
+        name: egov-service-host
+  - name: EGOV_HEARING_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: hearing
+        name: egov-service-host
+          
