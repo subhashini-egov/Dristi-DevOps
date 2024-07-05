@@ -60,4 +60,15 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-config
-        key: egov-state-level-tenant-id        
+        key: egov-state-level-tenant-id    
+  - name: MAIL_PROTOCOL
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: mail-protocol        
+  - name: EGOV_FROM_EMAIL
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-from-email        
+    

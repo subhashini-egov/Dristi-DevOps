@@ -150,6 +150,8 @@ configmaps:
       order: 'http://order:8080/'
       evidence: 'http://evidence:8080/'
       task: 'http://task:8080/'
+      mail-protocol: "smtp"
+      egov-from-email: "smartcourtkollam@keralacourts.in"
 
 
 root-ingress:
