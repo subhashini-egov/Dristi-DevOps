@@ -192,11 +192,11 @@ releases:
       team: "dpg"
     <<: *default
 
-#  - name: casemanagement  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
+  - name: casemanagement  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
 
 #   - name: egov-apportion-service  # Replace with your desired namespace
 #     installed: true
