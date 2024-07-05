@@ -1,0 +1,47 @@
+# Common Labels
+labels:
+  app: "esign-interceptor"
+  group: "backend"
+
+# Ingress Configs
+ingress:
+  zuul: true
+  enabled: true
+  context: "esign-interceptor"
+
+
+# Init Containers Configs
+
+
+# Container Configs
+image:
+  repository: "pucarsolutionsdev.azurecr.io/pucar_esign-interceptor"
+  tag: v1.0.0-717112a67da76eaf008f8eba36a3c9aa2ab3a918
+  imagePullPolicy: Always
+replicas: "1"
+httpPort: 8080
+appType: "java-spring"
+heap: "-Xmx64m -Xms64m"
+java-args: "-Dspring.profiles.active=monitoring"
+memory_requests: 256Mi
+
+
+
+
+env: |
+  
+  - name: SERVER_PORT
+    value: "8080"
+  - name: EGOV_FILESTORE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-filestore
+  - name: DRISHTI_ESIGN_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: e-sign-svc
+    
+  
+    

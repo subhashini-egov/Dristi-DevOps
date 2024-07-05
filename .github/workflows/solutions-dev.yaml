@@ -183,10 +183,14 @@ jobs:
           echo "collection_service_commit=$collection_service_commit" >> $GITHUB_ENV
           individual_commit=$(git log -1 --pretty=format:%H -- backend/individual)
           echo "individual_commit=$individual_commit" >> $GITHUB_ENV
+          esign_interceptor_commit=$(git log -1 --pretty=format:%H -- backend/esign-interceptor)
+          echo "esign_interceptor_commit=$esign_interceptor_commit" >> $GITHUB_ENV
+          esign_svc_commit=$(git log -1 --pretty=format:%H -- backend/e-sign-svc)
+          echo "esign_svc_commit=$esign_svc_commit" >> $GITHUB_ENV
 
       - name: digit deployment
         run: |
-          helmfile -l deployment=pucar,team=dpg -f digit-helmfile.yaml apply --include-needs=true\
+          helmfile -l deployment=pucar -f digit-helmfile.yaml apply --include-needs=true\
             --set scheduler.image.tag=v1.0.0-${scheduler_commit} \
             --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${scheduler_commit} \
             --set payment-calculator.image.tag=v1.0.0-${payment-calculator_commit} \
@@ -209,8 +213,10 @@ jobs:
             --set billing-service.initContainers.dbMigration.image.tag=v1.0.0-${billing-service_commit} \
             --set collection-services.image.tag=v1.0.0-${collection-service_commit} \
             --set collection-services.initContainers.dbMigration.image.tag=v1.0.0-${collection-service_commit} \
-            --set individual.image.tag=v1.0.0-${individual_commit} \
-            --set individual.initContainers.dbMigration.image.tag=v1.0.0-${individual_commit}
+            --set individual.image.tag=v1.0.0-${individual_commit} \ 
+            --set individual.initContainers.dbMigration.image.tag=v1.0.0-${individual_commit} \
+            --set e-sign-svc.image.tag=v1.0.0-${esign_svc_commit} \ 
+            --set esign-interceptor.image.tag=v1.0.0-${esign_interceptor_commit} \ 
 
         working-directory: deploy-as-code
         env:

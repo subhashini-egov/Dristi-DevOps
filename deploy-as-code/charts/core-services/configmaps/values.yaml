@@ -44,6 +44,7 @@ configmaps:
       dashboard-ingest: http://dashboard-ingest.egov:8080/
       demand-services: "http://demand-services:8080/"
       data-sync-employee: "http://data-sync-employee:8080/"
+      e-sign-svc: "http://e-sign.egov:8080/"
       egov-common-masters: "http://egov-common-masters:8080/"
       egf-masters: "http://egf-masters:8080/"
       egf-master: "http://egf-master.egov:8080/"
