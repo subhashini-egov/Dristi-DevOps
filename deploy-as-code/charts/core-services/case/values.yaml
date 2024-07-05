@@ -16,7 +16,7 @@ initContainers:
     enabled: true
     schemaTable: "case_service_schema"
     image:
-      repository: "pucarsolutionsdev.azurecr.io/pucar_case_db"
+      repository: "pucarsolutionsdev.azurecr.io/case_db"
       tag: v1.0.0-6dff9d778b2e40e1702594a784474ec8c67059aa
 
 # Container Configs
