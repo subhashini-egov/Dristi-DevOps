@@ -34,17 +34,17 @@ releases:
   #   installed: true
   #   <<: *default
 
-#  - name: egov-localization # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  - name: egov-localization # Replace with your desired namespace
+    installed: true
+    <<: *default
 
   # - name: egov-location # Replace with your desired namespace
   #   installed: true
   #   <<: *default
 
-  # - name: egov-mdms-service # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
+  - name: egov-mdms-service # Replace with your desired namespace
+    installed: true
+    <<: *default
 
 #  - name: egov-hrms # Replace with your desired namespace
 #    installed: true
@@ -52,9 +52,9 @@ releases:
 #    - egov-user
 #    <<: *default
 
-#  - name: egov-indexer # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  - name: egov-indexer # Replace with your desired namespace
+    installed: true
+    <<: *default
 
 #  - name: egov-notification-mail # Replace with your desired namespace
 #    installed: true
@@ -74,9 +74,9 @@ releases:
 #    installed: true
 #    <<: *default
 
-#  - name: egov-persister # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  - name: egov-persister # Replace with your desired namespace
+    installed: true
+    <<: *default
 
 #  - name: egov-url-shortening # Replace with your desired namespace
 #    installed: true
