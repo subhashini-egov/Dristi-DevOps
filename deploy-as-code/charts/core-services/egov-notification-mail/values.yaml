@@ -8,7 +8,7 @@ initContainers: {}
 
 # Container Configs
 image:
-  repository: "egov-notification-mail"
+  repository: "pucarsolutionsdev.azurecr.io/pucar_egov-notification-mail"
   tag: core-2.9-lts-mvn-check-c33cfe45ab-4
 replicas: "1"
 appType: "java-spring"

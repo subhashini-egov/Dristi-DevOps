@@ -58,10 +58,6 @@ releases:
   #   installed: true
   #   <<: *default
 #
-#  - name: egov-notification-mail # Replace with your desired namespace
-#    installed: true
-#    <<: *default
-#
 #  - name: kerala-sms # Replace with your desired namespace
 #    installed: true
 #    <<: *default
