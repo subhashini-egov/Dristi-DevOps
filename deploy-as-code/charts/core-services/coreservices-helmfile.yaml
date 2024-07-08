@@ -64,10 +64,10 @@ releases:
 #    installed: true
 #    <<: *default
 
-  - name: egov-user # Replace with your desired namespace
-    installed: true
-    needs:
-    <<: *default
+#  - name: egov-user # Replace with your desired namespace
+#    installed: true
+#    needs:
+#    <<: *default
 
 #  - name: egov-otp # Replace with your desired namespace
 #    installed: true

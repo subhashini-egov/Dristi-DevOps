@@ -16,12 +16,12 @@ initContainers:
     schemaTable: "egov_hrms_schema"
     image:
       repository: "egov-hrms-db"
-      tag: core-2.9-lts-mvn-check-b511d9badb-11
+      tag: court-room-hrm-changes-d530fb801f-13
 
 # Container Configs
 image:
   repository: "egov-hrms"
-  tag: core-2.9-lts-mvn-check-b511d9badb-11
+  tag: court-room-hrm-changes-d530fb801f-13
 replicas: "1"
 healthChecks:
   enabled: true
