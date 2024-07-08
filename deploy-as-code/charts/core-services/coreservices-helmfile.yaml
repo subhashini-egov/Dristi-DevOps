@@ -42,9 +42,9 @@ releases:
   #   installed: true
   #   <<: *default
 
-  - name: egov-mdms-service # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: egov-mdms-service # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
 #  - name: egov-hrms # Replace with your desired namespace
 #    installed: true
@@ -64,11 +64,10 @@ releases:
 #    installed: true
 #    <<: *default
 
-#  - name: egov-user # Replace with your desired namespace
-#    installed: true
-#    needs:
-#    - egov-enc-service
-#    <<: *default
+  - name: egov-user # Replace with your desired namespace
+    installed: true
+    needs:
+    <<: *default
 
 #  - name: egov-otp # Replace with your desired namespace
 #    installed: true

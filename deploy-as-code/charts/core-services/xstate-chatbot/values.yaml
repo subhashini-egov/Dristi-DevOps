@@ -77,7 +77,7 @@ env: |
   - name: MDMS_HOST
     valueFrom:
       configMapKeyRef:
-        name: egov-service-host
+        name: mdms-service-v2
         key: zuul
   - name: URL_SHORTNER_HOST
     valueFrom:
