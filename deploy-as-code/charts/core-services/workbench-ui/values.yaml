@@ -16,7 +16,7 @@ initContainers: {}
 # Container Configs
 image:
   repository: "workbench-ui"
-  tag: court-room-hrms-6461cf392e-2
+  tag: court-room-hrms-0e500c0d6a-4
 replicas: "1"
 httpPort: 80
 healthChecks:
