@@ -4,10 +4,10 @@ labels:
   group: "backend"
 
 # Ingress Configs
-ingress:
-  zuul: true
-  enabled: true
-  context: "esign-interceptor"
+# ingress:
+#   zuul: true
+#   enabled: true
+#   context: "esign-interceptor"
 
 
 # Init Containers Configs
