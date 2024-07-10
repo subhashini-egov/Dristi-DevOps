@@ -10,7 +10,13 @@ ingress:
   context: "etreasury"
 
 # Init Containers Configs
-initContainers: {}
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "public_treasury_schema"
+    image:
+      repository: "pucarsolutionsdev.azurecr.io/etreasury_db"
+      tag: v1.0.0-7119f6e223ffe5fd387956adc49d8a3d6da5d2c9
 
 # Container Configs
 image:
@@ -36,4 +42,49 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: egov-state-level-tenant-id
+  - name: SPRING_FLYWAY_URL
+    valueFrom:
+      configMapKeyRef:
+        key: db-url
+        name: egov-config
+  - name: SPRING_FLYWAY_USER
+    valueFrom:
+      secretKeyRef:
+        key: username
+        name: db
+  - name: SPRING_FLYWAY_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: db
+        key: password
+  - name: SPRING_DATASOURCE_URL
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: db-url
+  - name: SPRING_DATASOURCE_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: db
+        key: username
+  - name: SPRING_DATASOURCE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: db
+        key: password
+  - name: "SCHEMA_TABLE"
+    value: "public_treasury_schema"
+  - name: "SPRING_FLYWAY_TABLE"
+    value: "public_treasury_schema"
+  - name: KAFKA_CONFIG_BOOTSTRAP_SERVER_CONFIG
+    valueFrom:
+      configMapKeyRef:
+        key: kafka-brokers
+        name: egov-config
+  - name: EGOV_COLLECTIONSERVICE_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: collection-services
+        name: egov-service-host
+
 
