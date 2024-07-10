@@ -162,5 +162,6 @@ jobs:
           echo "Etreasury Commit ID: $etreasury_commitId" 
           helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
            --set epayments.image.tag=v1.0.0-${etreasury_commitId} \
-           --set etreasury.image.tag=v1.0.0-${etreasury_commitId}
+           --set etreasury.image.tag=v1.0.0-${etreasury_commitId} \
+           --set etreasury.initContainers.dbMigration.image.tag=v1.0.0-${etreasury_commitId} 
         working-directory: deploy-as-code
