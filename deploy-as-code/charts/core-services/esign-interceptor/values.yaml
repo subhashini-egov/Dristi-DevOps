@@ -3,7 +3,7 @@ labels:
   app: "esign-interceptor"
   group: "backend"
 
-Ingress Configs
+# Ingress Configs
 ingress:
   enabled: true
   context: "esign-interceptor"
