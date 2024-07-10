@@ -1,8 +1,8 @@
 name: Pucar-Install Workflow Solutins-Dev
 on:
-#  push:
-#    branches:
-#      - paymentpage-solutions
+  push:
+   branches:
+     - paymentpage-solutions
 #  pull_request:
 #    branches:
 #      - main
