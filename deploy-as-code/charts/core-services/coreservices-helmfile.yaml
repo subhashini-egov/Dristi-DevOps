@@ -12,35 +12,35 @@ templates:
       - ../environments/{{(requiredEnv "HELMFILE_ENV")}}-env.yaml
 
 releases:
-  # - name: egov-accesscontrol # Replace with your desired namespace
-  #   installed: true # Replace with the version of your chart, if needed
-  #   <<: *default
+#  - name: egov-accesscontrol # Replace with your desired namespace
+#    installed: true # Replace with the version of your chart, if needed
+#    <<: *default
 
-  # - name: audit-service # Replace with your desired namespace
-  #   installed: true # Replace with the version of your chart, if needed
-  #   <<: *default
+  - name: audit-service # Replace with your desired namespace
+    installed: true # Replace with the version of your chart, if needed
+    <<: *default
 
-  # - name: egov-enc-service # Replace with your desired namespace
-  #   installed: true
-  #   needs:
-  #   - egov-mdms-service
-  #   <<: *default
+#  - name: egov-enc-service # Replace with your desired namespace
+#    installed: true
+#    needs:
+#     - egov-mdms-service
+#    <<: *default
 
 #  - name: egov-filestore # Replace with your desired namespace
 #    installed: true
 #    <<: *default
 
-  # - name: egov-idgen # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
+#  - name: egov-idgen # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
-  - name: egov-localization # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: egov-localization # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
-  # - name: egov-location # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
+#  - name: egov-location # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
 #  - name: egov-mdms-service # Replace with your desired namespace
 #    installed: true
@@ -81,11 +81,11 @@ releases:
 #    installed: true
 #    <<: *default
 
-  # - name: egov-workflow-v2 # Replace with your desired namespace
-  #   installed: true
-  #   needs:
-  #   - egov-mdms-service
-  #   <<: *default
+#  - name: egov-workflow-v2 # Replace with your desired namespace
+#    installed: true
+#    needs:
+#     - egov-mdms-service
+#    <<: *default
 
 #  - name: user-otp # Replace with your desired namespace
 #    installed: true
@@ -102,11 +102,11 @@ releases:
   - name: digit-ui # Replace with your desired namespace
     installed: true
     <<: *default
-
+#
   - name: analytics # Replace with your desired namespace
     installed: true
     <<: *default
-
+#
   - name: task  # Replace with your desired namespace
     installed: true
     <<: *default
@@ -114,63 +114,63 @@ releases:
 #  - name: employee # Replace with your desired namespace
 #    installed: true
 #    <<: *default
-
-  # - name: service-request # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
-
-  # - name: pgr-services # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
+#
+#  - name: service-request # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#
+#  - name: pgr-services # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
   # - name: gateway # Replace with your desired namespace
   #   installed: true
   #   <<: *default
 
-  # - name: egov-pg-service # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
+#  - name: egov-pg-service # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
-  # - name: egov-user-event # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
+#  - name: egov-user-event # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
-  - name: workbench-ui # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: workbench-ui # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
   # - name: mdms-v2 # Replace with your desired namespace
   #   installed: true
   #   <<: *default
 
-  # - name: individual  # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
+#  - name: individual  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
   - name: advocate  # Replace with your desired namespace
     installed: true
     <<: *default
-
+#
   - name: case  # Replace with your desired namespace
     installed: true
     <<: *default
 
-  # - name: inbox  # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
+#  - name: inbox  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
   - name: order  # Replace with your desired namespace
     installed: true
     <<: *default
-
+#
   - name: application  # Replace with your desired namespace
     installed: true
     <<: *default
-
+#
   - name: evidence  # Replace with your desired namespace
     installed: true
     <<: *default
-
+#
   - name: hearing  # Replace with your desired namespace
     installed: true
     <<: *default
@@ -181,21 +181,21 @@ releases:
 #    installed: true
 #    <<: *default
 
-  # - name: billing-service  # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
-
-  # - name: collection-services  # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
-
-  # - name: egov-apportion-service  # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
-  - name: casemanagement  # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: billing-service  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 #
+#  - name: collection-services  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#
+#  - name: egov-apportion-service  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#  - name: casemanagement  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+##
 #  - name: boundary-service  # Replace with your desired namespace
 #    installed: true
 #    <<: *default

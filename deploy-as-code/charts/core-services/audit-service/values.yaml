@@ -69,9 +69,9 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: mdms-service-v2
+        key: egov-mdms-service
   - name: EGOV_MDMS_SEARCH_ENDPOINT
-    value: /mdms-v2/v1/_search
+    value: /egov-mdms-service/v1/_search
   - name: EGOV_PERSIST_YML_REPO_PATH
     value: {{ index .Values "persist-yml-path" | quote }}
 
