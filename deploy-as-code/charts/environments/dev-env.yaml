@@ -151,3 +151,11 @@ workbench-ui:
     sub_filter.conf: "
       sub_filter  '<head>' '<head>
       <script src=https://s3.ap-south-1.amazonaws.com/works-dev-asset/globalConfigsWorkbench.js type=text/javascript></script>';"
+
+pdf-service:
+  initContainers:
+    gitSync:
+      repo: "git@github.com:pucardotorg/dpg-configs"
+      branch: "develop"
+  data-config-urls: "file:///work-dir/dpg-configs/pdf-service/data-config/birth-certificate-pdf.json"
+  format-config-urls: "file:///work-dir/dpg-configs/pdf-service/format-config/birth-certificate.json"
