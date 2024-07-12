@@ -86,5 +86,10 @@ env: |
       configMapKeyRef:
         key: collection-services
         name: egov-service-host
+  - name: EGOV_FILE_STORE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-filestore
 
 
