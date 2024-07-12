@@ -17,11 +17,17 @@ image:
 replicas: "1"
 
 env: |
+  - name: EXTERNAL_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: egov-services-fqdn-name 
   - name: SERVER_URL
     valueFrom:
       configMapKeyRef:
         name: egov-config
-        key: egov-services-fqdn-name  
+        key: etreasury
+        
 
 
 
