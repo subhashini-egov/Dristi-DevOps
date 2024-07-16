@@ -127,4 +127,9 @@ env: |
       configMapKeyRef:
         key: case
         name: egov-service-host
-    
+  
+  - name: EGOV_ORDER_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: order
+        name: egov-service-host

@@ -1,0 +1,102 @@
+# Common Labels
+labels:
+  app: "pdf-service"
+  group: "rainmaker"
+
+# Ingress Configs
+ingress:
+  enabled: true
+  zuul: true
+  context: "pdf-service"
+
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "pdf_service_schema"
+    image:
+      repository: "pucarsolutionsdev.azurecr.io/pdf-service-db_migration"
+      tag: latest
+
+  gitSync:
+    enabled: true
+    repo: "git@github.com:egovernments/configs"
+    branch: "master"
+
+
+# Container Configs
+image:
+  repository: "pucarsolutionsdev.azurecr.io/pdf-service"
+  tag: latest
+replicas: "1"
+appType: "java-spring"
+tracing-enabled: true
+data-config-urls: "https://github.com/pucardotorg/kerala-configs/blob/develop/pdf-service/data-config/causelist.json"
+format-config-urls: "https://github.com/pucardotorg/kerala-configs/blob/develop/pdf-service/format-config/causelist.json"
+#healthChecks:
+#  enabled: true
+#  livenessProbePath: "/pdf-service/health"
+#  readinessProbePath: "/pdf-service/health"
+
+
+# Additional Container Envs
+env: |
+  - name: DEFAULT_LOCALISATION_TENANT
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: egov-state-level-tenant-id
+  - name: DB_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: db-host
+  - name: DB_NAME
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: db-name
+  - name: DB_USER
+    valueFrom:
+      secretKeyRef:
+        name: db
+        key: username
+  - name: DB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: db
+        key: password
+  - name: KAFKA_BROKER_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: kafka-brokers
+  - name: EGOV_EXTERNAL_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: egov-services-fqdn-name      
+  - name: DB_PORT
+    value: "5432"  
+  - name: SERVER_PORT
+    value: "8080"
+  - name: MAX_NUMBER_PAGES
+    value: "80"   
+  - name: DATA_CONFIG_URLS
+    value: {{ index .Values "data-config-urls" | quote }}
+  - name: FORMAT_CONFIG_URLS
+    value: {{ index .Values "format-config-urls" | quote }}
+  - name: EGOV_LOCALISATION_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-localization
+  - name: EGOV_FILESTORE_SERVICE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-filestore
+  - name: EGOV_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: egov-services-fqdn-name
