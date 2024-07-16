@@ -188,7 +188,7 @@ jobs:
           esign_svc_commit=$(git log -1 --pretty=format:%H -- backend/e-sign-svc)
           echo "esign_svc_commit=$esign_svc_commit" >> $GITHUB_ENV
           application_commit=$(git log -1 --pretty=format:%H -- backend/application)
-          echo "application_commit=$application_commit" >> $GITHUB_ENV 
+          echo "application_commit=$application_commit" >> $GITHUB_ENV          
           summons-svc_commit=$(git log -1 --pretty=format:%H -- backend/summons-svc)
           echo "summons-svc_commit=$summons-svc_commit" >> $GITHUB_ENV  
 
