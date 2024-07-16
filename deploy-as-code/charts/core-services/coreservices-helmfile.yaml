@@ -102,11 +102,11 @@ releases:
   - name: digit-ui # Replace with your desired namespace
     installed: true
     <<: *default
+###
+#  - name: analytics # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 ##
-  - name: analytics # Replace with your desired namespace
-    installed: true
-    <<: *default
-#
   - name: task  # Replace with your desired namespace
     installed: true
     <<: *default
@@ -150,7 +150,7 @@ releases:
   - name: advocate  # Replace with your desired namespace
     installed: true
     <<: *default
-#
+##
   - name: case  # Replace with your desired namespace
     installed: true
     <<: *default
@@ -158,28 +158,28 @@ releases:
 #  - name: inbox  # Replace with your desired namespace
 #    installed: true
 #    <<: *default
-
+#
   - name: order  # Replace with your desired namespace
     installed: true
     <<: *default
-#
+##
   - name: application  # Replace with your desired namespace
     installed: true
     <<: *default
-#
+##
   - name: evidence  # Replace with your desired namespace
     installed: true
     <<: *default
-##
+###
   - name: hearing  # Replace with your desired namespace
     installed: true
     <<: *default
 
 
 
-  - name: pucar-ui  # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: pucar-ui  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
 #  - name: billing-service  # Replace with your desired namespace
 #    installed: true
@@ -192,13 +192,13 @@ releases:
 #  - name: egov-apportion-service  # Replace with your desired namespace
 #    installed: true
 #    <<: *default
-#  - name: casemanagement  # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  - name: casemanagement  # Replace with your desired namespace
+    installed: true
+    <<: *default
 ##
 #  - name: boundary-service  # Replace with your desired namespace
 #    installed: true
 #    <<: *default
-  - name: pdf-service  # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: pdf-service  # Replace with your desired namespace
+#    installed: true
+#    <<: *default

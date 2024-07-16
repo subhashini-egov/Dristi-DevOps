@@ -1,9 +1,9 @@
 name: Pucar-Install Workflow DPG-Dev
 # Workflow branch creating cluster against the input.yaml file
 on:
-  # push:
-  #   branches:
-  #     - Dev-0
+  push:
+     branches:
+       - Dev-0
   pull_request:
     branches:
       - main
@@ -173,7 +173,6 @@ jobs:
            --set application.initContainers.dbMigration.image.tag=v1.0.0-${application_commit} \
            --set case.image.tag=v1.0.0-${case_commit} \
            --set case.initContainers.dbMigration.image.tag=v1.0.0-${case_commit} \
-           --set casemanagement.image.tag=v1.0.0-${casemanagement_commit} \
            --set evidence.image.tag=v1.0.0-${evidence_commit} \
            --set evidence.initContainers.dbMigration.image.tag=v1.0.0-${evidence_commit} \
            --set hearing.image.tag=v1.0.0-${hearing_commit} \
