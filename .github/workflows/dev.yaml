@@ -180,8 +180,7 @@ jobs:
            --set order.image.tag=v1.0.0-${order_commit} \
            --set order.initContainers.dbMigration.image.tag=v1.0.0-${order_commit} \
            --set task.image.tag=v1.0.0-${task_commit} \
-           --set task.initContainers.dbMigration.image.tag=v1.0.0-${task_commit} \
-           --set analytics.image.tag=v1.0.0-${analytics_commitId}
+           --set task.initContainers.dbMigration.image.tag=v1.0.0-${task_commit}
         env:
           HELMFILE_ENV: dev
         working-directory: deploy-as-code

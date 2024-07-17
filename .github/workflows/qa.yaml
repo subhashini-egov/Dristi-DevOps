@@ -173,7 +173,6 @@ jobs:
            --set application.initContainers.dbMigration.image.tag=v1.0.0-${application_commit} \
            --set case.image.tag=v1.0.0-${case_commit} \
            --set case.initContainers.dbMigration.image.tag=v1.0.0-${case_commit} \
-           --set casemanagement.image.tag=v1.0.0-${casemanagement_commit} \
            --set evidence.image.tag=v1.0.0-${evidence_commit} \
            --set evidence.initContainers.dbMigration.image.tag=v1.0.0-${evidence_commit} \
            --set hearing.image.tag=v1.0.0-${hearing_commit} \
@@ -181,8 +180,7 @@ jobs:
            --set order.image.tag=v1.0.0-${order_commit} \
            --set order.initContainers.dbMigration.image.tag=v1.0.0-${order_commit} \
            --set task.image.tag=v1.0.0-${task_commit} \
-           --set task.initContainers.dbMigration.image.tag=v1.0.0-${task_commit} \
-           --set analytics.image.tag=v1.0.0-${analytics_commitId}
+           --set task.initContainers.dbMigration.image.tag=v1.0.0-${task_commit}
         env:
           HELMFILE_ENV: qa
         working-directory: deploy-as-code

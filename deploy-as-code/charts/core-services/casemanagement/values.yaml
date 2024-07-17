@@ -15,7 +15,7 @@ ingress:
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_casemanagement"
-  tag: v1.0.0-case-management-service-1
+  tag: v1.0.0-case-management-service-2
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
