@@ -8,10 +8,11 @@ configmaps:
       db-url: "jdbc:postgresql://postgresql.backbone:5432/postgres" ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
       domain: "digit-lts.digit.org" ## Add your Domain Name    
       egov-services-fqdn-name: "https://digit-lts.digit.org/" ## Add your Domain Name
-      egov-state-level-tenant-id: "pg" 
+      egov-state-level-tenant-id: "kl"
       s3-assets-bucket: "(pg-egov-assets|egov-playground-assets)"
       es-host: "elasticsearch-data-v1.es-cluster"
       es-indexer-host: "http://elasticsearch-data-v1.es-cluster:9200/"
+      etreasury: http://etreasury.egov:8080
       flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
       kafka-brokers: "release-name-kafka-controller-headless.kafka-kraft:9092"
       kafka-infra-brokers: kafka-v2-infra.kafka-cluster:9092
@@ -150,7 +151,8 @@ configmaps:
       order: 'http://order:8080/'
       evidence: 'http://evidence:8080/'
       task: 'http://task:8080/'
-
+      icops-integration: http://icops-integration.egov:8080/egov-kerala-icops/
+      payment-calculator: http://payment-calculator.egov:8080/
 
 root-ingress:
   name: root-ingress

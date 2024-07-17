@@ -70,6 +70,11 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: egov-state-level-tenant-id
+  - name: PARENT_LEVEL_TENANT_ID
+    valueFrom:
+      configMapKeyRef:
+        key: egov-state-level-tenant-id
+        name: egov-config
   - name: EGOV_SEARCHER_PT_SEARCH_PATH
     value: "egov-searcher/property-services/inboxpropertysearch/_get"
   - name: JAVA_OPTS

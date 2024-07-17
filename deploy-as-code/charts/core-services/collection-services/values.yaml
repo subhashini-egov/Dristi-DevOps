@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "collection_services_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/pucar_collection_db"
-      tag: v1.0.0-360fd4ebc4acb10a13c6b325d839c7c9c1dfebda
+      tag: v1.0.0-Stamp-payment-mode-1
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/pucar_collection"
-  tag: v1.0.0-360fd4ebc4acb10a13c6b325d839c7c9c1dfebda
+  tag: v1.0.0-Stamp-payment-mode-1
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
@@ -124,4 +124,9 @@ env: |
     valueFrom:
       configMapKeyRef:
         key: egov-url-shortening
+        name: egov-service-host
+  - name: EGOV_APPORTION_SERVICE_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: egov-apportion-service
         name: egov-service-host
