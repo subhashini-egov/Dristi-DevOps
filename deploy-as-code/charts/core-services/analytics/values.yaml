@@ -16,7 +16,7 @@ ingress:
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_analytics"
-  tag: v1.0.0-c8184bc4431e4722a5a97f6e03240c4c0f908788
+  tag: v1.0.0-8744571e76417c93b8453405eb3cfd0b770eed90
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
@@ -90,5 +90,14 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: order
-  
+  - name: EGOV_INDEXER_ES_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: elasticsearch-credentials
+        key: username
+  - name: EGOV_INDEXER_ES_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: elasticsearch-credentials
+        key: password
     
