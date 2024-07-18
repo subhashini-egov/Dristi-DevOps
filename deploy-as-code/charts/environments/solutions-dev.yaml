@@ -12,6 +12,8 @@ configmaps:
       es-indexer-host: "http://elasticsearch-data.backbone:9200/"
       kafka-brokers: "kafka-kraft-controller-headless.backbone:9092"
       egov-services-fqdn-name: https://dristi-kerala-dev.pucar.org/
+      dristi-e-sign: https://dristi-kerala-dev.pucar.org/digit-ui/
+      esign-interceptor: "https://dristi-kerala-dev.pucar.org/esign-interceptor/v1/_intercept"
 egov-user:
   heap: "-Xmx256m -Xms256m"
   memory_limits: 512Mi

@@ -37,8 +37,21 @@ env: |
   - name: DRISHTI_ESIGN_HOST
     valueFrom:
       configMapKeyRef:
-        name: egov-service-host
         key: e-sign-svc
+        name: egov-service-host
+  - name: DRISHTI_ESIGN_ENDPOINT
+    value: e-sign-svc/v1/_signed
+  - name: SPRING_DATASOURCE_URL
+    valueFrom:
+      configMapKeyRef:
+        key: db-url
+        name: egov-config
+  - name: DRISHTI_ESIGN_REDIRECT_URL
+    valueFrom:
+      configMapKeyRef:
+        key: dristi-e-sign
+        name: egov-config
+
     
   
     

@@ -49,5 +49,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-filestore
+  - name: ESING_RESPONSE_URL
+    valueFrom:
+      configMapKeyRef:
+        key: esign-interceptor
+        name: egov-config
+
 
     
