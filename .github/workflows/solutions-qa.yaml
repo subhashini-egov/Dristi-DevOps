@@ -191,6 +191,8 @@ jobs:
           echo "application_commit=$application_commit" >> $GITHUB_ENV          
           summons_svc_commit=$(git log -1 --pretty=format:%H -- backend/summons-svc)
           echo "summons_svc_commit=$summons_svc_commit" >> $GITHUB_ENV  
+          etreasury_commitId=$(git ls-remote https://github.com/pucardotorg/etreasury_kerala.git develop | awk '{print $1}')
+          echo "etreasury_commitI=$etreasury_commitId" >> $GITHUB_ENV  
 
       - name: digit deployment
         run: |
@@ -223,6 +225,9 @@ jobs:
             --set esign-interceptor.image.tag=v1.0.0-${{ env.esign_interceptor_commit }} \
             --set application.image.tag=v1.0.0-${{ env.application_commit }} \
             --set application.initContainers.dbMigration.image.tag=v1.0.0-${{ env.application_commit }} \
+            --set epayments.image.tag=v1.0.0-${{ etreasury_commitId }} \
+            --set etreasury.image.tag=v1.0.0-${{ env.etreasury_commit }} \
+            --set etreasury.initContainers.dbMigration.image.tag=v1.0.0-${{ env.etreasury_commit }} \
             --set summons-svc.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
             --set summons-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.summons_svc_commit }}
         working-directory: deploy-as-code
