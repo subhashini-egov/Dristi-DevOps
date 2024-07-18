@@ -91,6 +91,11 @@ env: |
       configMapKeyRef:
         key: egov-filestore
         name: egov-service-host
+  - name: EGOV_IDGEN_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-idgen
 
 
 
