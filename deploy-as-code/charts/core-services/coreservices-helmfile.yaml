@@ -148,7 +148,7 @@ releases:
     labels:
       team: "dpg"
     <<: *default
- 
+
   - name: scheduler  # Replace with your desired namespace
     installed: true
     labels:
@@ -272,4 +272,9 @@ releases:
     installed: true
     labels:
       team: "solutions"
+    <<: *default
+  - name: analytics  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
     <<: *default

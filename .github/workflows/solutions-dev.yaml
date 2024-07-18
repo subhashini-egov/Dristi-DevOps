@@ -191,6 +191,8 @@ jobs:
           echo "application_commit=$application_commit" >> $GITHUB_ENV          
           summons_svc_commit=$(git log -1 --pretty=format:%H -- backend/summons-svc)
           echo "summons_svc_commit=$summons_svc_commit" >> $GITHUB_ENV  
+          analytics_commit=$(git log -1 --pretty=format:%H -- backend/analytics)
+          echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV 
           etreasury_commit=$(git ls-remote https://github.com/pucardotorg/etreasury_kerala.git develop | awk '{print $1}')
           echo "etreasury_commit=$etreasury_commit" >> $GITHUB_ENV  
 
@@ -225,6 +227,7 @@ jobs:
             --set esign-interceptor.image.tag=v1.0.0-${{ env.esign_interceptor_commit }} \
             --set application.image.tag=v1.0.0-${{ env.application_commit }} \
             --set application.initContainers.dbMigration.image.tag=v1.0.0-${{ env.application_commit }} \
+            --set analytics.image.tag=v1.0.0-${{ env.analytics_commit }} \
             --set epayments.image.tag=v1.0.0-${{ env.etreasury_commit }} \
             --set etreasury.image.tag=v1.0.0-${{ env.etreasury_commit }} \
             --set etreasury.initContainers.dbMigration.image.tag=v1.0.0-${{ env.etreasury_commit }} \
