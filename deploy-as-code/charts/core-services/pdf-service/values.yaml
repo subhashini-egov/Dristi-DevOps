@@ -14,8 +14,8 @@ initContainers:
     enabled: true
     schemaTable: "pdf_service_schema"
     image:
-      repository: "pucardev.azurecr.io/pdf-service-db_migration"
-      tag: latest3
+      repository: "pdf-service-db_migration"
+      tag: pdf-qr-image-532d25bc2b-28
 
   gitSync:
     enabled: true
@@ -25,8 +25,8 @@ initContainers:
 
 # Container Configs
 image:
-  repository: "pucardev.azurecr.io/pdf-service"
-  tag: latest3
+  repository: "pdf-service"
+  tag: pdf-qr-image-532d25bc2b-28
 replicas: "1"
 appType: "java-spring"
 tracing-enabled: true
