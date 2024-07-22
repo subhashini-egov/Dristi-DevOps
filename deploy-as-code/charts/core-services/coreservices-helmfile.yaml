@@ -151,9 +151,9 @@ releases:
     installed: true
     <<: *default
 ##
-  - name: case  # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: case  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
 #  - name: inbox  # Replace with your desired namespace
 #    installed: true
@@ -192,9 +192,9 @@ releases:
 #  - name: egov-apportion-service  # Replace with your desired namespace
 #    installed: true
 #    <<: *default
-  - name: casemanagement  # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: casemanagement  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 ##
 #  - name: boundary-service  # Replace with your desired namespace
 #    installed: true
@@ -202,6 +202,10 @@ releases:
 #  - name: pdf-service  # Replace with your desired namespace
 #    installed: true
 #    <<: *default
-  - name: sunbirdrc-credential-service # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: sunbirdrc-credential-service # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+
+#  - name: casenote  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
