@@ -27,6 +27,11 @@ env: |
       configMapKeyRef:
         key: etreasury
         name: egov-config
+  - name: DRISTI_URL
+    valueFrom:
+      configMapKeyRef:
+        key: dristi-url
+        name: egov-config
 
 
 

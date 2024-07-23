@@ -96,6 +96,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-idgen
+  - name: SERVICE_DEPT_CODE
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: service-dept-code
 
 
 

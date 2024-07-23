@@ -14,6 +14,8 @@ configmaps:
       egov-services-fqdn-name: https://dristi-kerala-qa.pucar.org/
       dristi-e-sign: https://dristi-kerala-qa.pucar.org/digit-ui/
       esign-interceptor: "https://dristi-kerala-qa.pucar.org/esign-interceptor/v1/_intercept"
+      dristi-url: "https://dristi-kerala-qa.pucar.org/user/oauth/token?_=1713357247536"
+      service-dept-code: 01BUAT
 
 egov-user:
   heap: "-Xmx256m -Xms256m"
