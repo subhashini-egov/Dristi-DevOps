@@ -99,17 +99,17 @@ releases:
 #    installed: true
 #    <<: *default
 
-  - name: digit-ui # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: digit-ui # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+####
+#  - name: analytics # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 ###
-  - name: analytics # Replace with your desired namespace
-    installed: true
-    <<: *default
-##
-  - name: task  # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: task  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
 #  - name: employee # Replace with your desired namespace
 #    installed: true
@@ -147,10 +147,10 @@ releases:
 #    installed: true
 #    <<: *default
 
-  - name: advocate  # Replace with your desired namespace
-    installed: true
-    <<: *default
-##
+#  - name: advocate  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+###
 #  - name: case  # Replace with your desired namespace
 #    installed: true
 #    <<: *default
@@ -159,21 +159,21 @@ releases:
 #    installed: true
 #    <<: *default
 #
-  - name: order  # Replace with your desired namespace
-    installed: true
-    <<: *default
-##
-  - name: application  # Replace with your desired namespace
-    installed: true
-    <<: *default
-##
-  - name: evidence  # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: order  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 ###
-  - name: hearing  # Replace with your desired namespace
-    installed: true
-    <<: *default
+#  - name: application  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+###
+#  - name: evidence  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+####
+#  - name: hearing  # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 
 
 
@@ -206,6 +206,6 @@ releases:
 #    installed: true
 #    <<: *default
 
-#  - name: casenote  # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  - name: verifyapp  # Replace with your desired namespace
+    installed: true
+    <<: *default

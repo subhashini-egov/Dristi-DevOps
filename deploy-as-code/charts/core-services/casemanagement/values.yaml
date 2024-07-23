@@ -15,7 +15,7 @@ ingress:
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_casemanagement"
-  tag: v1.0.0-case-management-service-2
+  tag: v1.0.0-4c6ff80d40f930702b334848967fb6557433a36e
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
@@ -143,6 +143,30 @@ env: |
       secretKeyRef:
         name: elasticsearch-credentials
         key: password
-  
+  - name: EGOV_PDF_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: pdf-service
+        name: egov-service-host
+  - name: DRISTI_DEV_TASK_SEARCH_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: task
+        name: egov-service-host
+  - name: DRISTI_DEV_ORDER_SEARCH_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: order
+        name: egov-service-host
+  - name: EGOV_CREDENTIAL_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: sunbirdrc-credential
+        name: egov-service-host
+  - name: DRISTI_DEV_FILE_SEARCH_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: egov-filestore
+        name: egov-service-host
   
     

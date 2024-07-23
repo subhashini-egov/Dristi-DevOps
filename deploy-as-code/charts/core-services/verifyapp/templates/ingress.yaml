@@ -1,2 +1,2 @@
-## ingress.yaml
+# ingress.yaml
 {{- template "common.ingress" . -}}
