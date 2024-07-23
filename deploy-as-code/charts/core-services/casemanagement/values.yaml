@@ -11,11 +11,17 @@ ingress:
 
 
 # Init Containers Configs
-
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "case_service_schema"
+    image:
+      repository: "pucardev.azurecr.io/pucar_casemanagement"
+      tag: v1.0.0-44edaf76daf4531e8278b13b11ab7122f521dca9
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_casemanagement"
-  tag: v1.0.0-4c6ff80d40f930702b334848967fb6557433a36e
+  tag: v1.0.0-44edaf76daf4531e8278b13b11ab7122f521dca9
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
@@ -161,7 +167,7 @@ env: |
   - name: EGOV_CREDENTIAL_HOST
     valueFrom:
       configMapKeyRef:
-        key: sunbirdrc-credential
+        key: sunbird-credential-service
         name: egov-service-host
   - name: DRISTI_DEV_FILE_SEARCH_HOST
     valueFrom:

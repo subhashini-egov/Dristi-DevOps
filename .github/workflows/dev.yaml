@@ -169,6 +169,8 @@ jobs:
            --set digit-ui.image.tag=v1.0.0-${digit_ui_commitId} \
            --set advocate.image.tag=v1.0.0-${advocate_commit} \
            --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${advocate_commit} \
+           --set casemanagement.image.tag=v1.0.0-${casemanagement_commit} \
+           --set casemanagement.initContainers.dbMigration.image.tag=v1.0.0-${casemanagement_commit} \
            --set application.image.tag=v1.0.0-${application_commit} \
            --set application.initContainers.dbMigration.image.tag=v1.0.0-${application_commit} \
            --set case.image.tag=v1.0.0-${case_commit} \
