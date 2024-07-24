@@ -167,7 +167,7 @@ env: |
   - name: EGOV_CREDENTIAL_HOST
     valueFrom:
       configMapKeyRef:
-        key: sunbird-credential-service
+        key: sunbirdrc-credential-service
         name: egov-service-host
   - name: DRISTI_DEV_FILE_SEARCH_HOST
     valueFrom:
