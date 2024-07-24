@@ -157,5 +157,5 @@ pdf-service:
     gitSync:
       repo: "git@github.com:pucardotorg/dpg-configs"
       branch: "develop"
-  data-config-urls: "file:///work-dir/dpg-configs/pdf-service/data-config/birth-certificate-pdf.json"
-  format-config-urls: "file:///work-dir/dpg-configs/pdf-service/format-config/birth-certificate.json"
+  data-config-urls: "https://github.com/pucardotorg/dpg-configs/blob/develop/pdf-service/data-config/summons-order.json"
+  format-config-urls: "https://github.com/pucardotorg/dpg-configs/blob/develop/pdf-service/format-config/summons-order.json"
