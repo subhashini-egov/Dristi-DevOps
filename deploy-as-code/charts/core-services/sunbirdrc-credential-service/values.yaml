@@ -16,11 +16,11 @@ initContainers:
     schemaTable: "sunbirdrc_credential_service_schema"
     image:
       repository: "sunbirdrc-credential-service-db"
-      tag: sunbirdrc-mithun-028afe44b4-100
+      tag: sunbirdrc-mithun-895ff815d0-102
 
 image:
   repository: "sunbirdrc-credential-service"
-  tag: sunbirdrc-mithun-028afe44b4-100
+  tag: sunbirdrc-mithun-895ff815d0-102
 replicas: "1"
 healthChecks:
   enabled: false
@@ -47,7 +47,7 @@ env: |
   - name: SUNBIRD_REVOKE_PATH
     value: /credentials/
   - name: EGOV_MDMS_SEARCH_TENANT
-    value: 
+    value: pg
   - name: SUNBIRD_SAVE_VC_TOPIC
     value: save-vcid
   - name: SUNBIRD_UPDATE_VC_TOPIC
@@ -78,6 +78,6 @@ env: |
   - name: SURBIRD_REVOKE_HOST
     valueFrom:
       configMapKeyRef:
-        name: egov-config
-        key: egov-services-fqdn-name
+        name: egov-service-host
+        key: sunbird-credential-service
   
