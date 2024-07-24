@@ -99,7 +99,7 @@ env: |
   - name: SERVICE_DEPT_CODE
     valueFrom:
       configMapKeyRef:
-        name: egov-service-host
+        name: egov-config
         key: service-dept-code
 
 
