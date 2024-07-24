@@ -148,7 +148,7 @@ configmaps:
       hearing: 'http://hearing.egov:8080/'
       task: 'http://task.egov:8080/'
       evidence: 'http://evidence.egov:8080/'
-      sunbird-credential-schema: "http://sunbird-rc-credential-schema-service.egov:3000/"
+      sunbird-credential-schema: "http://sunbird-rc-credential-schema-service.egov:3333/"
       sunbird-credential-service: "http://sunbird-rc-credentials-service.egov:3000/"
 
 root-ingress:
