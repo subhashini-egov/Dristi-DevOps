@@ -174,5 +174,9 @@ env: |
       configMapKeyRef:
         key: egov-filestore
         name: egov-service-host
+  - name: SPRING_DATA_REDIS_HOST
+    value: redis.backbone
+  - name: SPRING_DATA_REDIS_PORT
+    value: 6379
   
     
