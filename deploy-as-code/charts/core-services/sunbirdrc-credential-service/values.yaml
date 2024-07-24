@@ -41,9 +41,9 @@ env: |
   - name: SUNBIRD_CREDENTIAL_SCHEMA_PATH
     value: /credential-schema
   - name: SUNBIRD_TEMPLATE_PATH
-    value: /credential-schema-service/template
+    value: /template
   - name: SUNBIRD_QR_PATH
-    value: /credentials-service/credentials/
+    value: /credentials/
   - name: SUNBIRD_REVOKE_PATH
     value: /credentials/
   - name: EGOV_MDMS_SEARCH_TENANT
