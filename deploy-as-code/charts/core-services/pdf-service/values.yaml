@@ -90,11 +90,6 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-localization
-  - name: EGOV_FILESTORE_SERVICE_HOST
-    valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: egov-filestore
   - name: EGOV_HOST
     valueFrom:
       configMapKeyRef:
