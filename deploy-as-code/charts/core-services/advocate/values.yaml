@@ -86,11 +86,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-hrms
-  - name: EGOV_MDMS_HOST
+  - name: KAFKA_CONFIG_BOOTSTRAP_SERVER_CONFIG
     valueFrom:
       configMapKeyRef:
-        name: egov-service-host
-        key: egov-mdms-service
+        key: kafka-brokers
+        name: egov-config
   - name: EGOV_LOCALIZATION_HOST
     valueFrom:
       configMapKeyRef:
@@ -113,11 +113,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-idgen
-  - name: EGOV_MDMS_HOST
+  - name: EGOV_INDIVIDUAL_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: EGOV_INDIVIDUAL_HOST
   - name: EGOV_WORKFLOW_HOST
     valueFrom:
       configMapKeyRef:

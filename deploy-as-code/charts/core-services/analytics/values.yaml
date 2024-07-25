@@ -100,3 +100,10 @@ env: |
       secretKeyRef:
         name: elasticsearch-credentials
         key: password
+  - name: EGOV_MDMS_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: egov-mdms-service
+        name: egov-service-host
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: /egov-mdms-service/v1/_search

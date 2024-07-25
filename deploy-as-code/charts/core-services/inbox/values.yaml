@@ -65,6 +65,16 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: es-indexer-host
+  - name: EGOV_ES_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: elasticsearch-credentials
+        key: username
+  - name: EGOV_ES_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: elasticsearch-credentials
+        key: password
   - name: STATE_LEVEL_TENANT_ID
     valueFrom:
       configMapKeyRef:
