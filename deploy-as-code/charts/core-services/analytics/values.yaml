@@ -16,7 +16,7 @@ ingress:
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_analytics"
-  tag: v1.0.0-8744571e76417c93b8453405eb3cfd0b770eed90
+  tag: v1.0.0-a4bc0f0958a019e1472e0815151b4ae0a63e1d2b
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
@@ -100,4 +100,12 @@ env: |
       secretKeyRef:
         name: elasticsearch-credentials
         key: password
+  - name: EGOV_MDMS_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: egov-mdms-service
+        name: egov-service-host
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: /egov-mdms-service/v1/_search
+
     
