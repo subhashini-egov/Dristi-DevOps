@@ -199,9 +199,9 @@ releases:
 #  - name: boundary-service  # Replace with your desired namespace
 #    installed: true
 #    <<: *default
-#  - name: pdf-service  # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  - name: pdf-service  # Replace with your desired namespace
+    installed: true
+    <<: *default
 #  - name: sunbirdrc-credential-service # Replace with your desired namespace
 #    installed: true
 #    <<: *default
