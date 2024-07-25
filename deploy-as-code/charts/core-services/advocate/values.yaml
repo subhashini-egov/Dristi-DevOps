@@ -117,7 +117,7 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: EGOV_INDIVIDUAL_HOST
+        key: individual
   - name: EGOV_WORKFLOW_HOST
     valueFrom:
       configMapKeyRef:
