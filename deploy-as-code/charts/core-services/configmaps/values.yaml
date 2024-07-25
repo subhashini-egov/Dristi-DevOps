@@ -151,6 +151,7 @@ configmaps:
       sunbird-credential-schema: "http://sunbird-rc-credential-schema-service.egov:3333/"
       sunbird-credential-service: "http://sunbird-rc-credentials-service.egov:3000/"
       sunbirdrc-credential-service: "http://sunbirdrc-credential-service.egov:8080/"
+      egov-pdf-filestore: "http://egov-filestore.egov:8080"
 root-ingress:
   name: root-ingress
   namespace: egov
