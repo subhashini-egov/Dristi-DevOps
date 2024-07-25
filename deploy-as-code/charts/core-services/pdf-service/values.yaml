@@ -15,7 +15,7 @@ initContainers:
     schemaTable: "pdf_service_schema"
     image:
       repository: "pdf-service-db"
-      tag: pdf-qr-image-49f3304fb6-29
+      tag: pdf-with-qr-f5267b35df-30
 
   gitSync:
     enabled: true
@@ -26,7 +26,7 @@ initContainers:
 # Container Configs
 image:
   repository: "pdf-service"
-  tag: pdf-qr-image-49f3304fb6-29
+  tag: pdf-with-qr-f5267b35df-30
 replicas: "1"
 appType: "java-spring"
 tracing-enabled: true
