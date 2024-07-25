@@ -95,3 +95,8 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: egov-services-fqdn-name
+  - name: EGOV_PDF_FILESTORE
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-filestore
