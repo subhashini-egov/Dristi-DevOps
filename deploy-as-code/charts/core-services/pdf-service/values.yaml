@@ -99,4 +99,4 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-filestore
+        key: egov-pdf-filestore
