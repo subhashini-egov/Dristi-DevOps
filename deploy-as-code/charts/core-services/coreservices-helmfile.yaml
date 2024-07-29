@@ -278,3 +278,6 @@ releases:
     labels:
       team: "dpg"
     <<: *default
+  - name: transformer # Replace with your desired namespace
+    installed: true
+    <<: *default

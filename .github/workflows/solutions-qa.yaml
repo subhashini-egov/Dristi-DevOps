@@ -195,6 +195,8 @@ jobs:
           echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV 
           epost_tracker_commit=$(git log -1 --pretty=format:%H -- backend/epost-tracker)
           echo "epost_tracker_commit=$epost_tracker_commit" >> $GITHUB_ENV 
+          transformer_commit=$(git log -1 --pretty=format:%H -- backend/transformer)
+          echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV 
           etreasury_commit=$(git ls-remote https://github.com/pucardotorg/etreasury_kerala.git develop | awk '{print $1}')
           echo "etreasury_commit=$etreasury_commit" >> $GITHUB_ENV  
 
@@ -236,7 +238,8 @@ jobs:
             --set epost-tracker.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
             --set epost-tracker.initContainers.dbMigration.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
             --set summons-svc.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
-            --set summons-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.summons_svc_commit }}
+            --set summons-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
+            --set transformer.image.tag=v1.0.0-${{ env.transformer_commit }}
         working-directory: deploy-as-code
         env:
           HELMFILE_ENV: "solutions-qa"
