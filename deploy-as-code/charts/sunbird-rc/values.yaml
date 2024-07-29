@@ -1,0 +1,23 @@
+global:
+  host: "dristi-dev.pucar.org"
+  database:
+    host: "pucar-dev-server.postgres.database.azure.com"
+    user: "pucar_dev"
+    port: "5432"
+    vendor: "postgres"
+  sunbird: 
+    enable_auth: false 
+    signing_algo: Ed25519Signature2020
+    jwks_uri: 
+    qr_type: W3C_VC
+    web_did_base_url: https://dristi-dev.pucar.org/identity-service
+  vault:
+    address: http://vault.vault.svc.cluster.local:8200
+    base_url: http://vault.vault.svc.cluster.local:8200/v1
+    root_path: http://vault.vault.svc.cluster.local:8200/v1/kv
+    vault_timeout: 5000
+    vault_proxy: false
+  secrets:
+    DB_PASSWORD: YkVRYzdoQ2M1NDA2aUJtNg==
+    VAULT_SECRET_TOKEN: aHZzLjRZZ09HYzBjdVRzTVJlOVNTd1MxUjd4SA==
+    EGOV_DB_URL: cG9zdGdyZXNxbDovL3B1Y2FyX2RldjpiRVFjN2hDYzU0MDZpQm02QHB1Y2FyLWRldi1zZXJ2ZXIucG9zdGdyZXMuZGF0YWJhc2UuYXp1cmUuY29tL3B1Y2FyLWRldi1kYj9zY2hlbWE9c3VuYmlyZHJj
