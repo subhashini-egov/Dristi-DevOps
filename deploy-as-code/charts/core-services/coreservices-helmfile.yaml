@@ -281,3 +281,6 @@ releases:
   - name: transformer # Replace with your desired namespace
     installed: true
     <<: *default
+  - name: epost-tracker # Replace with your desired namespace
+    installed: true
+    <<: *default
