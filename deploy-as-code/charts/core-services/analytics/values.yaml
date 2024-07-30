@@ -24,7 +24,7 @@ appType: "java-spring"
 heap: "-Xmx64m -Xms64m"
 java-args: "-Dspring.profiles.active=monitoring"
 memory_requests: 256Mi
-
+egov.statelevel.tenantId
 
 env: |
   - name: SERVER_PORT
@@ -33,6 +33,8 @@ env: |
     value: /analytics
   - name: EGOV_IDGEN_PATH
     value: "egov-idgen/id/_generate"
+  - name: EGOV_STATELEVEL_TENANTID
+    value: "kl"
   - name: EGOV_INDIVIDUAL_HOST
     valueFrom:
       configMapKeyRef:
