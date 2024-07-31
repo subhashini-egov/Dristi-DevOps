@@ -179,4 +179,7 @@ env: |
     value: "redis.backbone"
   - name: SPRING_DATA_REDIS_PORT
     value: "6379"
-  
+  - name: CASEMANAGEMENT_KAFKA_VC_CREATE_TOPIC
+    value: "create-vc"
+  - name: GENERATE_VC_CODE
+    value: "Pucar.SummonOrder10"
