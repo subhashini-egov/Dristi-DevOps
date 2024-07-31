@@ -158,12 +158,12 @@ jobs:
           echo "order_commit=$order_commit" >> $GITHUB_ENV
           task_commit=$(git log -1 --pretty=format:%H -- backend/task)
           echo "task_commit=$task_commit" >> $GITHUB_ENV
+          analytics_commit=$(git log -1 --pretty=format:%H -- backend/analytics)
+          echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV
       - name: DIGIT Deployment with updated tag
         run: |
           digit_ui_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev-env | awk '{print $1}')
           echo "DIGIT-UI Commit ID: $digit_ui_commitId"
-          analytics_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git pending-tasks-analytics | awk '{print $1}')
-          echo "ANALYTICS Commit ID: $analytics_commitId"
 
           helmfile -f digit-helmfile.yaml apply --include-needs=true \
            --set digit-ui.image.tag=v1.0.0-${digit_ui_commitId} \
