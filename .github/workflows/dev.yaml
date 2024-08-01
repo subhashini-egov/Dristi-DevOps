@@ -1,9 +1,9 @@
 name: Pucar-Install Workflow DPG-Dev
 # Workflow branch creating cluster against the input.yaml file
 on:
-#  push:
-#     branches:
-#       - Dev-0
+  push:
+     branches:
+       - Dev-0
   pull_request:
     branches:
       - main
@@ -164,9 +164,12 @@ jobs:
         run: |
           digit_ui_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev-env | awk '{print $1}')
           echo "DIGIT-UI Commit ID: $digit_ui_commitId"
+          dristi_pdf_commit=$(git ls-remote https://github.com/pucardotorg/dristi.git dristi-order-pdf | awk '{print $1}')
+          echo "Dristi PDF Commit ID: $dristi_pdf_commit"
 
           helmfile -f digit-helmfile.yaml apply --include-needs=true \
            --set digit-ui.image.tag=v1.0.0-${digit_ui_commitId} \
+           --set dristi-pdf.image.tag=v1.0.0-${dristi_pdf_commit} \
            --set advocate.image.tag=v1.0.0-${advocate_commit} \
            --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${advocate_commit} \
            --set casemanagement.image.tag=v1.0.0-${casemanagement_commit} \
