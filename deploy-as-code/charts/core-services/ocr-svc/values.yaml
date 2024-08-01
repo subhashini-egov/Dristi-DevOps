@@ -1,0 +1,42 @@
+# Common Labels
+labels:
+  app: "ocr"
+  group: "backend"
+
+# Ingress Configs
+ingress:
+#  zuul: true
+  enabled: true
+  context: "OCR"
+
+
+# Init Containers Configs
+
+
+# Container Configs
+image:
+  repository: "pucarsolutionsdev.azurecr.io/pucar_ocr"
+  tag: v1.0.0-dristi-experiment-1
+
+replicas: "1"
+httpPort: 8080
+appType: "java-spring"
+heap: "-Xmx64m -Xms64m"
+java-args: "-Dspring.profiles.active=monitoring"
+memory_requests: 256Mi
+
+env: |
+  - name: ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: minio
+        key: ACCESS_KEY
+  - name: SECRET_KEY
+    valueFrom:
+      secretKeyRef:
+        name: minio
+        key: SECRET_KEY
+  - name: OCR_BUCKET_NAME
+    value: "ocr-bucket" 
+  - name: MINIO_HOST
+    value: "http://minio.backbone:9001/"

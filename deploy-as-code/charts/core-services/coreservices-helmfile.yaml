@@ -285,3 +285,12 @@ releases:
   - name: epost-tracker # Replace with your desired namespace
     installed: true
     <<: *default
+#  - name: transcription # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#  - name: kenlm # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#  - name: ocr-svc # Replace with your desired namespace
+#    installed: true
+#    <<: *default
