@@ -159,6 +159,7 @@ jobs:
 
           helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true\
             --set icops-integration.image.tag=v1.0.0-${integration_commitId} \
+            --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${integration_commitId} 
 
         working-directory: deploy-as-code
         env:
