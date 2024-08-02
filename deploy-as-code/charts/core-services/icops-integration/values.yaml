@@ -1,0 +1,80 @@
+# Common Labels
+labels:
+  app: "icops-integration"
+  group: "rainmaker"
+
+# Ingress Configs
+ingress:
+  enabled: true
+  # zuul: true
+  context: "egov-kerala-icops"
+
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "integration_service_schema"
+    image:
+      repository: "pucarsolutionsdev.azurecr.io/integration_db"
+      tag: v1.0.0-0c954f1bdfebb9e7f5d91afeb0091c4d130dc88c
+# Container Configs
+image:
+   repository: "pucarsolutionsdev.azurecr.io/integration"
+   tag: v1.0.0-0c954f1bdfebb9e7f5d91afeb0091c4d130dc88c
+replicas: "1"
+
+env: |
+  - name: SPRING_FLYWAY_URL
+    valueFrom:
+      configMapKeyRef:
+        key: db-url
+        name: egov-config
+  - name: SPRING_FLYWAY_USER
+    valueFrom:
+      secretKeyRef:
+        name: db
+        key: username
+  - name: SPRING_FLYWAY_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: db
+        key: password
+  - name: SPRING_DATASOURCE_URL
+    valueFrom:
+      configMapKeyRef:
+        key: db-url
+        name: egov-config
+  - name: SPRING_DATASOURCE_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: db
+        key: username
+  - name: SPRING_DATASOURCE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: db
+        key: password
+  - name: "SCHEMA_TABLE"
+    value: "advocate_service_schema"
+  - name: EGOV_IDGEN_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-idgen
+  - name: EGOV_MDMS_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-mdms-service
+  - name: EGOV_FILE_STORE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-filestore
+  - name: EGOV_SUMMONS_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: summons
+        name: egov-service-host
+
+
+

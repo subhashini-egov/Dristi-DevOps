@@ -199,6 +199,8 @@ jobs:
           echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV  
           etreasury_commit=$(git ls-remote https://github.com/pucardotorg/etreasury_kerala.git develop | awk '{print $1}')
           echo "etreasury_commit=$etreasury_commit" >> $GITHUB_ENV  
+          integration_commit=$(git ls-remote https://github.com/pucardotorg/icops_integration-kerala.git icops_testing | awk '{print $1}')
+          echo "integration_commit=$integration_commit" >> $GITHUB_ENV  
 
       - name: digit deployment
         run: |
@@ -240,7 +242,9 @@ jobs:
             --set epost-tracker.initContainers.dbMigration.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
             --set summons-svc.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
             --set summons-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
-            --set transformer.image.tag=v1.0.0-${{ env.transformer_commit }}
+            --set transformer.image.tag=v1.0.0-${{ env.transformer_commit }} \
+            --set icops-integration.image.tag=v1.0.0-${{ env.integration_commit }} \
+            --set icops-integration.initContainers.dbMigration.image.tag=v1.0.0-${{ env.integration_commit }}
 
         working-directory: deploy-as-code
         env:
