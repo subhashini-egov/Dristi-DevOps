@@ -16,6 +16,7 @@ configmaps:
       dristi-url: "https://dristi-kerala-dev.pucar.org/user/oauth/token?_=1713357247536"
       service-dept-code: 01BUP7
       esign-interceptor: "https://dristi-kerala-dev.pucar.org/esign-interceptor/v1/_intercept"
+      esign-filestore-id: "2aefb901-edc6-4a45-95f8-3ea383a513f5"
 egov-user:
   heap: "-Xmx256m -Xms256m"
   memory_limits: 512Mi
@@ -151,3 +152,9 @@ workbench-ui:
     sub_filter.conf: "
       sub_filter  '<head>' '<head>
       <script src=https://pucarsolutionsfsdev.blob.core.windows.net/pucar-solutions-filestore/kl/Configs/globalConfigsWorkbench.js type=text/javascript></script>';"
+pdf-service:
+  persist-yml-path: "https://raw.githubusercontent.com/pucardotorg/kerala-configs/develop/works/egov-persister/attendance-service-persister.yml,https://raw.githubusercontent.com/pucardotorg/kerala-configs/develop/works/egov-persister/muster-service-persister.yml,https://raw.githubusercontent.com/pucardotorg/kerala-configs/develop/works/egov-persister/estimate-service.yml,https://raw.githubusercontent.com/pucardotorg/kerala-configs/develop/works/egov-persister/contract-service-persister.yml,https://raw.githubusercontent.com/pucardotorg/kerala-configs/develop/works/egov-persister/bankaccounts-persister.yml,https://raw.githubusercontent.com/pucardotorg/kerala-configs/develop/works/egov-persister/expense-bill-payment-persister.yaml"
+  initContainers:
+    gitSync:
+      repo: "git@github.com:pucardotorg/kerala-configs"
+      branch: "develop"

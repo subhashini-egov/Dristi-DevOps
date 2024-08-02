@@ -16,6 +16,7 @@ configmaps:
       esign-interceptor: "https://dristi-kerala-qa.pucar.org/esign-interceptor/v1/_intercept"
       dristi-url: "https://dristi-kerala-qa.pucar.org/user/oauth/token?_=1713357247536"
       service-dept-code: 01BUAT
+      esign-filestore-id: "0cdd01bf-5c6c-43de-86df-48406ce4f5a8"
 
 egov-user:
   heap: "-Xmx256m -Xms256m"
