@@ -29,7 +29,7 @@ httpPort: 8080
 appType: "java-spring"
 heap: "-Xmx64m -Xms64m"
 java-args: "-Dspring.profiles.active=monitoring"
-memory_requests: 256Mi
+memory_requests: 384Mi
 
 env: |
   - name: SPRING_FLYWAY_URL
