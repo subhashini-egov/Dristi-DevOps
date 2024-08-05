@@ -5,8 +5,8 @@ on:
   #     - Scheduler-Deploy
 #  pull_request:
 #    branches:
-#      - main
-#  workflow_dispatch:
+     # - main
+ workflow_dispatch:
 #  repository_dispatch:
 
 permissions:
