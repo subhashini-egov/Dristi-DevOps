@@ -215,6 +215,7 @@ jobs:
             --set case.image.tag=v1.0.0-${{ env.case_commit }} \
             --set case.initContainers.dbMigration.image.tag=v1.0.0-${{ env.case_commit }} \
             --set casemanagement.image.tag=v1.0.0-${{ env.casemanagement_commit }} \
+            --set casemanagement.initContainers.dbMigration.image.tag=v1.0.0-${{ env.casemanagement_commit }} \
             --set evidence.image.tag=v1.0.0-${{ env.evidence_commit }} \
             --set evidence.initContainers.dbMigration.image.tag=v1.0.0-${{ env.evidence_commit }} \
             --set hearing.image.tag=v1.0.0-${{ env.hearing_commit }} \
