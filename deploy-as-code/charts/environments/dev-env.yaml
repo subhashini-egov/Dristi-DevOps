@@ -157,5 +157,5 @@ pdf-service:
     gitSync:
       repo: "git@github.com:pucardotorg/dpg-configs"
       branch: "develop"
-  data-config-urls: "file:///work-dir/dpg-configs/pdf-service/data-config/summons-order.json"
-  format-config-urls: "file:///work-dir/dpg-configs/pdf-service/format-config/summons-order.json"
+  data-config-urls: "file:///work-dir/dpg-configs/pdf-service/data-config/summons-order.json,file:///work-dir/dpg-configs/pdf-service/data-config/summons-issue.json,file:///work-dir/dpg-configs/pdf-service/data-config/summons-issue-qr.json"
+  format-config-urls: "file:///work-dir/dpg-configs/pdf-service/format-config/summons-order.json,file:///work-dir/dpg-configs/pdf-service/format-config/summons-issue.json,file:///work-dir/dpg-configs/pdf-service/format-config/summons-issue-qr.json"
