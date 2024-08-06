@@ -24,7 +24,7 @@ image:
   repository: "pucarsolutionsdev.azurecr.io/pucar_case"
   tag: v1.0.0-6dff9d778b2e40e1702594a784474ec8c67059aa
   imagePullPolicy: Always
-replicas: "1"
+replicas: "2"
 httpPort: 8080
 appType: "java-spring"
 heap: "-Xmx64m -Xms64m"
