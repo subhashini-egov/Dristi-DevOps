@@ -24,13 +24,13 @@ image:
   repository: "pucardev.azurecr.io/pucar_case"
   tag: v1.0.0-19c66d6a6d1df2457f4a1c89f3598138ad84a619
   imagePullPolicy: Always
-replicas: "2"
+replicas: "1"
 httpPort: 8080
 appType: "java-spring"
 heap: "-Xmx64m -Xms64m"
 java-args: "-Dspring.profiles.active=monitoring"
-memory_requests: 384Mi
-memory_limits: 512Mi
+memory_requests: 1Gi
+memory_limits: 1Gi
 
 
 
