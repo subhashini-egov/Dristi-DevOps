@@ -285,6 +285,9 @@ releases:
   - name: epost-tracker # Replace with your desired namespace
     installed: true
     <<: *default
+  - name: icops-integration # Replace with your desired namespace
+    installed: true # Replace with the version of your chart, if needed
+    <<: *default
 #  - name: transcription # Replace with your desired namespace
 #    installed: true
 #    <<: *default
@@ -294,3 +297,4 @@ releases:
 #  - name: ocr-svc # Replace with your desired namespace
 #    installed: true
 #    <<: *default
+
