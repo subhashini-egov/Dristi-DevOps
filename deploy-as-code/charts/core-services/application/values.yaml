@@ -132,3 +132,5 @@ env: |
       configMapKeyRef:
         key: order
         name: egov-service-host
+  - name: KAFKA_TOPICS_RECEIPT_CREATE
+    value: egov.collection.payment-create
