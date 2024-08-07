@@ -35,7 +35,7 @@ java-args: "-Dspring.profiles.active=monitoring"
 
 # Additional Container Envs
 env: |
-  - SERVER_PORT
+  - name: SERVER_PORT
     value: "8080"
   - name: SPRING_DATASOURCE_URL
     valueFrom:
@@ -97,6 +97,17 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: case
+  - name: DRISHTI_ANALYTICS_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: analytics
+  - name: DRISHTI_HEARING_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: hearing
+  
   
   
   
