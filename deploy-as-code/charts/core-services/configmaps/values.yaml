@@ -155,6 +155,7 @@ configmaps:
       task: 'http://task:8080/'
       icops-integration: http://icops-integration.egov:8080/egov-kerala-icops/
       payment-calculator: http://payment-calculator.egov:8080/
+      ocr-svc: http://ocr:8000/
 
 root-ingress:
   name: root-ingress

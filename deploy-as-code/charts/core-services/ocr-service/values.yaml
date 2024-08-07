@@ -7,7 +7,7 @@ labels:
 ingress:
   zuul: true
   enabled: true
-  context: "advocate"
+  context: "ocr"
 
 
 # Init Containers Configs
@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "ocr-service_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/pucar_ocr_svc_db"
-      tag: v1.0.0-3a8218f94d54f9d7ca2c7604b7b2caa8a4a83d42
+      tag: v1.0.0-ef8f990ce09a0434c28471b1f04d7424f8c1c838
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/pucar_ocr_svc"
-  tag: v1.0.0-3a8218f94d54f9d7ca2c7604b7b2caa8a4a83d42
+  tag: v1.0.0-ef8f990ce09a0434c28471b1f04d7424f8c1c838
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
@@ -128,10 +128,16 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: ocr-svc
-  - name: EGOV_FILESTORE_HOST
+  - name: EGOV_FILE_STORE_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
         key: egov-filestore
+  - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+    valueFrom:
+      configMapKeyRef:
+        key: kafka-brokers
+        name: egov-config
+
 
 
