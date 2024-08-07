@@ -39,7 +39,7 @@ healthChecks:
 custom-filter-property: "false"
 posthook-config: ""
 prehook-config: ""
-heap: "-Xmx512m -Xms512m"
+heap: "-Xmx768m -Xms768m"
 appType: "java-spring"
 tracing-enabled: true
 server-tomcat-max-threads: "350"
@@ -52,7 +52,7 @@ eventlog-topic: "springGateway-event-log"
 eventlog-urls-whitelist: ""
 home-isolation-chatbot-router-enabled: false
 memory_limits: "768Mi"
-memory_requests: 512Mi
+memory_requests: 768Mi
 
 # Additional Container Envs
 env: |
