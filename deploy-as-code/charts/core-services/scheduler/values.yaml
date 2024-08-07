@@ -35,6 +35,8 @@ java-args: "-Dspring.profiles.active=monitoring"
 
 # Additional Container Envs
 env: |
+  - SERVER_PORT
+    value: "8080"
   - name: SPRING_DATASOURCE_URL
     valueFrom:
       configMapKeyRef:
