@@ -169,6 +169,7 @@ jobs:
 
           helmfile -f digit-helmfile.yaml apply --include-needs=true \
            --set digit-ui.image.tag=v1.0.0-${digit_ui_commitId} \
+           --set dristi-pdf.image.tag=v1.0.0-${dristi_pdf_commit} \
            --set advocate.image.tag=v1.0.0-${advocate_commit} \
            --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${advocate_commit} \
            --set application.image.tag=v1.0.0-${application_commit} \

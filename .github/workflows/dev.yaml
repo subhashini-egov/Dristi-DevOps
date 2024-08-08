@@ -160,12 +160,12 @@ jobs:
           echo "task_commit=$task_commit" >> $GITHUB_ENV
           analytics_commit=$(git log -1 --pretty=format:%H -- backend/analytics)
           echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV
+          dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
+          echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
       - name: DIGIT Deployment with updated tag
         run: |
           digit_ui_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev-env | awk '{print $1}')
           echo "DIGIT-UI Commit ID: $digit_ui_commitId"
-          dristi_pdf_commit=$(git ls-remote https://github.com/pucardotorg/dristi.git dristi-order-pdf | awk '{print $1}')
-          echo "Dristi PDF Commit ID: $dristi_pdf_commit"
 
           helmfile -f digit-helmfile.yaml apply --include-needs=true \
            --set digit-ui.image.tag=v1.0.0-${digit_ui_commitId} \

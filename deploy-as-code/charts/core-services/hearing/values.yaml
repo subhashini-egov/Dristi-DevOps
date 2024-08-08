@@ -134,6 +134,11 @@ env: |
       configMapKeyRef:
         key: application
         name: egov-service-host
+  - name: EGOV_FILESTORE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-filestore
 
 
   
