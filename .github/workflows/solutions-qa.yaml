@@ -1,8 +1,8 @@
 name: Pucar-Install Workflow Solutins-QA
 on:
-  # push:
-  #   branches:
-  #     - Scheduler-Deploy
+# push:
+#   branches:
+#     - Scheduler-Deploy
 #  pull_request:
 #    branches:
      # - main
@@ -195,8 +195,8 @@ jobs:
           echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV 
           epost_tracker_commit=$(git log -1 --pretty=format:%H -- backend/epost-tracker)
           echo "epost_tracker_commit=$epost_tracker_commit" >> $GITHUB_ENV 
-          transformer_commit=$(git log -1 --pretty=format:%H -- backend/transformer)
-          echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV 
+          transformer_commit=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git transformer | awk '{print $1}')
+          echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV  
           etreasury_commit=$(git ls-remote https://github.com/pucardotorg/etreasury_kerala.git develop | awk '{print $1}')
           echo "etreasury_commit=$etreasury_commit" >> $GITHUB_ENV  
           integration_commit=$(git ls-remote https://github.com/pucardotorg/icops_integration-kerala.git icops_testing | awk '{print $1}')
@@ -245,6 +245,7 @@ jobs:
             --set transformer.image.tag=v1.0.0-${{ env.transformer_commit }} \
             --set icops-integration.image.tag=v1.0.0-${{ env.integration_commit }} \
             --set icops-integration.initContainers.dbMigration.image.tag=v1.0.0-${{ env.integration_commit }}
+
         working-directory: deploy-as-code
         env:
           HELMFILE_ENV: "solutions-qa"
