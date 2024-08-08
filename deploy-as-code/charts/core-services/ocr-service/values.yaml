@@ -7,7 +7,7 @@ labels:
 ingress:
   zuul: true
   enabled: true
-  context: "ocr"
+  context: "ocr-service"
 
 
 # Init Containers Configs
@@ -65,7 +65,7 @@ env: |
         name: db
         key: password
   - name: "SCHEMA_TABLE"
-    value: "advocate_service_schema"
+    value: "ocr-service_schema"
   - name: EGOV_IDGEN_HOST
     valueFrom:
       configMapKeyRef:
