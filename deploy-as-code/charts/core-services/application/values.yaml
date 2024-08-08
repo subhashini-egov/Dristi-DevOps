@@ -117,6 +117,7 @@ env: |
       configMapKeyRef:
         key: kafka-brokers
         name: egov-config
+  
   - name: EGOV_URL_SHORTNER
     valueFrom:
       configMapKeyRef:
@@ -134,3 +135,5 @@ env: |
         name: egov-service-host
   - name: KAFKA_TOPICS_RECEIPT_CREATE
     value: egov.collection.payment-create
+  - name: SPRING_KAFKA_CONSUMER_GROUP_ID
+    value: application

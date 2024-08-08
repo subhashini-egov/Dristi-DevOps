@@ -150,3 +150,5 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-enc-service
+  - name: SPRING_KAFKA_CONSUMER_GROUP_ID
+    value: case
