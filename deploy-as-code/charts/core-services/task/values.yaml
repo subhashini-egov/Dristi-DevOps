@@ -138,6 +138,8 @@ env: |
         key: order
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
     value: task
+  - name: KAFKA_TOPICS_RECEIPT_CREATE
+    value: egov.collection.payment-create
 
 
     
