@@ -187,6 +187,7 @@ jobs:
            --set analytics.image.tag=v1.0.0-${analytics_commit} \          
            --set task.image.tag=v1.0.0-${task_commit} \
            --set task.initContainers.dbMigration.image.tag=v1.0.0-${task_commit}
+           
         env:
           HELMFILE_ENV: qa
         working-directory: deploy-as-code
