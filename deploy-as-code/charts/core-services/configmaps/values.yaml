@@ -157,6 +157,7 @@ configmaps:
       icops-integration: http://icops-integration.egov:8080/egov-kerala-icops/
       payment-calculator: http://payment-calculator.egov:8080/
       ocr-svc: http://ocr:8000/
+      epost: http://epost-tracker.egov:8080/
 
 root-ingress:
   name: root-ingress
