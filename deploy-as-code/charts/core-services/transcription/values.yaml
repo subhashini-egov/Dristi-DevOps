@@ -27,8 +27,8 @@ java-args: "-Dspring.profiles.active=monitoring"
 
 env: |
   - name: MINIO_HOST
-    value: "http://minio.backbone:9001/
+    value: "http://minio.backbone:9001/"
   - name: KENLM_URL
-    value: http://kenlm:8000/kenlm
+    value: "http://kenlm:8000/kenlm"
 
 
