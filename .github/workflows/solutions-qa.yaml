@@ -211,8 +211,8 @@ jobs:
             --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${{ env.scheduler_commit }} \
             --set payment-calculator.image.tag=v1.0.0-${{ env.payment_calculator_commit }} \
             --set payment-calculator.initContainers.dbMigration.image.tag=v1.0.0-${{ env.payment_calculator_commit }} \
-            --set digit-ui.image.tag=v1.0.0-${{ env.digit_ui_commit }} 
-            --set dristi-case-pdf.image.tag=v1.0.0-${{ env.dristi_case_pdf_commit }} \            
+            --set digit-ui.image.tag=v1.0.0-${{ env.digit_ui_commit }} \
+            --set dristi-case-pdf.image.tag=v1.0.0-${{ env.dristi_case_pdf_commit }} \
             --set advocate.image.tag=v1.0.0-${{ env.advocate_commit }} \
             --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${{ env.advocate_commit }} \
             --set case.image.tag=v1.0.0-${{ env.case_commit }} \
