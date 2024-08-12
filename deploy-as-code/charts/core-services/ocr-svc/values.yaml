@@ -16,8 +16,8 @@ ingress:
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/pucar_ocr"
-  tag: v1.0.0-dristi-experiment-3
-
+  tag: v1.0.0-dristi-experiment-OCR-1
+  
 replicas: "1"
 httpPort: 8080
 appType: "java-spring"
