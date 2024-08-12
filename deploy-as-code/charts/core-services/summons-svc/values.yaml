@@ -134,6 +134,12 @@ env: |
         key: task
         name: egov-service-host
 
+  - name: EGOV_EPOST_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: epost
+        name: egov-service-host
+
   
   
   
