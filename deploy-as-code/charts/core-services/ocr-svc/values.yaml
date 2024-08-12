@@ -16,7 +16,7 @@ ingress:
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/pucar_ocr"
-  tag: v1.0.0-dristi-experiment-1
+  tag: v1.0.0-dristi-experiment-2 
 
 replicas: "1"
 httpPort: 8080
