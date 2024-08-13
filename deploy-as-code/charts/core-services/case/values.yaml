@@ -41,6 +41,11 @@ memory_limits: 2Gi
 #  readinessProbePath: "/case/"
 
 env: |
+  - name: EGOV_DRISTI_CASE_PDF_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: dristi-case-pdf
+        name: egov-service-host
   - name: SPRING_FLYWAY_URL
     valueFrom:
       configMapKeyRef:

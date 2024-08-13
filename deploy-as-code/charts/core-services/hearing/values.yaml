@@ -128,10 +128,15 @@ env: |
       configMapKeyRef:
         key: case
         name: egov-service-host
-  - name: EGOV_application_HOST
+  - name: EGOV_APPLICATION_HOST
     valueFrom:
       configMapKeyRef:
         key: application
+        name: egov-service-host
+  - name: EGOV_PDF_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: pdf-service
         name: egov-service-host
 
 
