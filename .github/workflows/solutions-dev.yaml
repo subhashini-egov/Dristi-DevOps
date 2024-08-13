@@ -197,6 +197,8 @@ jobs:
           echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV 
           epost_tracker_commit=$(git log -1 --pretty=format:%H -- backend/epost-tracker)
           echo "epost_tracker_commit=$epost_tracker_commit" >> $GITHUB_ENV 
+          dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
+          echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
           transformer_commit=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git transformer | awk '{print $1}')
           echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV  
           etreasury_commit=$(git ls-remote https://github.com/pucardotorg/etreasury_kerala.git develop | awk '{print $1}')
@@ -213,6 +215,7 @@ jobs:
             --set payment-calculator.initContainers.dbMigration.image.tag=v1.0.0-${{ env.payment_calculator_commit }} \
             --set digit-ui.image.tag=v1.0.0-${{ env.digit_ui_commit }} \
             --set dristi-case-pdf.image.tag=v1.0.0-${{ env.dristi_case_pdf_commit }} \
+            --set dristi-pdf.image.tag=v1.0.0-${{ env.dristi_pdf_commit }} \
             --set advocate.image.tag=v1.0.0-${{ env.advocate_commit }} \
             --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${{ env.advocate_commit }} \
             --set case.image.tag=v1.0.0-${{ env.case_commit }} \
@@ -247,7 +250,8 @@ jobs:
             --set summons-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
             --set transformer.image.tag=v1.0.0-${{ env.transformer_commit }} \
             --set icops-integration.image.tag=v1.0.0-${{ env.integration_commit }} \
-            --set icops-integration.initContainers.dbMigration.image.tag=v1.0.0-${{ env.integration_commit }}
+            --set icops-integration.initContainers.dbMigration.image.tag=v1.0.0-${{ env.integration_commit }} \
+          
 
         working-directory: deploy-as-code
         env:

@@ -82,11 +82,6 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: hearing
-  - name: EGOV_SUNBIRDRC_CREDENTIAL_HOST
-    valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: sunbirdrc-credential-service
   - name: CONTEXT_PATH
     value: "/egov-pdf"    
   - name: EGOV_HOST
