@@ -166,6 +166,8 @@ jobs:
         run: |
           digit_ui_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev-env | awk '{print $1}')
           echo "DIGIT-UI Commit ID: $digit_ui_commitId"
+          case_commit=$(git ls-remote https://github.com/pucardotorg/dristi.git develop-enc-dyc | awk '{print $1}')
+          echo "case_commit: $case_commit"
 
           helmfile -f digit-helmfile.yaml apply --include-needs=true \
            --set digit-ui.image.tag=v1.0.0-${digit_ui_commitId} \
