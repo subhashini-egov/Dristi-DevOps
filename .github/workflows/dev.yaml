@@ -162,7 +162,6 @@ jobs:
           echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV
           dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
           echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
-          git checkout develop-enc-dyc
           case_commit=$(git log -1 --pretty=format:%H -- backend/case)
           echo "case_commit=$case_commit" >> $GITHUB_ENV
       - name: DIGIT Deployment with updated tag

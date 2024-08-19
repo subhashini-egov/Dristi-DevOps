@@ -160,8 +160,10 @@ jobs:
           echo "task_commit=$task_commit" >> $GITHUB_ENV
           analytics_commit=$(git log -1 --pretty=format:%H -- backend/analytics)
           echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV
-          casemanagement_commit=$(git log -1 --pretty=format:%H -- backend/casemanagement)
-          echo "casemanagement_commit=$casemanagement_commit" >> $GITHUB_ENV
+          dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
+          echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
+          case_commit=$(git log -1 --pretty=format:%H -- backend/case)
+          echo "case_commit=$case_commit" >> $GITHUB_ENV
       - name: DIGIT Deployment with updated tag
         run: |
           digit_ui_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev-env | awk '{print $1}')
@@ -172,22 +174,22 @@ jobs:
            --set dristi-pdf.image.tag=v1.0.0-${dristi_pdf_commit} \
            --set advocate.image.tag=v1.0.0-${advocate_commit} \
            --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${advocate_commit} \
+           --set casemanagement.image.tag=v1.0.0-${casemanagement_commit} \
+           --set casemanagement.initContainers.dbMigration.image.tag=v1.0.0-${casemanagement_commit} \
            --set application.image.tag=v1.0.0-${application_commit} \
            --set application.initContainers.dbMigration.image.tag=v1.0.0-${application_commit} \
            --set case.image.tag=v1.0.0-${case_commit} \
            --set case.initContainers.dbMigration.image.tag=v1.0.0-${case_commit} \
-           --set casemanagement.image.tag=v1.0.0-${casemanagement_commit} \
-           --set casemanagement.initContainers.dbMigration.image.tag=v1.0.0-${casemanagement_commit} \
            --set evidence.image.tag=v1.0.0-${evidence_commit} \
            --set evidence.initContainers.dbMigration.image.tag=v1.0.0-${evidence_commit} \
            --set hearing.image.tag=v1.0.0-${hearing_commit} \
            --set hearing.initContainers.dbMigration.image.tag=v1.0.0-${hearing_commit} \
            --set order.image.tag=v1.0.0-${order_commit} \
            --set order.initContainers.dbMigration.image.tag=v1.0.0-${order_commit} \
-           --set analytics.image.tag=v1.0.0-${analytics_commit} \          
+           --set analytics.image.tag=v1.0.0-${analytics_commit} \
            --set task.image.tag=v1.0.0-${task_commit} \
            --set task.initContainers.dbMigration.image.tag=v1.0.0-${task_commit}
-           
+
         env:
           HELMFILE_ENV: qa
         working-directory: deploy-as-code
