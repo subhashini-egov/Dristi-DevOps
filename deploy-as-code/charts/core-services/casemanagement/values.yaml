@@ -181,3 +181,8 @@ env: |
     value: "redis.backbone"
   - name: SPRING_DATA_REDIS_PORT
     value: "6379"
+  - name: EGOV_CREDENTIAL_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: sunbirdrc-credential-service
+        name: egov-service-host
