@@ -313,3 +313,7 @@ releases:
     installed: true
     <<: *default
 
+  - name: verifyapp  # Replace with your desired namespace
+    installed: true
+    <<: *default
+
