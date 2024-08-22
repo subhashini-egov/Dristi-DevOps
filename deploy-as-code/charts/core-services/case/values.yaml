@@ -46,6 +46,8 @@ env: |
     value: "8080"
   - name: JAVA_ARGS
     value: {{ index .Values "java-args" | quote }}
+  - name: SPRING_FLYWAY_ENABLED
+    value: "true"
   - name: SPRING_FLYWAY_URL
     valueFrom:
       configMapKeyRef:
