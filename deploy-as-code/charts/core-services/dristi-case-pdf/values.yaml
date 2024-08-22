@@ -27,8 +27,5 @@ env: |
   - name: PDF_SERVICE_URL
     value: "http://pdf-service:8080/pdf-service/v1/_createnosave?key=case&tenantId=kl"
   - name: FILE_STORE_HOST 
-    valueFrom:
-      configMapKeyRef:
-        key: egov-filestore
-        name: egov-service-host
+    value: "https://dristi-kerala-qa.pucar.org"
 
