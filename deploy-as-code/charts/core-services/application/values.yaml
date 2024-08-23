@@ -123,7 +123,7 @@ env: |
         key: kafka-brokers
         name: egov-config
   - name: EGOV_FILESTORE_HOST
-        valueFrom:
+    valueFrom:
       configMapKeyRef:
         key: egov-filestore
         name: egov-service-host
