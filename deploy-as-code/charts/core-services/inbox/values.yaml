@@ -76,12 +76,12 @@ env: |
     valueFrom:
       secretKeyRef:
         name: elasticsearch-credentials
-        key: username
+        key: password
   - name: EGOV_ES_USERNAME
     valueFrom:
       secretKeyRef:
         name: elasticsearch-credentials
-        key: password
+        key: username
   - name: STATE_LEVEL_TENANT_ID
     valueFrom:
       configMapKeyRef:
