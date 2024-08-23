@@ -122,7 +122,11 @@ env: |
       configMapKeyRef:
         key: kafka-brokers
         name: egov-config
-  
+  - name: EGOV_FILESTORE_HOST
+        valueFrom:
+      configMapKeyRef:
+        key: egov-filestore
+        name: egov-service-host
   - name: EGOV_URL_SHORTNER
     valueFrom:
       configMapKeyRef:
