@@ -12,6 +12,7 @@ configmaps:
       es-indexer-host: "https://elasticsearch-data.backbone:9200/"
       kafka-brokers: "kafka-kraft-controller-headless.backbone:9092"
       egov-services-fqdn-name: https://dristi-kerala-qa.pucar.org/
+      egov-services: https://dristi-kerala-qa.pucar.org
       dristi-e-sign: https://dristi-kerala-qa.pucar.org/digit-ui/
       esign-interceptor: "https://dristi-kerala-qa.pucar.org/esign-interceptor/v1/_intercept"
       dristi-url: "https://dristi-kerala-qa.pucar.org/user/oauth/token?_=1713357247536"

@@ -26,9 +26,9 @@ env: |
     value: "8080"
   - name: PDF_SERVICE_URL
     value: "http://pdf-service:8080/pdf-service/v1/_createnosave?key=case&tenantId=kl"
-  - name: FILE_STORE_HOST
+  - name: FILE_STORE_HOST 
     valueFrom:
       configMapKeyRef:
         name: egov-config
-        key: egov-services-fqdn-name
+        key: egov-services
 
