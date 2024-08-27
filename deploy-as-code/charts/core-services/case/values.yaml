@@ -41,6 +41,8 @@ memory_limits: 2Gi
 #  readinessProbePath: "/case/"
 
 env: |
+  - name: CONFIG_CASE_ESIGN_PENDING
+    value: '0 */30 * * * *'
   - name: JAVA_OPTS
     value: {{ index .Values "heap" | quote }}
   - name: SERVER_PORT
