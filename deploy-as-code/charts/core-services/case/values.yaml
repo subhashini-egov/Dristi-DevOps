@@ -41,6 +41,8 @@ memory_limits: 2Gi
 #  readinessProbePath: "/case/"
 
 env: |
+  - name: NOTIFICATION_SMS_ENABLED
+    value: "false"
   - name: JAVA_OPTS
     value: {{ index .Values "heap" | quote }}
   - name: SERVER_PORT
