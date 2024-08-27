@@ -162,15 +162,14 @@ jobs:
           echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV
           dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
           echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
+          individual_commit=$(git log -1 --pretty=format:%H -- common/individual)
+          echo "individual_commit=$individual_commit" >> $GITHUB_ENV
           case_commit=$(git log -1 --pretty=format:%H -- backend/case)
           echo "case_commit=$case_commit" >> $GITHUB_ENV
           digit_ui_commit=$(git log -1 --pretty=format:%H -- frontend/micro-ui)
           echo "digit_ui_commit=$digit_ui_commit" >> $GITHUB_ENV
       - name: DIGIT Deployment with updated tag
         run: |
-          digit_ui_commitId=$(git ls-remote https://github.com/pucardotorg/dristi.git dev-env | awk '{print $1}')
-          echo "DIGIT-UI Commit ID: $digit_ui_commitId"
-
           helmfile -f digit-helmfile.yaml apply --include-needs=true \
            --set digit-ui.image.tag=v1.0.0-${digit_ui_commit} \
            --set dristi-pdf.image.tag=v1.0.0-${dristi_pdf_commit} \
@@ -186,6 +185,8 @@ jobs:
            --set evidence.initContainers.dbMigration.image.tag=v1.0.0-${evidence_commit} \
            --set hearing.image.tag=v1.0.0-${hearing_commit} \
            --set hearing.initContainers.dbMigration.image.tag=v1.0.0-${hearing_commit} \
+           --set individual.image.tag=v1.0.0-${individual_commit} \
+           --set individual.initContainers.dbMigration.image.tag=v1.0.0-${individual_commit} \
            --set order.image.tag=v1.0.0-${order_commit} \
            --set order.initContainers.dbMigration.image.tag=v1.0.0-${order_commit} \
            --set analytics.image.tag=v1.0.0-${analytics_commit} \
