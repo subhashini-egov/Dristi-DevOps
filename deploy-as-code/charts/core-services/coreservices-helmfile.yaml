@@ -90,10 +90,10 @@ releases:
   #   - egov-mdms-service
   #   <<: *default
 
-  # - name: user-otp # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
-#
+  - name: user-otp # Replace with your desired namespace
+    installed: true
+    <<: *default
+
 #  - name: configmaps # Replace with your desired namespace
 #    installed: true
 #    <<: *default
