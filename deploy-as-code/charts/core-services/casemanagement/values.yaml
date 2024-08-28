@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "casemanagement_service_schema"
     image:
       repository: "pucardev.azurecr.io/pucar_casemanagement_db"
-      tag: v1.0.0-44edaf76daf4531e8278b13b11ab7122f521dca9
+      tag: v1.0.0-1bd0371b937f1b60229f972fc3c0cc1e0b56a79f
 
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_casemanagement"
-  tag: v1.0.0-44edaf76daf4531e8278b13b11ab7122f521dca9
+  tag: v1.0.0-1bd0371b937f1b60229f972fc3c0cc1e0b56a79f
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080

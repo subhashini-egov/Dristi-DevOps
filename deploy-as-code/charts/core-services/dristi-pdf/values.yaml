@@ -23,7 +23,7 @@ ingress:
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/dristi-pdf"
-  tag: v1.0.0-b997c64a4fefeb9b31a979c1da40756804688839
+  tag: v1.0.0-88003db9a4c6d43dd132bac9281fb88036bcdd28
 replicas: "1"
 
 # Additional Container Envs

@@ -14,7 +14,8 @@ initContainers: {}
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/verifierapp"
-  tag: v1.0.0-main-c4ee738
+  tag: v1.0.0-main-c4ee738-4
+
 replicas: "1"
 httpPort: 80
 healthChecks:

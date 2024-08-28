@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "advocate_service_schema"
     image:
       repository: "pucardev.azurecr.io/pucar_advocate_db"
-      tag: v1.0.0-7e753b471f07dca0f1d13c3a6b3782b67f69bfd2
+      tag: v1.0.0-86414f6bfb00268aee7ecf95fe43a0b108a6f251
 
 # Container Configs
 image:
   repository: "pucardev.azurecr.io/pucar_advocate"
-  tag: v1.0.0-7e753b471f07dca0f1d13c3a6b3782b67f69bfd2
+  tag: v1.0.0-86414f6bfb00268aee7ecf95fe43a0b108a6f251
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
