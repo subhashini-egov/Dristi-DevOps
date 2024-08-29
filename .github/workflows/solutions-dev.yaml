@@ -177,8 +177,6 @@ jobs:
           echo "order_commit=$order_commit" >> $GITHUB_ENV
           task_commit=$(git log -1 --pretty=format:%H -- backend/task)
           echo "task_commit=$task_commit" >> $GITHUB_ENV
-          digit_ui_commit=$(git log -1 --pretty=format:%H -- frontend/micro-ui)
-          echo "digit_ui_commit=$digit_ui_commit" >> $GITHUB_ENV
           billing_service_commit=$(git log -1 --pretty=format:%H -- backend/billing-service)
           echo "billing_service_commit=$billing_service_commit" >> $GITHUB_ENV
           collection_service_commit=$(git log -1 --pretty=format:%H -- backend/collection-services)
@@ -207,6 +205,11 @@ jobs:
           echo "integration_commit=$integration_commit" >> $GITHUB_ENV  
           dristi_pdf_commit=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git order-application-pdf | awk '{print $1}')
           echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
+          git clone https://github.com/pucardotorg/dristi-solutions.git
+          cd dristi-solutions
+          git checkout develop
+          digit_ui_commit=$(git log -1 --pretty=format:%H -- frontend/micro-ui)
+          echo "digit_ui_commit=$digit_ui_commit" >> $GITHUB_ENV
 
       - name: digit deployment
         run: |
