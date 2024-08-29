@@ -1,12 +1,12 @@
 name: Pucar-Install Workflow DPG-Dev
 # Workflow branch creating cluster against the input.yaml file
 on:
-  push:
-     branches:
-       - Dev-0
-  pull_request:
-    branches:
-      - main
+#  push:
+#     branches:
+#       - Dev-0
+#  pull_request:
+#    branches:
+#      - main
   workflow_dispatch:
   repository_dispatch:
 permissions:
@@ -146,8 +146,6 @@ jobs:
           echo "advocate_commit=$advocate_commit" >> $GITHUB_ENV
           application_commit=$(git log -1 --pretty=format:%H -- backend/application)
           echo "application_commit=$application_commit" >> $GITHUB_ENV
-          case_commit=$(git log -1 --pretty=format:%H -- backend/case)
-          echo "case_commit=$case_commit" >> $GITHUB_ENV
           casemanagement_commit=$(git log -1 --pretty=format:%H -- backend/casemanagement)
           echo "casemanagement_commit=$casemanagement_commit" >> $GITHUB_ENV
           evidence_commit=$(git log -1 --pretty=format:%H -- backend/evidence)

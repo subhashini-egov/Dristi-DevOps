@@ -4,9 +4,9 @@ on:
 #  push:
 #    branches:
 #      - Dev-0
-  pull_request:
-    branches:
-      - main
+#  pull_request:
+#    branches:
+#      - main
   workflow_dispatch:
   repository_dispatch:
 permissions:
@@ -141,7 +141,7 @@ jobs:
         run: |
           git clone https://github.com/pucardotorg/dristi.git
           cd dristi
-          git checkout develop
+          git checkout qa
           advocate_commit=$(git log -1 --pretty=format:%H -- backend/advocate)
           echo "advocate_commit=$advocate_commit" >> $GITHUB_ENV
           application_commit=$(git log -1 --pretty=format:%H -- backend/application)
@@ -164,8 +164,6 @@ jobs:
           echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
           individual_commit=$(git log -1 --pretty=format:%H -- common/individual)
           echo "individual_commit=$individual_commit" >> $GITHUB_ENV
-          case_commit=$(git log -1 --pretty=format:%H -- backend/case)
-          echo "case_commit=$case_commit" >> $GITHUB_ENV
           digit_ui_commit=$(git log -1 --pretty=format:%H -- frontend/micro-ui)
           echo "digit_ui_commit=$digit_ui_commit" >> $GITHUB_ENV
       - name: DIGIT Deployment with updated tag
