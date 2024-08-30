@@ -42,7 +42,7 @@ env: |
     valueFrom:
       secretKeyRef:
         name: egov-notification-mail
-        key: mail-host
+        key: mailhost
   {{- end }}        
   - name: JAVA_OPTS
     value: {{ index .Values "heap" | quote }}

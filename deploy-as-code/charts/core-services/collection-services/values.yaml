@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "collection_services_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/pucar_collection_db"
-      tag: v1.0.0-Stamp-payment-mode-1
+      tag: v1.0.0-80230e9bebc675c91349be978998a41a61d9d94f
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/pucar_collection"
-  tag: v1.0.0-Stamp-payment-mode-1
+  tag: v1.0.0-80230e9bebc675c91349be978998a41a61d9d94f
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080

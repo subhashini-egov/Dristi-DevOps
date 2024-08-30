@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "epost_tracker_service_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/epost-tracker-db"
-      tag: v1.0.0-5f09399852d9c176573bc050c709a91ec1cf486f
+      tag: v1.0.0-2b6562b48bd667f19b68dbb40386f89f0d4078d5
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/epost-tracker"
-  tag: v1.0.0-5f09399852d9c176573bc050c709a91ec1cf486f
+  tag: v1.0.0-2b6562b48bd667f19b68dbb40386f89f0d4078d5
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080

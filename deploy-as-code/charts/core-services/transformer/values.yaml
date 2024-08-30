@@ -16,7 +16,7 @@ ingress:
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/pucar_transformer"
-  tag: v1.0.0-9368838f1de38876d75d1a549c8fc669324760b7
+  tag: v1.0.0-7471513f26785fb63b13c6d7ad1f47e1fb65ce77
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080

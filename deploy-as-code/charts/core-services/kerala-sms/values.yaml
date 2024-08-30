@@ -61,7 +61,7 @@ env: |
     valueFrom:
       secretKeyRef:
         name: egov-notification-sms
-        key: secure-key        
+        key: securekey        
   {{- end }}
   - name: SMS_ENABLED
     valueFrom:

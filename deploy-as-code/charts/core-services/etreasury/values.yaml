@@ -16,12 +16,12 @@ initContainers:
     schemaTable: "public_treasury_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/etreasury_db"
-      tag: v1.0.0-eeb9bd082a0f9ab8e43a2f376d6f2a8eb48a59f6
+      tag: v1.0.0-0d454a1a68d5969c30b2edc72786a1c76bdb711a
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/etreasury"
-  tag: v1.0.0-eeb9bd082a0f9ab8e43a2f376d6f2a8eb48a59f6
+  tag: v1.0.0-0d454a1a68d5969c30b2edc72786a1c76bdb711a
 
 #healthChecks:
 #  enabled: true

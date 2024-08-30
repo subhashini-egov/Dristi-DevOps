@@ -16,13 +16,13 @@ initContainers:
     schemaTable: "summons_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/summons-svc_db"
-      tag: v1.0.0-8c02e5adff1f1cb2f7c91f73282203609d0132b5
+      tag: v1.0.0-1ac57891c48f734e0976cac55bcc6ad4df44bc56
 
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/summons-svc"
-  tag: v1.0.0-8c02e5adff1f1cb2f7c91f73282203609d0132b5
+  tag: v1.0.0-1ac57891c48f734e0976cac55bcc6ad4df44bc56
 replicas: "1"
 # healthChecks:
 #   enabled: true

@@ -17,17 +17,17 @@ initContainers:
     schemaTable: "case_service_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/case_db"
-      tag: v1.0.0-6dff9d778b2e40e1702594a784474ec8c67059aa
+      tag: v1.0.0-0a28f0d545bc127db469930a1e20ab2c934fc7f9
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/pucar_case"
-  tag: v1.0.0-6dff9d778b2e40e1702594a784474ec8c67059aa
+  tag: v1.0.0-0a28f0d545bc127db469930a1e20ab2c934fc7f9
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
 appType: "java-spring"
-heap: "-Xmx512m -Xms512m"
+heap: "-Xmx1g -Xms1g"
 java-args: "-Dspring.profiles.active=monitoring"
 memory_requests: 2Gi
 memory_limits: 2Gi

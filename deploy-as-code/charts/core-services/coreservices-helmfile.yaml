@@ -94,9 +94,9 @@ releases:
     installed: true
     <<: *default
 
-#  - name: configmaps # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  #  - name: configmaps # Replace with your desired namespace
+  #    installed: true
+  #    <<: *default
 
   # - name: citizen # Replace with your desired namespace
   #   installed: true
@@ -167,7 +167,7 @@ releases:
   - name: advocate  # Replace with your desired namespace
     installed: true
     labels:
-     team: "dpg"
+      team: "dpg"
     <<: *default
 
   - name: billing-service  # Replace with your desired namespace
@@ -182,7 +182,7 @@ releases:
     labels:
       team: "dpg"
     <<: *default
- #
+  #
   - name: case  # Replace with your desired namespace
     installed: true
     labels:
@@ -207,11 +207,11 @@ releases:
       team: "dpg"
     <<: *default
 
-#  - name: egov-apportion-service  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
+  #  - name: egov-apportion-service  # Replace with your desired namespace
+  #    installed: true
+  #    labels:
+  #      team: "dpg"
+  #    <<: *default
 
   - name: evidence  # Replace with your desired namespace
     installed: true
@@ -300,18 +300,18 @@ releases:
   - name: ocr-service # Replace with your desired namespace
     installed: true
     <<: *default
-#  - name: dristi-pdf # Replace with your desired namespace
-#    installed: true
-#    <<: *default
-#  - name: transcription # Replace with your desired namespace
-#    installed: true
-#    <<: *default
-#  - name: kenlm # Replace with your desired namespace
-#    installed: true
-#    <<: *default
-#  - name: ocr-svc # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  #  - name: dristi-pdf # Replace with your desired namespace
+  #    installed: true
+  #    <<: *default
+  #  - name: transcription # Replace with your desired namespace
+  #    installed: true
+  #    <<: *default
+  #  - name: kenlm # Replace with your desired namespace
+  #    installed: true
+  #    <<: *default
+  #  - name: ocr-svc # Replace with your desired namespace
+  #    installed: true
+  #    <<: *default
   - name: sunbirdrc-credential-service # Replace with your desired namespace
     installed: true
     <<: *default
@@ -319,4 +319,3 @@ releases:
   - name: verifyapp  # Replace with your desired namespace
     installed: true
     <<: *default
-
