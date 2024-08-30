@@ -1,13 +1,13 @@
 name: Pucar-Install Workflow Solutins-UAT
 on:
-# push:
-#   branches:
-#     - Scheduler-Deploy
-#  pull_request:
-#    branches:
-     # - main
- workflow_dispatch:
- repository_dispatch:
+  push:
+    branches:
+      - Scheduler-Deploy
+  #  pull_request:
+  #    branches:
+       # - main
+  workflow_dispatch:
+  repository_dispatch:
 
 permissions:
   id-token: write
