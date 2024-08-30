@@ -14,13 +14,13 @@ initContainers:
     enabled: true
     schemaTable: "mdms_v2_schema"
     image:
-      repository: "pucarsolutionsdev.azurecr.io/mdms-v2_db"
-      tag: v1.0.0-mdms-v2-lts
+      repository: "pucarsolutionsdev.azurecr.io/egov-mdms-service-db"
+      tag: v1.0.0-MDMS-v2-2.9LTS-1
 
 # Container Configs
 image:
-  repository: "pucarsolutionsdev.azurecr.io/mdms-v2"
-  tag: v1.0.0-mdms-v2-lts
+  repository: "pucarsolutionsdev.azurecr.io/egov-mdms-service"
+  tag: v1.0.0-MDMS-v2-2.9LTS-1
 replicas: "1"
 healthChecks:
   enabled: true

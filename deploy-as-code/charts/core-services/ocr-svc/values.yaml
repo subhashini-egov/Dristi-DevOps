@@ -23,19 +23,9 @@ httpPort: 8080
 appType: "java-spring"
 heap: "-Xmx64m -Xms64m"
 java-args: "-Dspring.profiles.active=monitoring"
-memory_requests: 256Mi
+memory_limits: 10Gi
 
 env: |
-  - name: ACCESS_KEY
-    valueFrom:
-      secretKeyRef:
-        name: minio
-        key: ACCESS_KEY
-  - name: SECRET_KEY
-    valueFrom:
-      secretKeyRef:
-        name: minio
-        key: SECRET_KEY
   - name: OCR_BUCKET_NAME
     value: "ocr-bucket" 
   - name: MINIO_HOST
