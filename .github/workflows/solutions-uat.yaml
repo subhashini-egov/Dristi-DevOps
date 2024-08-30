@@ -1,4 +1,4 @@
-name: Pucar-Install Workflow Solutins-QA
+name: Pucar-Install Workflow Solutins-UAT
 on:
 # push:
 #   branches:
@@ -56,7 +56,7 @@ jobs:
 #        id: init-Infra
 #        run: |
 #          terraform --version
-#          terraform init -backend-config="resource_group_name=pucar-solutions-qa" -backend-config="storage_account_name=tfstatemx7w4" -backend-config="container_name=pucar-solutions-qa-tfstate" -backend-config="key=infra.tfstate" -reconfigure
+#          terraform init -backend-config="resource_group_name=pucar-uat" -backend-config="storage_account_name=tfstate0fyof" -backend-config="container_name=pucar-uat-tfstate" -backend-config="key=infra.tfstate" -reconfigure
 #        working-directory: infra-as-code/terraform/azure-pucar
 #
 #      - name: Terraform Validate - Infra creation
@@ -66,17 +66,17 @@ jobs:
 #
 #      - name: Terraform Plan - Infra creation
 #        id: plan-Infra
-#        run: terraform plan -no-color -input=false -var-file="tfvars/pucar-solutions/qa.tfvars" -var "db_password=${{ secrets.TF_VAR_db_password_solutions }}"  -var "ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}" -var "ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}" -var "ARM_CLIENT_ID=${{ env.ARM_CLIENT_ID }}" -var "ARM_CLIENT_SECRET=${{ env.ARM_CLIENT_SECRET }}"
+#        run: terraform plan -no-color -input=false -var-file="tfvars/pucar-solutions/uat.tfvars" -var "db_password=${{ secrets.TF_VAR_db_password_solutions }}"  -var "ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}" -var "ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}" -var "ARM_CLIENT_ID=${{ env.ARM_CLIENT_ID }}" -var "ARM_CLIENT_SECRET=${{ env.ARM_CLIENT_SECRET }}"
 #        working-directory: infra-as-code/terraform/azure-pucar
 #
 #      - name: Terraform Apply - Infra creation
 #        id: apply-Infra
-#        run: terraform apply -no-color -input=false -auto-approve -var-file="tfvars/pucar-solutions/qa.tfvars" -var "db_password=${{ secrets.TF_VAR_db_password_solutions }}"  -var "ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}" -var "ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}" -var "ARM_CLIENT_ID=${{ env.ARM_CLIENT_ID }}" -var "ARM_CLIENT_SECRET=${{ env.ARM_CLIENT_SECRET }}"
+#        run: terraform apply -no-color -input=false -auto-approve -var-file="tfvars/pucar-solutions/uat.tfvars" -var "db_password=${{ secrets.TF_VAR_db_password_solutions }}"  -var "ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}" -var "ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}" -var "ARM_CLIENT_ID=${{ env.ARM_CLIENT_ID }}" -var "ARM_CLIENT_SECRET=${{ env.ARM_CLIENT_SECRET }}"
 #        working-directory: infra-as-code/terraform/azure-pucar
 #
 #      - name: Generate kubeconfig
 #        run: |
-#          az aks get-credentials --resource-group "pucar-solutions-qa" --name "solutions-qa"
+#          az aks get-credentials --resource-group "pucar-uat" --name "uat"
 #          cat ~/.kube/config > kubeconfig
 #      - name: Kubectl setup
 #        uses: azure/setup-kubectl@v3
@@ -106,7 +106,7 @@ jobs:
 
       - name: Generate kubeconfig
         run: |
-          az aks get-credentials --resource-group "pucar-solutions-qa" --name "solutions-qa"
+          az aks get-credentials --resource-group "pucar-uat" --name "uat"
           cat ~/.kube/config > kubeconfig
 
       - name: Kubectl setup
@@ -136,8 +136,8 @@ jobs:
 
       - name: sops decryption
         run: |
-          sudo sops --decrypt --age ${{ secrets.PUBLIC_AGE_KEY }} $HOME/work/pucar-DevOps/pucar-DevOps/deploy-as-code/charts/environments/solutions-qa-secrets.yaml > env-secrets1.yaml
-          cp env-secrets1.yaml $HOME/work/pucar-DevOps/pucar-DevOps/deploy-as-code/charts/environments/solutions-qa-secrets.yaml
+          sudo sops --decrypt --age ${{ secrets.PUBLIC_AGE_KEY }} $HOME/work/pucar-DevOps/pucar-DevOps/deploy-as-code/charts/environments/solutions-uat-secrets.yaml > env-secrets1.yaml
+          cp env-secrets1.yaml $HOME/work/pucar-DevOps/pucar-DevOps/deploy-as-code/charts/environments/solutions-uat-secrets.yaml
       #        working-directory: deploy-as-code/charts/environments
 
       - name: Set up Helm
@@ -156,7 +156,7 @@ jobs:
         run: |
           git clone https://github.com/pucardotorg/Dristi_kerala.git
           cd Dristi_kerala
-          git checkout qa2
+          git checkout UAT
           scheduler_commit=$(git log -1 --pretty=format:%H -- backend/scheduler-svc)
           echo "scheduler_commit=$scheduler_commit" >> $GITHUB_ENV
           payment_calculator_commit=$(git log -1 --pretty=format:%H -- backend/payment-calculator-svc)
@@ -257,4 +257,4 @@ jobs:
 
         working-directory: deploy-as-code
         env:
-          HELMFILE_ENV: "solutions-qa"
+          HELMFILE_ENV: "solutions-uat"
