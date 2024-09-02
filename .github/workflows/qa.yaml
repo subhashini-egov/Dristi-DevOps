@@ -29,63 +29,8 @@ jobs:
           files: |
             deploy-as-code/**
 
-  Terraform_Infra_Creation:
-    needs: check-changed-files
-    runs-on: ubuntu-latest
-    env:
-      TF_IN_AUTOMATION: "true"
-      ARM_CLIENT_ID:  ${{ secrets.AZURE_CLIENT_ID }}
-      ARM_CLIENT_SECRET:  ${{ secrets.AZURE_CLIENT_SECRET }}
-      ARM_TENANT_ID:  ${{ secrets.AZURE_TENANT_ID }}
-      ARM_SUBSCRIPTION_ID:  ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Azure login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-
-      - name: Terraform init - Infra creation
-        id: init-Infra
-        run: terraform init -backend-config="resource_group_name=pucar-qa" -backend-config="storage_account_name=tfstateqa234" -backend-config="container_name=pucar-qa-tfstate" -backend-config="key=infra.tfstate" -reconfigure
-        working-directory: infra-as-code/terraform/azure-pucar
-      - name: Terraform Validate - Infra creation
-        id: validate-Infra
-        run: terraform validate -no-color
-        working-directory: infra-as-code/terraform/azure-pucar
-      - name: Terraform Plan - Infra creation
-        id: plan-Infra
-        run: terraform plan -no-color -input=false -var-file="tfvars/pucar/qa.tfvars" -var "db_password=${{ secrets.TF_VAR_QA_DB_PASSWORD }}" -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" -var "tenant_id=${{ secrets.AZURE_TENANT_ID }}" -var "client_id=${{ secrets.AZURE_CLIENT_ID }}" -var "client_secret=${{ secrets.AZURE_CLIENT_SECRET }}"
-        working-directory: infra-as-code/terraform/azure-pucar
-      # - name: Terraform Apply - Infra creation
-      #   id: apply-Infra
-      #   run: terraform apply -no-color -input=false -auto-approve -var-file="tfvars/pucar/qa.tfvars" -var "db_password=${{ secrets.TF_VAR_QA_DB_PASSWORD }}" -var "subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" -var "tenant_id=${{ secrets.AZURE_TENANT_ID }}" -var "client_id=${{ secrets.AZURE_CLIENT_ID }}" -var "client_secret=${{ secrets.AZURE_CLIENT_SECRET }}"
-      #   working-directory: infra-as-code/terraform/azure-pucar
-      - name: Generate kubeconfig
-        run: |
-          az aks get-credentials --resource-group "pucar-qa" --name "qa"
-          cat ~/.kube/config > kubeconfig
-      - name: Kubectl setup
-        uses: azure/setup-kubectl@v3
-        with:
-          version: 'latest'
-        id: install
-      - name: Verify kubectl configuration
-        run: kubectl config view
-      - name: Verify kubectl get nodes
-        run: |
-          kubectl get nodes
-      # - name: Updating the terraform output data in environment.yaml files for deployment
-      #   run: terraform output -json | go run ../scripts/envYAMLUpdater.go
-      #   working-directory: infra-as-code/terraform/azure-pucar
 
   DIGIT-deployment:
-    needs: Terraform_Infra_Creation
     runs-on: ubuntu-latest
 
     steps:
