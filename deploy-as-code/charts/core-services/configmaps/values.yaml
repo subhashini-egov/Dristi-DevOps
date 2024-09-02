@@ -143,6 +143,9 @@ configmaps:
       rainmaker-pgr: http://rainmaker-pgr:8080/
       report: http://report.egov:8080/
       summons: http://summons.egov:8080/
+      sunbird-credential-schema: http://sunbird-rc-credential-schema-service.egov:3333/
+      sunbird-credential-service: http://sunbird-rc-credentials-service.egov:3000/
+      sunbirdrc-credential-service: http://sunbirdrc-credential-service.egov:8080/
       sw-calculator: http://sw-calculator.egov:8080/
       sw-services: http://sw-services.egov:8080/
       swm-services: http://swm-services:8080/
@@ -161,9 +164,6 @@ configmaps:
       ws-calculator: http://ws-calculator.egov:8080/
       ws-services: http://ws-services.egov:8080/
       zuul: http://zuul:8080/
-      sunbird-credential-schema: "http://sunbird-rc-credential-schema-service.egov:3333/"
-      sunbird-credential-service: "http://sunbird-rc-credentials-service.egov:3000/"
-      sunbirdrc-credential-service: "http://sunbirdrc-credential-service.egov:8080/"
 
 root-ingress:
   name: root-ingress
