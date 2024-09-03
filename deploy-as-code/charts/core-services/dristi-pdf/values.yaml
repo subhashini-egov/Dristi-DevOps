@@ -94,3 +94,18 @@ env: |
       configMapKeyRef:
         key: sunbirdrc-credential-service
         name: egov-service-host
+  - name:  DRISTI_APPLICATION_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: application
+  - name:  EGOV_LOCALIZATION_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-localization
+  - name:  EGOV_FILESTORE_SERVICE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-filestore
