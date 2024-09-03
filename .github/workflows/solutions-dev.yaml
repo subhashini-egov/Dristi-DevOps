@@ -197,12 +197,16 @@ jobs:
           echo "epost_tracker_commit=$epost_tracker_commit" >> $GITHUB_ENV 
           user_otp_commit=$(git log -1 --pretty=format:%H -- backend/user-otp)
           echo "user_otp_commit=$user_otp_commit" >> $GITHUB_ENV 
+          git checkout order-application-pdf
+          dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
+          echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
           transformer_commit=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git transformer | awk '{print $1}')
           echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV  
           etreasury_commit=$(git ls-remote https://github.com/pucardotorg/etreasury_kerala.git develop | awk '{print $1}')
           echo "etreasury_commit=$etreasury_commit" >> $GITHUB_ENV  
           integration_commit=$(git ls-remote https://github.com/pucardotorg/icops_integration-kerala.git icops_testing | awk '{print $1}')
           echo "integration_commit=$integration_commit" >> $GITHUB_ENV  
+          git checkout order-application-pdf
           dristi_pdf_commit=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git order-application-pdf | awk '{print $1}')
           echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
           git clone https://github.com/pucardotorg/dristi-solutions.git
