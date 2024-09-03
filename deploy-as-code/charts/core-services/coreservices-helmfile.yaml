@@ -303,6 +303,12 @@ releases:
   - name: dristi-pdf # Replace with your desired namespace
     installed: true
     <<: *default
+  - name: sbi-ui # Replace with your desired namespace
+    installed: true
+    <<: *default
+  - name: sbi-svc # Replace with your desired namespace
+    installed: true
+    <<: *default
   #  - name: transcription # Replace with your desired namespace
   #    installed: true
   #    <<: *default
