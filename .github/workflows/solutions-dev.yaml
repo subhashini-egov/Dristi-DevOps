@@ -214,6 +214,17 @@ jobs:
           git checkout develop
           digit_ui_commit=$(git log -1 --pretty=format:%H -- frontend/micro-ui)
           echo "digit_ui_commit=$digit_ui_commit" >> $GITHUB_ENV
+          git clone https://github.com/pucardotorg/etreasury_kerala.git
+          cd etreasury_kerala
+          git checkout develop
+          etreasury_commit=$(git log -1 --pretty=format:%H -- treasury-backend)
+          echo "etreasury_commit=$etreasury_commit" >> $GITHUB_ENV
+          epayment_commit=$(git log -1 --pretty=format:%H -- treasury-webpage)
+          echo "epayment_commit=$epayment_commit" >> $GITHUB_ENV  
+          sbi_svc_commit=$(git log -1 --pretty=format:%H -- sbi-backend)
+          echo "sbi_svc_commit=$sbi_svc_commit" >> $GITHUB_ENV
+          sbi_ui_commit=$(git log -1 --pretty=format:%H -- sbi-webpage)
+          echo "sbi_ui_commit=$sbi_ui_commit" >> $GITHUB_ENV  
 
       - name: digit deployment
         run: |
@@ -250,9 +261,12 @@ jobs:
             --set application.image.tag=v1.0.0-${{ env.application_commit }} \
             --set application.initContainers.dbMigration.image.tag=v1.0.0-${{ env.application_commit }} \
             --set analytics.image.tag=v1.0.0-${{ env.analytics_commit }} \
-            --set epayments.image.tag=v1.0.0-${{ env.etreasury_commit }} \
+            --set epayments.image.tag=v1.0.0-${{ env.epayment_commit }} \
             --set etreasury.image.tag=v1.0.0-${{ env.etreasury_commit }} \
             --set etreasury.initContainers.dbMigration.image.tag=v1.0.0-${{ env.etreasury_commit }} \
+            --set sbi-ui.image.tag=v1.0.0-${{ env.sbi_ui_commit }} \
+            --set sbi-svc.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
+            --set sbi-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
             --set epost-tracker.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
             --set epost-tracker.initContainers.dbMigration.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
             --set summons-svc.image.tag=v1.0.0-${{ env.summons_svc_commit }} \

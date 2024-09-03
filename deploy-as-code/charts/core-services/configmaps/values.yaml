@@ -164,6 +164,7 @@ configmaps:
       ws-calculator: http://ws-calculator.egov:8080/
       ws-services: http://ws-services.egov:8080/
       zuul: http://zuul:8080/
+      sbi-url: http://sbi-svc.egov:8080/sbi-backend//v1/_decryptBrowserResponse
 
 root-ingress:
   name: root-ingress

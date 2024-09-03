@@ -1,0 +1,33 @@
+# Common Labels
+labels:
+  app: "sbi-ui"
+  group: "rainmaker"
+
+# Ingress Configs
+ingress:
+  enabled: true
+#  zuul: true
+  context: "sbi-payment"
+
+
+# Container Configs
+image:
+   repository: "pucarsolutionsdev.azurecr.io/sbi-ui"
+   tag: v1.0.0-0d454a1a68d5969c30b2edc72786a1c76bdb711a
+replicas: "1"
+
+env: |
+  - name: EXTERNAL_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: sbi-url
+        name: egov-service-host
+  - name: DRISTI_URL
+    valueFrom:
+      configMapKeyRef:
+        key: dristi-url
+        name: egov-config
+
+
+
+
