@@ -24,7 +24,7 @@ replicas: "1"
 
 env: |
   - name: JAVA_OPTS
-    value: -Xmx128mi -Xms128mi
+    value: -Xmx128m -Xms128m
   - name: SPRING_FLYWAY_URL
     valueFrom:
       configMapKeyRef:
