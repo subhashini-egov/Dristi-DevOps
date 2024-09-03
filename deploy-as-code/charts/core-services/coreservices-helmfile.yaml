@@ -300,9 +300,9 @@ releases:
   - name: ocr-service # Replace with your desired namespace
     installed: true
     <<: *default
-  #  - name: dristi-pdf # Replace with your desired namespace
-  #    installed: true
-  #    <<: *default
+  - name: dristi-pdf # Replace with your desired namespace
+    installed: true
+    <<: *default
   #  - name: transcription # Replace with your desired namespace
   #    installed: true
   #    <<: *default
