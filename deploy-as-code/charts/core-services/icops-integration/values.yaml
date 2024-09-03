@@ -23,6 +23,8 @@ image:
 replicas: "1"
 
 env: |
+  - name: JAVA_OPTS
+    value: -Xmx128mi -Xms128mi
   - name: SPRING_FLYWAY_URL
     valueFrom:
       configMapKeyRef:
