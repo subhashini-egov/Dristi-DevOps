@@ -175,8 +175,6 @@ jobs:
           echo "dristi_case_pdf_commit=$dristi_case_pdf_commit" >> $GITHUB_ENV
           order_commit=$(git log -1 --pretty=format:%H -- backend/order)
           echo "order_commit=$order_commit" >> $GITHUB_ENV
-          task_commit=$(git log -1 --pretty=format:%H -- backend/task)
-          echo "task_commit=$task_commit" >> $GITHUB_ENV
           collection_service_commit=$(git log -1 --pretty=format:%H -- backend/collection-services)
           echo "collection_service_commit=$collection_service_commit" >> $GITHUB_ENV
           esign_interceptor_commit=$(git log -1 --pretty=format:%H -- backend/esign-interceptor)
@@ -184,9 +182,7 @@ jobs:
           esign_svc_commit=$(git log -1 --pretty=format:%H -- backend/e-sign-svc)
           echo "esign_svc_commit=$esign_svc_commit" >> $GITHUB_ENV
           application_commit=$(git log -1 --pretty=format:%H -- backend/application)
-          echo "application_commit=$application_commit" >> $GITHUB_ENV          
-          summons_svc_commit=$(git log -1 --pretty=format:%H -- backend/summons-svc)
-          echo "summons_svc_commit=$summons_svc_commit" >> $GITHUB_ENV  
+          echo "application_commit=$application_commit" >> $GITHUB_ENV           
           epost_tracker_commit=$(git log -1 --pretty=format:%H -- backend/epost-tracker)
           echo "epost_tracker_commit=$epost_tracker_commit" >> $GITHUB_ENV 
           user_otp_commit=$(git log -1 --pretty=format:%H -- backend/user-otp)
@@ -200,6 +196,12 @@ jobs:
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
           git checkout develop
+          summons_svc_commit=$(git log -1 --pretty=format:%H -- backend/summons-svc)
+          echo "summons_svc_commit=$summons_svc_commit" >> $GITHUB_ENV 
+          collection_service_commit=$(git log -1 --pretty=format:%H -- common/collection-services)
+          echo "collection_service_commit=$collection_service_commit" >> $GITHUB_ENV
+          task_commit=$(git log -1 --pretty=format:%H -- backend/task)
+          echo "task_commit=$task_commit" >> $GITHUB_ENV
           digit_ui_commit=$(git log -1 --pretty=format:%H -- frontend/micro-ui)
           echo "digit_ui_commit=$digit_ui_commit" >> $GITHUB_ENV
           analytics_commit=$(git log -1 --pretty=format:%H -- backend/analytics)
