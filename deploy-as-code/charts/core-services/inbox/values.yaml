@@ -11,8 +11,8 @@ ingress:
 
 # Container Configs
 image:
-  repository: "inbox"
-  tag: elastic-8-upgraded-indexer-with-auth-45ded917ad-19
+  repository: "pucarsolutionsdev.azurecr.io/inbox"
+  tag: v1.0.0-6b411fead5ebdac37b9a76c8400c018f20bc24ac
 replicas: "1"
 healthChecks:
   enabled: true
