@@ -177,8 +177,6 @@ jobs:
           echo "order_commit=$order_commit" >> $GITHUB_ENV
           task_commit=$(git log -1 --pretty=format:%H -- backend/task)
           echo "task_commit=$task_commit" >> $GITHUB_ENV
-          billing_service_commit=$(git log -1 --pretty=format:%H -- backend/billing-service)
-          echo "billing_service_commit=$billing_service_commit" >> $GITHUB_ENV
           collection_service_commit=$(git log -1 --pretty=format:%H -- backend/collection-services)
           echo "collection_service_commit=$collection_service_commit" >> $GITHUB_ENV
           individual_commit=$(git log -1 --pretty=format:%H -- backend/individual)
@@ -191,15 +189,10 @@ jobs:
           echo "application_commit=$application_commit" >> $GITHUB_ENV          
           summons_svc_commit=$(git log -1 --pretty=format:%H -- backend/summons-svc)
           echo "summons_svc_commit=$summons_svc_commit" >> $GITHUB_ENV  
-          analytics_commit=$(git log -1 --pretty=format:%H -- backend/analytics)
-          echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV 
           epost_tracker_commit=$(git log -1 --pretty=format:%H -- backend/epost-tracker)
           echo "epost_tracker_commit=$epost_tracker_commit" >> $GITHUB_ENV 
           user_otp_commit=$(git log -1 --pretty=format:%H -- backend/user-otp)
           echo "user_otp_commit=$user_otp_commit" >> $GITHUB_ENV 
-          git checkout order-application-pdf
-          dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
-          echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
           transformer_commit=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git transformer | awk '{print $1}')
           echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV  
           etreasury_commit=$(git ls-remote https://github.com/pucardotorg/etreasury_kerala.git develop | awk '{print $1}')
@@ -211,6 +204,13 @@ jobs:
           git checkout develop
           digit_ui_commit=$(git log -1 --pretty=format:%H -- frontend/micro-ui)
           echo "digit_ui_commit=$digit_ui_commit" >> $GITHUB_ENV
+          analytics_commit=$(git log -1 --pretty=format:%H -- backend/analytics)
+          echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV 
+          billing_service_commit=$(git log -1 --pretty=format:%H -- common/billing-service)
+          echo "billing_service_commit=$billing_service_commit" >> $GITHUB_ENV
+          git checkout orders-applications-pdf
+          dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
+          echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
           git clone https://github.com/pucardotorg/etreasury_kerala.git
           cd etreasury_kerala
           git checkout develop

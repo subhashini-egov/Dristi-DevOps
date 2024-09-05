@@ -52,8 +52,6 @@ env: |
       configMapKeyRef:
         key: kafka-brokers
         name: egov-config
-  - name: KAFKA_TOPICS_CONSUMER
-    value: save-wf-transitions
   - name: EGOV_INDEXER_ES_HOST_NAME
     valueFrom:
       configMapKeyRef:

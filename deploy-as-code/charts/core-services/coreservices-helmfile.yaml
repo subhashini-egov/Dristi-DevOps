@@ -189,11 +189,11 @@ releases:
       team: "dpg"
     <<: *default
 
-  - name: inbox  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "dpg"
-    <<: *default
+#  - name: inbox  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "dpg"
+#    <<: *default
 
   - name: application  # Replace with your desired namespace
     installed: true
