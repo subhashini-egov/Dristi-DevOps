@@ -87,7 +87,7 @@ jobs:
         run: |
           git clone https://github.com/pucardotorg/Dristi_kerala.git
           cd Dristi_kerala
-          git checkout UAT
+          git checkout develop
           scheduler_commit=$(git log -1 --pretty=format:%H -- backend/scheduler-svc)
           echo "scheduler_commit=$scheduler_commit" >> $GITHUB_ENV
           payment_calculator_commit=$(git log -1 --pretty=format:%H -- backend/payment-calculator-svc)
@@ -106,35 +106,45 @@ jobs:
           echo "dristi_case_pdf_commit=$dristi_case_pdf_commit" >> $GITHUB_ENV
           order_commit=$(git log -1 --pretty=format:%H -- backend/order)
           echo "order_commit=$order_commit" >> $GITHUB_ENV
-          task_commit=$(git log -1 --pretty=format:%H -- backend/task)
-          echo "task_commit=$task_commit" >> $GITHUB_ENV
-          digit_ui_commit=$(git log -1 --pretty=format:%H -- frontend/micro-ui)
-          echo "digit_ui_commit=$digit_ui_commit" >> $GITHUB_ENV
-          billing_service_commit=$(git log -1 --pretty=format:%H -- backend/billing-service)
-          echo "billing_service_commit=$billing_service_commit" >> $GITHUB_ENV
           collection_service_commit=$(git log -1 --pretty=format:%H -- backend/collection-services)
           echo "collection_service_commit=$collection_service_commit" >> $GITHUB_ENV
-          individual_commit=$(git log -1 --pretty=format:%H -- backend/individual)
-          echo "individual_commit=$individual_commit" >> $GITHUB_ENV
           esign_interceptor_commit=$(git log -1 --pretty=format:%H -- backend/esign-interceptor)
           echo "esign_interceptor_commit=$esign_interceptor_commit" >> $GITHUB_ENV
           esign_svc_commit=$(git log -1 --pretty=format:%H -- backend/e-sign-svc)
           echo "esign_svc_commit=$esign_svc_commit" >> $GITHUB_ENV
           application_commit=$(git log -1 --pretty=format:%H -- backend/application)
-          echo "application_commit=$application_commit" >> $GITHUB_ENV          
-          summons_svc_commit=$(git log -1 --pretty=format:%H -- backend/summons-svc)
-          echo "summons_svc_commit=$summons_svc_commit" >> $GITHUB_ENV  
-          analytics_commit=$(git log -1 --pretty=format:%H -- backend/analytics)
-          echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV 
+          echo "application_commit=$application_commit" >> $GITHUB_ENV           
           epost_tracker_commit=$(git log -1 --pretty=format:%H -- backend/epost-tracker)
           echo "epost_tracker_commit=$epost_tracker_commit" >> $GITHUB_ENV 
           user_otp_commit=$(git log -1 --pretty=format:%H -- backend/user-otp)
-          echo "user_otp_commit=$user_otp_commit" >> $GITHUB_ENV
+          echo "user_otp_commit=$user_otp_commit" >> $GITHUB_ENV 
           transformer_commit=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git transformer | awk '{print $1}')
           echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV  
+          etreasury_commit=$(git ls-remote https://github.com/pucardotorg/etreasury_kerala.git develop | awk '{print $1}')
+          echo "etreasury_commit=$etreasury_commit" >> $GITHUB_ENV  
           integration_commit=$(git ls-remote https://github.com/pucardotorg/icops_integration-kerala.git icops_testing | awk '{print $1}')
           echo "integration_commit=$integration_commit" >> $GITHUB_ENV  
-          dristi_pdf_commit=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git order-application-pdf | awk '{print $1}')
+          git clone https://github.com/pucardotorg/dristi-solutions.git
+          cd dristi-solutions
+          git checkout develop
+          summons_svc_commit=$(git log -1 --pretty=format:%H -- backend/summons-svc)
+          echo "summons_svc_commit=$summons_svc_commit" >> $GITHUB_ENV 
+          collection_service_commit=$(git log -1 --pretty=format:%H -- common/collection-services)
+          echo "collection_service_commit=$collection_service_commit" >> $GITHUB_ENV
+          task_commit=$(git log -1 --pretty=format:%H -- backend/task)
+          echo "task_commit=$task_commit" >> $GITHUB_ENV
+          digit_ui_commit=$(git log -1 --pretty=format:%H -- frontend/micro-ui)
+          echo "digit_ui_commit=$digit_ui_commit" >> $GITHUB_ENV
+          analytics_commit=$(git log -1 --pretty=format:%H -- backend/analytics)
+          echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV 
+          individual_commit=$(git log -1 --pretty=format:%H -- common/individual)
+          echo "individual_commit=$individual_commit" >> $GITHUB_ENV
+          inbox_commit=$(git log -1 --pretty=format:%H -- common/inbox)
+          echo "inbox_commit=$inbox_commit" >> $GITHUB_ENV
+          billing_service_commit=$(git log -1 --pretty=format:%H -- common/billing-service)
+          echo "billing_service_commit=$billing_service_commit" >> $GITHUB_ENV
+          git checkout orders-applications-pdf
+          dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
           echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
           git clone https://github.com/pucardotorg/etreasury_kerala.git
           cd etreasury_kerala
@@ -178,6 +188,7 @@ jobs:
             --set collection-services.initContainers.dbMigration.image.tag=v1.0.0-${{ env.collection_service_commit }} \
             --set individual.image.tag=v1.0.0-${{ env.individual_commit }} \
             --set individual.initContainers.dbMigration.image.tag=v1.0.0-${{ env.individual_commit }} \
+            --set inbox.image.tag=v1.0.0-${{ env.inbox_commit }} \
             --set e-sign-svc.image.tag=v1.0.0-${{ env.esign_svc_commit }} \
             --set esign-interceptor.image.tag=v1.0.0-${{ env.esign_interceptor_commit }} \
             --set application.image.tag=v1.0.0-${{ env.application_commit }} \
@@ -196,7 +207,7 @@ jobs:
             --set transformer.image.tag=v1.0.0-${{ env.transformer_commit }} \
             --set user-otp.image.tag=v1.0.0-${{ env.user_otp_commit }} \
             --set icops-integration.image.tag=v1.0.0-${{ env.integration_commit }} \
-            --set icops-integration.initContainers.dbMigration.image.tag=v1.0.0-${{ env.integration_commit }} 
+            --set icops-integration.initContainers.dbMigration.image.tag=v1.0.0-${{ env.integration_commit }} \
 
         working-directory: deploy-as-code
         env:
