@@ -157,8 +157,6 @@ jobs:
           git clone https://github.com/pucardotorg/Dristi_kerala.git
           cd Dristi_kerala
           git checkout develop
-          scheduler_commit=$(git log -1 --pretty=format:%H -- backend/scheduler-svc)
-          echo "scheduler_commit=$scheduler_commit" >> $GITHUB_ENV
           payment_calculator_commit=$(git log -1 --pretty=format:%H -- backend/payment-calculator-svc)
           echo "payment_calculator_commit=$payment_calculator_commit" >> $GITHUB_ENV
           advocate_commit=$(git log -1 --pretty=format:%H -- backend/advocate)
@@ -196,6 +194,8 @@ jobs:
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
           git checkout develop
+          scheduler_commit=$(git log -1 --pretty=format:%H -- backend/scheduler-svc)
+          echo "scheduler_commit=$scheduler_commit" >> $GITHUB_ENV
           summons_svc_commit=$(git log -1 --pretty=format:%H -- backend/summons-svc)
           echo "summons_svc_commit=$summons_svc_commit" >> $GITHUB_ENV 
           collection_service_commit=$(git log -1 --pretty=format:%H -- common/collection-services)
