@@ -13,7 +13,7 @@ ingress:
 # Container Configs
 image:
    repository: "pucarsolutionsdev.azurecr.io/sbi-ui"
-   tag: v1.0.0-0d454a1a68d5969c30b2edc72786a1c76bdb711a
+   tag: v1.0.0-9b32798dc18d9fdbe1ab887e577c70a4caa4d6dd
 replicas: "1"
 
 env: |

@@ -16,13 +16,13 @@ initContainers:
     schemaTable: "payment-calculator_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/payment-calculator-svc_db"
-      tag: v1.0.0-6f5480f4f551a727b4fbcd014f3539999313cc28
+      tag: v1.0.0-cd4732437b8cb6f303b646d67a24d374ef44d4e3
 
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/payment-calculator-svc"
-  tag: v1.0.0-6f5480f4f551a727b4fbcd014f3539999313cc28
+  tag: v1.0.0-cd4732437b8cb6f303b646d67a24d374ef44d4e3
 replicas: "1"
 healthChecks:
   enabled: true

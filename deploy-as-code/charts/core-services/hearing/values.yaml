@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "hearing_service_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/pucar_hearing_db"
-      tag: v1.0.0-5d7d5118610f671668d9d9229e5eda8fadd6991c
+      tag: v1.0.0-08ab38363f9c4b0b70d0763331c9773f8bbf9820
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/pucar_hearing"
-  tag: v1.0.0-5d7d5118610f671668d9d9229e5eda8fadd6991c
+  tag: v1.0.0-08ab38363f9c4b0b70d0763331c9773f8bbf9820
 replicas: "1"
 httpPort: 8080
 appType: "java-spring"

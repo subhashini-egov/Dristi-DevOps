@@ -16,12 +16,12 @@ initContainers:
     schemaTable: "individual_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/individual_db"
-      tag: 1a775cb0269c9e637a5357d23ab15b4fd0746dfc
+      tag: 9f9fff70b3b2782499152458e041075a71e21660
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/individual"
-  tag: 1a775cb0269c9e637a5357d23ab15b4fd0746dfc
+  tag: 9f9fff70b3b2782499152458e041075a71e21660
 replicas: "1"
 healthChecks:
   enabled: true

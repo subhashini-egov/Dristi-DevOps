@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "billing_service_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/pucar_billing_db"
-      tag: v1.0.0-8c3d356c45e266aae74519d0151bb3ca0a9a8202
+      tag: v1.0.0-3345f6bb9536054a0050db6a05e88de50a1f6647
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/pucar_billing"
-  tag: v1.0.0-8c3d356c45e266aae74519d0151bb3ca0a9a8202
+  tag: v1.0.0-3345f6bb9536054a0050db6a05e88de50a1f6647
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080

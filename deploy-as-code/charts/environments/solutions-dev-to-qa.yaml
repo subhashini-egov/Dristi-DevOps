@@ -1,26 +1,26 @@
 global:
-  domain: dristi-kerala-dev.pucar.org
+  domain: dristi-qa.pucar.org
 root-ingress:
   cert-issuer: "letsencrypt-prod"
 configmaps:
   egov-config:
     data:
-      db-host: "solutions-pucar-dev-server.postgres.database.azure.com"
-      db-name: "solutions-pucar-dev-db" ## Add db-name
-      db-url: "jdbc:postgresql://solutions-pucar-dev-server.postgres.database.azure.com/solutions-pucar-dev-db"
+      db-host: "pucar-qa-server.postgres.database.azure.com"
+      db-name: "pucar-qa-db" ## Add db-name
+      db-url: "jdbc:postgresql://pucar-qa-server.postgres.database.azure.com/pucar-qa-db"
       es-host: "elasticsearch-data.backbone"
       es-indexer-host: "http://elasticsearch-data.backbone:9200/"
       kafka-brokers: "kafka-kraft-controller-headless.backbone:9092"
-      egov-services-fqdn-name: https://dristi-kerala-dev.pucar.org/
-      egov-services: https://dristi-kerala-dev.pucar.org
-      dristi-e-sign: https://dristi-kerala-dev.pucar.org/digit-ui/
-      dristi-url: "https://dristi-kerala-dev.pucar.org/user/oauth/token?_=1713357247536"
+      egov-services-fqdn-name: https://dristi-qa.pucar.org/
+      egov-services: https://dristi-qa.pucar.org
+      dristi-e-sign: https://dristi-qa.pucar.org/digit-ui/
+      dristi-url: "https://dristi-qa.pucar.org/user/oauth/token?_=1713357247536"
       service-dept-code: 01BUP7
-      esign-interceptor: "https://dristi-kerala-dev.pucar.org/esign-interceptor/v1/_intercept"
+      esign-interceptor: "https://dristi-qa.pucar.org/esign-interceptor/v1/_intercept"
       esign-filestore-id: "2aefb901-edc6-4a45-95f8-3ea383a513f5"
       sbi-tranction-url: https://test.sbiepay.sbi/secure/AggregatorHostedListener
-      sbi-tranction-success-url: https://dristi-kerala-dev.pucar.org/sbi-payment/success.jsp
-      sbi-tranction-fail-url: https://dristi-kerala-dev.pucar.org/sbi-payment/fail.jsp
+      sbi-tranction-success-url: https://dristi-qa.pucar.org/sbi-payment/success.jsp
+      sbi-tranction-fail-url: https://dristi-qa.pucar.org/sbi-payment/fail.jsp
 
 egov-user:
   heap: "-Xmx256m -Xms256m"
@@ -62,12 +62,12 @@ egov-url-shortening:
   hashids-min-length: "2"
 
 egov-filestore:
-  memory_limits: "1024Mi"
+  memory_limits: "2044Mi"
   volume: /opt/eGov/filestore
   #  is-bucket-fixed: "true"
   minio.url : "http://minio.backbone:9000/"
   aws.s3.url : "https://s3.amazonaws.com"
-  azure.url : "https://pucarsolutionsfilestore.blob.core.windows.net/pucar-solutions-filestore"
+  azure.url : "https://pucarfilestoreqa.blob.core.windows.net/pucar-filestore"
   #  is-s3-enabled: "false"
   is-azure-storage-enabled: "true"
   #  minio-enabled: "false"
@@ -75,7 +75,7 @@ egov-filestore:
   allowed-file-formats: "jpg,jpeg,png,doc,docx,pdf,odt,ods,text,dxf,xls,xlsx"
   filestore-url-validity: 3600
   #  fixed-bucketname: unified-dev-bucket-s3  ## Add filestore bucket name
-  fixed-container-name: pucar-solutions-filestore
+  fixed-container-name: pucar-filestore-qa
 
 egov-enc-service:
   heap: "-Xmx256m -Xms256m"
@@ -92,6 +92,15 @@ egov-localization:
   replicas: 1
   heap: "-Xmx256m -Xms256m"
   memory_limits: 512Mi
+
+egov-notification-mail:
+  image:
+    repository: "pucarsolutionsdev.azurecr.io/egov-notification-mail"
+    tag: core-2.9-lts-mvn-check-c33cfe45ab-4
+  replicas: 1
+  heap: "-Xmx256m -Xms256m"
+  memory_limits: 512Mi
+
 
 kerala-sms:
   sms-provider-url: "https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT" ## Add sms provider url
@@ -131,7 +140,7 @@ egov-indexer:
     gitSync:
       repo: "git@github.com:pucardotorg/kerala-configs"        ##### Change repo url with Your fork Repo url
       branch: "develop"                                      ##### Change repo branch with Your fork Repo branch
-  egov-indexer-yaml-repo-path: "file:///work-dir/kerala-configs/egov-indexer/witness-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/egov-vehicle.yaml,file:///work-dir/kerala-configs/egov-indexer/collection-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/billingservices-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/task-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/order-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/hearing-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/evidence-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/application-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/advocate-clerk-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/advocate-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/case-indexer.yml,file:///work-dir/kerala-configs/fsm/egov-indexer/egov-vehicle.yaml,file:///work-dir/kerala-configs/fsm/egov-indexer/egov-vendor.yaml,file:///work-dir/kerala-configs/fsm/egov-indexer/egov-fsm.yml,file:///work-dir/kerala-configs/egov-indexer/privacy-audit.yaml,file:///work-dir/kerala-configs/egov-indexer/billingservices-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/collection-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/egov-uploader-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/error-queue.yml,file:///work-dir/kerala-configs/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/payment-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/pgr-services.yml,file:///work-dir/kerala-configs/egov-indexer/rainmaker-pgr-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/rainmaker-pt-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/rainmaker-tl-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/chatbot-telemetry.yaml,file:///work-dir/kerala-configs/egov-indexer/water-service.yml,file:///work-dir/kerala-configs/egov-indexer/water-services-meter.yml,file:///work-dir/kerala-configs/egov-indexer/sewerage-service.yml,file:///work-dir/kerala-configs/egov-indexer/property-services.yml,file:///work-dir/kerala-configs/egov-indexer/chatbot-telemetry-v2.yaml,file:///work-dir/kerala-configs/egov-indexer/egov-vehicle.yaml,file:///work-dir/kerala-configs/egov-indexer/egov-vendor.yaml,file:///work-dir/kerala-configs/egov-indexer/egov-url-shortening-indexer.yaml,file:///work-dir/kerala-configs/egov-indexer/fire-noc-service.yml,file:///work-dir/kerala-configs/egov-indexer/egov-echallan.yml,file:///work-dir/kerala-configs/egov-indexer/egov-bpa-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/edcr-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/rainmaker-birth-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/rainmaker-death-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/ws-event-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/egov-error-queue-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/citizen-feedback-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/egov-fsm.yml,file:///work-dir/kerala-configs/egov-indexer/fsm-inbox-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/contractservices-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/estimateservices-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/expensebill-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/individual-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/musterservices-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/organisationservices-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/project-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/product-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/individual-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/household-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/project-task-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/stock-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/facility-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/project-staff-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/service-request-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/measurement-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/ifms-pi-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/expensepayment-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/egov-pqm-service.yml,file:///work-dir/kerala-configs/egov-indexer/pqm-service-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/pqm-anomaly-finder-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/sample.yml,file:///work-dir/kerala-configs/egov-indexer/pgr-services.yml,file:///work-dir/kerala-configs/egov-indexer/reschedule-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/task-indexer.yml"
+  egov-indexer-yaml-repo-path: "file:///work-dir/kerala-configs/egov-indexer/witness-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/egov-vehicle.yaml,file:///work-dir/kerala-configs/egov-indexer/case-life-order-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/case-life-hearing-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/case-life-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/case-life-application-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/collection-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/billingservices-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/task-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/order-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/hearing-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/evidence-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/application-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/advocate-clerk-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/advocate-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/case-indexer.yml,file:///work-dir/kerala-configs/fsm/egov-indexer/egov-vehicle.yaml,file:///work-dir/kerala-configs/fsm/egov-indexer/egov-vendor.yaml,file:///work-dir/kerala-configs/fsm/egov-indexer/egov-fsm.yml,file:///work-dir/kerala-configs/egov-indexer/privacy-audit.yaml,file:///work-dir/kerala-configs/egov-indexer/billingservices-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/collection-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/egov-uploader-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/error-queue.yml,file:///work-dir/kerala-configs/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/payment-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/pgr-services.yml,file:///work-dir/kerala-configs/egov-indexer/rainmaker-pgr-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/rainmaker-pt-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/rainmaker-tl-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/chatbot-telemetry.yaml,file:///work-dir/kerala-configs/egov-indexer/water-service.yml,file:///work-dir/kerala-configs/egov-indexer/water-services-meter.yml,file:///work-dir/kerala-configs/egov-indexer/sewerage-service.yml,file:///work-dir/kerala-configs/egov-indexer/property-services.yml,file:///work-dir/kerala-configs/egov-indexer/chatbot-telemetry-v2.yaml,file:///work-dir/kerala-configs/egov-indexer/egov-vehicle.yaml,file:///work-dir/kerala-configs/egov-indexer/egov-vendor.yaml,file:///work-dir/kerala-configs/egov-indexer/egov-url-shortening-indexer.yaml,file:///work-dir/kerala-configs/egov-indexer/fire-noc-service.yml,file:///work-dir/kerala-configs/egov-indexer/egov-echallan.yml,file:///work-dir/kerala-configs/egov-indexer/egov-bpa-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/edcr-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/rainmaker-birth-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/rainmaker-death-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/ws-event-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/egov-error-queue-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/citizen-feedback-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/egov-fsm.yml,file:///work-dir/kerala-configs/egov-indexer/fsm-inbox-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/contractservices-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/estimateservices-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/expensebill-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/individual-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/musterservices-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/organisationservices-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/project-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/product-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/individual-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/household-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/project-task-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/stock-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/facility-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/project-staff-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/service-request-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/measurement-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/ifms-pi-indexer.yml,file:///work-dir/kerala-configs/works/egov-indexer/expensepayment-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/egov-pqm-service.yml,file:///work-dir/kerala-configs/egov-indexer/pqm-service-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/pqm-anomaly-finder-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/sample.yml,file:///work-dir/kerala-configs/egov-indexer/pgr-services.yml,file:///work-dir/kerala-configs/egov-indexer/reschedule-indexer.yml,file:///work-dir/kerala-configs/egov-indexer/task-indexer.yml"
 
 egov-persister:
   replicas: 1
