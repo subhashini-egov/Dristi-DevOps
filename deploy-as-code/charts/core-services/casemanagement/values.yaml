@@ -184,3 +184,7 @@ env: |
       configMapKeyRef:
         key: sunbirdrc-credential-service
         name: egov-service-host
+  - name: GENERATE_VC_CODE
+    value: "Pucar.SummonOrder11"
+  
+  
