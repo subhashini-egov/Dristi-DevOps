@@ -156,7 +156,7 @@ jobs:
           echo "integration_commit=$integration_commit" >> $GITHUB_ENV  
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
-          git checkout develop
+          git checkout dpg-qa-deployment
           transformer_commit=$(git log -1 --pretty=format:%H -- backend/transformer)
           echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV
           scheduler_commit=$(git log -1 --pretty=format:%H -- backend/scheduler-svc)
