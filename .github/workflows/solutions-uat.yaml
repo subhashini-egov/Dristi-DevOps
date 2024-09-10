@@ -92,8 +92,6 @@ jobs:
           echo "payment_calculator_commit=$payment_calculator_commit" >> $GITHUB_ENV
           advocate_commit=$(git log -1 --pretty=format:%H -- backend/advocate)
           echo "advocate_commit=$advocate_commit" >> $GITHUB_ENV
-          case_commit=$(git log -1 --pretty=format:%H -- backend/case)
-          echo "case_commit=$case_commit" >> $GITHUB_ENV
           casemanagement_commit=$(git log -1 --pretty=format:%H -- backend/casemanagement)
           echo "casemanagement_commit=$casemanagement_commit" >> $GITHUB_ENV
           evidence_commit=$(git log -1 --pretty=format:%H -- backend/evidence)
@@ -119,6 +117,8 @@ jobs:
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
           git checkout uat-backend
+          case_commit=$(git log -1 --pretty=format:%H -- backend/case)
+          echo "case_commit=$case_commit" >> $GITHUB_ENV
           scheduler_commit=$(git log -1 --pretty=format:%H -- backend/scheduler-svc)
           echo "scheduler_commit=$scheduler_commit" >> $GITHUB_ENV
           summons_svc_commit=$(git log -1 --pretty=format:%H -- backend/summons-svc)
