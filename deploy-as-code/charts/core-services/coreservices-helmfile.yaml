@@ -252,11 +252,11 @@ releases:
     labels:
       team: "solutions"
     <<: *default
-  - name: e-sign  # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "solutions"
-    <<: *default
+#  - name: e-sign  # Replace with your desired namespace
+#    installed: true
+#    labels:
+#      team: "solutions"
+#    <<: *default
   - name: qr-code-service # Replace with your desired namespace
     installed: true
     labels:
