@@ -187,7 +187,7 @@ jobs:
           echo "application_commit=$application_commit" >> $GITHUB_ENV           
           epost_tracker_commit=$(git log -1 --pretty=format:%H -- backend/epost-tracker)
           echo "epost_tracker_commit=$epost_tracker_commit" >> $GITHUB_ENV 
-          user_otp_commit=$(git log -1 --pretty=format:%H -- backend/user-otp)
+          user_otp_commit=$(git log -1 --pretty=format:%H -- common/user-otp)
           echo "user_otp_commit=$user_otp_commit" >> $GITHUB_ENV 
           summons_svc_commit=$(git log -1 --pretty=format:%H -- backend/summons-svc)
           echo "summons_svc_commit=$summons_svc_commit" >> $GITHUB_ENV 
