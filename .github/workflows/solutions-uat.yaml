@@ -116,7 +116,6 @@ jobs:
           echo "epost_tracker_commit=$epost_tracker_commit" >> $GITHUB_ENV 
           user_otp_commit=$(git log -1 --pretty=format:%H -- backend/user-otp)
           echo "user_otp_commit=$user_otp_commit" >> $GITHUB_ENV 
-          echo "integration_commit=$integration_commit" >> $GITHUB_ENV  
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
           git checkout uat-backend
@@ -130,7 +129,7 @@ jobs:
           echo "task_commit=$task_commit" >> $GITHUB_ENV
           analytics_commit=$(git log -1 --pretty=format:%H -- backend/analytics)
           echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV 
-          transformer_commit=$(git log -1 --pretty=format:%H -- backend/transfromer)
+          transformer_commit=$(git log -1 --pretty=format:%H -- backend/transformer)
           echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV
           individual_commit=$(git log -1 --pretty=format:%H -- common/individual)
           echo "individual_commit=$individual_commit" >> $GITHUB_ENV
