@@ -54,9 +54,9 @@ releases:
 #    installed: true
 #    <<: *default
 
-  - name: egov-notification-mail # Replace with your desired namespace
-    installed: true
-    <<: *default
+  # - name: egov-notification-mail # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
 
 #  - name: kerala-sms # Replace with your desired namespace
 #    installed: true
@@ -82,9 +82,9 @@ releases:
 #    installed: true
 #    <<: *default
 
-  - name: user-otp # Replace with your desired namespace
-    installed: true
-    <<: *default
+  # - name: user-otp # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
 
 #  - name: configmaps # Replace with your desired namespace
 #    installed: true
@@ -257,11 +257,11 @@ releases:
 #    labels:
 #      team: "solutions"
 #    <<: *default
-  - name: qr-code-service # Replace with your desired namespace
-    installed: true
-    labels:
-      team: "solutions"
-    <<: *default
+  # - name: qr-code-service # Replace with your desired namespace
+  #   installed: true
+  #   labels:
+  #     team: "solutions"
+  #   <<: *default
 
   - name: etreasury  # Replace with your desired namespace
     installed: true
@@ -310,10 +310,10 @@ releases:
   #  - name: ocr-svc # Replace with your desired namespace
   #    installed: true
   #    <<: *default
-  - name: sunbirdrc-credential-service # Replace with your desired namespace
-    installed: true
-    <<: *default
+  # - name: sunbirdrc-credential-service # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
 
-  - name: verifyapp  # Replace with your desired namespace
-    installed: true
-    <<: *default
+  # - name: verifyapp  # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
