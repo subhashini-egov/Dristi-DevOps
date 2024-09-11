@@ -165,14 +165,10 @@ jobs:
           echo "case_commit=$case_commit" >> $GITHUB_ENV
           casemanagement_commit=$(git log -1 --pretty=format:%H -- backend/casemanagement)
           echo "casemanagement_commit=$casemanagement_commit" >> $GITHUB_ENV
-          evidence_commit=$(git log -1 --pretty=format:%H -- backend/evidence)
-          echo "evidence_commit=$evidence_commit" >> $GITHUB_ENV
           hearing_commit=$(git log -1 --pretty=format:%H -- backend/hearing)
           echo "hearing_commit=$hearing_commit" >> $GITHUB_ENV
           dristi_case_pdf_commit=$(git log -1 --pretty=format:%H -- backend/dristi-case-pdf)
           echo "dristi_case_pdf_commit=$dristi_case_pdf_commit" >> $GITHUB_ENV
-          order_commit=$(git log -1 --pretty=format:%H -- backend/order)
-          echo "order_commit=$order_commit" >> $GITHUB_ENV
           esign_interceptor_commit=$(git log -1 --pretty=format:%H -- backend/esign-interceptor)
           echo "esign_interceptor_commit=$esign_interceptor_commit" >> $GITHUB_ENV
           esign_svc_commit=$(git log -1 --pretty=format:%H -- backend/e-sign-svc)
@@ -190,6 +186,10 @@ jobs:
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
           git checkout develop
+          order_commit=$(git log -1 --pretty=format:%H -- backend/order)
+          echo "order_commit=$order_commit" >> $GITHUB_ENV
+          evidence_commit=$(git log -1 --pretty=format:%H -- backend/evidence)
+          echo "evidence_commit=$evidence_commit" >> $GITHUB_ENV
           application_commit=$(git log -1 --pretty=format:%H -- backend/application)
           echo "application_commit=$application_commit" >> $GITHUB_ENV      
           scheduler_commit=$(git log -1 --pretty=format:%H -- backend/scheduler-svc)
