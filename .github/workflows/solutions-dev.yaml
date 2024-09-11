@@ -173,14 +173,10 @@ jobs:
           echo "dristi_case_pdf_commit=$dristi_case_pdf_commit" >> $GITHUB_ENV
           order_commit=$(git log -1 --pretty=format:%H -- backend/order)
           echo "order_commit=$order_commit" >> $GITHUB_ENV
-          collection_service_commit=$(git log -1 --pretty=format:%H -- backend/collection-services)
-          echo "collection_service_commit=$collection_service_commit" >> $GITHUB_ENV
           esign_interceptor_commit=$(git log -1 --pretty=format:%H -- backend/esign-interceptor)
           echo "esign_interceptor_commit=$esign_interceptor_commit" >> $GITHUB_ENV
           esign_svc_commit=$(git log -1 --pretty=format:%H -- backend/e-sign-svc)
-          echo "esign_svc_commit=$esign_svc_commit" >> $GITHUB_ENV
-          application_commit=$(git log -1 --pretty=format:%H -- backend/application)
-          echo "application_commit=$application_commit" >> $GITHUB_ENV           
+          echo "esign_svc_commit=$esign_svc_commit" >> $GITHUB_ENV     
           epost_tracker_commit=$(git log -1 --pretty=format:%H -- backend/epost-tracker)
           echo "epost_tracker_commit=$epost_tracker_commit" >> $GITHUB_ENV 
           user_otp_commit=$(git log -1 --pretty=format:%H -- backend/user-otp)
@@ -194,6 +190,8 @@ jobs:
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
           git checkout develop
+          application_commit=$(git log -1 --pretty=format:%H -- backend/application)
+          echo "application_commit=$application_commit" >> $GITHUB_ENV      
           scheduler_commit=$(git log -1 --pretty=format:%H -- backend/scheduler-svc)
           echo "scheduler_commit=$scheduler_commit" >> $GITHUB_ENV
           summons_svc_commit=$(git log -1 --pretty=format:%H -- backend/summons-svc)
