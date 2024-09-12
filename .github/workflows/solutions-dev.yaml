@@ -210,7 +210,6 @@ jobs:
           echo "inbox_commit=$inbox_commit" >> $GITHUB_ENV
           billing_service_commit=$(git log -1 --pretty=format:%H -- common/billing-service)
           echo "billing_service_commit=$billing_service_commit" >> $GITHUB_ENV
-          git checkout orders-applications-pdf
           dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
           echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
           git clone https://github.com/pucardotorg/etreasury_kerala.git
