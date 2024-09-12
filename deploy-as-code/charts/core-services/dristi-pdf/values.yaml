@@ -82,6 +82,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: hearing
+  - name:  DRISTI_ADVOCATE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: advocate
   - name: CONTEXT_PATH
     value: "/egov-pdf"    
   - name: EGOV_HOST
