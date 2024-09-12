@@ -165,3 +165,7 @@ env: |
         key: egov-enc-service
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
     value: case
+  - name: SPRING_REDIS_HOST
+    value: "redis.backbone"
+  - name: SPRING_REDIS_PORT
+    value: "6379"
