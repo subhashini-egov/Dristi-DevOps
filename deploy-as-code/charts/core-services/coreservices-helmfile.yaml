@@ -307,9 +307,9 @@ releases:
   #  - name: kenlm # Replace with your desired namespace
   #    installed: true
   #    <<: *default
-  #  - name: ocr-svc # Replace with your desired namespace
-  #    installed: true
-  #    <<: *default
+#  - name: ocr-svc # Replace with your desired namespace
+#    installed: true
+#    <<: *default
   # - name: sunbirdrc-credential-service # Replace with your desired namespace
   #   installed: true
   #   <<: *default
