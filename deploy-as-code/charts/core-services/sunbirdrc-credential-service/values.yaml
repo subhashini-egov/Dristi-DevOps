@@ -47,7 +47,7 @@ env: |
   - name: SUNBIRD_REVOKE_PATH
     value: /credentials/
   - name: EGOV_MDMS_SEARCH_TENANT
-    value: pg
+    value: kl
   - name: SUNBIRD_SAVE_VC_TOPIC
     value: save-vcid
   - name: SUNBIRD_UPDATE_VC_TOPIC
