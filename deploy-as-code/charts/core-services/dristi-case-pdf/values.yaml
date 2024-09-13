@@ -22,6 +22,8 @@ healthChecks:
   readinessProbePath: "/dristi-case-pdf/"
     
 env: |
+  - name: NODE_OPTIONS
+    value: "--max-old-space-size=2048"
   - name: SERVER_PORT
     value: "8080"
   - name: PDF_SERVICE_URL
