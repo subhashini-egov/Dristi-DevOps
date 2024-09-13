@@ -94,8 +94,6 @@ jobs:
           echo "advocate_commit=$advocate_commit" >> $GITHUB_ENV
           casemanagement_commit=$(git log -1 --pretty=format:%H -- backend/casemanagement)
           echo "casemanagement_commit=$casemanagement_commit" >> $GITHUB_ENV
-          hearing_commit=$(git log -1 --pretty=format:%H -- backend/hearing)
-          echo "hearing_commit=$hearing_commit" >> $GITHUB_ENV
           dristi_case_pdf_commit=$(git log -1 --pretty=format:%H -- backend/dristi-case-pdf)
           echo "dristi_case_pdf_commit=$dristi_case_pdf_commit" >> $GITHUB_ENV
           order_commit=$(git log -1 --pretty=format:%H -- backend/order)
@@ -113,6 +111,8 @@ jobs:
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
           git checkout uat-backend
+          hearing_commit=$(git log -1 --pretty=format:%H -- backend/hearing)
+          echo "hearing_commit=$hearing_commit" >> $GITHUB_ENV
           order_commit=$(git log -1 --pretty=format:%H -- backend/order)
           echo "order_commit=$order_commit" >> $GITHUB_ENV
           application_commit=$(git log -1 --pretty=format:%H -- backend/application)
