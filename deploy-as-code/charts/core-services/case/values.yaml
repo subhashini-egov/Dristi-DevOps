@@ -29,8 +29,8 @@ httpPort: 8080
 appType: "java-spring"
 heap: "-Xmx1g -Xms1g"
 java-args: "-Dspring.profiles.active=monitoring"
-memory_requests: 1.5Gi
-memory_limits: 1.5Gi
+memory_requests: 2Gi
+memory_limits: 2Gi
 
 
 
