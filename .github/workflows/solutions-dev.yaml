@@ -178,11 +178,7 @@ jobs:
           user_otp_commit=$(git log -1 --pretty=format:%H -- backend/user-otp)
           echo "user_otp_commit=$user_otp_commit" >> $GITHUB_ENV 
           transformer_commit=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git transformer | awk '{print $1}')
-          echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV  
-          etreasury_commit=$(git ls-remote https://github.com/pucardotorg/etreasury_kerala.git develop | awk '{print $1}')
-          echo "etreasury_commit=$etreasury_commit" >> $GITHUB_ENV  
-          integration_commit=$(git ls-remote https://github.com/pucardotorg/icops_integration-kerala.git icops_testing | awk '{print $1}')
-          echo "integration_commit=$integration_commit" >> $GITHUB_ENV  
+          echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV   
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
           git checkout develop
@@ -208,21 +204,22 @@ jobs:
           echo "individual_commit=$individual_commit" >> $GITHUB_ENV
           inbox_commit=$(git log -1 --pretty=format:%H -- common/inbox)
           echo "inbox_commit=$inbox_commit" >> $GITHUB_ENV
+          etreasury_commit=$(git log -1 --pretty=format:%H -- backend/treasury-backend)
+          echo "etreasury_commit=$etreasury_commit" >> $GITHUB_ENV
+          epayment_commit=$(git log -1 --pretty=format:%H -- backend/treasury-webpage)
+          echo "epayment_commit=$epayment_commit" >> $GITHUB_ENV
+          sbi_svc_commit=$(git log -1 --pretty=format:%H -- backend/sbi-backend)
+          echo "sbi_svc_commit=$sbi_svc_commit" >> $GITHUB_ENV
+          sbi_ui_commit=$(git log -1 --pretty=format:%H -- backend/sbi-webpage)
+          echo "sbi_ui_commit=$sbi_ui_commit" >> $GITHUB_ENV
+          integration_commit=$(git log -1 --pretty=format:%H -- backend/icops_integration-kerala)
+          echo "integration_commit=$integration_commit" >> $GITHUB_ENV
+          kerala_sms_commit=$(git log -1 --pretty=format:%H -- backend/kerala-sms)
+          echo "kerala_sms_commit=$kerala_sms_commit" >> $GITHUB_ENV
           billing_service_commit=$(git log -1 --pretty=format:%H -- common/billing-service)
           echo "billing_service_commit=$billing_service_commit" >> $GITHUB_ENV
           dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
           echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
-          git clone https://github.com/pucardotorg/etreasury_kerala.git
-          cd etreasury_kerala
-          git checkout develop
-          etreasury_commit=$(git log -1 --pretty=format:%H -- treasury-backend)
-          echo "etreasury_commit=$etreasury_commit" >> $GITHUB_ENV
-          epayment_commit=$(git log -1 --pretty=format:%H -- treasury-webpage)
-          echo "epayment_commit=$epayment_commit" >> $GITHUB_ENV  
-          sbi_svc_commit=$(git log -1 --pretty=format:%H -- sbi-backend)
-          echo "sbi_svc_commit=$sbi_svc_commit" >> $GITHUB_ENV
-          sbi_ui_commit=$(git log -1 --pretty=format:%H -- sbi-webpage)
-          echo "sbi_ui_commit=$sbi_ui_commit" >> $GITHUB_ENV  
 
       - name: digit deployment
         run: |
