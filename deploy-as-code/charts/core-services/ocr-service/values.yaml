@@ -34,6 +34,8 @@ httpPort: 8080
 #  readinessProbePath: "/advocate/"
 
 env: |
+  - name: JAVA_OPTS
+    value: -Xmx256m -Xms256m
   - name: SPRING_FLYWAY_URL
     valueFrom:
       configMapKeyRef:
