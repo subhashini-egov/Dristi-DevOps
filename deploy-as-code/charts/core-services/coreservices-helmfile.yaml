@@ -146,9 +146,9 @@ releases:
     labels:
       team: "dpg"
     <<: *default
-  # - name: pdf-service  # Replace with your desired namespace
-  #   installed: true
-  #   <<: *default
+  - name: pdf-service  # Replace with your desired namespace
+    installed: true
+    <<: *default
 
   - name: scheduler  # Replace with your desired namespace
     installed: true

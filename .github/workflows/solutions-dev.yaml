@@ -154,8 +154,8 @@ jobs:
 
       - name: Commit Id for Latest Deployment
         run: |
-          git clone https://github.com/pucardotorg/Dristi_kerala.git
-          cd Dristi_kerala
+          git clone https://github.com/pucardotorg/dristi-solutions.git
+          cd dristi-solutions
           git checkout develop
           payment_calculator_commit=$(git log -1 --pretty=format:%H -- backend/payment-calculator-svc)
           echo "payment_calculator_commit=$payment_calculator_commit" >> $GITHUB_ENV
@@ -178,10 +178,7 @@ jobs:
           user_otp_commit=$(git log -1 --pretty=format:%H -- backend/user-otp)
           echo "user_otp_commit=$user_otp_commit" >> $GITHUB_ENV 
           transformer_commit=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git transformer | awk '{print $1}')
-          echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV   
-          git clone https://github.com/pucardotorg/dristi-solutions.git
-          cd dristi-solutions
-          git checkout develop
+          echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV  
           order_commit=$(git log -1 --pretty=format:%H -- backend/order)
           echo "order_commit=$order_commit" >> $GITHUB_ENV
           evidence_commit=$(git log -1 --pretty=format:%H -- backend/evidence)
