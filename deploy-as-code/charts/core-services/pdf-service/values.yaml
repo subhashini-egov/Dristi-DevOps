@@ -15,7 +15,7 @@ initContainers:
     schemaTable: "pdf_service_schema"
     image:
       repository: "egovio/pdf-service-db"
-      tag: pdf-with-qr-b76ece3c88-34
+      tag: pdf-with-qr-3f3dc4612e-35
 
   gitSync:
     enabled: true
@@ -26,7 +26,7 @@ initContainers:
 # Container Configs
 image:
   repository: "egovio/pdf-service"
-  tag: pdf-with-qr-b76ece3c88-34
+  tag: pdf-with-qr-3f3dc4612e-35
 replicas: "1"
 appType: "java-spring"
 tracing-enabled: true
