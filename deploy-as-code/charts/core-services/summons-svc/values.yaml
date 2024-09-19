@@ -133,15 +133,13 @@ env: |
       configMapKeyRef:
         key: task
         name: egov-service-host
-
+  - name: DRISTI_DEV_ORDER_SEARCH_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: order
+        name: egov-service-host
   - name: EGOV_EPOST_HOST
     valueFrom:
       configMapKeyRef:
         key: epost
         name: egov-service-host
-
-  
-  
-  
-  
-  
