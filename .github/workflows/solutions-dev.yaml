@@ -177,7 +177,7 @@ jobs:
           echo "epost_tracker_commit=$epost_tracker_commit" >> $GITHUB_ENV 
           user_otp_commit=$(git log -1 --pretty=format:%H -- backend/user-otp)
           echo "user_otp_commit=$user_otp_commit" >> $GITHUB_ENV 
-          transformer_commit=$(git ls-remote https://github.com/pucardotorg/Dristi_kerala.git transformer | awk '{print $1}')
+          transformer_commit=$(git log -1 --pretty=format:%H -- backend/transformer)
           echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV  
           order_commit=$(git log -1 --pretty=format:%H -- backend/order)
           echo "order_commit=$order_commit" >> $GITHUB_ENV
