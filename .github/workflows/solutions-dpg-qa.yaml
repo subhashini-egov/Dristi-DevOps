@@ -102,7 +102,7 @@ jobs:
       - name: Azure login
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.SOLUTIONS_AZURE_CREDENTIALS }}
       - name: Generate kubeconfig
         run: |
           az aks get-credentials --resource-group "pucar-qa" --name "qa"
