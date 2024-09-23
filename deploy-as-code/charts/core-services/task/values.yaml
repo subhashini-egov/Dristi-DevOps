@@ -26,6 +26,7 @@ image:
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
+debug: 5005
 appType: "java-spring"
 heap: "-Xmx256m -Xms256m"
 java-args: "-Dspring.profiles.active=monitoring"
@@ -37,8 +38,10 @@ java-args: "-Dspring.profiles.active=monitoring"
 #  readinessProbePath: "/task/"
 
 env: |
+  - name: JAVA_ENABLE_DEBUG
+    value: "true"
   - name: JAVA_OPTS
-    value: {{ index .Values "heap" | quote }}
+    value: "-Xmx256m -Xms256m -agentlib:jdwp=transport=dt_socket,address=*:5005,server=y,suspend=n"
   - name: SERVER_PORT
     value: "8080"
   - name: JAVA_ARGS
