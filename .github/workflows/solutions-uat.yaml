@@ -98,8 +98,6 @@ jobs:
           echo "dristi_case_pdf_commit=$dristi_case_pdf_commit" >> $GITHUB_ENV
           order_commit=$(git log -1 --pretty=format:%H -- backend/order)
           echo "order_commit=$order_commit" >> $GITHUB_ENV
-          collection_service_commit=$(git log -1 --pretty=format:%H -- backend/collection-services)
-          echo "collection_service_commit=$collection_service_commit" >> $GITHUB_ENV
           esign_interceptor_commit=$(git log -1 --pretty=format:%H -- backend/esign-interceptor)
           echo "esign_interceptor_commit=$esign_interceptor_commit" >> $GITHUB_ENV
           esign_svc_commit=$(git log -1 --pretty=format:%H -- backend/e-sign-svc)
