@@ -143,6 +143,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: order
+  - name: EGOV_BILLINGSERVICE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: billing-service
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
     value: task
   - name: KAFKA_TOPICS_RECEIPT_CREATE

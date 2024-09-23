@@ -29,8 +29,5 @@ env: |
   - name: PDF_SERVICE_URL
     value: "http://pdf-service:8080"
   - name: FILE_STORE_HOST 
-    valueFrom:
-      configMapKeyRef:
-        name: egov-config
-        key: egov-services
+    value: "http://egov-filestore:8080"
 
