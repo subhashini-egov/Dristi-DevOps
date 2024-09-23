@@ -41,7 +41,7 @@ env: |
   - name: JAVA_ENABLE_DEBUG
     value: "true"
   - name: JAVA_OPTS
-    value: "-Xmx256m -Xms256m -agentlib:jdwp=transport=dt_socket,address=*:5005,server=y,suspend=n"
+    value: "-Xmx256m -Xms256m"
   - name: SERVER_PORT
     value: "8080"
   - name: JAVA_ARGS
