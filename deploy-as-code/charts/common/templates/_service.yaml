@@ -25,5 +25,11 @@ spec:
   ports:
   - name: http
     port: {{ .Values.httpPort }}
-    targetPort: {{ .Values.httpPort }}  
+    targetPort: {{ .Values.httpPort }}
+  {{- if .Values.remote_debug.enabled }}
+  - name: debug
+    port: {{ .Values.debugPort }}
+    targetPort: {{ .Values.debugPort }}
+  {{- end }}
+readinessProbe:
 {{- end -}}

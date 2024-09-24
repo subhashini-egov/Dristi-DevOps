@@ -6,6 +6,9 @@ global:
 
 replicas: 1
 httpPort: 8080
+debugPort: 5005
+remote_debug:
+  enabled: false
 appType: ""
 
 ingress:

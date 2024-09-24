@@ -27,7 +27,9 @@ image:
 replicas: "1"
 httpPort: 8080
 appType: "java-spring"
-heap: "-Xmx1g -Xms1g"
+heap: "-Xmx1g -Xms1g -agentlib:jdwp=transport=dt_socket,address=*:8000,server=y,suspend=n"
+remote_debug:
+  enabled: false
 java-args: "-Dspring.profiles.active=monitoring"
 memory_requests: 2Gi
 memory_limits: 2Gi
