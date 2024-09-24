@@ -152,6 +152,8 @@ env: |
     value: task
   - name: KAFKA_TOPICS_RECEIPT_CREATE
     value: egov.collection.payment-create
+  - name: ROLE_SYSTEM_ADMIN
+    value: SYSTEM_ADMIN
 
 
     
