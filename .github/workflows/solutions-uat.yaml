@@ -88,8 +88,6 @@ jobs:
           git clone https://github.com/pucardotorg/Dristi_kerala.git
           cd Dristi_kerala
           git checkout develop
-          payment_calculator_commit=$(git log -1 --pretty=format:%H -- backend/payment-calculator-svc)
-          echo "payment_calculator_commit=$payment_calculator_commit" >> $GITHUB_ENV
           advocate_commit=$(git log -1 --pretty=format:%H -- backend/advocate)
           echo "advocate_commit=$advocate_commit" >> $GITHUB_ENV
           casemanagement_commit=$(git log -1 --pretty=format:%H -- backend/casemanagement)
@@ -107,6 +105,8 @@ jobs:
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
           git checkout uat-backend
+          payment_calculator_commit=$(git log -1 --pretty=format:%H -- backend/payment-calculator-svc)
+          echo "payment_calculator_commit=$payment_calculator_commit" >> $GITHUB_ENV
           dristi_case_pdf_commit=$(git log -1 --pretty=format:%H -- backend/dristi-case-pdf)
           echo "dristi_case_pdf_commit=$dristi_case_pdf_commit" >> $GITHUB_ENV
           hearing_commit=$(git log -1 --pretty=format:%H -- backend/hearing)
