@@ -257,7 +257,7 @@ jobs:
             --set epayments.image.tag=v1.0.0-${{ env.epayment_commit }} \
             --set etreasury.image.tag=v1.0.0-${{ env.etreasury_commit }} \
             --set etreasury.initContainers.dbMigration.image.tag=v1.0.0-${{ env.etreasury_commit }} \
-            --set sbi-ui.image.tag=v1.0.0-${{ env.sbi_ui_commit }} \
+            --set sbi-webpage.image.tag=v1.0.0-${{ env.sbi_ui_commit }} \
             --set sbi-svc.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
             --set sbi-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
             --set epost-tracker.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \

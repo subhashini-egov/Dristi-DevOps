@@ -1,13 +1,13 @@
 # Common Labels
 labels:
-  app: "sbi-ui"
+  app: "sbi-webpage"
   group: "rainmaker"
 
 # Ingress Configs
 ingress:
   enabled: true
 #  zuul: true
-  context: "sbi-payment"
+  context: "sbi-payments"
 
 
 # Container Configs
