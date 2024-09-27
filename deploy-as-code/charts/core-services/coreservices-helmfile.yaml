@@ -8,8 +8,8 @@ templates:
     # Use "Debug" to make missing files errors invisible at the default log level(--log-level=INFO)
     missingFileHandler: Warn
     values:
-      - ../environments/solutions-dev-secrets.yaml
-      - ../environments/solutions-dev.yaml
+      - ../environments/{{ requiredEnv "HELMFILE_ENV" }}-secrets.yaml
+      - ../environments/{{ requiredEnv "HELMFILE_ENV" }}.yaml
 commonLabels:
   deployment: "pucar"
 
@@ -94,226 +94,226 @@ releases:
 #    installed: true
 #    <<: *default
 
-#  - name: digit-ui # Replace with your desired namespace
-#    labels:
-#      team: "dpg"
+  - name: digit-ui # Replace with your desired namespace
+    labels:
+      team: "dpg"
+    <<: *default
+
+#  - name: employee # Replace with your desired namespace
+#    installed: true
 #    <<: *default
 #
-##  - name: employee # Replace with your desired namespace
-##    installed: true
-##    <<: *default
-##
-##  - name: service-request # Replace with your desired namespace
-##    installed: true
-##    <<: *default
-##
-##  - name: pgr-services # Replace with your desired namespace
-##    installed: true
-##    <<: *default
-##
-##  - name: gateway # Replace with your desired namespace
-##    installed: true
-##    <<: *default
-##
-##  - name: egov-pg-service # Replace with your desired namespace
-##    installed: true
-##    <<: *default
-##
-##  - name: egov-user-event # Replace with your desired namespace
-##    installed: true
-##    <<: *default
-##
-##  - name: workbench-ui # Replace with your desired namespace
-##    installed: true
-##    labels:
-##       team: "dpg"
-##    <<: *default
+#  - name: service-request # Replace with your desired namespace
+#    installed: true
+#    <<: *default
 #
-#  - name: mdms-v2
+#  - name: pgr-services # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#
+#  - name: gateway # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#
+#  - name: egov-pg-service # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#
+#  - name: egov-user-event # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+#
+#  - name: workbench-ui # Replace with your desired namespace
 #    installed: true
 #    labels:
 #       team: "dpg"
 #    <<: *default
-#
-#  - name: individual  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#
-#  - name: dristi-case-pdf  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#  - name: pdf-service  # Replace with your desired namespace
-#    installed: true
-#    <<: *default
-#
-#  # - name: scheduler  # Replace with your desired namespace
-#  #   installed: true
-#  #   labels:
-#  #     team: "solutions"
-#  #   <<: *default
-#
-#  - name: advocate  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#
-#  - name: billing-service  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#
-#
-#  - name: collection-services  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#  #
-#  - name: case  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#       team: "dpg"
-#    <<: *default
-#
-#  - name: inbox  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#
-#  - name: application  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#
-#  - name: casemanagement  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#
-#  - name: egov-apportion-service  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#
-#  - name: evidence  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#
-#  - name: hearing  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#
-#  - name: order  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#
-#  - name: task  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#
-#  - name: payment-calculator  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "solutions"
-#    <<: *default
-#
-#  - name: e-sign-svc  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "solutions"
-#    <<: *default
-#
-#  - name: esign-interceptor  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "solutions"
-#    <<: *default
-#
-#  - name: summons-svc  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "solutions"
-#    <<: *default
-##  - name: e-sign  # Replace with your desired namespace
-##    installed: true
-##    labels:
-##      team: "solutions"
-##    <<: *default
-#  # - name: qr-code-service # Replace with your desired namespace
-#  #   installed: true
-#  #   labels:
-#  #     team: "solutions"
-#  #   <<: *default
-#
-#  - name: etreasury  # Replace with your desired namespace
+
+  - name: mdms-v2
+    installed: true
+    labels:
+       team: "dpg"
+    <<: *default
+
+  - name: individual  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: dristi-case-pdf  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+  - name: pdf-service  # Replace with your desired namespace
+    installed: true
+    <<: *default
+
+  - name: scheduler  # Replace with your desired namespace
+    installed: true
+    labels:
+       team: "solutions"
+    <<: *default
+
+  - name: advocate  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: billing-service  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+
+  - name: collection-services  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+  #
+  - name: case  # Replace with your desired namespace
+    installed: true
+    labels:
+       team: "dpg"
+    <<: *default
+
+  - name: inbox  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: application  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: casemanagement  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: egov-apportion-service  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: evidence  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: hearing  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: order  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: task  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+
+  - name: payment-calculator  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "solutions"
+    <<: *default
+
+  - name: e-sign-svc  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "solutions"
+    <<: *default
+
+  - name: esign-interceptor  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "solutions"
+    <<: *default
+
+  - name: summons-svc  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "solutions"
+    <<: *default
+#  - name: e-sign  # Replace with your desired namespace
 #    installed: true
 #    labels:
 #      team: "solutions"
 #    <<: *default
-#
-#  - name: epayments  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "solutions"
+  # - name: qr-code-service # Replace with your desired namespace
+  #   installed: true
+  #   labels:
+  #     team: "solutions"
+  #   <<: *default
+
+  - name: etreasury  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "solutions"
+    <<: *default
+
+  - name: epayments  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "solutions"
+    <<: *default
+  - name: analytics  # Replace with your desired namespace
+    installed: true
+    labels:
+      team: "dpg"
+    <<: *default
+  - name: transformer # Replace with your desired namespace
+    installed: true
+    <<: *default
+
+  - name: epost-tracker # Replace with your desired namespace
+    installed: true
+    <<: *default
+#  - name: icops-integration # Replace with your desired namespace
+#    installed: true # Replace with the version of your chart, if needed
 #    <<: *default
-#  - name: analytics  # Replace with your desired namespace
-#    installed: true
-#    labels:
-#      team: "dpg"
-#    <<: *default
-#  - name: transformer # Replace with your desired namespace
+#  - name: ocr-service # Replace with your desired namespace
 #    installed: true
 #    <<: *default
-#
-#  - name: epost-tracker # Replace with your desired namespace
-#    installed: true
-#    <<: *default
-##  - name: icops-integration # Replace with your desired namespace
-##    installed: true # Replace with the version of your chart, if needed
-##    <<: *default
-##  - name: ocr-service # Replace with your desired namespace
-##    installed: true
-##    <<: *default
-#  - name: dristi-pdf # Replace with your desired namespace
-#    installed: true
-#    <<: *default
+  - name: dristi-pdf # Replace with your desired namespace
+    installed: true
+    <<: *default
   - name: sbi-webpage # Replace with your desired namespace
     installed: true
     <<: *default
-#  - name: sbi-svc # Replace with your desired namespace
+  - name: sbi-svc # Replace with your desired namespace
+    installed: true
+    <<: *default
+#  - name: transcription # Replace with your desired namespace
 #    installed: true
 #    <<: *default
-##  - name: transcription # Replace with your desired namespace
-##    installed: true
-##    <<: *default
-#  #  - name: kenlm # Replace with your desired namespace
-#  #    installed: true
-#  #    <<: *default
-##  - name: ocr-svc # Replace with your desired namespace
-##    installed: true
-##    <<: *default
-#  # - name: sunbirdrc-credential-service # Replace with your desired namespace
-#  #   installed: true
-#  #   <<: *default
-#
-#  # - name: verifyapp  # Replace with your desired namespace
-#  #   installed: true
-#  #   <<: *default
+  #  - name: kenlm # Replace with your desired namespace
+  #    installed: true
+  #    <<: *default
+#  - name: ocr-svc # Replace with your desired namespace
+#    installed: true
+#    <<: *default
+  # - name: sunbirdrc-credential-service # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
+
+  # - name: verifyapp  # Replace with your desired namespace
+  #   installed: true
+  #   <<: *default
