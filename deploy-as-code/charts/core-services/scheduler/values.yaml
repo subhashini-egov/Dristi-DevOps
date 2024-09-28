@@ -35,6 +35,8 @@ java-args: "-Dspring.profiles.active=monitoring"
 
 # Additional Container Envs
 env: |
+  - name: court.enabled
+    value: false
   - name: config.causelist.generate
     value: 00  */30 * * * *
   - name: SERVER_PORT
