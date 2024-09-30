@@ -1,8 +1,8 @@
 name: Pucar-Install Workflow Solutins-UAT
 on:
-  push:
-    branches:
-      - Solutions-Pipeline
+#  push:
+#    branches:
+#      - Solutions-Pipeline
   workflow_dispatch:
   repository_dispatch:
 jobs:
@@ -105,9 +105,7 @@ jobs:
           esign_svc_commit=$(git log -1 --pretty=format:%H -- backend/e-sign-svc)
           echo "esign_svc_commit=$esign_svc_commit" >> $GITHUB_ENV     
           epost_tracker_commit=$(git log -1 --pretty=format:%H -- backend/epost-tracker)
-          echo "epost_tracker_commit=$epost_tracker_commit" >> $GITHUB_ENV 
-          user_otp_commit=$(git log -1 --pretty=format:%H -- backend/user-otp)
-          echo "user_otp_commit=$user_otp_commit" >> $GITHUB_ENV 
+          echo "epost_tracker_commit=$epost_tracker_commit" >> $GITHUB_ENV  
           transformer_commit=$(git log -1 --pretty=format:%H -- backend/transformer)
           echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV  
           order_commit=$(git log -1 --pretty=format:%H -- backend/order)
@@ -197,7 +195,6 @@ jobs:
             --set summons-svc.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
             --set summons-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
             --set transformer.image.tag=v1.0.0-${{ env.transformer_commit }} \
-            --set user-otp.image.tag=v1.0.0-${{ env.user_otp_commit }} \
             --set icops-integration.image.tag=v1.0.0-${{ env.integration_commit }} \
             --set icops-integration.initContainers.dbMigration.image.tag=v1.0.0-${{ env.integration_commit }}
             

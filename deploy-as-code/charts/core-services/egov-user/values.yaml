@@ -16,12 +16,12 @@ initContainers:
     schemaTable: "egov_user_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/egov-user-db"
-      tag: core-2.9-lts-egov-user-deployement-c33cfe45ab-13
+      tag: v1.0.0-core-2.9-lts-egov-user-deployement-1
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/egov-user"
-  tag: core-2.9-lts-egov-user-deployement-c33cfe45ab-13
+  tag: v1.0.0-core-2.9-lts-egov-user-deployement-1
 replicas: "1"
 healthChecks:
   enabled: true
