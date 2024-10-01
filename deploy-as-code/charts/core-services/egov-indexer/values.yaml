@@ -16,7 +16,7 @@ initContainers:
     schemaTable: "egov_indexer_schema"
     image:
       repository: "egov-indexer-db"
-      tag: egovio/egov-indexer:request-external-bug-fix-55924ec05b-63
+      tag: request-external-bug-fix-55924ec05b-63
   gitSync:
     enabled: true
     repo: "git@github.com:egovernments/configs"
@@ -25,7 +25,7 @@ initContainers:
 # Container Configs
 image:
   repository: "egov-indexer"
-  tag: egovio/egov-indexer:request-external-bug-fix-55924ec05b-63
+  tag: request-external-bug-fix-55924ec05b-63
 replicas: "1"
 healthChecks:
   enabled: true

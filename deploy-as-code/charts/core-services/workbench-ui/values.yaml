@@ -15,7 +15,7 @@ initContainers: {}
 
 # Container Configs
 image:
-  repository: "egovio/workbench-ui:court-room-hrms-0e500c0d6a-4"
+  repository: "egovio/workbench-ui"
   tag: court-room-hrms-0e500c0d6a-4
 replicas: "1"
 httpPort: 80
