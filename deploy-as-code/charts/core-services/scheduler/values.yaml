@@ -109,7 +109,7 @@ env: |
       configMapKeyRef:
         key: application
         name: egov-service-host
-  - name: DRISHTI_HEARING_HOST
+  - name: DRISTHI_HEARING_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
