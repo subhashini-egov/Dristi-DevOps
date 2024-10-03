@@ -21,12 +21,15 @@ image:
 replicas: "1"
 httpPort: 8080
 appType: "java-spring"
-heap: "-Xmx256m -Xms256m"
 java-args: "-Dspring.profiles.active=monitoring"
+heap: "-Xmx256m -Xms256m -agentlib:jdwp=transport=dt_socket,address=*:8000,server=y,suspend=n"
+debugPort: 8000
+remote_debug:
+  enabled: true
 memory_limits: 640Mi
 env: |
   - name: JAVA_OPTS
-    value: -Xmx256m -Xms256m
+    value: {{ index .Values "heap" | quote }}
   - name: JAVA_ARGS
     value: -Dspring.profiles.active=monitoring
   - name: SERVER_PORT
