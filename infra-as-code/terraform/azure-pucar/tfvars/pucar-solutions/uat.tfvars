@@ -14,7 +14,7 @@ zone                      = "2"
 # kubernetes variables
 private_cluster_enabled  = false
 vm_size                  = "Standard_E2ads_v5"
-node_count               = "2"
+node_count               = "5"
 min_count                = "2"
 max_count                = "4"
 max_pod                  = "45"
