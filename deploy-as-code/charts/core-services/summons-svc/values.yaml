@@ -143,3 +143,8 @@ env: |
       configMapKeyRef:
         key: epost
         name: egov-service-host
+  - name: EGOV_CASE_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: case
+        name: egov-service-host
