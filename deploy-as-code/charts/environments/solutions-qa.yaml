@@ -19,8 +19,9 @@ configmaps:
       service-dept-code: 01BUAT
       esign-filestore-id: "0cdd01bf-5c6c-43de-86df-48406ce4f5a8"
       sbi-tranction-url: https://test.sbiepay.sbi/secure/AggregatorHostedListener
-      sbi-tranction-success-url: https://dristi-kerala-uat.pucar.org/sbi-payment/success.jsp
-      sbi-tranction-fail-url: https://dristi-kerala-uat.pucar.org/sbi-payment/fail.jsp
+      sbi-tranction-success-url: https://dristi-kerala-qa.pucar.org/sbi-payment/success.jsp
+      sbi-tranction-fail-url: https://dristi-kerala-qa.pucar.org/sbi-payment/fail.jsp
+      sbi-redirect-url: https://dristi-kerala-qa.pucar.org/digit-ui/citizen/home/sbi-payment-screen
 
 egov-user:
   heap: "-Xmx256m -Xms256m"

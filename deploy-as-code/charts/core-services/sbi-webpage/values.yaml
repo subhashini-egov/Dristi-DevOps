@@ -27,6 +27,11 @@ env: |
       configMapKeyRef:
         key: dristi-url
         name: egov-config
+  - name: REDIRECT_URL
+    valueFrom:
+      configMapKeyRef:
+        key: sbi-redirect-url
+        name: egov-config
 
 
 

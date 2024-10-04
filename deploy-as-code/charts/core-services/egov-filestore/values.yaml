@@ -28,9 +28,9 @@ healthChecks:
   readinessProbePath: "/filestore/health"
 appType: "java-spring"
 tracing-enabled: true
-#is-bucket-fixed: "true"
+is-bucket-fixed: "true"
 #fixed-bucketname: "unified-dev-bucket-s3"
-heap: "-Xmx768m -Xms512m"
+heap: "-Xmx1g -Xms1g"
 file-storage-mount-path: "/filestore"
 is-nfs-enabled: false
 is-azure-storage-enabled: true
@@ -58,7 +58,9 @@ env: |
   - name: TEMP_FOLDER_PATH
     value: "/tmp"
   - name: SPRING_SERVLET_MULTIPART_MAX_FILE_SIZE
-    value: "6MB"
+    value: "200MB"
+  - name: SPRING_SERVLET_MULTIPART_MAX_REQUEST_SIZE
+    value: 1000MB
   - name: ISNFSSTORAGEENABLED
     value: {{ index .Values "is-nfs-enabled" | quote }}
   {{- if index .Values "is-nfs-enabled" }}
