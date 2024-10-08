@@ -1,4 +1,4 @@
-name: Pucar-Install Workflow Solutins-UAT
+name: Pucar-Install Workflow Solutins-dpg-qa
 on:
   push:
     branches:
@@ -7,7 +7,6 @@ on:
     branches:
       - main
   workflow_dispatch:
-
 permissions:
   id-token: write
   contents: write
@@ -27,7 +26,7 @@ jobs:
         with:
           files: |
             deploy-as-code/**
-
+  
   #  Terraform_Infra_Creation:
   #    needs: check-changed-files
   #    runs-on: ubuntu-latest
@@ -37,7 +36,7 @@ jobs:
   #      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
   #      ARM_CLIENT_ID: ${{ secrets.AZURE_SOLUTIONS_CLIENT_ID }}
   #      ARM_CLIENT_SECRET: ${{ secrets.AZURE_SOLUTIONS_CLIENT_SECRET }}
-  #      db_password: ${{ secrets.TF_VAR_db_password_solutions }}
+  #      db_password: ${{ secrets.TF_VAR_db_password }}
   #
   #    steps:
   #      - name: Checkout code
@@ -55,7 +54,7 @@ jobs:
   #        id: init-Infra
   #        run: |
   #          terraform --version
-  #          terraform init -backend-config="resource_group_name=pucar-uat" -backend-config="storage_account_name=tfstate0fyof" -backend-config="container_name=pucar-uat-tfstate" -backend-config="key=infra.tfstate" -reconfigure
+  #          terraform init -backend-config="resource_group_name=pucar-solutions-dev" -backend-config="storage_account_name=tfstate771y4" -backend-config="container_name=pucar-solutions-dev-tfstate" -backend-config="key=infra.tfstate" -reconfigure
   #        working-directory: infra-as-code/terraform/azure-pucar
   #
   #      - name: Terraform Validate - Infra creation
@@ -65,17 +64,17 @@ jobs:
   #
   #      - name: Terraform Plan - Infra creation
   #        id: plan-Infra
-  #        run: terraform plan -no-color -input=false -var-file="tfvars/pucar-solutions/uat.tfvars" -var "db_password=${{ secrets.TF_VAR_db_password_solutions }}"  -var "ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}" -var "ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}" -var "ARM_CLIENT_ID=${{ env.ARM_CLIENT_ID }}" -var "ARM_CLIENT_SECRET=${{ env.ARM_CLIENT_SECRET }}"
+  #        run: terraform plan -no-color -input=false -var-file="tfvars/pucar-solutions/dev.tfvars" -var "db_password=${{ secrets.TF_VAR_db_password }}" -var "ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}" -var "ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}" -var "ARM_CLIENT_ID=${{ env.ARM_CLIENT_ID }}" -var "ARM_CLIENT_SECRET=${{ env.ARM_CLIENT_SECRET }}"
   #        working-directory: infra-as-code/terraform/azure-pucar
   #
   #      - name: Terraform Apply - Infra creation
   #        id: apply-Infra
-  #        run: terraform apply -no-color -input=false -auto-approve -var-file="tfvars/pucar-solutions/uat.tfvars" -var "db_password=${{ secrets.TF_VAR_db_password_solutions }}"  -var "ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}" -var "ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}" -var "ARM_CLIENT_ID=${{ env.ARM_CLIENT_ID }}" -var "ARM_CLIENT_SECRET=${{ env.ARM_CLIENT_SECRET }}"
+  #        run: terraform destroy -auto-approve -var-file="tfvars/pucar-solutions/dev.tfvars" -var "db_password=${{ secrets.TF_VAR_db_password }}"  -var "ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}" -var "ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}" -var "ARM_CLIENT_ID=${{ env.ARM_CLIENT_ID }}" -var "ARM_CLIENT_SECRET=${{ env.ARM_CLIENT_SECRET }}"
   #        working-directory: infra-as-code/terraform/azure-pucar
-  #
+  
   #      - name: Generate kubeconfig
   #        run: |
-  #          az aks get-credentials --resource-group "pucar-uat" --name "uat"
+  #          az aks get-credentials --resource-group "pucar-solutions-dev" --name "solutions-dev"
   #          cat ~/.kube/config > kubeconfig
   #      - name: Kubectl setup
   #        uses: azure/setup-kubectl@v3
@@ -101,11 +100,10 @@ jobs:
       - name: Azure login
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.SOLUTIONS_AZURE_CREDENTIALS }}
-
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Generate kubeconfig
         run: |
-          az aks get-credentials --resource-group "pucar-uat" --name "uat"
+          az aks get-credentials --resource-group "pucar-qa" --name "qa"
           cat ~/.kube/config > kubeconfig
 
       - name: Kubectl setup
@@ -135,8 +133,8 @@ jobs:
 
       - name: sops decryption
         run: |
-          sudo sops --decrypt --age ${{ secrets.PUBLIC_AGE_KEY }} $HOME/work/pucar-DevOps/pucar-DevOps/deploy-as-code/charts/environments/solutions-uat-secrets.yaml > env-secrets1.yaml
-          cp env-secrets1.yaml $HOME/work/pucar-DevOps/pucar-DevOps/deploy-as-code/charts/environments/solutions-uat-secrets.yaml
+          sudo sops --decrypt --age ${{ secrets.PUBLIC_AGE_KEY }} $HOME/work/pucar-DevOps/pucar-DevOps/deploy-as-code/charts/environments/solutions-dev-to-qa-secrets.yaml > env-secrets1.yaml
+          cp env-secrets1.yaml $HOME/work/pucar-DevOps/pucar-DevOps/deploy-as-code/charts/environments/solutions-dev-to-qa-secrets.yaml
       #        working-directory: deploy-as-code/charts/environments
 
       - name: Set up Helm
@@ -153,7 +151,6 @@ jobs:
 
       - name: digit deployment
         run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
-
         working-directory: deploy-as-code
         env:
-          HELMFILE_ENV: "solutions-uat"
+          HELMFILE_ENV: "solutions-dev-to-qa"
