@@ -9,7 +9,7 @@ namespace: egov
 ingress:
   namespace: egov
   enabled: true
-  zuul: true
+#  zuul: true
   context: "egov-pdf"
 
 # Container Configs
