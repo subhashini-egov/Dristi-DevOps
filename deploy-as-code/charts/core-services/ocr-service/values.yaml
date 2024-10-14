@@ -17,12 +17,12 @@ initContainers:
     schemaTable: "ocr-service_schema"
     image:
       repository: "pucarsolutionsdev.azurecr.io/pucar_ocr_svc_db"
-      tag: v1.0.0-8d21efdbbb95a1bce3a0555c452a5568cbccf301
+      tag: v1.0.0-43fda1f5471717f3898bc96188ea068a4617ddd7
 
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/pucar_ocr_svc"
-  tag: v1.0.0-8d21efdbbb95a1bce3a0555c452a5568cbccf301
+  tag: v1.0.0-43fda1f5471717f3898bc96188ea068a4617ddd7
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080

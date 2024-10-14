@@ -199,6 +199,8 @@ jobs:
           echo "individual_commit=$individual_commit" >> $GITHUB_ENV
           inbox_commit=$(git log -1 --pretty=format:%H -- common/inbox)
           echo "inbox_commit=$inbox_commit" >> $GITHUB_ENV
+          ocr_service_commit=$(git log -1 --pretty=format:%H -- backend/ocr-service)
+          echo "ocr_service_commit=$ocr_service_commit" >> $GITHUB_ENV
           etreasury_commit=$(git log -1 --pretty=format:%H -- backend/treasury-backend)
           echo "etreasury_commit=$etreasury_commit" >> $GITHUB_ENV
           epayment_commit=$(git log -1 --pretty=format:%H -- backend/treasury-webpage)
@@ -231,6 +233,8 @@ jobs:
            --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${{ env.advocate_commit }} \
            --set case.image.tag=v1.0.0-${{ env.case_commit }} \
            --set case.initContainers.dbMigration.image.tag=v1.0.0-${{ env.case_commit }} \
+           --set ocr-service.image.tag=v1.0.0-${{ env.ocr_service_commit }} \
+           --set ocr-service.initContainers.dbMigration.image.tag=v1.0.0-${{ env.ocr_service_commit }} \
            --set casemanagement.image.tag=v1.0.0-${{ env.casemanagement_commit }} \
            --set casemanagement.initContainers.dbMigration.image.tag=v1.0.0-${{ env.casemanagement_commit }} \
            --set evidence.image.tag=v1.0.0-${{ env.evidence_commit }} \
