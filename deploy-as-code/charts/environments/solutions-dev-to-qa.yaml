@@ -11,6 +11,7 @@ configmaps:
       es-host: "elasticsearch-data.backbone"
       es-indexer-host: "http://elasticsearch-data.backbone:9200/"
       kafka-brokers: "kafka-kraft-controller-headless.backbone:9092"
+      egov-state-level-tenant-id: "kl"
       egov-services-fqdn-name: https://dristi-qa.pucar.org/
       egov-services: https://dristi-qa.pucar.org
       dristi-e-sign: https://dristi-qa.pucar.org/digit-ui/
