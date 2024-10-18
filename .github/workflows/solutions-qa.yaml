@@ -156,7 +156,7 @@ jobs:
         run: |
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
-          git checkout uat-v0.3
+          git checkout release/0.4
           payment_calculator_commit=$(git log -1 --pretty=format:%H -- backend/payment-calculator-svc)
           echo "payment_calculator_commit=$payment_calculator_commit" >> $GITHUB_ENV
           advocate_commit=$(git log -1 --pretty=format:%H -- backend/advocate)
@@ -273,3 +273,13 @@ jobs:
         working-directory: deploy-as-code
         env:
           HELMFILE_ENV: "solutions-qa"
+
+      - name: Postgres Data Migration
+        run: |
+          POSTGRES_POD=$(kubectl get pods -n default -l app=postgres -o jsonpath='{.items[0].metadata.name}')
+          kubectl exec -n default $POSTGRES_POD -- bash -c 'if [ -f /tmp/init-scripts/qa.sql ]; then rm /tmp/qa.sql; echo "File deleted"; else echo "File does not exist"; fi'
+          kubectl cp deploy-as-code/charts/backbone-services/postgresql/init-scripts/qa.sql default/$POSTGRES_POD:/tmp/qa.sql
+          kubectl exec -n default $POSTGRES_POD -- bash -c "PGPASSWORD=$PGPASSWORD psql -h pucar-solutions-qa-server.postgres.database.azure.com -U solutions_qa -d pucar-solutions-qa-db -f /tmp/qa.sql"
+        env:
+          PGPASSWORD: ${{ secrets.TF_VAR_DB_PASSWORD_SOLUTIONS_QA }}
+
