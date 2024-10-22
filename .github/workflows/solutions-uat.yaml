@@ -37,7 +37,7 @@ jobs:
 
       - name: Generate kubeconfig
         run: |
-          az aks get-credentials --resource-group "pucar-uat" --name "uat"
+          az aks get-credentials --resource-group "pucar-uat" --name "uat" --admin
           cat ~/.kube/config > kubeconfig
 
       - name: Kubectl setup
@@ -87,7 +87,7 @@ jobs:
         run: |
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
-          git checkout tags/v0.3.4-uat
+          git checkout tags/v0.4.0-uat
           payment_calculator_commit=$(git log -1 --pretty=format:%H -- backend/payment-calculator-svc)
           echo "payment_calculator_commit=$payment_calculator_commit" >> $GITHUB_ENV
           advocate_commit=$(git log -1 --pretty=format:%H -- backend/advocate)
@@ -203,7 +203,7 @@ jobs:
           HELMFILE_ENV: "solutions-uat"
       - name: Postgres Data Migration
         run: |
-          POSTGRES_POD=$(kubectl get pods -n backbone -l app=postgres -o jsonpath='{.items[0].metadata.name}')
+          POSTGRES_POD=postgresql-0
           kubectl exec -n backbone $POSTGRES_POD -- bash -c 'if [ -f /tmp/init-scripts/uat.sql ]; then rm /tmp/uat.sql; echo "File deleted"; else echo "File does not exist"; fi'
           kubectl cp deploy-as-code/charts/backbone-services/postgresql/init-scripts/qa.sql backbone/$POSTGRES_POD:/tmp/uat.sql
           kubectl exec -n backbone $POSTGRES_POD -- bash -c "PGPASSWORD=$PGPASSWORD psql -h pucar-uat-server.postgres.database.azure.com -U pucar_uat -d pucar-uat-db -f /tmp/uat.sql"

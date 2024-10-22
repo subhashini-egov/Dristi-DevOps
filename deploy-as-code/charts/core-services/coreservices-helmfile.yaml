@@ -135,11 +135,11 @@ releases:
 #       deployment: "mdms-v2"
 #      <<: *default
 #
-#    - name: individual  # Replace with your desired namespace
-#      installed: true
-#      labels:
-#        deployment: "individual"
-#      <<: *default
+    - name: individual  # Replace with your desired namespace
+      installed: true
+      labels:
+        deployment: "individual"
+      <<: *default
 
     - name: dristi-case-pdf  # Replace with your desired namespace
       installed: true
@@ -163,19 +163,19 @@ releases:
         deployment: "advocate"
       <<: *default
 
-#    - name: billing-service  # Replace with your desired namespace
-#      installed: true
-#      labels:
-#        deployment: "billing-service"
-#      <<: *default
-#
-#
-#    - name: collection-services  # Replace with your desired namespace
-#      installed: true
-#      labels:
-#        deployment: "collection-services"
-#      <<: *default
-    #
+    - name: billing-service  # Replace with your desired namespace
+      installed: true
+      labels:
+        deployment: "billing-service"
+      <<: *default
+
+
+    - name: collection-services  # Replace with your desired namespace
+      installed: true
+      labels:
+        deployment: "collection-services"
+      <<: *default
+
     - name: case  # Replace with your desired namespace
       installed: true
       labels:
