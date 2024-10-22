@@ -201,3 +201,11 @@ jobs:
         working-directory: deploy-as-code
         env:
           HELMFILE_ENV: "solutions-uat"
+      - name: Postgres Data Migration
+        run: |
+          POSTGRES_POD=$(kubectl get pods -n backbone -l app=postgres -o jsonpath='{.items[0].metadata.name}')
+          kubectl exec -n backbone $POSTGRES_POD -- bash -c 'if [ -f /tmp/init-scripts/uat.sql ]; then rm /tmp/uat.sql; echo "File deleted"; else echo "File does not exist"; fi'
+          kubectl cp deploy-as-code/charts/backbone-services/postgresql/init-scripts/qa.sql backbone/$POSTGRES_POD:/tmp/uat.sql
+          kubectl exec -n backbone $POSTGRES_POD -- bash -c "PGPASSWORD=$PGPASSWORD psql -h pucar-uat-server.postgres.database.azure.com -U pucar_uat -d pucar-uat-db -f /tmp/uat.sql"
+        env:
+          PGPASSWORD: ${{ secrets.TF_VAR_DB_PASSWORD_SOLUTIONS_UAT }}
