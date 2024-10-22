@@ -148,64 +148,64 @@ jobs:
           echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
 
 
-      - name: digit deployment
-        run: |
-           helmfile -l deployment=pucar -f digit-helmfile.yaml apply --include-needs=true \
-            --set scheduler.image.tag=v1.0.0-${{ env.scheduler_commit }} \
-            --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${{ env.scheduler_commit }} \
-            --set payment-calculator.image.tag=v1.0.0-${{ env.payment_calculator_commit }} \
-            --set payment-calculator.initContainers.dbMigration.image.tag=v1.0.0-${{ env.payment_calculator_commit }} \
-            --set digit-ui.image.tag=v1.0.0-${{ env.digit_ui_commit }} \
-            --set dristi-case-pdf.image.tag=v1.0.0-${{ env.dristi_case_pdf_commit }} \
-            --set dristi-pdf.image.tag=v1.0.0-${{ env.dristi_pdf_commit }} \
-            --set advocate.image.tag=v1.0.0-${{ env.advocate_commit }} \
-            --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${{ env.advocate_commit }} \
-            --set case.image.tag=v1.0.0-${{ env.case_commit }} \
-            --set case.initContainers.dbMigration.image.tag=v1.0.0-${{ env.case_commit }} \
-            --set casemanagement.image.tag=v1.0.0-${{ env.casemanagement_commit }} \
-            --set casemanagement.initContainers.dbMigration.image.tag=v1.0.0-${{ env.casemanagement_commit }} \
-            --set evidence.image.tag=v1.0.0-${{ env.evidence_commit }} \
-            --set evidence.initContainers.dbMigration.image.tag=v1.0.0-${{ env.evidence_commit }} \
-            --set hearing.image.tag=v1.0.0-${{ env.hearing_commit }} \
-            --set hearing.initContainers.dbMigration.image.tag=v1.0.0-${{ env.hearing_commit }} \
-            --set order.image.tag=v1.0.0-${{ env.order_commit }} \
-            --set order.initContainers.dbMigration.image.tag=v1.0.0-${{ env.order_commit }} \
-            --set task.image.tag=v1.0.0-${{ env.task_commit }} \
-            --set task.initContainers.dbMigration.image.tag=v1.0.0-${{ env.task_commit }} \
-            --set billing-service.image.tag=v1.0.0-${{ env.billing_service_commit }} \
-            --set billing-service.initContainers.dbMigration.image.tag=v1.0.0-${{ env.billing_service_commit }} \
-            --set collection-services.image.tag=v1.0.0-${{ env.collection_service_commit }} \
-            --set collection-services.initContainers.dbMigration.image.tag=v1.0.0-${{ env.collection_service_commit }} \
-            --set individual.image.tag=v1.0.0-${{ env.individual_commit }} \
-            --set individual.initContainers.dbMigration.image.tag=v1.0.0-${{ env.individual_commit }} \
-            --set inbox.image.tag=v1.0.0-${{ env.inbox_commit }} \
-            --set e-sign-svc.image.tag=v1.0.0-${{ env.esign_svc_commit }} \
-            --set esign-interceptor.image.tag=v1.0.0-${{ env.esign_interceptor_commit }} \
-            --set application.image.tag=v1.0.0-${{ env.application_commit }} \
-            --set application.initContainers.dbMigration.image.tag=v1.0.0-${{ env.application_commit }} \
-            --set analytics.image.tag=v1.0.0-${{ env.analytics_commit }} \
-            --set epayments.image.tag=v1.0.0-${{ env.epayment_commit }} \
-            --set etreasury.image.tag=v1.0.0-${{ env.etreasury_commit }} \
-            --set etreasury.initContainers.dbMigration.image.tag=v1.0.0-${{ env.etreasury_commit }} \
-            --set sbi-webpage.image.tag=v1.0.0-${{ env.sbi_ui_commit }} \
-            --set sbi-svc.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
-            --set sbi-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
-            --set epost-tracker.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
-            --set epost-tracker.initContainers.dbMigration.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
-            --set summons-svc.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
-            --set summons-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
-            --set transformer.image.tag=v1.0.0-${{ env.transformer_commit }} \
-            --set icops-integration.image.tag=v1.0.0-${{ env.integration_commit }} \
-            --set icops-integration.initContainers.dbMigration.image.tag=v1.0.0-${{ env.integration_commit }}
+      # - name: digit deployment
+      #   run: |
+      #      helmfile -l deployment=pucar -f digit-helmfile.yaml apply --include-needs=true \
+      #       --set scheduler.image.tag=v1.0.0-${{ env.scheduler_commit }} \
+      #       --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${{ env.scheduler_commit }} \
+      #       --set payment-calculator.image.tag=v1.0.0-${{ env.payment_calculator_commit }} \
+      #       --set payment-calculator.initContainers.dbMigration.image.tag=v1.0.0-${{ env.payment_calculator_commit }} \
+      #       --set digit-ui.image.tag=v1.0.0-${{ env.digit_ui_commit }} \
+      #       --set dristi-case-pdf.image.tag=v1.0.0-${{ env.dristi_case_pdf_commit }} \
+      #       --set dristi-pdf.image.tag=v1.0.0-${{ env.dristi_pdf_commit }} \
+      #       --set advocate.image.tag=v1.0.0-${{ env.advocate_commit }} \
+      #       --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${{ env.advocate_commit }} \
+      #       --set case.image.tag=v1.0.0-${{ env.case_commit }} \
+      #       --set case.initContainers.dbMigration.image.tag=v1.0.0-${{ env.case_commit }} \
+      #       --set casemanagement.image.tag=v1.0.0-${{ env.casemanagement_commit }} \
+      #       --set casemanagement.initContainers.dbMigration.image.tag=v1.0.0-${{ env.casemanagement_commit }} \
+      #       --set evidence.image.tag=v1.0.0-${{ env.evidence_commit }} \
+      #       --set evidence.initContainers.dbMigration.image.tag=v1.0.0-${{ env.evidence_commit }} \
+      #       --set hearing.image.tag=v1.0.0-${{ env.hearing_commit }} \
+      #       --set hearing.initContainers.dbMigration.image.tag=v1.0.0-${{ env.hearing_commit }} \
+      #       --set order.image.tag=v1.0.0-${{ env.order_commit }} \
+      #       --set order.initContainers.dbMigration.image.tag=v1.0.0-${{ env.order_commit }} \
+      #       --set task.image.tag=v1.0.0-${{ env.task_commit }} \
+      #       --set task.initContainers.dbMigration.image.tag=v1.0.0-${{ env.task_commit }} \
+      #       --set billing-service.image.tag=v1.0.0-${{ env.billing_service_commit }} \
+      #       --set billing-service.initContainers.dbMigration.image.tag=v1.0.0-${{ env.billing_service_commit }} \
+      #       --set collection-services.image.tag=v1.0.0-${{ env.collection_service_commit }} \
+      #       --set collection-services.initContainers.dbMigration.image.tag=v1.0.0-${{ env.collection_service_commit }} \
+      #       --set individual.image.tag=v1.0.0-${{ env.individual_commit }} \
+      #       --set individual.initContainers.dbMigration.image.tag=v1.0.0-${{ env.individual_commit }} \
+      #       --set inbox.image.tag=v1.0.0-${{ env.inbox_commit }} \
+      #       --set e-sign-svc.image.tag=v1.0.0-${{ env.esign_svc_commit }} \
+      #       --set esign-interceptor.image.tag=v1.0.0-${{ env.esign_interceptor_commit }} \
+      #       --set application.image.tag=v1.0.0-${{ env.application_commit }} \
+      #       --set application.initContainers.dbMigration.image.tag=v1.0.0-${{ env.application_commit }} \
+      #       --set analytics.image.tag=v1.0.0-${{ env.analytics_commit }} \
+      #       --set epayments.image.tag=v1.0.0-${{ env.epayment_commit }} \
+      #       --set etreasury.image.tag=v1.0.0-${{ env.etreasury_commit }} \
+      #       --set etreasury.initContainers.dbMigration.image.tag=v1.0.0-${{ env.etreasury_commit }} \
+      #       --set sbi-webpage.image.tag=v1.0.0-${{ env.sbi_ui_commit }} \
+      #       --set sbi-svc.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
+      #       --set sbi-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
+      #       --set epost-tracker.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
+      #       --set epost-tracker.initContainers.dbMigration.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
+      #       --set summons-svc.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
+      #       --set summons-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
+      #       --set transformer.image.tag=v1.0.0-${{ env.transformer_commit }} \
+      #       --set icops-integration.image.tag=v1.0.0-${{ env.integration_commit }} \
+      #       --set icops-integration.initContainers.dbMigration.image.tag=v1.0.0-${{ env.integration_commit }}
             
-        working-directory: deploy-as-code
-        env:
-          HELMFILE_ENV: "solutions-uat"
+      #   working-directory: deploy-as-code
+      #   env:
+      #     HELMFILE_ENV: "solutions-uat"
       - name: Postgres Data Migration
         run: |
           POSTGRES_POD=postgresql-0
           kubectl exec -n backbone $POSTGRES_POD -- bash -c 'if [ -f /tmp/init-scripts/uat.sql ]; then rm /tmp/uat.sql; echo "File deleted"; else echo "File does not exist"; fi'
-          kubectl cp deploy-as-code/charts/backbone-services/postgresql/init-scripts/qa.sql backbone/$POSTGRES_POD:/tmp/uat.sql
+          kubectl cp deploy-as-code/charts/backbone-services/postgresql/init-scripts/uat.sql backbone/$POSTGRES_POD:/tmp/uat.sql
           kubectl exec -n backbone $POSTGRES_POD -- bash -c "PGPASSWORD=$PGPASSWORD psql -h pucar-uat-server.postgres.database.azure.com -U pucar_uat -d pucar-uat-db -f /tmp/uat.sql"
         env:
           PGPASSWORD: ${{ secrets.TF_VAR_DB_PASSWORD_SOLUTIONS_UAT }}
