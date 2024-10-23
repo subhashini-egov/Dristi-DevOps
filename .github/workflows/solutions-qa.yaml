@@ -108,7 +108,6 @@ jobs:
         run: |
           az aks get-credentials --resource-group "pucar-solutions-qa" --name "solutions-qa"
           cat ~/.kube/config > kubeconfig
-
       - name: Kubectl setup
         uses: azure/setup-kubectl@v3
         with:
@@ -217,8 +216,6 @@ jobs:
           echo "billing_service_commit=$billing_service_commit" >> $GITHUB_ENV
           dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
           echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
-
-
       - name: digit deployment
         run: |
           helmfile -l deployment=pucar -f digit-helmfile.yaml apply --include-needs=true \
@@ -282,4 +279,3 @@ jobs:
 #          kubectl exec -n default $POSTGRES_POD -- bash -c "PGPASSWORD=$PGPASSWORD psql -h pucar-solutions-qa-server.postgres.database.azure.com -U solutions_qa -d pucar-solutions-qa-db -f /tmp/qa.sql"
 #        env:
 #          PGPASSWORD: ${{ secrets.TF_VAR_DB_PASSWORD_SOLUTIONS_QA }}
-

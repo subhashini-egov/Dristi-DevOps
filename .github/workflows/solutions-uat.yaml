@@ -1,8 +1,8 @@
 name: Pucar-Install Workflow Solutins-UAT
 on:
-#  push:
-#    branches:
-#      - Solutions-Pipeline
+  #  push:
+  #    branches:
+  #      - Solutions-Pipeline
   workflow_dispatch:
   repository_dispatch:
 jobs:
@@ -21,10 +21,9 @@ jobs:
         with:
           files: |
             deploy-as-code/**
-
   DIGIT-deployment:
-#    if: ${{ github.event_name == 'push' }}
-#    needs: Terraform_Infra_Creation
+    #    if: ${{ github.event_name == 'push' }}
+    #    needs: Terraform_Infra_Creation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -39,7 +38,6 @@ jobs:
         run: |
           az aks get-credentials --resource-group "pucar-uat" --name "uat" --admin
           cat ~/.kube/config > kubeconfig
-
       - name: Kubectl setup
         uses: azure/setup-kubectl@v3
         with:
@@ -53,7 +51,6 @@ jobs:
       - name: Verify kubectl get nodes
         run: |
           kubectl get nodes
-
       - name: Install sops
         run: |
           sudo apt update
@@ -64,7 +61,6 @@ jobs:
           wget https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7.1.linux
           chmod +x sops-v3.7.1.linux
           sudo mv sops-v3.7.1.linux /usr/local/bin/sops
-
       - name: sops decryption
         run: |
           sudo sops --decrypt --age ${{ secrets.PUBLIC_AGE_KEY }} $HOME/work/pucar-DevOps/pucar-DevOps/deploy-as-code/charts/environments/solutions-uat-secrets.yaml > env-secrets1.yaml
@@ -82,12 +78,11 @@ jobs:
           helmfile-version: 'v0.150.0'
           helm-plugins: >
             https://github.com/databus23/helm-diff
-
       - name: Commit Id for Latest Deployment
         run: |
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
-          git checkout tags/v0.4.0-uat
+          git checkout tags/v0.4.1-uat
           payment_calculator_commit=$(git log -1 --pretty=format:%H -- backend/payment-calculator-svc)
           echo "payment_calculator_commit=$payment_calculator_commit" >> $GITHUB_ENV
           advocate_commit=$(git log -1 --pretty=format:%H -- backend/advocate)
@@ -146,66 +141,64 @@ jobs:
           echo "billing_service_commit=$billing_service_commit" >> $GITHUB_ENV
           dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
           echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
-
-
-      # - name: digit deployment
-      #   run: |
-      #      helmfile -l deployment=pucar -f digit-helmfile.yaml apply --include-needs=true \
-      #       --set scheduler.image.tag=v1.0.0-${{ env.scheduler_commit }} \
-      #       --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${{ env.scheduler_commit }} \
-      #       --set payment-calculator.image.tag=v1.0.0-${{ env.payment_calculator_commit }} \
-      #       --set payment-calculator.initContainers.dbMigration.image.tag=v1.0.0-${{ env.payment_calculator_commit }} \
-      #       --set digit-ui.image.tag=v1.0.0-${{ env.digit_ui_commit }} \
-      #       --set dristi-case-pdf.image.tag=v1.0.0-${{ env.dristi_case_pdf_commit }} \
-      #       --set dristi-pdf.image.tag=v1.0.0-${{ env.dristi_pdf_commit }} \
-      #       --set advocate.image.tag=v1.0.0-${{ env.advocate_commit }} \
-      #       --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${{ env.advocate_commit }} \
-      #       --set case.image.tag=v1.0.0-${{ env.case_commit }} \
-      #       --set case.initContainers.dbMigration.image.tag=v1.0.0-${{ env.case_commit }} \
-      #       --set casemanagement.image.tag=v1.0.0-${{ env.casemanagement_commit }} \
-      #       --set casemanagement.initContainers.dbMigration.image.tag=v1.0.0-${{ env.casemanagement_commit }} \
-      #       --set evidence.image.tag=v1.0.0-${{ env.evidence_commit }} \
-      #       --set evidence.initContainers.dbMigration.image.tag=v1.0.0-${{ env.evidence_commit }} \
-      #       --set hearing.image.tag=v1.0.0-${{ env.hearing_commit }} \
-      #       --set hearing.initContainers.dbMigration.image.tag=v1.0.0-${{ env.hearing_commit }} \
-      #       --set order.image.tag=v1.0.0-${{ env.order_commit }} \
-      #       --set order.initContainers.dbMigration.image.tag=v1.0.0-${{ env.order_commit }} \
-      #       --set task.image.tag=v1.0.0-${{ env.task_commit }} \
-      #       --set task.initContainers.dbMigration.image.tag=v1.0.0-${{ env.task_commit }} \
-      #       --set billing-service.image.tag=v1.0.0-${{ env.billing_service_commit }} \
-      #       --set billing-service.initContainers.dbMigration.image.tag=v1.0.0-${{ env.billing_service_commit }} \
-      #       --set collection-services.image.tag=v1.0.0-${{ env.collection_service_commit }} \
-      #       --set collection-services.initContainers.dbMigration.image.tag=v1.0.0-${{ env.collection_service_commit }} \
-      #       --set individual.image.tag=v1.0.0-${{ env.individual_commit }} \
-      #       --set individual.initContainers.dbMigration.image.tag=v1.0.0-${{ env.individual_commit }} \
-      #       --set inbox.image.tag=v1.0.0-${{ env.inbox_commit }} \
-      #       --set e-sign-svc.image.tag=v1.0.0-${{ env.esign_svc_commit }} \
-      #       --set esign-interceptor.image.tag=v1.0.0-${{ env.esign_interceptor_commit }} \
-      #       --set application.image.tag=v1.0.0-${{ env.application_commit }} \
-      #       --set application.initContainers.dbMigration.image.tag=v1.0.0-${{ env.application_commit }} \
-      #       --set analytics.image.tag=v1.0.0-${{ env.analytics_commit }} \
-      #       --set epayments.image.tag=v1.0.0-${{ env.epayment_commit }} \
-      #       --set etreasury.image.tag=v1.0.0-${{ env.etreasury_commit }} \
-      #       --set etreasury.initContainers.dbMigration.image.tag=v1.0.0-${{ env.etreasury_commit }} \
-      #       --set sbi-webpage.image.tag=v1.0.0-${{ env.sbi_ui_commit }} \
-      #       --set sbi-svc.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
-      #       --set sbi-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
-      #       --set epost-tracker.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
-      #       --set epost-tracker.initContainers.dbMigration.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
-      #       --set summons-svc.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
-      #       --set summons-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
-      #       --set transformer.image.tag=v1.0.0-${{ env.transformer_commit }} \
-      #       --set icops-integration.image.tag=v1.0.0-${{ env.integration_commit }} \
-      #       --set icops-integration.initContainers.dbMigration.image.tag=v1.0.0-${{ env.integration_commit }}
-            
-      #   working-directory: deploy-as-code
-      #   env:
-      #     HELMFILE_ENV: "solutions-uat"
-      - name: Postgres Data Migration
+      - name: digit deployment
         run: |
-          POSTGRES_POD=postgresql-0
-          kubectl exec -n backbone $POSTGRES_POD -- bash -c 'if [ -f /tmp/init-scripts/uat.sql ]; then rm /tmp/uat.sql; echo "File deleted"; else echo "File does not exist"; fi'
-          kubectl cp deploy-as-code/charts/backbone-services/postgresql/init-scripts/uat.sql backbone/$POSTGRES_POD:/tmp/uat.sql
-          kubectl exec -n backbone $POSTGRES_POD -- bash -c "PGPASSWORD=$PGPASSWORD psql -h pucar-uat-server.postgres.database.azure.com -U pucar_uat -d pucar-uat-db -f /tmp/uat.sql"
+          helmfile -l deployment=pucar -f digit-helmfile.yaml apply --include-needs=true \
+           --set scheduler.image.tag=v1.0.0-${{ env.scheduler_commit }} \
+           --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${{ env.scheduler_commit }} \
+           --set payment-calculator.image.tag=v1.0.0-${{ env.payment_calculator_commit }} \
+           --set payment-calculator.initContainers.dbMigration.image.tag=v1.0.0-${{ env.payment_calculator_commit }} \
+           --set digit-ui.image.tag=v1.0.0-${{ env.digit_ui_commit }} \
+           --set dristi-case-pdf.image.tag=v1.0.0-${{ env.dristi_case_pdf_commit }} \
+           --set dristi-pdf.image.tag=v1.0.0-${{ env.dristi_pdf_commit }} \
+           --set advocate.image.tag=v1.0.0-${{ env.advocate_commit }} \
+           --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${{ env.advocate_commit }} \
+           --set case.image.tag=v1.0.0-${{ env.case_commit }} \
+           --set case.initContainers.dbMigration.image.tag=v1.0.0-${{ env.case_commit }} \
+           --set casemanagement.image.tag=v1.0.0-${{ env.casemanagement_commit }} \
+           --set casemanagement.initContainers.dbMigration.image.tag=v1.0.0-${{ env.casemanagement_commit }} \
+           --set evidence.image.tag=v1.0.0-${{ env.evidence_commit }} \
+           --set evidence.initContainers.dbMigration.image.tag=v1.0.0-${{ env.evidence_commit }} \
+           --set hearing.image.tag=v1.0.0-${{ env.hearing_commit }} \
+           --set hearing.initContainers.dbMigration.image.tag=v1.0.0-${{ env.hearing_commit }} \
+           --set order.image.tag=v1.0.0-${{ env.order_commit }} \
+           --set order.initContainers.dbMigration.image.tag=v1.0.0-${{ env.order_commit }} \
+           --set task.image.tag=v1.0.0-${{ env.task_commit }} \
+           --set task.initContainers.dbMigration.image.tag=v1.0.0-${{ env.task_commit }} \
+           --set billing-service.image.tag=v1.0.0-${{ env.billing_service_commit }} \
+           --set billing-service.initContainers.dbMigration.image.tag=v1.0.0-${{ env.billing_service_commit }} \
+           --set collection-services.image.tag=v1.0.0-${{ env.collection_service_commit }} \
+           --set collection-services.initContainers.dbMigration.image.tag=v1.0.0-${{ env.collection_service_commit }} \
+           --set individual.image.tag=v1.0.0-${{ env.individual_commit }} \
+           --set individual.initContainers.dbMigration.image.tag=v1.0.0-${{ env.individual_commit }} \
+           --set inbox.image.tag=v1.0.0-${{ env.inbox_commit }} \
+           --set e-sign-svc.image.tag=v1.0.0-${{ env.esign_svc_commit }} \
+           --set esign-interceptor.image.tag=v1.0.0-${{ env.esign_interceptor_commit }} \
+           --set application.image.tag=v1.0.0-${{ env.application_commit }} \
+           --set application.initContainers.dbMigration.image.tag=v1.0.0-${{ env.application_commit }} \
+           --set analytics.image.tag=v1.0.0-${{ env.analytics_commit }} \
+           --set epayments.image.tag=v1.0.0-${{ env.epayment_commit }} \
+           --set etreasury.image.tag=v1.0.0-${{ env.etreasury_commit }} \
+           --set etreasury.initContainers.dbMigration.image.tag=v1.0.0-${{ env.etreasury_commit }} \
+           --set sbi-webpage.image.tag=v1.0.0-${{ env.sbi_ui_commit }} \
+           --set sbi-svc.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
+           --set sbi-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
+           --set epost-tracker.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
+           --set epost-tracker.initContainers.dbMigration.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
+           --set summons-svc.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
+           --set summons-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
+           --set transformer.image.tag=v1.0.0-${{ env.transformer_commit }} \
+           --set icops-integration.image.tag=v1.0.0-${{ env.integration_commit }} \
+           --set icops-integration.initContainers.dbMigration.image.tag=v1.0.0-${{ env.integration_commit }}
+
+        working-directory: deploy-as-code
         env:
-          PGPASSWORD: ${{ secrets.TF_VAR_DB_PASSWORD_SOLUTIONS_UAT }}
+          HELMFILE_ENV: "solutions-uat"
+#      - name: Postgres Data Migration
+#        run: |
+#          POSTGRES_POD=postgresql-0
+#          kubectl exec -n backbone $POSTGRES_POD -- bash -c 'if [ -f /tmp/init-scripts/uat.sql ]; then rm /tmp/uat.sql; echo "File deleted"; else echo "File does not exist"; fi'
+#          kubectl cp deploy-as-code/charts/backbone-services/postgresql/init-scripts/uat.sql backbone/$POSTGRES_POD:/tmp/uat.sql
+#          kubectl exec -n backbone $POSTGRES_POD -- bash -c "PGPASSWORD=$PGPASSWORD psql -h pucar-uat-server.postgres.database.azure.com -U pucar_uat -d pucar-uat-db -f /tmp/uat.sql"
+#        env:
+#          PGPASSWORD: ${{ secrets.TF_VAR_DB_PASSWORD_SOLUTIONS_UAT }}
