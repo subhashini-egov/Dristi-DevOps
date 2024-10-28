@@ -29,7 +29,7 @@ releases:
 #    - name: egov-filestore # Replace with your desired namespace
 #      installed: true
 #      <<: *default
-#
+##
 #    - name: egov-idgen # Replace with your desired namespace
 #      installed: true
 #      <<: *default
@@ -114,7 +114,7 @@ releases:
 #    - name: gateway # Replace with your desired namespace
 #      installed: true
 #      <<: *default
-#
+##
 #    - name: egov-pg-service # Replace with your desired namespace
 #      installed: true
 #      <<: *default
