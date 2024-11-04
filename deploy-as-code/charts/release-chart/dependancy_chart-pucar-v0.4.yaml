@@ -19,8 +19,8 @@ modules:
       advocate: v1.0.0-1177308d03a051f6776b811263e1913de278ef12
       case: v1.0.0-713a7b9848eaffa417160d38151c0efa51ce314b
       casemanagement: v1.0.0-80698b6dc6b2133e5edf1765bb1bcfb141db3fa7
-      hearing: v1.0.0-083a7ff4c21b899485872911680debb4bd220eef
-      dristi-case-pdf: v1.0.0-8a9d6df743aa8543bce4fb9d2ae9ead92ce6f1e3
+      hearing: v1.0.0-22f6061cbf96d2f4218771ccb5883ab62ccc85ac
+      dristi-case-pdf: v1.0.0-083a7ff4c21b899485872911680debb4bd220eef
       esign-interceptor: v1.0.0-20c8a5d5644f65554ecf75fbf46fafe4320593ec
       e-sign-svc: v1.0.0-39921796002e85167f03cf2c128c8e17bdc82916
       epost-tracker: v1.0.0-1177308d03a051f6776b811263e1913de278ef12
