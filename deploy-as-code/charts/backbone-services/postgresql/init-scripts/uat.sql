@@ -1786,6 +1786,9 @@ ffb1322a-605b-4c55-b02c-81adffc19165	kl	2691	ACCESSCONTROL-ACTIONS-TEST.actions-
 e8f9eccb-fbc7-43c6-9c55-654122f2d697	kl	386	ACCESSCONTROL-ROLEACTIONS.roleactions	{"id": 386, "actionid": 2691, "rolecode": "CITIZEN", "tenantid": "kl", "actioncode": "2691"}	t	58f7c717-9e8e-4c35-8866-e0fe29350b66	58f7c717-9e8e-4c35-8866-e0fe29350b66	1730462414700	1730462414700
 0cca43ae-1df8-437e-b07c-f9e67e16e1df	kl	387	ACCESSCONTROL-ROLEACTIONS.roleactions	{"id": 387, "actionid": 2691, "rolecode": "EMPLOYEE", "tenantid": "kl", "actioncode": "2691"}	t	58f7c717-9e8e-4c35-8866-e0fe29350b66	58f7c717-9e8e-4c35-8866-e0fe29350b66	1730462483239	1730462483239
 a6dca46a-cfa1-4c2a-8bc4-a9f566b674f6	kl	388	ACCESSCONTROL-ROLEACTIONS.roleactions	{"id": 388, "actionid": 2691, "rolecode": "SUPERUSER", "tenantid": "kl", "actioncode": "2691"}	t	58f7c717-9e8e-4c35-8866-e0fe29350b66	58f7c717-9e8e-4c35-8866-e0fe29350b66	1730462510759	1730462510759
+4a1e2c53-6eb3-4e3f-8447-0c42ccff2f71    kl  2692    ACCESSCONTROL-ACTIONS-TEST.actions-test {"id": 2692, "url": "/filestore/v1/files/id", "code": "2692", "name": "File store get api", "path": "Filestore get api", "displayName": "Filestore get api", "orderNumber": 1, "serviceCode": "filestore-service"}  t   58f7c717-9e8e-4c35-8866-e0fe29350b66    58f7c717-9e8e-4c35-8866-e0fe29350b66    1730726188158    1730726188158
+f25eac98-accd-42f3-8773-63289cdbb488    kl  390 ACCESSCONTROL-ROLEACTIONS.roleactions   {"id": 390, "actionid": 2692, "rolecode": "EMPLOYEE", "tenantid": "kl", "actioncode": "2692"}  t   58f7c717-9e8e-4c35-8866-e0fe29350b66    58f7c717-9e8e-4c35-8866-e0fe29350b66    1730726331265    1730726331265
+e8def89c-1212-475a-a8f4-218e669b37a8    kl  389 ACCESSCONTROL-ROLEACTIONS.roleactions   {"id": 389, "actionid": 2692, "rolecode": "CITIZEN", "tenantid": "kl", "actioncode": "2692"}  t   58f7c717-9e8e-4c35-8866-e0fe29350b66    58f7c717-9e8e-4c35-8866-e0fe29350b66    1730726303586    1730726303586
 \.
 
 
