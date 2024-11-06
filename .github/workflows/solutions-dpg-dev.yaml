@@ -269,11 +269,11 @@ jobs:
         env:
           HELMFILE_ENV: "solutions-dev-to-dev"
 
-      - name: Postgres Data Migration
-        run: |
-          POSTGRES_POD=postgresql-0
-          kubectl exec -n backbone $POSTGRES_POD -- bash -c 'if [ -f /tmp/init-scripts/dpg-dev.sql ]; then rm /tmp/dpg-dev.sql; echo "File deleted"; else echo "File does not exist"; fi'
-          kubectl cp deploy-as-code/charts/backbone-services/postgresql/init-scripts/dpg-dev.sql backbone/$POSTGRES_POD:/tmp/dpg-dev.sql
-          kubectl exec -n backbone $POSTGRES_POD -- bash -c "PGPASSWORD=$PGPASSWORD psql -h pucar-dev-server.postgres.database.azure.com -U pucar_dev -d pucar-dev-db -f /tmp/dpg-dev.sql"
-        env:
-          PGPASSWORD: ${{ secrets.TF_VAR_DB_PASSWORD }}
+#      - name: Postgres Data Migration
+#        run: |
+#          POSTGRES_POD=postgresql-0
+#          kubectl exec -n backbone $POSTGRES_POD -- bash -c 'if [ -f /tmp/init-scripts/dpg-dev.sql ]; then rm /tmp/dpg-dev.sql; echo "File deleted"; else echo "File does not exist"; fi'
+#          kubectl cp deploy-as-code/charts/backbone-services/postgresql/init-scripts/dpg-dev.sql backbone/$POSTGRES_POD:/tmp/dpg-dev.sql
+#          kubectl exec -n backbone $POSTGRES_POD -- bash -c "PGPASSWORD=$PGPASSWORD psql -h pucar-dev-server.postgres.database.azure.com -U pucar_dev -d pucar-dev-db -f /tmp/dpg-dev.sql"
+#        env:
+#          PGPASSWORD: ${{ secrets.TF_VAR_DB_PASSWORD }}
