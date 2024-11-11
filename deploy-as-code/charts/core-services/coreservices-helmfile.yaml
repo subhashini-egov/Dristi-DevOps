@@ -326,11 +326,11 @@ releases:
 #      labels:
 #        deployment: "kenlm"
 #      <<: *default
-#    - name: ocr-svc # Replace with your desired namespace
-#      installed: true
-#      labels:
-#        deployment: "ocr-svc"
-#      <<: *default
+    - name: ocr-svc # Replace with your desired namespace
+      installed: true
+      labels:
+        deployment: "ocr-svc"
+      <<: *default
     - name: sunbirdrc-credential-service # Replace with your desired namespace
       installed: true
       labels:
