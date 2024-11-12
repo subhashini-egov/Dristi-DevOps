@@ -56,6 +56,7 @@ configmaps:
       data-sync-employee: http://data-sync-employee:8080/
       demand-services: http://demand-services:8080/
       dristi-case-pdf: http://dristi-case-pdf.egov:8080/
+      dristi-pdf: http://dristi-pdf.egov:8080/
       e-sign-svc: http://e-sign-svc.egov:8080/
       echallan-calculator: http://echallan-calculator.egov:8080/
       echallan-services: http://echallan-services.egov:8080/
@@ -143,7 +144,7 @@ configmaps:
       pt-workflow: http://pt-workflow:8080/
       rainmaker-pgr: http://rainmaker-pgr:8080/
       report: http://report.egov:8080/
-      summons: http://summons.egov:8080/
+      summons: http://summons-svc.egov:8080/
       sunbird-credential-schema: http://sunbird-rc-credential-schema-service.egov:3333/
       sunbird-credential-service: http://sunbird-rc-credentials-service.egov:3000/
       sunbirdrc-credential-service: http://sunbirdrc-credential-service.egov:8080/
