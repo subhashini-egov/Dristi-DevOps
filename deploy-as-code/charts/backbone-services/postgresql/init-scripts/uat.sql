@@ -2379,7 +2379,23 @@ ALTER TABLE ONLY public.eg_wf_action_v2
 ALTER TABLE ONLY public.eg_wf_state_v2
     ADD CONSTRAINT fk_eg_wf_state FOREIGN KEY (businessserviceid) REFERENCES public.eg_wf_businessservice_v2(uuid) ON UPDATE CASCADE ON DELETE CASCADE;
 
+INSERT INTO eg_user ( username, password, pwdexpirydate, mobilenumber, createddate, lastmodifieddate,  active, name, gender, type, version, accountlocked,  tenantid, id)
+VALUES ( 'WBUser', '$2a$10$XQ3d/uRRhj4rMyDIfdhzH.de/.PcJVHNT18pwF2TCmBNewO.LUPk2', '2025-02-10 18:04:32.951', '1002335566', '2024-11-12 18:04:32.971', '2024-11-12 18:04:32.971', 't', 'workbench', '2', 'EMPLOYEE', '0', 'f', 'kl', '975');
+INSERT INTO eg_user ( username, password, pwdexpirydate, mobilenumber, createddate, lastmodifieddate,  active, name, gender, type, version, accountlocked,  tenantid, id)
+VALUES ( 'WFUser', '$2a$10$XQ3d/uRRhj4rMyDIfdhzH.de/.PcJVHNT18pwF2TCmBNewO.LUPk2', '2025-02-10 18:04:32.951', '1002335566', '2024-11-12 18:04:32.971', '2024-11-12 18:04:32.971', 't', 'workbench', '2', 'EMPLOYEE', '0', 'f', 'kl', '976');
+INSERT INTO eg_user ( username, password, pwdexpirydate, mobilenumber, createddate, lastmodifieddate,  active, name, gender, type, version, accountlocked,  tenantid, id)
+VALUES ( 'LOCUser', '$2a$10$XQ3d/uRRhj4rMyDIfdhzH.de/.PcJVHNT18pwF2TCmBNewO.LUPk2', '2025-02-10 18:04:32.951', '1002335566', '2024-11-12 18:04:32.971', '2024-11-12 18:04:32.971', 't', 'workbench', '2', 'EMPLOYEE', '0', 'f', 'kl', '977');
+INSERT INTO eg_user ( username, password, pwdexpirydate, mobilenumber, createddate, lastmodifieddate,  active, name, gender, type, version, accountlocked,  tenantid, id)
+VALUES ( 'HRMSUSER', '$2a$10$XQ3d/uRRhj4rMyDIfdhzH.de/.PcJVHNT18pwF2TCmBNewO.LUPk2', '2025-02-10 18:04:32.951', '1002335566', '2024-11-12 18:04:32.971', '2024-11-12 18:04:32.971', 't', 'workbench', '2', 'EMPLOYEE', '0', 'f', 'kl', '978');
 
+INSERT INTO eg_userrole_v1 (role_code, role_tenantid, user_id, user_tenantid, lastmodifieddate)
+VALUES ('EMPLOYEE', 'kl', 975, 'kl', '2024-11-12 18:04:33.025'),('WORKBENCH_ADMIN', 'kl', 975, 'kl', '2024-11-12 18:04:33.025');
+INSERT INTO eg_userrole_v1 (role_code, role_tenantid, user_id, user_tenantid, lastmodifieddate)
+VALUES ('EMPLOYEE', 'kl', 976, 'kl', '2024-11-12 18:04:33.025'),('WORKFLOW_ADMIN', 'kl', 976, 'kl', '2024-11-12 18:04:33.025');
+INSERT INTO eg_userrole_v1 (role_code, role_tenantid, user_id, user_tenantid, lastmodifieddate)
+VALUES ('EMPLOYEE', 'kl', 977, 'kl', '2024-11-12 18:04:33.025'),('LOC_ADMIN', 'kl', 977, 'kl', '2024-11-12 18:04:33.025');
+INSERT INTO eg_userrole_v1 (role_code, role_tenantid, user_id, user_tenantid, lastmodifieddate)
+VALUES ('EMPLOYEE', 'kl', 978, 'kl', '2024-11-12 18:04:33.025'),('HRMS_ADMIN', 'kl', 978, 'kl', '2024-11-12 18:04:33.025');
 -- Completed on 2024-10-14 11:48:00 UTC
 
 --
