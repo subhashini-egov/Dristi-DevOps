@@ -18,9 +18,9 @@ releases:
 #      installed: true # Replace with the version of your chart, if needed
 #      <<: *default
 #
-#    - name: audit-service # Replace with your desired namespace
-#      installed: true # Replace with the version of your chart, if needed
-#      <<: *default
+    - name: audit-service # Replace with your desired namespace
+      installed: true # Replace with the version of your chart, if needed
+      <<: *default
 #
 #    - name: egov-enc-service # Replace with your desired namespace
 #      installed: true
@@ -129,12 +129,12 @@ releases:
 #         deployment: "workbench-ui"
 #      <<: *default
 #
-    - name: mdms-v2
-      installed: true
-      labels:
-       deployment: "mdms-v2"
-      <<: *default
-#
+#    - name: mdms-v2
+#      installed: true
+#      labels:
+#       deployment: "mdms-v2"
+#      <<: *default
+##
 #    - name: individual  # Replace with your desired namespace
 #      installed: true
 #      labels:
@@ -331,14 +331,14 @@ releases:
 #      labels:
 #        deployment: "ocr-svc"
 #      <<: *default
-    - name: sunbirdrc-credential-service # Replace with your desired namespace
-      installed: true
-      labels:
-        deployment: "sunbirdrc-credential-service"
-      <<: *default
+#    - name: sunbirdrc-credential-service # Replace with your desired namespace
+#      installed: true
+#      labels:
+#        deployment: "sunbirdrc-credential-service"
+#      <<: *default
 
-    - name: verifyapp  # Replace with your desired namespace
-      installed: true
-      labels:
-        deployment: "verifyapp"
-      <<: *default
+#    - name: verifyapp  # Replace with your desired namespace
+#      installed: true
+#      labels:
+#        deployment: "verifyapp"
+#      <<: *default

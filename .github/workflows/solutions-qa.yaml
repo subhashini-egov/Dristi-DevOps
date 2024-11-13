@@ -155,7 +155,7 @@ jobs:
         run: |
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
-          git checkout release/0.4
+          git checkout release/0.5
           payment_calculator_commit=$(git log -1 --pretty=format:%H -- backend/payment-calculator-svc)
           echo "payment_calculator_commit=$payment_calculator_commit" >> $GITHUB_ENV
           advocate_commit=$(git log -1 --pretty=format:%H -- backend/advocate)
