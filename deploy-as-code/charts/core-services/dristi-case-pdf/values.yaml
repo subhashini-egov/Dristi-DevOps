@@ -6,6 +6,7 @@ labels:
 # Ingress Configs
 ingress:
   enabled: true
+  zuul: true
   context: "dristi-case-pdf"
 
 
