@@ -29,16 +29,16 @@ modules:
       evidence: v1.0.0-22f6061cbf96d2f4218771ccb5883ab62ccc85ac
       application: v1.0.0-22f6061cbf96d2f4218771ccb5883ab62ccc85ac
       scheduler: v1.0.0-2eebe5d03099e23ab445977934f45966af7b74fd
-      summons-svc: v1.0.0-508b2da5557d022155b29cbca5921535881e3bf1
+      summons-svc: v1.0.0-28a55da4b4e772dfc085892b2723377009069f8d
       collection-services: v1.0.0-b0b9b07cf25e25a23afd106b071b0d4d083385dc
       task: v1.0.0-b0b9b07cf25e25a23afd106b071b0d4d083385dc
-      digit-ui: v1.0.0-713a7b9848eaffa417160d38151c0efa51ce314b
+      digit-ui: v1.0.0-5b6d096ba215c6a1b4741a97e10c9bea0b0e659b
       analytics: v1.0.0-350e0bde8c9d9f578e00745c985c4a165d66ce84
       individual: v1.0.0-e3608db23921e83d2f58cb5e9463944d22c24190
       inbox: v1.0.0-d31bfc0d253ea5056c319cd71cecaef125bc3aea
       etreasury: v1.0.0-b0b9b07cf25e25a23afd106b071b0d4d083385dc
       epayments: v1.0.0-23238249b60cc7de16e37e08faff8ca7f397f74b
-      sbi-svc: v1.0.0-f8fbd6ffae87ea524fc54de95eb7769bbab05f10
+      sbi-svc: v1.0.0-305d855b51265d8c4df6a31b72d67fa4ab228c44
       sbi-webpage: v1.0.0-dd6d7922e48d4346e57f0f75e74e113949a6a5e5
       icops-integration: v1.0.0-63cef164b3b72de31602e77e98998e2f36aeca75
       kerala-sms: v1.0.0-06a6d016599b5a9169b773330a88760819984459
