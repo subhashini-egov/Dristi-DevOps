@@ -31,4 +31,9 @@ env: |
     value: "http://pdf-service:8080"
   - name: FILE_STORE_HOST 
     value: "http://egov-filestore:8080"
+  - name: DRISTI_CASE_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: case
+        name: egov-service-host
 
