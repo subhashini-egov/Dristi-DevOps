@@ -253,11 +253,11 @@ releases:
       labels:
         deployment: "summons-svc"
       <<: *default
-#    - name: e-sign  # Replace with your desired namespace
-#      installed: true
-#      labels:
-#        deployment: "e-sign"
-#      <<: *default
+    - name: e-sign  # Replace with your desired namespace
+      installed: true
+      labels:
+        deployment: "e-sign"
+      <<: *default
 #     - name: qr-code-service # Replace with your desired namespace
 #       installed: true
 #       labels:
