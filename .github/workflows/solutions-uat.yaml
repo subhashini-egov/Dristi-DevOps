@@ -82,9 +82,9 @@ jobs:
         run: |
           git clone https://github.com/pucardotorg/dristi-solutions.git
           cd dristi-solutions
-          git checkout tags/v0.5.1-uat
-          commitID=$(git rev-list -n 1 v0.5.1-uat)
-          Image_tag=v0.5.1-uat-$commitID
+          git checkout tags/v0.6.0-uat
+          commitID=$(git rev-list -n 1 v0.6.0-uat)
+          Image_tag=v0.6.0-uat-$commitID
           echo "Image_tag=$Image_tag" >> $GITHUB_ENV
       - name: digit deployment
         run: |
