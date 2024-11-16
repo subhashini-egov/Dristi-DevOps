@@ -16,7 +16,7 @@ ingress:
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/pucar_e-sign-svc"
-  tag: v1.0.0-b5c52aefbf9b7ccf296854f1b0393a598b757e78
+  tag: v1.0.0-39921796002e85167f03cf2c128c8e17bdc82916
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
