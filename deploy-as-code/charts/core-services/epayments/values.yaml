@@ -32,9 +32,3 @@ env: |
       configMapKeyRef:
         key: dristi-url
         name: egov-config
-  
-  egov-services
-
-
-
-
