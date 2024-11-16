@@ -20,7 +20,7 @@ env: |
   - name: EXTERNAL_HOST
     valueFrom:
       configMapKeyRef:
-        key: egov-services-fqdn-name
+        key: egov-services
         name: egov-config
   - name: SERVER_URL
     valueFrom:
@@ -32,6 +32,8 @@ env: |
       configMapKeyRef:
         key: dristi-url
         name: egov-config
+  
+  egov-services
 
 
 

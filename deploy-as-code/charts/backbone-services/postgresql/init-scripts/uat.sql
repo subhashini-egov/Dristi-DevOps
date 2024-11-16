@@ -2408,23 +2408,91 @@ ALTER TABLE ONLY public.eg_wf_action_v2
 ALTER TABLE ONLY public.eg_wf_state_v2
     ADD CONSTRAINT fk_eg_wf_state FOREIGN KEY (businessserviceid) REFERENCES public.eg_wf_businessservice_v2(uuid) ON UPDATE CASCADE ON DELETE CASCADE;
 
---INSERT INTO eg_user ( username, password, pwdexpirydate, mobilenumber, createddate, lastmodifieddate,  active, name, gender, type, version, accountlocked,  tenantid, id)
---VALUES ( 'WBUser', '$2a$10$XQ3d/uRRhj4rMyDIfdhzH.de/.PcJVHNT18pwF2TCmBNewO.LUPk2', '2025-02-10 18:04:32.951', '1002335566', '2024-11-12 18:04:32.971', '2024-11-12 18:04:32.971', 't', 'workbench', '2', 'EMPLOYEE', '0', 'f', 'kl', '975');
---INSERT INTO eg_user ( username, password, pwdexpirydate, mobilenumber, createddate, lastmodifieddate,  active, name, gender, type, version, accountlocked,  tenantid, id)
---VALUES ( 'WFUser', '$2a$10$XQ3d/uRRhj4rMyDIfdhzH.de/.PcJVHNT18pwF2TCmBNewO.LUPk2', '2025-02-10 18:04:32.951', '1002335566', '2024-11-12 18:04:32.971', '2024-11-12 18:04:32.971', 't', 'workbench', '2', 'EMPLOYEE', '0', 'f', 'kl', '976');
---INSERT INTO eg_user ( username, password, pwdexpirydate, mobilenumber, createddate, lastmodifieddate,  active, name, gender, type, version, accountlocked,  tenantid, id)
---VALUES ( 'LOCUser', '$2a$10$XQ3d/uRRhj4rMyDIfdhzH.de/.PcJVHNT18pwF2TCmBNewO.LUPk2', '2025-02-10 18:04:32.951', '1002335566', '2024-11-12 18:04:32.971', '2024-11-12 18:04:32.971', 't', 'workbench', '2', 'EMPLOYEE', '0', 'f', 'kl', '977');
---INSERT INTO eg_user ( username, password, pwdexpirydate, mobilenumber, createddate, lastmodifieddate,  active, name, gender, type, version, accountlocked,  tenantid, id)
---VALUES ( 'HRMSUSER', '$2a$10$XQ3d/uRRhj4rMyDIfdhzH.de/.PcJVHNT18pwF2TCmBNewO.LUPk2', '2025-02-10 18:04:32.951', '1002335566', '2024-11-12 18:04:32.971', '2024-11-12 18:04:32.971', 't', 'workbench', '2', 'EMPLOYEE', '0', 'f', 'kl', '978');
+--INSERT INTO eg_enc_symmetric_keys(id, key_id, secret_key, initial_vector, active, tenant_id) values (12, 432673, 'kiaunOScPPFkGLjMjonsN+lnnn1Qwog88t7qOMgj3DYTkY/6fRw6Y8vRzutfLGYkE1BRowJKC2bQWAu6', 'vwqbhPnVccl7a9btzbv+POMDZ4aZOGsSbTzj8hMua9M=', 't', 'kl');
+--INSERT INTO eg_user (
+--    username, password, pwdexpirydate, mobilenumber, createddate, lastmodifieddate,
+--    active, name, gender, type, version, accountlocked, tenantid, uuid,id
+--) VALUES (
+--    '432673|Mcz12M8B/4UCIxImoRXkQ1n61vXMh+lSoz0I6Xf4hek=',
+--    '$2a$10$eGhxomRX0k4nSDsjtuBMUOPlVEpDudMvwUpGjqUUPzs/W.3VPzNF2',
+--    '2025-02-13 20:34:47.919',
+--    '432673|bJOmi5BbsNFAfKBpsMXslSqD9z/0pBNK9sU=',
+--    '2024-11-15 20:34:47.925',
+--    '2024-11-15 20:34:47.925',
+--    't',
+--    '432673|Mcz12M8B/4UCIxIm/XX2YXm0FLltUouREz804w==',
+--    2,
+--    'EMPLOYEE',
+--    0,
+--    'f',
+--    'kl',
+--    '1a4248eb-9437-4162-b396-04c216a15b85',
+--    1073
+--);
 --
---INSERT INTO eg_userrole_v1 (role_code, role_tenantid, user_id, user_tenantid, lastmodifieddate)
---VALUES ('EMPLOYEE', 'kl', 975, 'kl', '2024-11-12 18:04:33.025'),('WORKBENCH_ADMIN', 'kl', 975, 'kl', '2024-11-12 18:04:33.025');
---INSERT INTO eg_userrole_v1 (role_code, role_tenantid, user_id, user_tenantid, lastmodifieddate)
---VALUES ('EMPLOYEE', 'kl', 976, 'kl', '2024-11-12 18:04:33.025'),('WORKFLOW_ADMIN', 'kl', 976, 'kl', '2024-11-12 18:04:33.025');
---INSERT INTO eg_userrole_v1 (role_code, role_tenantid, user_id, user_tenantid, lastmodifieddate)
---VALUES ('EMPLOYEE', 'kl', 977, 'kl', '2024-11-12 18:04:33.025'),('LOC_ADMIN', 'kl', 977, 'kl', '2024-11-12 18:04:33.025');
---INSERT INTO eg_userrole_v1 (role_code, role_tenantid, user_id, user_tenantid, lastmodifieddate)
---VALUES ('EMPLOYEE', 'kl', 978, 'kl', '2024-11-12 18:04:33.025'),('HRMS_ADMIN', 'kl', 978, 'kl', '2024-11-12 18:04:33.025');
+--INSERT INTO eg_user (
+--    username, password, pwdexpirydate, mobilenumber, createddate, lastmodifieddate,
+--    active, name, gender, type, version, accountlocked, tenantid, uuid,id
+--) VALUES (
+--    '432673|NdH7yvYb4JbgBUyOviJNTzkWRs8mx5hh',
+--    '$2a$10$SMLz9lkCZ9OUq1O4XQH1IOKTSdFrSRCSULO/UQbD94xsAMFqm/OhC',
+--    '2025-02-13 20:35:24.391',
+--    '432673|bJOmi5BbsNFAfKBpsMXslSqD9z/0pBNK9sU=',
+--    '2024-11-15 20:35:24.399',
+--    '2024-11-15 20:35:24.399',
+--    't',
+--    '432673|NdH7ylesLDBhCHLqbQIagBDYfSU=',
+--    2,
+--    'EMPLOYEE',
+--    0,
+--    'f',
+--    'kl',
+--    '45de79f1-cee8-401f-b89c-cb5cb011dc7b',
+--    1074
+--);
+--
+--INSERT INTO eg_user (
+--    username, password, pwdexpirydate, mobilenumber, createddate, lastmodifieddate,
+--    active, name, gender, type, version, accountlocked, tenantid, uuid,id
+--) VALUES (
+--    '432673|Kszk0sEN64ceHw4thnvWbVKbMOJbsLlPrY/y6TA=',
+--    '$2a$10$mKUepH1iYXHc12I9sEyUOuzrqy49UshEyEhu1/6qiqJ99S2aaz/hi',
+--    '2025-02-13 20:36:33.242',
+--    '432673|bJOmi5BbsNFAfKBpsMXslSqD9z/0pBNK9sU=',
+--    '2024-11-15 20:36:33.25',
+--    '2024-11-15 20:36:33.25',
+--    't',
+--    '432673|Kszk0sEN64ceVpG6jHd4iOk8zF8pxVjIhA==',
+--    2,
+--    'EMPLOYEE',
+--    0,
+--    'f',
+--    'kl',
+--    '84f10d9c-7383-4316-9072-fd4fa0ef07af',
+--    1075
+--);
+--
+--INSERT INTO eg_user (
+--    username, password, pwdexpirydate, mobilenumber, createddate, lastmodifieddate,
+--    active, name, gender, type, version, accountlocked, tenantid, uuid,id
+--) VALUES (
+--    '432673|Kszk0sUE6pMjORg6mKlA4A6Z9ECVCfm1u/NZ3g==',
+--    '$2a$10$g0RxGZQcMn4QfBijXCKfKuNd9hVhu4cKwKY.ApRP9R7/T4fX5vUb.',
+--    '2025-02-13 20:37:00.325',
+--    '432673|bJOmi5BbsNFAfKBpsMXslSqD9z/0pBNK9sU=',
+--    '2024-11-15 20:37:00.333',
+--    '2024-11-15 20:37:00.333',
+--    't',
+--    '432673|Kszk0sUE6pOMJm/172zDWU2K9Qlc40Rk',
+--    2,
+--    'EMPLOYEE',
+--    0,
+--    'f',
+--    'kl',
+--    'fd1a3158-1eb0-4965-9299-28b8a7b46c9d',
+--    1076
+--);
+
 -- Completed on 2024-10-14 11:48:00 UTC
 
 --
