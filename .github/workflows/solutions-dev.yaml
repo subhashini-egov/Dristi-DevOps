@@ -248,6 +248,7 @@ jobs:
             --set individual.initContainers.dbMigration.image.tag=v1.0.0-${{ env.individual_commit }} \
             --set inbox.image.tag=v1.0.0-${{ env.inbox_commit }} \
             --set e-sign-svc.image.tag=v1.0.0-${{ env.esign_svc_commit }} \
+            --set e-sign-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.esign_svc_commit }} \
             --set esign-interceptor.image.tag=v1.0.0-${{ env.esign_interceptor_commit }} \
             --set application.image.tag=v1.0.0-${{ env.application_commit }} \
             --set application.initContainers.dbMigration.image.tag=v1.0.0-${{ env.application_commit }} \
