@@ -216,6 +216,9 @@ jobs:
           echo "billing_service_commit=$billing_service_commit" >> $GITHUB_ENV
           dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
           echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
+          pdf_service=$(git log -1 --pretty=format:%H -- common/pdf-service)
+          echo "pdf_service=$pdf_service" >> $GITHUB_ENV
+
       - name: digit deployment
         run: |
           helmfile -l deployment=pucar -f digit-helmfile.yaml apply --include-needs=true \
@@ -257,6 +260,8 @@ jobs:
            --set epayments.image.tag=v1.0.0-${{ env.epayment_commit }} \
            --set etreasury.image.tag=v1.0.0-${{ env.etreasury_commit }} \
            --set etreasury.initContainers.dbMigration.image.tag=v1.0.0-${{ env.etreasury_commit }} \
+           --set pdf-service.image.tag=v1.0.0-${{ env.pdf_service }} \
+           --set pdf-service.initContainers.dbMigration.image.tag=v1.0.0-${{ env.pdf_service }} \
            --set sbi-webpage.image.tag=v1.0.0-${{ env.sbi_ui_commit }} \
            --set sbi-svc.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
            --set sbi-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \

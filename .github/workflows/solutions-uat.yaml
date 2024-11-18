@@ -102,6 +102,8 @@ jobs:
            --set case.initContainers.dbMigration.image.tag=${{ env.Image_tag }} \
            --set casemanagement.image.tag=${{ env.Image_tag }} \
            --set casemanagement.initContainers.dbMigration.image.tag=${{ env.Image_tag }} \
+           --set ocr-service.image.tag=v1.0.0-${{ env.Image_tag }} \
+           --set ocr-service.initContainers.dbMigration.image.tag=v1.0.0-${{ env.Image_tag }} \
            --set evidence.image.tag=${{ env.Image_tag }} \
            --set evidence.initContainers.dbMigration.image.tag=${{ env.Image_tag }} \
            --set hearing.image.tag=${{ env.Image_tag }} \
@@ -125,6 +127,8 @@ jobs:
            --set epayments.image.tag=${{ env.Image_tag }} \
            --set etreasury.image.tag=${{ env.Image_tag }} \
            --set etreasury.initContainers.dbMigration.image.tag=${{ env.Image_tag }} \
+           --set pdf-service.image.tag=v1.0.0-${{ env.Image_tag }} \
+           --set pdf-service.initContainers.dbMigration.image.tag=v1.0.0-${{ env.Image_tag }} \
            --set sbi-webpage.image.tag=${{ env.Image_tag }} \
            --set sbi-svc.image.tag=${{ env.Image_tag }} \
            --set sbi-svc.initContainers.dbMigration.image.tag=${{ env.Image_tag }} \
