@@ -48,6 +48,11 @@ env: |
       configMapKeyRef:
         key: individual
         name: egov-service-host
+  - name: EGOV_ADVOCATE_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: advocate
+        name: egov-service-host
   - name: EGOV_WORKFLOW_HOST
     valueFrom:
       configMapKeyRef:
