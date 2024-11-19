@@ -84,7 +84,7 @@ jobs:
           cd dristi-solutions
           git checkout tags/v1.0.0
           commitID=$(git rev-list -n 1 v1.0.0)
-          Image_tag=v0.6.0-uat-$commitID
+          Image_tag=v1.0.0-$commitID
           echo "Image_tag=$Image_tag" >> $GITHUB_ENV
       - name: digit deployment
         run: |
