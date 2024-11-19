@@ -194,6 +194,8 @@ env: |
       configMapKeyRef:
         key: dristi-pdf
         name: egov-service-host
+  - name: CASEMANAGEMENT_KAFKA_WORKFLOW_TRANSITION_TOPIC
+    value: save-wf-transitions
   - name: GENERATE_VC_CODE
     value: "Pucar.SummonOrder14"
   
