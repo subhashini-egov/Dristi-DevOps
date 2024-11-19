@@ -14,6 +14,7 @@ initContainers:
 
 # Ingress Configs
 ingress:
+  enabled: true
   zuul: true
   context: "filestore"
 
@@ -28,9 +29,9 @@ healthChecks:
   readinessProbePath: "/filestore/health"
 appType: "java-spring"
 tracing-enabled: true
-#is-bucket-fixed: "true"
+is-bucket-fixed: "true"
 #fixed-bucketname: "unified-dev-bucket-s3"
-heap: "-Xmx192m -Xms192m"
+heap: "-Xmx1g -Xms1g"
 file-storage-mount-path: "/filestore"
 is-nfs-enabled: false
 is-azure-storage-enabled: true
@@ -41,6 +42,12 @@ persistence:
 
 # Additional Container Envs
 env: |
+  - name: JAVA_OPTS
+    value: {{ index .Values "heap" | quote }}
+  - name: SERVER_PORT
+    value: "8080"
+  - name: JAVA_ARGS
+    value: {{ index .Values "java-args" | quote }}
   - name: SERVER_PORT
     value: "8080"
   - name: SECURITY_BASIC_ENABLED
@@ -52,7 +59,9 @@ env: |
   - name: TEMP_FOLDER_PATH
     value: "/tmp"
   - name: SPRING_SERVLET_MULTIPART_MAX_FILE_SIZE
-    value: "6MB"
+    value: "200MB"
+  - name: SPRING_SERVLET_MULTIPART_MAX_REQUEST_SIZE
+    value: 1000MB
   - name: ISNFSSTORAGEENABLED
     value: {{ index .Values "is-nfs-enabled" | quote }}
   {{- if index .Values "is-nfs-enabled" }}

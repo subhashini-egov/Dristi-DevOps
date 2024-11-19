@@ -28,7 +28,7 @@ extraArgs:
   provider: github
 
 healthChecks:
-  enabled: true
+  enabled: false
   livenessProbePath: "/ping"
   readinessProbePath: "/ping"  
 

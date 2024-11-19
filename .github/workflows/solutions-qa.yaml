@@ -1,12 +1,14 @@
 name: Pucar-Install Workflow Solutins-QA
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+# push:
+#   branches:
+#     - Solutions-Pipeline
+#  pull_request:
+#    branches:
+     # - main
+ workflow_dispatch:
+ repository_dispatch:
+
 permissions:
   id-token: write
   contents: write
@@ -27,70 +29,70 @@ jobs:
           files: |
             deploy-as-code/**
 
-  Terraform_Infra_Creation:
-    needs: check-changed-files
-    runs-on: ubuntu-latest
-    env:
-      TF_IN_AUTOMATION: "true"
-      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-      ARM_CLIENT_ID: ${{ secrets.AZURE_SOLUTIONS_CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.AZURE_SOLUTIONS_CLIENT_SECRET }}
-      db_password: ${{ secrets.TF_VAR_db_password_solutions }}
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-
-      - name: Azure login
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.SOLUTIONS_AZURE_CREDENTIALS }}
-
-      - name: Terraform init - Infra creation
-        id: init-Infra
-        run: |
-          terraform --version
-          terraform init -backend-config="resource_group_name=pucar-solutions-qa" -backend-config="storage_account_name=tfstatemx7w4" -backend-config="container_name=pucar-solutions-qa-tfstate" -backend-config="key=infra.tfstate" -reconfigure
-        working-directory: infra-as-code/terraform/azure-pucar
-
-      - name: Terraform Validate - Infra creation
-        id: validate-Infra
-        run: terraform validate -no-color
-        working-directory: infra-as-code/terraform/azure-pucar
-
-      - name: Terraform Plan - Infra creation
-        id: plan-Infra
-        run: terraform plan -no-color -input=false -var-file="tfvars/pucar-solutions/qa.tfvars" -var "db_password=${{ secrets.TF_VAR_db_password_solutions }}"  -var "ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}" -var "ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}" -var "ARM_CLIENT_ID=${{ env.ARM_CLIENT_ID }}" -var "ARM_CLIENT_SECRET=${{ env.ARM_CLIENT_SECRET }}"
-        working-directory: infra-as-code/terraform/azure-pucar
-
-      - name: Terraform Apply - Infra creation
-        id: apply-Infra
-        run: terraform apply -no-color -input=false -auto-approve -var-file="tfvars/pucar-solutions/qa.tfvars" -var "db_password=${{ secrets.TF_VAR_db_password_solutions }}"  -var "ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}" -var "ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}" -var "ARM_CLIENT_ID=${{ env.ARM_CLIENT_ID }}" -var "ARM_CLIENT_SECRET=${{ env.ARM_CLIENT_SECRET }}"
-        working-directory: infra-as-code/terraform/azure-pucar
-
-      - name: Generate kubeconfig
-        run: |
-          az aks get-credentials --resource-group "pucar-solutions-qa" --name "solutions-qa"
-          cat ~/.kube/config > kubeconfig
-      - name: Kubectl setup
-        uses: azure/setup-kubectl@v3
-        with:
-          version: 'latest'
-        id: install
-
-      - name: Verify kubectl configuration
-        run: kubectl config view
-      - name: Verify kubectl get nodes
-        run: |
-          kubectl get nodes
+#  Terraform_Infra_Creation:
+#    needs: check-changed-files
+#    runs-on: ubuntu-latest
+#    env:
+#      TF_IN_AUTOMATION: "true"
+#      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+#      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+#      ARM_CLIENT_ID: ${{ secrets.AZURE_SOLUTIONS_CLIENT_ID }}
+#      ARM_CLIENT_SECRET: ${{ secrets.AZURE_SOLUTIONS_CLIENT_SECRET }}
+#      db_password: ${{ secrets.TF_VAR_db_password_solutions }}
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#
+#      - name: Setup Terraform
+#        uses: hashicorp/setup-terraform@v2
+#
+#      - name: Azure login
+#        uses: azure/login@v2
+#        with:
+#          creds: ${{ secrets.SOLUTIONS_AZURE_CREDENTIALS }}
+#
+#      - name: Terraform init - Infra creation
+#        id: init-Infra
+#        run: |
+#          terraform --version
+#          terraform init -backend-config="resource_group_name=pucar-solutions-qa" -backend-config="storage_account_name=tfstatemx7w4" -backend-config="container_name=pucar-solutions-qa-tfstate" -backend-config="key=infra.tfstate" -reconfigure
+#        working-directory: infra-as-code/terraform/azure-pucar
+#
+#      - name: Terraform Validate - Infra creation
+#        id: validate-Infra
+#        run: terraform validate -no-color
+#        working-directory: infra-as-code/terraform/azure-pucar
+#
+#      - name: Terraform Plan - Infra creation
+#        id: plan-Infra
+#        run: terraform plan -no-color -input=false -var-file="tfvars/pucar-solutions/qa.tfvars" -var "db_password=${{ secrets.TF_VAR_db_password_solutions }}"  -var "ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}" -var "ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}" -var "ARM_CLIENT_ID=${{ env.ARM_CLIENT_ID }}" -var "ARM_CLIENT_SECRET=${{ env.ARM_CLIENT_SECRET }}"
+#        working-directory: infra-as-code/terraform/azure-pucar
+#
+#      - name: Terraform Apply - Infra creation
+#        id: apply-Infra
+#        run: terraform apply -no-color -input=false -auto-approve -var-file="tfvars/pucar-solutions/qa.tfvars" -var "db_password=${{ secrets.TF_VAR_db_password_solutions }}"  -var "ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}" -var "ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}" -var "ARM_CLIENT_ID=${{ env.ARM_CLIENT_ID }}" -var "ARM_CLIENT_SECRET=${{ env.ARM_CLIENT_SECRET }}"
+#        working-directory: infra-as-code/terraform/azure-pucar
+#
+#      - name: Generate kubeconfig
+#        run: |
+#          az aks get-credentials --resource-group "pucar-solutions-qa" --name "solutions-qa"
+#          cat ~/.kube/config > kubeconfig
+#      - name: Kubectl setup
+#        uses: azure/setup-kubectl@v3
+#        with:
+#          version: 'latest'
+#        id: install
+#
+#      - name: Verify kubectl configuration
+#        run: kubectl config view
+#      - name: Verify kubectl get nodes
+#        run: |
+#          kubectl get nodes
 
   DIGIT-deployment:
-    if: ${{ github.event_name == 'push' }}
-    needs: Terraform_Infra_Creation
+#    if: ${{ github.event_name == 'push' }}
+#    needs: Terraform_Infra_Creation
     runs-on: ubuntu-latest
 
     steps:
@@ -106,7 +108,6 @@ jobs:
         run: |
           az aks get-credentials --resource-group "pucar-solutions-qa" --name "solutions-qa"
           cat ~/.kube/config > kubeconfig
-
       - name: Kubectl setup
         uses: azure/setup-kubectl@v3
         with:
@@ -150,8 +151,136 @@ jobs:
           helm-plugins: >
             https://github.com/databus23/helm-diff
 
+      - name: Commit Id for Latest Deployment
+        run: |
+          git clone https://github.com/pucardotorg/dristi-solutions.git
+          cd dristi-solutions
+          git checkout release/0.5
+          payment_calculator_commit=$(git log -1 --pretty=format:%H -- backend/payment-calculator-svc)
+          echo "payment_calculator_commit=$payment_calculator_commit" >> $GITHUB_ENV
+          advocate_commit=$(git log -1 --pretty=format:%H -- backend/advocate)
+          echo "advocate_commit=$advocate_commit" >> $GITHUB_ENV
+          case_commit=$(git log -1 --pretty=format:%H -- backend/case)
+          echo "case_commit=$case_commit" >> $GITHUB_ENV
+          casemanagement_commit=$(git log -1 --pretty=format:%H -- backend/casemanagement)
+          echo "casemanagement_commit=$casemanagement_commit" >> $GITHUB_ENV
+          hearing_commit=$(git log -1 --pretty=format:%H -- backend/hearing)
+          echo "hearing_commit=$hearing_commit" >> $GITHUB_ENV
+          dristi_case_pdf_commit=$(git log -1 --pretty=format:%H -- backend/dristi-case-pdf)
+          echo "dristi_case_pdf_commit=$dristi_case_pdf_commit" >> $GITHUB_ENV
+          esign_interceptor_commit=$(git log -1 --pretty=format:%H -- backend/esign-interceptor)
+          echo "esign_interceptor_commit=$esign_interceptor_commit" >> $GITHUB_ENV
+          esign_svc_commit=$(git log -1 --pretty=format:%H -- backend/e-sign-svc)
+          echo "esign_svc_commit=$esign_svc_commit" >> $GITHUB_ENV     
+          epost_tracker_commit=$(git log -1 --pretty=format:%H -- backend/epost-tracker)
+          echo "epost_tracker_commit=$epost_tracker_commit" >> $GITHUB_ENV 
+          transformer_commit=$(git log -1 --pretty=format:%H -- backend/transformer)
+          echo "transformer_commit=$transformer_commit" >> $GITHUB_ENV  
+          order_commit=$(git log -1 --pretty=format:%H -- backend/order)
+          echo "order_commit=$order_commit" >> $GITHUB_ENV
+          evidence_commit=$(git log -1 --pretty=format:%H -- backend/evidence)
+          echo "evidence_commit=$evidence_commit" >> $GITHUB_ENV
+          application_commit=$(git log -1 --pretty=format:%H -- backend/application)
+          echo "application_commit=$application_commit" >> $GITHUB_ENV      
+          scheduler_commit=$(git log -1 --pretty=format:%H -- backend/scheduler-svc)
+          echo "scheduler_commit=$scheduler_commit" >> $GITHUB_ENV
+          summons_svc_commit=$(git log -1 --pretty=format:%H -- backend/summons-svc)
+          echo "summons_svc_commit=$summons_svc_commit" >> $GITHUB_ENV 
+          collection_service_commit=$(git log -1 --pretty=format:%H -- common/collection-services)
+          echo "collection_service_commit=$collection_service_commit" >> $GITHUB_ENV
+          task_commit=$(git log -1 --pretty=format:%H -- backend/task)
+          echo "task_commit=$task_commit" >> $GITHUB_ENV
+          digit_ui_commit=$(git log -1 --pretty=format:%H -- frontend/micro-ui)
+          echo "digit_ui_commit=$digit_ui_commit" >> $GITHUB_ENV
+          analytics_commit=$(git log -1 --pretty=format:%H -- backend/analytics)
+          echo "analytics_commit=$analytics_commit" >> $GITHUB_ENV 
+          individual_commit=$(git log -1 --pretty=format:%H -- common/individual)
+          echo "individual_commit=$individual_commit" >> $GITHUB_ENV
+          inbox_commit=$(git log -1 --pretty=format:%H -- common/inbox)
+          echo "inbox_commit=$inbox_commit" >> $GITHUB_ENV
+          ocr_service_commit=$(git log -1 --pretty=format:%H -- backend/ocr-service)
+          echo "ocr_service_commit=$ocr_service_commit" >> $GITHUB_ENV
+          etreasury_commit=$(git log -1 --pretty=format:%H -- backend/treasury-backend)
+          echo "etreasury_commit=$etreasury_commit" >> $GITHUB_ENV
+          epayment_commit=$(git log -1 --pretty=format:%H -- backend/treasury-webpage)
+          echo "epayment_commit=$epayment_commit" >> $GITHUB_ENV
+          sbi_svc_commit=$(git log -1 --pretty=format:%H -- backend/sbi-backend)
+          echo "sbi_svc_commit=$sbi_svc_commit" >> $GITHUB_ENV
+          sbi_ui_commit=$(git log -1 --pretty=format:%H -- backend/sbi-webpage)
+          echo "sbi_ui_commit=$sbi_ui_commit" >> $GITHUB_ENV
+          integration_commit=$(git log -1 --pretty=format:%H -- backend/icops_integration-kerala)
+          echo "integration_commit=$integration_commit" >> $GITHUB_ENV
+          kerala_sms_commit=$(git log -1 --pretty=format:%H -- backend/kerala-sms)
+          echo "kerala_sms_commit=$kerala_sms_commit" >> $GITHUB_ENV
+          billing_service_commit=$(git log -1 --pretty=format:%H -- common/billing-service)
+          echo "billing_service_commit=$billing_service_commit" >> $GITHUB_ENV
+          dristi_pdf_commit=$(git log -1 --pretty=format:%H -- utilities/dristi-pdf)
+          echo "dristi_pdf_commit=$dristi_pdf_commit" >> $GITHUB_ENV
+          pdf_service=$(git log -1 --pretty=format:%H -- common/pdf-service)
+          echo "pdf_service=$pdf_service" >> $GITHUB_ENV
+
       - name: digit deployment
-        run: helmfile -l deployment=pucar,team!=dpg -f digit-helmfile.yaml apply --include-needs=true
+        run: |
+          helmfile -l deployment=pucar -f digit-helmfile.yaml apply --include-needs=true \
+           --set scheduler.image.tag=v1.0.0-${{ env.scheduler_commit }} \
+           --set scheduler.initContainers.dbMigration.image.tag=v1.0.0-${{ env.scheduler_commit }} \
+           --set payment-calculator.image.tag=v1.0.0-${{ env.payment_calculator_commit }} \
+           --set payment-calculator.initContainers.dbMigration.image.tag=v1.0.0-${{ env.payment_calculator_commit }} \
+           --set digit-ui.image.tag=v1.0.0-${{ env.digit_ui_commit }} \
+           --set dristi-case-pdf.image.tag=v1.0.0-${{ env.dristi_case_pdf_commit }} \
+           --set dristi-pdf.image.tag=v1.0.0-${{ env.dristi_pdf_commit }} \
+           --set advocate.image.tag=v1.0.0-${{ env.advocate_commit }} \
+           --set advocate.initContainers.dbMigration.image.tag=v1.0.0-${{ env.advocate_commit }} \
+           --set case.image.tag=v1.0.0-${{ env.case_commit }} \
+           --set case.initContainers.dbMigration.image.tag=v1.0.0-${{ env.case_commit }} \
+           --set ocr-service.image.tag=v1.0.0-${{ env.ocr_service_commit }} \
+           --set ocr-service.initContainers.dbMigration.image.tag=v1.0.0-${{ env.ocr_service_commit }} \
+           --set casemanagement.image.tag=v1.0.0-${{ env.casemanagement_commit }} \
+           --set casemanagement.initContainers.dbMigration.image.tag=v1.0.0-${{ env.casemanagement_commit }} \
+           --set evidence.image.tag=v1.0.0-${{ env.evidence_commit }} \
+           --set evidence.initContainers.dbMigration.image.tag=v1.0.0-${{ env.evidence_commit }} \
+           --set hearing.image.tag=v1.0.0-${{ env.hearing_commit }} \
+           --set hearing.initContainers.dbMigration.image.tag=v1.0.0-${{ env.hearing_commit }} \
+           --set order.image.tag=v1.0.0-${{ env.order_commit }} \
+           --set order.initContainers.dbMigration.image.tag=v1.0.0-${{ env.order_commit }} \
+           --set task.image.tag=v1.0.0-${{ env.task_commit }} \
+           --set task.initContainers.dbMigration.image.tag=v1.0.0-${{ env.task_commit }} \
+           --set billing-service.image.tag=v1.0.0-${{ env.billing_service_commit }} \
+           --set billing-service.initContainers.dbMigration.image.tag=v1.0.0-${{ env.billing_service_commit }} \
+           --set collection-services.image.tag=v1.0.0-${{ env.collection_service_commit }} \
+           --set collection-services.initContainers.dbMigration.image.tag=v1.0.0-${{ env.collection_service_commit }} \
+           --set individual.image.tag=v1.0.0-${{ env.individual_commit }} \
+           --set individual.initContainers.dbMigration.image.tag=v1.0.0-${{ env.individual_commit }} \
+           --set inbox.image.tag=v1.0.0-${{ env.inbox_commit }} \
+           --set e-sign-svc.image.tag=v1.0.0-${{ env.esign_svc_commit }} \
+           --set esign-interceptor.image.tag=v1.0.0-${{ env.esign_interceptor_commit }} \
+           --set application.image.tag=v1.0.0-${{ env.application_commit }} \
+           --set application.initContainers.dbMigration.image.tag=v1.0.0-${{ env.application_commit }} \
+           --set analytics.image.tag=v1.0.0-${{ env.analytics_commit }} \
+           --set epayments.image.tag=v1.0.0-${{ env.epayment_commit }} \
+           --set etreasury.image.tag=v1.0.0-${{ env.etreasury_commit }} \
+           --set etreasury.initContainers.dbMigration.image.tag=v1.0.0-${{ env.etreasury_commit }} \
+           --set pdf-service.image.tag=v1.0.0-${{ env.pdf_service }} \
+           --set pdf-service.initContainers.dbMigration.image.tag=v1.0.0-${{ env.pdf_service }} \
+           --set sbi-webpage.image.tag=v1.0.0-${{ env.sbi_ui_commit }} \
+           --set sbi-svc.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
+           --set sbi-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.sbi_svc_commit }} \
+           --set epost-tracker.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
+           --set epost-tracker.initContainers.dbMigration.image.tag=v1.0.0-${{ env.epost_tracker_commit }} \
+           --set summons-svc.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
+           --set summons-svc.initContainers.dbMigration.image.tag=v1.0.0-${{ env.summons_svc_commit }} \
+           --set transformer.image.tag=v1.0.0-${{ env.transformer_commit }} \
+           --set icops-integration.image.tag=v1.0.0-${{ env.integration_commit }} \
+           --set icops-integration.initContainers.dbMigration.image.tag=v1.0.0-${{ env.integration_commit }}
         working-directory: deploy-as-code
         env:
           HELMFILE_ENV: "solutions-qa"
+
+#      - name: Postgres Data Migration
+#        run: |
+#          POSTGRES_POD=$(kubectl get pods -n default -l app=postgres -o jsonpath='{.items[0].metadata.name}')
+#          kubectl exec -n default $POSTGRES_POD -- bash -c 'if [ -f /tmp/init-scripts/qa.sql ]; then rm /tmp/qa.sql; echo "File deleted"; else echo "File does not exist"; fi'
+#          kubectl cp deploy-as-code/charts/backbone-services/postgresql/init-scripts/qa.sql default/$POSTGRES_POD:/tmp/qa.sql
+#          kubectl exec -n default $POSTGRES_POD -- bash -c "PGPASSWORD=$PGPASSWORD psql -h pucar-solutions-qa-server.postgres.database.azure.com -U solutions_qa -d pucar-solutions-qa-db -f /tmp/qa.sql"
+#        env:
+#          PGPASSWORD: ${{ secrets.TF_VAR_DB_PASSWORD_SOLUTIONS_QA }}

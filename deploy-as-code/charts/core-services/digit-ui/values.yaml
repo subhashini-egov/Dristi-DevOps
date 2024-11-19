@@ -13,14 +13,21 @@ initContainers: {}
 
 # Container Configs
 image:
-  repository: "digit-ui"
-  tag: v1.5.0-dc44c10a7b-739
+  repository: "pucarsolutionsdev.azurecr.io/digit-ui"
+  tag: v1.0.0-d6576c3d536fa779c0ec2e0341d788821550841f
 replicas: "1"
 httpPort: 80
 healthChecks:
   enabled: true
   livenessProbePath: "/digit-ui/"
   readinessProbePath: "/digit-ui/"
+
+env: |
+  - name: REACT_APP_ESIGN_FILESTORE_ID
+    valueFrom:
+      configMapKeyRef:
+        key: esign-filestore-id
+        name: egov-config
     
 extraVolumes: |
   - name: js-injection

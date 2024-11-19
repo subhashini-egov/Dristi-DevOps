@@ -5,6 +5,7 @@ labels:
 
 # Ingress Configs
 ingress:
+  zuul: true
   enabled: true
   context: "advocate"
 
@@ -15,16 +16,20 @@ initContainers:
     enabled: true
     schemaTable: "advocate_service_schema"
     image:
-      repository: "pucardev.azurecr.io/pucar_advocate_db"
-      tag: latest
+      repository: "pucarsolutionsdev.azurecr.io/pucar_advocate_db"
+      tag: v1.0.0-08ab38363f9c4b0b70d0763331c9773f8bbf9820
 
 # Container Configs
 image:
-  repository: "pucardev.azurecr.io/pucar_advocate"
-  tag: latest
+  repository: "pucarsolutionsdev.azurecr.io/pucar_advocate"
+  tag: v1.0.0-08ab38363f9c4b0b70d0763331c9773f8bbf9820
   imagePullPolicy: Always
 replicas: "1"
 httpPort: 8080
+appType: "java-spring"
+heap: "-Xmx256m -Xms256m"
+java-args: "-Dspring.profiles.active=monitoring"
+memory_limits: 768Mi
 
 
 #healthChecks:
@@ -33,11 +38,17 @@ httpPort: 8080
 #  readinessProbePath: "/advocate/"
 
 env: |
+  - name: JAVA_OPTS
+    value: {{ index .Values "heap" | quote }}
+  - name: SERVER_PORT
+    value: "8080"
+  - name: JAVA_ARGS
+    value: {{ index .Values "java-args" | quote }}
   - name: SPRING_FLYWAY_URL
     valueFrom:
-      secretKeyRef:
-        name: db
-        key: password
+      configMapKeyRef:
+        key: db-url
+        name: egov-config
   - name: SPRING_FLYWAY_USER
     valueFrom:
       secretKeyRef:
@@ -50,9 +61,9 @@ env: |
         key: password
   - name: SPRING_DATASOURCE_URL
     valueFrom:
-      secretKeyRef:
-        name: db
-        key: password
+      configMapKeyRef:
+        key: db-url
+        name: egov-config
   - name: SPRING_DATASOURCE_USERNAME
     valueFrom:
       secretKeyRef:
@@ -85,11 +96,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-hrms
-  - name: EGOV_MDMS_HOST
+  - name: KAFKA_CONFIG_BOOTSTRAP_SERVER_CONFIG
     valueFrom:
       configMapKeyRef:
-        name: egov-service-host
-        key: egov-mdms-service
+        key: kafka-brokers
+        name: egov-config
   - name: EGOV_LOCALIZATION_HOST
     valueFrom:
       configMapKeyRef:
@@ -112,11 +123,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-idgen
-  - name: EGOV_MDMS_HOST
+  - name: EGOV_INDIVIDUAL_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: individual
   - name: EGOV_WORKFLOW_HOST
     valueFrom:
       configMapKeyRef:

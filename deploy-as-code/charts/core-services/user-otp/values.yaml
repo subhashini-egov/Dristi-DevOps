@@ -14,8 +14,8 @@ initContainers: {}
 
 # Container Configs
 image:
-  repository: "user-otp"
-  tag: core-2.9-lts-mvn-check-15fe7099b6-7
+  repository: "pucarsolutionsdev.azurecr.io/user-otp"
+  tag: v1.0.0-74196731f4b617ce06552e04a7a6eda9ffc40509
 healthChecks:
   enabled: true
   livenessProbePath: "/user-otp/health"

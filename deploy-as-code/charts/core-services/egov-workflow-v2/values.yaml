@@ -35,6 +35,8 @@ workflow-statelevel: "true"
 
 # Additional Container Envs
 env: |
+  - name: EGOV_WF_FUZZYSEARCH_ISFUZZYENABLED
+    value: "false"
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
     value: egov-tl-services
   - name: SPRING_KAFKA_PRODUCER_KEY_SERIALIZER
@@ -48,7 +50,7 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-mdms-service
-  - name: EGOV_STATELEVEL_TENANTID
+  - name: STATE_LEVEL_TENANT_ID
     valueFrom:
       configMapKeyRef:
         name: egov-config

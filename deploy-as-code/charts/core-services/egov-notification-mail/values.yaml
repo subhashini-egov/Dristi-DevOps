@@ -13,6 +13,7 @@ image:
 replicas: "1"
 appType: "java-spring"
 tracing-enabled: true
+mail-port: 587
 username: "egov-testing@egovernments.org"
 heap: "-Xmx192m -Xms192m"
 
@@ -41,7 +42,7 @@ env: |
     valueFrom:
       secretKeyRef:
         name: egov-notification-mail
-        key: mail-host
+        key: mailhost
   {{- end }}        
   - name: JAVA_OPTS
     value: {{ index .Values "heap" | quote }}

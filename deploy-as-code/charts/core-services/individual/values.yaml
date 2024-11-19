@@ -15,13 +15,13 @@ initContainers:
     enabled: true
     schemaTable: "individual_schema"
     image:
-      repository: "pucardev.azurecr.io/individual_db"
-      tag: latest
+      repository: "pucarsolutionsdev.azurecr.io/individual_db"
+      tag: 9f9fff70b3b2782499152458e041075a71e21660
 
 # Container Configs
 image:
-  repository: "pucardev.azurecr.io/individual"
-  tag: latest1
+  repository: "pucarsolutionsdev.azurecr.io/individual"
+  tag: 9f9fff70b3b2782499152458e041075a71e21660
 replicas: "1"
 healthChecks:
   enabled: true
@@ -29,8 +29,8 @@ healthChecks:
   readinessProbePath: "/individual/health"
 appType: "java-spring"
 tracing-enabled: true
-heap: "-Xmx192m -Xms192m"
-memory_limits: "1Gi"
+heap: "-Xmx256m -Xms256m"
+memory_limits: "768Mi"
 java-args: "-Dspring.profiles.active=monitoring"
 persist-yml-path: "file:///work-dir/digit-configs.git/egov-persister/individual-persister.yml"
 indexer-yml-path: "file:///work-dir/digit-configs.git/egov-indexer/individual-indexer.yml"

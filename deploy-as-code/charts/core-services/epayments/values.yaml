@@ -1,0 +1,34 @@
+# Common Labels
+labels:
+  app: "epayments"
+  group: "rainmaker"
+
+# Ingress Configs
+ingress:
+  enabled: true
+  zuul: true
+  context: "epayments"
+
+
+# Container Configs
+image:
+  repository: "pucarsolutionsdev.azurecr.io/epayments"
+  tag: v1.0.0-3729cd8b3f2c1053f948d76d5dd57c50ce50fce4
+replicas: "1"
+
+env: |
+  - name: EXTERNAL_HOST
+    valueFrom:
+      configMapKeyRef:
+        key: egov-services
+        name: egov-config
+  - name: SERVER_URL
+    valueFrom:
+      configMapKeyRef:
+        key: etreasury
+        name: egov-config
+  - name: DRISTI_URL
+    valueFrom:
+      configMapKeyRef:
+        key: dristi-url
+        name: egov-config
