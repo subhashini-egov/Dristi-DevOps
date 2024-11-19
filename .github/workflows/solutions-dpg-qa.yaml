@@ -1,11 +1,5 @@
 name: Pucar-Install Workflow Solutins-dpg-qa
 on:
-#  push:
-#   branches:
-#     - Solutions-Pipeline
-#  pull_request:
-#    branches:
-#      - main
   workflow_dispatch:
   repository_dispatch:
 

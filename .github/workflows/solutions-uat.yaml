@@ -1,8 +1,6 @@
 name: Pucar-Install Workflow Solutins-UAT
 on:
-  #  push:
-  #    branches:
-  #      - Solutions-Pipeline
+
   workflow_dispatch:
   repository_dispatch:
 jobs:
