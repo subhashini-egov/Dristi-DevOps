@@ -62,6 +62,8 @@ env: |
     value: "200MB"
   - name: SPRING_SERVLET_MULTIPART_MAX_REQUEST_SIZE
     value: 1000MB
+  - name: MAX_FILE_SIZE
+    value: "500000000"
   - name: ISNFSSTORAGEENABLED
     value: {{ index .Values "is-nfs-enabled" | quote }}
   {{- if index .Values "is-nfs-enabled" }}
