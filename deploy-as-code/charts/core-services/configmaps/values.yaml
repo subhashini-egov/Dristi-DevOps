@@ -3,6 +3,8 @@ configmaps:
     name: egov-config
     namespace: egov
     data:
+      JUDGE_DESIGNATION_HEADER: 'Special Court Of Judicial Magistrate of the First Class , for the trial of cases under section 138 of NI Act , 1881 at Kollam ( "24X7 ON Court" )'
+      ORDER_HEADING: 'In The Special Court Of Judicial Magistrate of the First Class , for the trial of cases under section 138 of NI Act , 1881 at Kollam ( "24X7 ON Court" )'
       dristi-e-sign: "https://digit-lts.digit.org/"
       db-host: "postgresql.backbone:5432" ## Add db-host name eg: egov-demo.database.azure.com
       db-name: "postgres" ## Add db-name
