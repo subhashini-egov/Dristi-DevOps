@@ -11,7 +11,14 @@ ingress:
 
 
 # Init Containers Configs
-
+e-sign-svc:
+  initContainers:
+    dbMigration:
+      enabled: true
+      schemaTable: "e_sign_svc_schema"
+      image:
+        repository: "pucarsolutionsdev.azurecr.io/pucar_e-sign-svc-db"
+        tag: v1.0.0-36e4cd719e16aedec416b518f48bf84b56e60389
 # Container Configs
 image:
   repository: "pucarsolutionsdev.azurecr.io/pucar_e-sign-svc"

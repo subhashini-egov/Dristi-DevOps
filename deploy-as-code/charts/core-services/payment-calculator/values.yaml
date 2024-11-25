@@ -111,6 +111,11 @@ env: |
       configMapKeyRef:
         key: kafka-brokers
         name: egov-config
+  - name: EGOV_CASE_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: case
 
   
   
