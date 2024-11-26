@@ -35,6 +35,8 @@ java-args: ""
 
 # Additional Container Envs
 env: |
+  - name: ISTEST_ENABLED
+    value: "false"
   - name: SERVER_PORT
     value: "8080"
   - name: EGOV_STATE_LEVEL_TENANT_ID
