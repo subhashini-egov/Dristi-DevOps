@@ -228,7 +228,7 @@ jobs:
            --set scheduler.initContainers.dbMigration.image.tag=hotfix-1.0-${{ env.scheduler_commit }} \
            --set payment-calculator.image.tag=hotfix-1.0-${{ env.payment_calculator_commit }} \
            --set payment-calculator.initContainers.dbMigration.image.tag=hotfix-1.0-${{ env.payment_calculator_commit }} \
-           --set digit-ui.image.tag=hotfix-1.0-esign-${{ env.digit_ui_commit }} \
+           --set digit-ui.image.tag=hotfix-1.0-${{ env.digit_ui_commit }} \
            --set dristi-case-pdf.image.tag=hotfix-1.0-${{ env.dristi_case_pdf_commit }} \
            --set dristi-pdf.image.tag=hotfix-1.0-${{ env.dristi_pdf_commit }} \
            --set advocate.image.tag=hotfix-1.0-${{ env.advocate_commit }} \
