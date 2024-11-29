@@ -64,6 +64,11 @@ env: |
       configMapKeyRef:
         key: esign-interceptor
         name: egov-config
+  - name: ESIGN_ASP_ID
+    valueFrom:
+      configMapKeyRef:
+        key: esign-id
+        name: egov-config
   - name: SPRING_REDIS_HOST
     value: redis.backbone
   - name: SPRING_REDIS_PORT

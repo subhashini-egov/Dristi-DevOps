@@ -176,7 +176,8 @@ jobs:
            --set individual.image.tag=hotfix-1.0-${{ env.individual_commit }} \
            --set individual.initContainers.dbMigration.image.tag=hotfix-1.0-${{ env.individual_commit }} \
            --set inbox.image.tag=hotfix-1.0-${{ env.inbox_commit }} \
-           --set e-sign-svc.image.tag=v0.6.0-uat-${{ env.esign_svc_commit }} \
+           --set e-sign-svc.image.tag=hotfix-1.0-${{ env.esign_svc_commit }} \
+           --set e-sign-svc.initContainers.dbMigration.image.tag=hotfix-1.0-${{ env.esign_svc_commit }} \
            --set esign-interceptor.image.tag=hotfix-1.0-${{ env.esign_interceptor_commit }} \
            --set application.image.tag=hotfix-1.0-${{ env.application_commit }} \
            --set application.initContainers.dbMigration.image.tag=hotfix-1.0-${{ env.application_commit }} \
